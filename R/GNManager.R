@@ -285,6 +285,7 @@ GNManager <- R6Class("GNManager",
     #---------------------------------------------------------------------------
     setPrivConfiguration = function(id, config){
       self$INFO(sprintf("Setting privileges for metadata id = %s", id))
+      out <- FALSE
       if(!is(config, "GNPrivConfiguration")){
         stop("The 'config' value should be an object of class 'GNPrivConfiguration")
       }

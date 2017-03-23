@@ -1,0 +1,54 @@
+#' GeoNetwork REST API - GeoNetwork privilege configuration
+#'
+#' @docType class
+#' @importFrom R6 R6Class
+#' @export
+#' 
+#' @name GNPrivConfiguration
+#' @title A GeoNetwork privilege configuration
+#' @description This class is an utility to configure privileges
+#' @keywords GeoNetwork privilege configuration
+#' @return Object of \code{\link{R6Class}} for modelling a GeoNetwork Privilege configuration
+#' @format \code{\link{R6Class}} object.
+#' 
+#' @examples
+#' \dontrun{
+#'  priv <- GNPriv$new(
+#' }
+#' 
+#' @section Methods:
+#' \describe{
+#'  \item{\code{new()}}{
+#'    This method is used to instantiate a GNPriv object.
+#'  }
+#' }
+#' 
+#' @author Emmanuel Blondel <emmanuel.blondel1@@gmail.com>
+#'
+GNPriv <- R6Class("GNPriv",
+   public = list(
+     group = NULL,
+     privileges = list(),
+     initialize = function(group, privileges){
+       allowedGroups <- c("guest", "intranet", "all")
+       if(!(group %in% allowedGroups)){
+         stop(sprintf("Unsupported group '%s' value. Possible values are [%s]",
+                      group, paste0(allowedGroups, collapse=",")))
+       }
+       groupCode <- switch(group, "guest" = -1, "intranet" = 0, "all" = 1)
+       allowedPrivileges <- c("view", "download", "editing", "notify", "dynamic", "featured")
+       if(!all(privileges %in% allowedPrivileges)){
+         stop(sprintf("One or more privilege(s) not matching possibles [%s]",
+                      paste0(allowedPrivileges, collapse=",")))
+       }
+       privCodes <- as.integer(sapply(privileges, function(x){
+         code <- switch(x, "view" = 0, "download" = 1, "editing" = 2,
+                        "notify" = 3, "dynamic" = 4, "featured" = 5)
+         return(code)
+       }))
+       
+       self$group = groupCode
+       self$privileges = privCodes
+     }
+   )                  
+)

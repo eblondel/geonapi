@@ -18,6 +18,7 @@ test_that("GNManager connects",{
     "DEBUG"
   )
   
-  test = gnman$getMetadataByUUID("my-metadata-uuid")
+  md = gnman$getMetadataByUUID("my-metadata-uuid")
+  expect_is(md, "ISOMetadata")
   
 })

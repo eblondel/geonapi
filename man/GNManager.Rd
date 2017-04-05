@@ -79,10 +79,16 @@ GeoNetwork REST API Manager
    with possible values "id", "metadata", "info".
  }
  \item{\code{getMetadataByID(id)}}{
-   Get a metadata by Id. Returns an XML document object
+   Get a metadata by Id. Returns an \code{ISOMetadata} object (from \pkg{geometa} package)
  }
  \item{\code{getMetadataByUUID(uuid)}}{
-   Get a metadata by Id. Returns an XML document object
+   Get a metadata by UUID. Returns an \code{ISOMetadata} object (from \pkg{geometa} package)
+ }
+ \item{\code{getInfoByID(id)}}{
+   Get a metadata Info by Id. Returns an XML document object
+ }
+ \item{\code{getInfoByUUID(uuid)}}{
+   Get a metadata Info by UUID. Returns an XML document object
  }
  \item{\code{updateMetadata(id, xml, file)}}{
    Updates a metadata

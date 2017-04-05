@@ -143,8 +143,8 @@ GNUtils$DELETE <- function(url, path, token = NULL, verbose = FALSE){
   return(req)
 }
 
-GNUtils$parseResponseXML <- function(req){
-  return(xmlParse(content(req, as = "text", encoding = "UTF-8")))
+GNUtils$parseResponseXML <- function(req, encoding = "UTF-8"){
+  return(xmlParse(content(req, as = "text", encoding = encoding)))
 }
 
 GNUtils$getPayloadXML <- function(obj){

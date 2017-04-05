@@ -72,10 +72,16 @@
 #'    with possible values "id", "metadata", "info".
 #'  }
 #'  \item{\code{getMetadataByID(id)}}{
-#'    Get a metadata by Id. Returns an XML document object
+#'    Get a metadata by Id. Returns an \code{ISOMetadata} object (from \pkg{geometa} package)
 #'  }
 #'  \item{\code{getMetadataByUUID(uuid)}}{
-#'    Get a metadata by Id. Returns an XML document object
+#'    Get a metadata by UUID. Returns an \code{ISOMetadata} object (from \pkg{geometa} package)
+#'  } 
+#'  \item{\code{getInfoByID(id)}}{
+#'    Get a metadata Info by Id. Returns an XML document object
+#'  }
+#'  \item{\code{getInfoByUUID(uuid)}}{
+#'    Get a metadata Info by UUID. Returns an XML document object
 #'  }
 #'  \item{\code{updateMetadata(id, xml, file)}}{
 #'    Updates a metadata
@@ -316,7 +322,7 @@ GNManager <- R6Class("GNManager",
     
     #get
     #---------------------------------------------------------------------------
-    get = function(id, by = "id", output = "metadata"){
+    get = function(id, by, output){
       allowedByValues <- c("id","uuid")
       if(!(by %in% allowedByValues)){
         stop(sprintf("Unsupported 'by' parameter value '%s'. Possible values are [%s]",
@@ -344,7 +350,7 @@ GNManager <- R6Class("GNManager",
       )
       if(status_code(req) == 200){
         self$INFO("Successfully fetched metadata!")
-        xml <- GNUtils$parseResponseXML(req)
+        xml <- GNUtils$parseResponseXML(req, ifelse(output=="metadata", "ISO-8859-1", "UTF-8"))
         if(output == "id"){
           idXML <- getNodeSet(xml, "//geonet:info/id",
                                    c(geonet = "http://www.fao.org/geonetwork"))
@@ -354,11 +360,11 @@ GNManager <- R6Class("GNManager",
             stop("No geonet:info XML element found")
           }
         }else if(output == "metadata"){
-          #TODO bridge to geometa package once geometa XML decoding supported
-          out <- xml
+          #bridge to geometa package once geometa XML decoding supported
+          out <- geometa::ISOMetadata$new(xml = xml)
         }else if(output == "info"){
           #TODO support for GNInfo object
-          out <- xml
+          stop("GNInfo is not yet implemented in geonapi!")
         }
       }else{
         self$ERROR("Error while fetching metadata")
@@ -369,13 +375,25 @@ GNManager <- R6Class("GNManager",
     #getMetadataByID
     #---------------------------------------------------------------------------
     getMetadataByID = function(id){
-      return(self$get(id, by = "id")) 
+      return(self$get(id, by = "id", output = "metadata")) 
     },
     
     #getMetadataByUUID
     #---------------------------------------------------------------------------
     getMetadataByUUID = function(uuid){
-      return(self$get(uuid, by = "uuid")) 
+      return(self$get(uuid, by = "uuid", output = "metadata")) 
+    },
+    
+    #getInfoByID
+    #---------------------------------------------------------------------------
+    getInfoByID = function(id){
+      return(self$get(id, by = "id", output = "info")) 
+    },
+    
+    #getInfoByUUID
+    #---------------------------------------------------------------------------
+    getInfoByUUID = function(uuid){
+      return(self$get(uuid, by = "uuid", output = "info")) 
     },
     
     #updateMetadata

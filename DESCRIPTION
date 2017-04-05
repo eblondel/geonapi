@@ -9,7 +9,7 @@ Description: Provides an R interface to the GeoNetwork REST API, allowing to upl
  and publish metadata in a GeoNetwork web-application and exposteit to OGC Web-Services.
  (Catalogue Service for the Web).
 Depends: R (>= 3.1.0)
-Imports: R6, openssl, httr, XML
+Imports: R6, openssl, httr, XML, geometa
 Suggests: testthat, roxygen2
 License: MIT + file LICENSE
 URL: https://github.com/eblondel/geonapi/wiki, http://geonetwork-opensource.org

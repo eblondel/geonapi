@@ -248,7 +248,7 @@ GNManager <- R6Class("GNManager",
         tempf = tempfile(tmpdir = tempdir())
         file <- paste(tempf,".xml",sep='')
         isTempFile <- TRUE
-        saveXML(xml, file)
+        saveXML(xml, file, encoding = "UTF-8")
       }
       if(!is.null(file)){
         xml <- xmlParse(file)

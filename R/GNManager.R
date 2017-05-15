@@ -349,8 +349,8 @@ GNManager <- R6Class("GNManager",
       )
       if(status_code(req) == 200){
         self$INFO("Successfully fetched metadata!")
-        xml <- GNUtils$parseResponseXML(req, ifelse(output=="metadata", "ISO-8859-1", "UTF-8"))
-        #xml <- GNUtils$parseResponseXML(req, "UTF-8")
+        #xml <- GNUtils$parseResponseXML(req, ifelse(output=="metadata", "ISO-8859-1", "UTF-8"))
+        xml <- GNUtils$parseResponseXML(req, "UTF-8")
         if(output == "id"){
           idXML <- getNodeSet(xml, "//geonet:info/id",
                                    c(geonet = "http://www.fao.org/geonetwork"))

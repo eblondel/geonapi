@@ -102,8 +102,9 @@ GNManager <- R6Class("GNManager",
       version <- NULL
       req <- GNUtils$GET(
         url = self$getUrl(),
-        path = sprintf("/metadata.edit!?id=%s", id),
+        path = "/metadata.edit!",
         token = private$token,
+        query = list(id = id),
         verbose = self$verbose.debug
       )
       xml <- NULL
@@ -166,7 +167,8 @@ GNManager <- R6Class("GNManager",
       self$version <- GNVersion$new(version = version)
       
       #service lang
-      self$lang <- ifelse(self$version$lowerThan("2.6"),"en","eng")
+      isGN26 <- self$version$value$major == 2 && self$version$value$minor == 6
+      self$lang <- ifelse(isGN26,"en","eng")
       
       #baseUrl
       self$url = sprintf("%s/srv/%s", url, self$lang)
@@ -251,7 +253,7 @@ GNManager <- R6Class("GNManager",
         saveXML(xml, file, encoding = "UTF-8")
       }
       if(!is.null(file)){
-        xml <- xmlParse(file)
+        xml <- xmlParse(file, encoding = "UTF-8")
         data <- as(xml, "character")
         if(isTempFile) unlink(file)
       }else{
@@ -294,19 +296,23 @@ GNManager <- R6Class("GNManager",
       if(!is(config, "GNPrivConfiguration")){
         stop("The 'config' value should be an object of class 'GNPrivConfiguration")
       }
-      gnRequest <- GNRESTRequest$new(id = id)
+      #gnRequest <- GNRESTRequest$new(id = id)
+      queryParams = list(id = id)
       for(grant in config$privileges){
         for(priv in grant$privileges){
           el <- paste0("_", grant$group, "_", priv)
-          gnRequest$setChild(el,"on")
+          queryParams[[el]] <- "on"
+          #gnRequest$setChild(el,"on")
         }
       }
-      req <- GNUtils$POST(
+      print(queryParams)
+      req <- GNUtils$GET(
         url = self$getUrl(),
         path = "/metadata.admin",
         token = private$token,
-        content = GNUtils$getPayloadXML(gnRequest),
-        contentType = "text/xml",
+        query = queryParams,
+        #content = GNUtils$getPayloadXML(gnRequest),
+        #contentType = "text/xml",
         verbose = self$verbose.debug
       )
       if(status_code(req) == 200){

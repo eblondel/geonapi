@@ -51,14 +51,16 @@ GNUtils$getUserAgent <- function(){
   return(paste("geonapi", packageVersion("geonapi"), sep="-"))
 }
 
-GNUtils$GET <- function(url, path, token = NULL, verbose = FALSE){
+GNUtils$GET <- function(url, path, token = NULL,
+                        query = NULL, verbose = FALSE){
   if(verbose){
-    req <- with_verbose(GNUtils$GET(url, path, token))
+    req <- with_verbose(GNUtils$GET(url, path, token, query))
   }else{
     if(!grepl("^/", path)) path = paste0("/", path)
-    url <- paste0(url, path) 
+    url <- paste0(url, path)
     req <- httr::GET(
       url = url,
+      query = query,
       add_headers(
         "User-Agent" = GNUtils$getUserAgent()
       ),
@@ -67,6 +69,7 @@ GNUtils$GET <- function(url, path, token = NULL, verbose = FALSE){
       )
     )
   }
+  if(verbose) print(req)
   return(req)
 }
 

@@ -253,7 +253,7 @@ GNManager <- R6Class("GNManager",
         saveXML(xml, file, encoding = "UTF-8")
       }
       if(!is.null(file)){
-        xml <- xmlParse(file, encoding = "UTF-8")
+        xml <- xmlParse(file)
         data <- as(xml, "character")
         if(isTempFile) unlink(file)
       }else{
@@ -279,7 +279,6 @@ GNManager <- R6Class("GNManager",
       )
       if(status_code(req) == 200){
         self$INFO("Successfully inserted metadata!")
-        #TODO consider returning the internal Geonetwork id?
         response <- GNUtils$parseResponseXML(req)
         out <- as.integer(xpathApply(response, "//id", xmlValue)[[1]])
       }else{
@@ -296,23 +295,18 @@ GNManager <- R6Class("GNManager",
       if(!is(config, "GNPrivConfiguration")){
         stop("The 'config' value should be an object of class 'GNPrivConfiguration")
       }
-      #gnRequest <- GNRESTRequest$new(id = id)
       queryParams = list(id = id)
       for(grant in config$privileges){
         for(priv in grant$privileges){
           el <- paste0("_", grant$group, "_", priv)
           queryParams[[el]] <- "on"
-          #gnRequest$setChild(el,"on")
         }
       }
-      print(queryParams)
       req <- GNUtils$GET(
         url = self$getUrl(),
         path = "/metadata.admin",
         token = private$token,
         query = queryParams,
-        #content = GNUtils$getPayloadXML(gnRequest),
-        #contentType = "text/xml",
         verbose = self$verbose.debug
       )
       if(status_code(req) == 200){
@@ -355,11 +349,9 @@ GNManager <- R6Class("GNManager",
       )
       if(status_code(req) == 200){
         self$INFO("Successfully fetched metadata!")
-        #xml <- GNUtils$parseResponseXML(req, ifelse(output=="metadata", "ISO-8859-1", "UTF-8"))
         xml <- GNUtils$parseResponseXML(req, "UTF-8")
         if(output == "id"){
-          idXML <- getNodeSet(xml, "//geonet:info/id",
-                                   c(geonet = "http://www.fao.org/geonetwork"))
+          idXML <- getNodeSet(xml, "//geonet:info/id", c(geonet = "http://www.fao.org/geonetwork"))
           if(length(idXML)>0){
             out <- as.integer(xmlValue(idXML[[1]]))
           }else{
@@ -414,7 +406,7 @@ GNManager <- R6Class("GNManager",
         tempf = tempfile(tmpdir = tempdir())
         file <- paste(tempf,".xml",sep='')
         isTempFile <- TRUE
-        saveXML(xml, file)
+        saveXML(xml, file, encoding = "UTF-8")
       }
       if(!is.null(file)){
         xml <- xmlParse(file)

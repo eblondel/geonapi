@@ -93,6 +93,9 @@ GeoNetwork REST API Manager
  \item{\code{updateMetadata(id, xml, file)}}{
    Updates a metadata
  }
+ \item{\code{deleteMetadata(id)}}{
+   Deletes a metadata
+ }
 }
 }
 \examples{

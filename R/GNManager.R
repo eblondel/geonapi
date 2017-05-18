@@ -85,6 +85,9 @@
 #'  \item{\code{updateMetadata(id, xml, file)}}{
 #'    Updates a metadata
 #'  }
+#'  \item{\code{deleteMetadata(id)}}{
+#'    Deletes a metadata
+#'  }
 #' }
 #' 
 #' @author Emmanuel Blondel <emmanuel.blondel1@@gmail.com>
@@ -440,7 +443,32 @@ GNManager <- R6Class("GNManager",
       }
       return(out)
       
+    },
+    
+    #deleteMetadata
+    #---------------------------------------------------------------------------
+    deleteMetadata = function(id){
+      self$INFO(sprintf("Deleting metadata id = %s ...", id))
+      out <- NULL
+      gnRequest <- GNRESTRequest$new(id = id)
+      req <- GNUtils$POST(
+        url = self$getUrl(),
+        path = "/xml.metadata.delete",
+        token = private$token,
+        content = GNUtils$getPayloadXML(gnRequest),
+        contentType = "text/xml",
+        verbose = self$verbose.debug
+      )
+      if(status_code(req) == 200){
+        self$INFO("Successfully deleted metadata!")
+        response <- GNUtils$parseResponseXML(req)
+        out <- as.integer(xpathApply(response, "//id", xmlValue)[[1]])
+      }else{
+        self$ERROR("Error while deleting metadata")
+      }
+      return(out)
     }
+    
   )
                      
 )

@@ -362,7 +362,13 @@ GNManager <- R6Class("GNManager",
           }
         }else if(output == "metadata"){
           #bridge to geometa package once geometa XML decoding supported
-          out <- geometa::ISOMetadata$new(xml = xml)
+          isoClass <- xmlName(xmlRoot(xml))
+          out <- NULL
+          if(isoClass=="MD_Metadata"){
+            out <- geometa::ISOMetadata$new(xml = xml)
+          }else if(isoClass=="FC_FeatureCatalogue"){
+            out <- geometa::ISOFeatureCatalogue$new(xml = xml)
+          }
         }else if(output == "info"){
           #TODO support for GNInfo object
           stop("GNInfo is not yet implemented in geonapi!")

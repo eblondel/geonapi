@@ -96,6 +96,9 @@ GeoNetwork REST API Manager
  \item{\code{deleteMetadata(id)}}{
    Deletes a metadata
  }
+ \item{\code{deleteMetadataAll()}}{
+   Deletes all metadata for which the authenticated user is owner
+ }
 }
 }
 \examples{

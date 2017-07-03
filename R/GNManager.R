@@ -88,6 +88,9 @@
 #'  \item{\code{deleteMetadata(id)}}{
 #'    Deletes a metadata
 #'  }
+#'  \item{\code{deleteMetadataAll()}}{
+#'    Deletes all metadata for which the authenticated user is owner
+#'  }
 #' }
 #' 
 #' @author Emmanuel Blondel <emmanuel.blondel1@@gmail.com>
@@ -473,8 +476,41 @@ GNManager <- R6Class("GNManager",
         self$ERROR("Error while deleting metadata")
       }
       return(out)
-    }
+    },
     
+    #deleteMetadataAll
+    #---------------------------------------------------------------------------
+    deleteMetadataAll = function(){
+      self$INFO("Deleting all owned metadata...")
+      
+      if(self$version$lowerThan("2.10.x")){
+        stop("Method unsupported for GN < 2.10.X")
+      }
+      
+      #select all
+      gnSelectRequest <- GNRESTRequest$new()
+      gnSelectRequest$setChild("selected", "add-all")
+      selectReq <- GNUtils$POST(
+        url = self$getUrl(),
+        path = "/xml.metadata.select",
+        token = private$token,
+        content = GNUtils$getPayloadXML(gnSelectRequest),
+        contentType = "text/xml",
+        verbose = self$verbose.debug
+      )
+      #delete all
+      gnDeleteRequest <- GNRESTRequest$new()
+      deleteReq <- GNUtils$POST(
+        url = self$getUrl(),
+        path = "/xml.metadata.batch.delete",
+        token = private$token,
+        content = GNUtils$getPayloadXML(gnDeleteRequest),
+        contentType = "text/xml",
+        verbose = self$verbose.debug
+      )
+      response <- GNUtils$parseResponseXML(deleteReq)
+      return(response)
+    }
   )
                      
 )

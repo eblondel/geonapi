@@ -5,6 +5,7 @@
 #' @importFrom openssl base64_encode
 #' @import httr
 #' @import XML
+#' @importFrom openssl base64_encode
 #' @export
 #' @keywords geonetwork rest api
 #' @return Object of \code{\link{R6Class}} with methods for communication with

@@ -64,10 +64,7 @@ GNUtils$GET <- function(url, path, token = NULL, user = NULL, pwd = NULL,
         query = query,
         add_headers(
           "User-Agent" = GNUtils$getUserAgent(),
-          "user" = paste(user, pwd, sep = ":")
-        ),
-        set_cookies(
-          JSESSIONID = token  
+          "Authorization" = paste("Basic", GNUtils$getUserToken(user, pwd))
         )
       )
     }else{
@@ -110,11 +107,8 @@ GNUtils$PUT <- function(url, path, token = NULL, user = NULL, pwd = NULL,
         url = url,
         add_headers(
           "User-Agent" = GNUtils$getUserAgent(),
-          "user" = paste(user, pwd, sep=":"),
+          "Authorization" = paste("Basic", GNUtils$getUserToken(user, pwd)),
           "Content-type" = contentType
-        ),
-        set_cookies(
-          JSESSIONID = token  
         ),    
         body = body
       )
@@ -147,11 +141,8 @@ GNUtils$POST <- function(url, path, token = NULL, user = NULL, pwd = NULL,
         url = url,
         add_headers(
           "User-Agent" = GNUtils$getUserAgent(),
-          "user" = paste(user, pwd, sep = ":"),
+          "Authorization" = paste("Basic", GNUtils$getUserToken(user, pwd)),
           "Content-type" = contentType
-        ),
-        set_cookies(
-          JSESSIONID = token  
         ),
         body = content
       )
@@ -174,7 +165,7 @@ GNUtils$POST <- function(url, path, token = NULL, user = NULL, pwd = NULL,
 
 GNUtils$DELETE <- function(url, path, token = NULL, user = NULL, pwd = NULL, verbose = FALSE){
   if(verbose){
-    req <- with_verbose(GNUtils$DELETE(url, path, token))
+    req <- with_verbose(GNUtils$DELETE(url, path, token, user, pwd))
   }else{
     if(!grepl("^/", path)) path = paste0("/", path)
     url <- paste0(url, path)
@@ -183,10 +174,7 @@ GNUtils$DELETE <- function(url, path, token = NULL, user = NULL, pwd = NULL, ver
         url = url,
         add_headers(
           "User-Agent" = GNUtils$getUserAgent(),
-          "user" = paste(user, pwd, sep=":")
-        ),
-        set_cookies(
-          JSESSIONID = token  
+          "Authorization" = paste("Basic", GNUtils$getUserToken(user, pwd))
         )
       )
     }else{
@@ -216,4 +204,9 @@ GNUtils$getPayloadXML <- function(obj){
   xmltext <- as(xml, "character")
   payload <- gsub("[\r\n ] ", "", xmltext)
   return(payload)
+}
+
+GNUtils$getUserToken <- function(user, pwd){
+  token <- openssl::base64_encode(charToRaw(paste(user, pwd, sep=":")))
+  return(token)
 }

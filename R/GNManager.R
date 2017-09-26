@@ -440,11 +440,18 @@ GNManager <- R6Class("GNManager",
       }
       cdata <- newXMLCDataNode(data)
       
-      gnRequest <- GNRESTRequest$new(
-        id = id,
-        version = private$getEditingMetadataVersion(id),
-        data = cdata
-      )
+      if(self$version$value$major >= 3){
+        gnRequest <- GNRESTRequest$new(
+          id = id,
+          data = cdata
+        )
+      }else{
+        gnRequest <- GNRESTRequest$new(
+          id = id,
+          version = private$getEditingMetadataVersion(id),
+          data = cdata
+        )
+      }
       
       req <- GNUtils$POST(
         url = self$getUrl(),

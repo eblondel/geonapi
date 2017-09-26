@@ -51,33 +51,47 @@ GNUtils$getUserAgent <- function(){
   return(paste("geonapi", packageVersion("geonapi"), sep="-"))
 }
 
-GNUtils$GET <- function(url, path, token = NULL,
+GNUtils$GET <- function(url, path, token = NULL, user = NULL, pwd = NULL,
                         query = NULL, verbose = FALSE){
   if(verbose){
-    req <- with_verbose(GNUtils$GET(url, path, token, query))
+    req <- with_verbose(GNUtils$GET(url, path, token, user, pwd, query))
   }else{
     if(!grepl("^/", path)) path = paste0("/", path)
     url <- paste0(url, path)
-    req <- httr::GET(
-      url = url,
-      query = query,
-      add_headers(
-        "User-Agent" = GNUtils$getUserAgent()
-      ),
-      set_cookies(
-        JSESSIONID = token  
+    if(!is.null(user) && !is.null(pwd)){
+      req <- httr::GET(
+        url = url,
+        query = query,
+        add_headers(
+          "User-Agent" = GNUtils$getUserAgent(),
+          "user" = paste(user, pwd, sep = ":")
+        ),
+        set_cookies(
+          JSESSIONID = token  
+        )
       )
-    )
+    }else{
+      req <- httr::GET(
+        url = url,
+        query = query,
+        add_headers(
+          "User-Agent" = GNUtils$getUserAgent()
+        ),
+        set_cookies(
+          JSESSIONID = token  
+        )
+      )
+    }
   }
   if(verbose) print(req)
   return(req)
 }
 
-GNUtils$PUT <- function(url, path, token = NULL,
+GNUtils$PUT <- function(url, path, token = NULL, user = NULL, pwd = NULL,
                         content = NULL, filename = NULL,
                         contentType, verbose = FALSE){
   if(verbose){
-    req <- with_verbose(GNUtils$PUT(url, path, token, content, filename, contentType))
+    req <- with_verbose(GNUtils$PUT(url, path, token, user, pwd, content, filename, contentType))
   }else{
     body <- NULL
     if(missing(content) | is.null(content)){
@@ -91,57 +105,101 @@ GNUtils$PUT <- function(url, path, token = NULL,
     
     if(!grepl("^/", path)) path = paste0("/", path)
     url <- paste0(url, path)
-    req <- httr::PUT(
-      url = url,
-      add_headers(
-        "User-Agent" = GNUtils$getUserAgent(),
-        "Content-type" = contentType
-      ),
-      set_cookies(
-        JSESSIONID = token  
-      ),    
-      body = body
-    )
+    if(!is.null(user) && !is.null(pwd)){
+      req <- httr::PUT(
+        url = url,
+        add_headers(
+          "User-Agent" = GNUtils$getUserAgent(),
+          "user" = paste(user, pwd, sep=":"),
+          "Content-type" = contentType
+        ),
+        set_cookies(
+          JSESSIONID = token  
+        ),    
+        body = body
+      )
+    }else{
+      req <- httr::PUT(
+        url = url,
+        add_headers(
+          "User-Agent" = GNUtils$getUserAgent(),
+          "Content-type" = contentType
+        ),
+        set_cookies(
+          JSESSIONID = token  
+        ),    
+        body = body
+      )
+    }
   }
   return(req)
 }
 
-GNUtils$POST <- function(url, path, token = NULL, content, contentType, verbose = FALSE){
+GNUtils$POST <- function(url, path, token = NULL, user = NULL, pwd = NULL,
+                         content, contentType, verbose = FALSE){
   if(verbose){
-    req <- with_verbose(GNUtils$POST(url, path, token, content, contentType))
+    req <- with_verbose(GNUtils$POST(url, path, token, user, pwd, content, contentType))
   }else{
     if(!grepl("^/", path)) path = paste0("/", path)
     url <- paste0(url, path)
-    req <- httr::POST(
-      url = url,
-      add_headers(
-        "User-Agent" = GNUtils$getUserAgent(),
-        "Content-type" = contentType
-      ),
-      set_cookies(
-        JSESSIONID = token  
-      ),
-      body = content
-    )
+    if(!is.null(user) && !is.null(pwd)){
+      req <- httr::POST(
+        url = url,
+        add_headers(
+          "User-Agent" = GNUtils$getUserAgent(),
+          "user" = paste(user, pwd, sep = ":"),
+          "Content-type" = contentType
+        ),
+        set_cookies(
+          JSESSIONID = token  
+        ),
+        body = content
+      )
+    }else{
+      req <- httr::POST(
+        url = url,
+        add_headers(
+          "User-Agent" = GNUtils$getUserAgent(),
+          "Content-type" = contentType
+        ),
+        set_cookies(
+          JSESSIONID = token  
+        ),
+        body = content
+      )
+    }
   }
   return(req)
 }
 
-GNUtils$DELETE <- function(url, path, token = NULL, verbose = FALSE){
+GNUtils$DELETE <- function(url, path, token = NULL, user = NULL, pwd = NULL, verbose = FALSE){
   if(verbose){
     req <- with_verbose(GNUtils$DELETE(url, path, token))
   }else{
     if(!grepl("^/", path)) path = paste0("/", path)
     url <- paste0(url, path)
-    req <- httr::DELETE(
-      url = url,
-      add_headers(
-        "User-Agent" = GNUtils$getUserAgent()
-      ),
-      set_cookies(
-        JSESSIONID = token  
+    if(!is.null(user) && !is.null(pwd)){
+      req <- httr::DELETE(
+        url = url,
+        add_headers(
+          "User-Agent" = GNUtils$getUserAgent(),
+          "user" = paste(user, pwd, sep=":")
+        ),
+        set_cookies(
+          JSESSIONID = token  
+        )
       )
-    )
+    }else{
+      req <- httr::DELETE(
+        url = url,
+        add_headers(
+          "User-Agent" = GNUtils$getUserAgent()
+        ),
+        set_cookies(
+          JSESSIONID = token  
+        )
+      )
+    }
   }
   return(req)
 }

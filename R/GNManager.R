@@ -99,6 +99,8 @@ GNManager <- R6Class("GNManager",
   
   #TODO provider specific formatter to prevent these fields to be printable
   private = list(
+    user = NULL,
+    pwd = NULL,
     token = NULL,
     
     #getEditingMetadataVersion
@@ -149,7 +151,7 @@ GNManager <- R6Class("GNManager",
     #manager
     url = NA,
     version = NULL,
-    user = NULL,
+    basicAuth = FALSE,
     initialize = function(url, user = NULL, pwd = NULL, version, logger = NULL){
       
       #logger
@@ -176,13 +178,15 @@ GNManager <- R6Class("GNManager",
       isGN26 <- self$version$value$major == 2 && self$version$value$minor == 6
       self$lang <- ifelse(isGN26,"en","eng")
       
+      #basic auth
+      self$basicAuth <- self$version$value$major == 3
+      
       #baseUrl
       self$url = sprintf("%s/srv/%s", url, self$lang)
       
       
       #try to login
       if(!is.null(user) && !is.null(pwd)){        
-        self$user = user
         self$INFO(sprintf("Connecting to GeoNetwork services as authenticated user '%s'", user))
         self$login(user, pwd)
       }else{
@@ -208,6 +212,12 @@ GNManager <- R6Class("GNManager",
     #login
     #---------------------------------------------------------------------------
     login = function(user, pwd){
+      
+      if(self$basicAuth){
+        private$user = user
+        private$pwd = pwd
+      }
+      
       gnRequest <- GNRESTRequest$new(username = user, password = pwd)
       req <- GNUtils$POST(
         url = self$getUrl(),
@@ -231,7 +241,7 @@ GNManager <- R6Class("GNManager",
         self$ERROR(err)
         stop(err)
       }else{
-        private$token <- cookies(req)$value
+        if(!self$basicAuth) private$token <- cookies(req)$value
         self$INFO("Successfully authenticated to GeoNetwork!\n")
       }
       return(TRUE)
@@ -278,7 +288,7 @@ GNManager <- R6Class("GNManager",
       req <- GNUtils$POST(
         url = self$getUrl(),
         path = "/xml.metadata.insert",
-        token = private$token,
+        token = private$token, user = private$user, pwd = private$pwd,
         content = GNUtils$getPayloadXML(gnRequest),
         contentType = "text/xml",
         verbose = self$verbose.debug
@@ -311,7 +321,7 @@ GNManager <- R6Class("GNManager",
       req <- GNUtils$GET(
         url = self$getUrl(),
         path = "/metadata.admin",
-        token = private$token,
+        token = private$token, user = private$user, pwd = private$pwd,
         query = queryParams,
         verbose = self$verbose.debug
       )
@@ -348,7 +358,7 @@ GNManager <- R6Class("GNManager",
       req <- GNUtils$POST(
         url = self$getUrl(),
         path = "/xml.metadata.get",
-        token = private$token,
+        token = private$token, user = private$user, pwd = private$pwd,
         content = GNUtils$getPayloadXML(gnRequest),
         contentType = "text/xml",
         verbose = self$verbose.debug
@@ -438,7 +448,7 @@ GNManager <- R6Class("GNManager",
       req <- GNUtils$POST(
         url = self$getUrl(),
         path = "/metadata.update.finish",
-        token = private$token,
+        token = private$token, user = private$user, pwd = private$pwd,
         content = GNUtils$getPayloadXML(gnRequest),
         contentType = "text/xml",
         verbose = self$verbose.debug
@@ -463,7 +473,7 @@ GNManager <- R6Class("GNManager",
       req <- GNUtils$POST(
         url = self$getUrl(),
         path = "/xml.metadata.delete",
-        token = private$token,
+        token = private$token, user = private$user, pwd = private$pwd,
         content = GNUtils$getPayloadXML(gnRequest),
         contentType = "text/xml",
         verbose = self$verbose.debug
@@ -493,7 +503,7 @@ GNManager <- R6Class("GNManager",
       selectReq <- GNUtils$POST(
         url = self$getUrl(),
         path = "/xml.metadata.select",
-        token = private$token,
+        token = private$token, user = private$user, pwd = private$pwd,
         content = GNUtils$getPayloadXML(gnSelectRequest),
         contentType = "text/xml",
         verbose = self$verbose.debug
@@ -503,7 +513,7 @@ GNManager <- R6Class("GNManager",
       deleteReq <- GNUtils$POST(
         url = self$getUrl(),
         path = "/xml.metadata.batch.delete",
-        token = private$token,
+        token = private$token, user = private$user, pwd = private$pwd,
         content = GNUtils$getPayloadXML(gnDeleteRequest),
         contentType = "text/xml",
         verbose = self$verbose.debug

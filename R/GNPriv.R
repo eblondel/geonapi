@@ -43,7 +43,7 @@ GNPriv <- R6Class("GNPriv",
        }
        privCodes <- as.integer(sapply(privileges, function(x){
          code <- switch(x, "view" = 0, "download" = 1, "editing" = 2,
-                        "notify" = 3, "dynamic" = 4, "featured" = 5)
+                        "notify" = 3, "dynamic" = 5, "featured" = 6)
          return(code)
        }))
        

@@ -321,7 +321,7 @@ GNManager <- R6Class("GNManager",
       }
       req <- GNUtils$GET(
         url = self$getUrl(),
-        path = "/metadata.admin",
+        path = ifelse(self$version$value$major < 3, "/metadata.admin", "md.privileges"),
         token = private$token, user = private$user, pwd = private$pwd,
         query = queryParams,
         verbose = self$verbose.debug

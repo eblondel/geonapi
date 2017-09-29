@@ -319,16 +319,31 @@ GNManager <- R6Class("GNManager",
           queryParams[[el]] <- "on"
         }
       }
-      if(self$version$value$major == 3){
-        queryParams <- c(list("_content_type" = "xml"), queryParams)
+      #if(self$version$value$major == 3){
+      #  queryParams <- c(list("_content_type" = "xml"), queryParams)
+      #}
+      
+      gnRequest <- GNRESTRequest$new()
+      for(namedEl in names(queryParams)){
+        gnRequest$setChild(namedEl, queryParams[[namedEl]])
       }
-      req <- GNUtils$GET(
+      
+      req <- GNUtils$POST(
         url = self$getUrl(),
         path = ifelse(self$version$value$major < 3, "/metadata.admin", "md.privileges"),
         token = private$token, user = private$user, pwd = private$pwd,
-        query = queryParams,
+        content = GNUtils$getPayloadXML(gnRequest),
+        contentType = "text/xml",
         verbose = self$verbose.debug
       )
+      
+      #req <- GNUtils$GET(
+      #  url = self$getUrl(),
+      #  path = ifelse(self$version$value$major < 3, "/metadata.admin", "md.privileges"),
+      #  token = private$token, user = private$user, pwd = private$pwd,
+      #  query = queryParams,
+      #  verbose = self$verbose.debug
+      #)
       if(status_code(req) == 200){
         self$INFO(sprintf("Successfully set privileges for metadata id = %s!", id))
         out <- TRUE

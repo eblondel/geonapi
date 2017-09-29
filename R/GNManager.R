@@ -330,7 +330,7 @@ GNManager <- R6Class("GNManager",
       
       req <- GNUtils$POST(
         url = self$getUrl(),
-        path = ifelse(self$version$value$major < 3, "/metadata.admin", "md.privileges"),
+        path = ifelse(self$version$value$major < 3, "/metadata.admin", "md.privileges.update"),
         token = private$token, user = private$user, pwd = private$pwd,
         content = GNUtils$getPayloadXML(gnRequest),
         contentType = "text/xml",

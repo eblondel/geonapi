@@ -325,21 +325,7 @@ GNManager <- R6Class("GNManager",
       }else{
         queryParams <- c(list(id = id), queryPrivParams)
       }
-      
-      #gnRequest <- GNRESTRequest$new()
-      #for(namedEl in names(queryParams)){
-      #  gnRequest$setChild(namedEl, queryParams[[namedEl]])
-      #}
-      
-      #req <- GNUtils$POST(
-      #  url = self$getUrl(),
-      #  path = ifelse(self$version$value$major < 3, "/metadata.admin", "md.privileges.update"),
-      #  token = private$token, user = private$user, pwd = private$pwd,
-      #  content = GNUtils$getPayloadXML(gnRequest),
-      #  contentType = "text/xml",
-      #  verbose = self$verbose.debug
-      #)
-      
+
       req <- GNUtils$GET(
         url = self$getUrl(),
         path = ifelse(self$version$value$major < 3, "/metadata.admin", "md.privileges.update"),

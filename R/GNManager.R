@@ -319,6 +319,9 @@ GNManager <- R6Class("GNManager",
           queryParams[[el]] <- "on"
         }
       }
+      if(self$version$value$major == 3){
+        queryParams <- c(list("_content_type" = "xml"), queryParams)
+      }
       req <- GNUtils$GET(
         url = self$getUrl(),
         path = ifelse(self$version$value$major < 3, "/metadata.admin", "md.privileges"),

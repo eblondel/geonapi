@@ -312,15 +312,18 @@ GNManager <- R6Class("GNManager",
       if(!is(config, "GNPrivConfiguration")){
         stop("The 'config' value should be an object of class 'GNPrivConfiguration")
       }
-      queryParams = list(id = id)
+      queryPrivParams = list()
       for(grant in config$privileges){
         for(priv in grant$privileges){
           el <- paste0("_", grant$group, "_", priv)
-          queryParams[[el]] <- "on"
+          queryPrivParams[[el]] <- "on"
         }
       }
+      queryParams <- list()
       if(self$version$value$major == 3){
-        queryParams <- c(list("_content_type" = "xml"), queryParams)
+        queryParams <- c(list("_content_type" = "xml"), queryPrivParams, list(id = id))
+      }else{
+        queryParams <- c(list(id = id), queryPrivParams)
       }
       
       #gnRequest <- GNRESTRequest$new()

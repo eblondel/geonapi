@@ -3,6 +3,8 @@
 #' @aliases geonapi
 #' @docType package
 #' 
+#' @import geometa
+#' 
 #' @title GeoNetwork API R Interface
 #' @description Provides an R interface to the GeoNetwork API, allowing to upload 
 #' and publish metadata in a GeoNetwork web-application and exposte it to OGC CSW 

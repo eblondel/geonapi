@@ -6,7 +6,7 @@ Date: 2017-07-03
 Author: Emmanuel Blondel <emmanuel.blondel1@gmail.com>
 Maintainer: Emmanuel Blondel <emmanuel.blondel1@gmail.com>
 Description: Provides an R interface to the GeoNetwork REST API, allowing to upload 
- and publish metadata in a GeoNetwork web-application and exposteit to OGC Web-Services.
+ and publish metadata in a GeoNetwork web-application and expose it to OGC Web-Services.
  (Catalogue Service for the Web).
 Depends: R (>= 3.1.0), geometa
 Imports: R6, openssl, httr, XML

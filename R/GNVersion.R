@@ -13,10 +13,7 @@
 #' 
 #' @examples
 #' \dontrun{
-#' version <- GNVersion$new(
-#'              url = "http://localhost:8080/GeoNetwork",
-#'              user = "admin", pwd = "GeoNetwork"
-#'            )
+#' version <- GNVersion$new("2.6.4")
 #' }
 #' 
 #' @section Methods:

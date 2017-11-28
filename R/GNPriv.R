@@ -13,7 +13,7 @@
 #' 
 #' @examples
 #' \dontrun{
-#'  priv <- GNPriv$new(
+#'  priv <- GNPriv$new(group="all", privileges=c("view","dynamic","featured"))
 #' }
 #' 
 #' @section Methods:

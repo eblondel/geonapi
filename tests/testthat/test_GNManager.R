@@ -6,19 +6,8 @@
 require(geonapi, quietly = TRUE)
 require(testthat)
 
-context("GNVersion")
+context("GNManager")
 
 test_that("GNManager connects",{
-
-  gnman <- GNManager$new(
-    url = "http://localhost:8080/geonetwork",
-    user = "admin",
-    pwd = "geonetwork",
-    version = "2.6.3",
-    "DEBUG"
-  )
-  
-  md = gnman$getMetadataByUUID("my-metadata-uuid")
-  expect_is(md, "ISOMetadata")
-  
+  expect_is(GN, "GNManager")
 })

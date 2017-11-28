@@ -1,0 +1,36 @@
+# R for travis: see documentation at https://docs.travis-ci.com/user/languages/r
+language: R
+sudo: required
+cache: packages
+
+services:
+  - docker
+
+before_install:
+  - docker run --name some-geonetwork -d -p 8080:8080 geonetwork
+
+r:
+  - oldrel
+  - release
+  - devel
+
+r_packages:
+  - R6
+  - openssl
+  - httr
+  - XML
+  - testthat
+  - covr
+
+r_check_args: --as-cran
+
+after_script:
+ - ./travis-tool.sh dump_logs
+ 
+after_success:
+ - Rscript -e 'library(covr); codecov()'
+
+notifications:
+  email:
+    on_success: change
+    on_failure: change

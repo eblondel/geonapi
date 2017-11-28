@@ -50,10 +50,11 @@ GeoNetwork REST API - GeoNetwork privilege configuration
 }
 \examples{
 \dontrun{
- priv <- GNPriv$new(
+ priv <- GNPriv$new(group="all", privileges=c("view","dynamic","featured"))
 }
 \dontrun{
  pcfg <- GNPrivConfiguration$new()
+ pcfg$setPrivileges("all", c("view","dynamic","featured"))
 }
 }
 \author{

@@ -14,6 +14,7 @@
 #' @examples
 #' \dontrun{
 #'  pcfg <- GNPrivConfiguration$new()
+#'  pcfg$setPrivileges("all", c("view","dynamic","featured"))
 #' }
 #' 
 #' @section Methods:

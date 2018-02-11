@@ -18,7 +18,7 @@ test_that("CREATE metadata",{
   config <- GNPrivConfiguration$new()
   config$setPrivileges("all", c("view","dynamic","featured"))
   GN$setPrivConfiguration(id = created, config = config)
-  expect_true(created)
+  expect_true(!is.null(created))
 })
 
 test_that("READ metadata",{

@@ -5,9 +5,9 @@
 #' 
 #' @import geometa
 #' 
-#' @title GeoNetwork API R Interface
-#' @description Provides an R interface to the GeoNetwork API, allowing to upload 
-#' and publish metadata in a GeoNetwork web-application and exposte it to OGC CSW 
+#' @title 'GeoNetwork' API R Interface
+#' @description Provides an R interface to the 'GeoNetwork' API (<https://geonetwork-opensource.org/#api>)
+#' allowing to upload and publish metadata in a 'GeoNetwork' web-application and exposte it to OGC CSW 
 #' Web-Services (Catalogue Service for the Web).
 #' 
 #' @details

@@ -15,7 +15,7 @@
 #'    Package: \tab geonapi\cr
 #'    Type: \tab Package\cr
 #'    Version: \tab 0.1-0\cr
-#'    Date: \tab 2017-11-30\cr
+#'    Date: \tab 2018-04-27\cr
 #'    License: \tab MIT\cr
 #'    LazyLoad: \tab yes\cr
 #'  }

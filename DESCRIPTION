@@ -2,7 +2,7 @@ Package: geonapi
 Type: Package
 Title: GeoNetwork REST API R Interface
 Version: 0.1-0
-Date: 2017-07-03
+Date: 2018-04-27
 Author: Emmanuel Blondel <emmanuel.blondel1@gmail.com>
 Maintainer: Emmanuel Blondel <emmanuel.blondel1@gmail.com>
 Description: Provides an R interface to the GeoNetwork REST API, allowing to upload 
@@ -15,3 +15,4 @@ License: MIT + file LICENSE
 URL: https://github.com/eblondel/geonapi/wiki, http://geonetwork-opensource.org
 BugReports: https://github.com/eblondel/geonapi/issues
 LazyLoad: yes
+RoxygenNote: 6.0.1

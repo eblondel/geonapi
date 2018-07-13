@@ -45,7 +45,7 @@ GeoNetwork REST API Manager Utils
    Convenience method to parse XML response from GeoNetwork REST API. Although package \pkg{httr}
    suggests the use of \pkg{xml2} package for handling XML, \pkg{geonapi} still relies
    on the package \pkg{XML}. Response from \pkg{httr} is retrieved as text, and then parsed as
-   XML using \code{\link[XML]{xmlParse}} function.
+   XML 'xmlParse' function.
  }
  \item{\code{getPayloadXML(obj)}}{
    Convenience method to create payload XML to send to GeoNetwork.

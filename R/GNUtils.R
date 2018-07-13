@@ -36,7 +36,7 @@
 #'    Convenience method to parse XML response from GeoNetwork REST API. Although package \pkg{httr}
 #'    suggests the use of \pkg{xml2} package for handling XML, \pkg{geonapi} still relies
 #'    on the package \pkg{XML}. Response from \pkg{httr} is retrieved as text, and then parsed as
-#'    XML using \code{\link[XML]{xmlParse}} function.
+#'    XML 'xmlParse' function.
 #'  }
 #'  \item{\code{getPayloadXML(obj)}}{
 #'    Convenience method to create payload XML to send to GeoNetwork.
@@ -51,20 +51,24 @@ GNUtils$getUserAgent <- function(){
   return(paste("geonapi", packageVersion("geonapi"), sep="-"))
 }
 
-GNUtils$GET <- function(url, path, token = NULL, user = NULL, pwd = NULL,
+GNUtils$GET <- function(url, path = NULL, token = NULL, cookies = NULL,
+                        user = NULL, pwd = NULL,
                         query = NULL, verbose = FALSE){
   if(verbose){
-    req <- with_verbose(GNUtils$GET(url, path, token, user, pwd, query))
+    req <- with_verbose(GNUtils$GET(url, path, token, cookies, user, pwd, query))
   }else{
-    if(!grepl("^/", path)) path = paste0("/", path)
-    url <- paste0(url, path)
+    if(!is.null(path)){
+      if(!grepl("^/", path)) path = paste0("/", path)
+      url <- paste0(url, path)
+    }
     if(!is.null(user) && !is.null(pwd)){
       req <- httr::GET(
         url = url,
         query = query,
         add_headers(
           "User-Agent" = GNUtils$getUserAgent(),
-          "Authorization" = paste("Basic", GNUtils$getUserToken(user, pwd))
+          "Authorization" = paste("Basic", GNUtils$getUserToken(user, pwd)),
+          "X-XSRF-TOKEN" = ifelse(!is.null(cookies), as.character(cookies["XSRF-TOKEN"]),"")
         )
       )
     }else{
@@ -72,10 +76,11 @@ GNUtils$GET <- function(url, path, token = NULL, user = NULL, pwd = NULL,
         url = url,
         query = query,
         add_headers(
-          "User-Agent" = GNUtils$getUserAgent()
+          "User-Agent" = GNUtils$getUserAgent(),
+          "X-XSRF-TOKEN" = ifelse(!is.null(cookies), as.character(cookies["XSRF-TOKEN"]),"")
         ),
         set_cookies(
-          JSESSIONID = token  
+          cookies  
         )
       )
     }
@@ -84,11 +89,12 @@ GNUtils$GET <- function(url, path, token = NULL, user = NULL, pwd = NULL,
   return(req)
 }
 
-GNUtils$PUT <- function(url, path, token = NULL, user = NULL, pwd = NULL,
+GNUtils$PUT <- function(url, path = NULL, token = NULL, cookies = NULL,
+                        user = NULL, pwd = NULL,
                         content = NULL, filename = NULL,
                         contentType, verbose = FALSE){
   if(verbose){
-    req <- with_verbose(GNUtils$PUT(url, path, token, user, pwd, content, filename, contentType))
+    req <- with_verbose(GNUtils$PUT(url, path, token, cookies, user, pwd, content, filename, contentType))
   }else{
     body <- NULL
     if(missing(content) | is.null(content)){
@@ -100,14 +106,17 @@ GNUtils$PUT <- function(url, path, token = NULL, user = NULL, pwd = NULL,
       body <- content
     }
     
-    if(!grepl("^/", path)) path = paste0("/", path)
-    url <- paste0(url, path)
+    if(!is.null(path)){
+      if(!grepl("^/", path)) path = paste0("/", path)
+      url <- paste0(url, path)
+    }
     if(!is.null(user) && !is.null(pwd)){
       req <- httr::PUT(
         url = url,
         add_headers(
           "User-Agent" = GNUtils$getUserAgent(),
           "Authorization" = paste("Basic", GNUtils$getUserToken(user, pwd)),
+          "X-XSRF-TOKEN" = ifelse(!is.null(cookies), as.character(cookies["XSRF-TOKEN"]),""),
           "Content-type" = contentType
         ),    
         body = body
@@ -117,10 +126,11 @@ GNUtils$PUT <- function(url, path, token = NULL, user = NULL, pwd = NULL,
         url = url,
         add_headers(
           "User-Agent" = GNUtils$getUserAgent(),
+          "X-XSRF-TOKEN" = ifelse(!is.null(cookies), as.character(cookies["XSRF-TOKEN"]),""),
           "Content-type" = contentType
         ),
         set_cookies(
-          JSESSIONID = token  
+          cookies 
         ),    
         body = body
       )
@@ -129,19 +139,23 @@ GNUtils$PUT <- function(url, path, token = NULL, user = NULL, pwd = NULL,
   return(req)
 }
 
-GNUtils$POST <- function(url, path, token = NULL, user = NULL, pwd = NULL,
+GNUtils$POST <- function(url, path = NULL, token = NULL, cookies = NULL,
+                         user = NULL, pwd = NULL,
                          content, contentType, verbose = FALSE){
   if(verbose){
-    req <- with_verbose(GNUtils$POST(url, path, token, user, pwd, content, contentType))
+    req <- with_verbose(GNUtils$POST(url, path, token, cookies, user, pwd, content, contentType))
   }else{
-    if(!grepl("^/", path)) path = paste0("/", path)
-    url <- paste0(url, path)
+    if(!is.null(path)){
+      if(!grepl("^/", path)) path = paste0("/", path)
+      url <- paste0(url, path)
+    }
     if(!is.null(user) && !is.null(pwd)){
       req <- httr::POST(
         url = url,
         add_headers(
           "User-Agent" = GNUtils$getUserAgent(),
           "Authorization" = paste("Basic", GNUtils$getUserToken(user, pwd)),
+          "X-XSRF-TOKEN" = ifelse(!is.null(cookies), as.character(cookies["XSRF-TOKEN"]),""),
           "Content-type" = contentType
         ),
         body = content
@@ -151,10 +165,11 @@ GNUtils$POST <- function(url, path, token = NULL, user = NULL, pwd = NULL,
         url = url,
         add_headers(
           "User-Agent" = GNUtils$getUserAgent(),
+          "X-XSRF-TOKEN" = ifelse(!is.null(cookies), as.character(cookies["XSRF-TOKEN"]),""),
           "Content-type" = contentType
         ),
         set_cookies(
-          JSESSIONID = token  
+          cookies 
         ),
         body = content
       )
@@ -163,28 +178,32 @@ GNUtils$POST <- function(url, path, token = NULL, user = NULL, pwd = NULL,
   return(req)
 }
 
-GNUtils$DELETE <- function(url, path, token = NULL, user = NULL, pwd = NULL, verbose = FALSE){
+GNUtils$DELETE <- function(url, path = NULL, token = NULL, cookies = NULL, user = NULL, pwd = NULL, verbose = FALSE){
   if(verbose){
-    req <- with_verbose(GNUtils$DELETE(url, path, token, user, pwd))
+    req <- with_verbose(GNUtils$DELETE(url, path, token, cookies, user, pwd))
   }else{
-    if(!grepl("^/", path)) path = paste0("/", path)
-    url <- paste0(url, path)
+    if(!is.null(path)){
+      if(!grepl("^/", path)) path = paste0("/", path)
+      url <- paste0(url, path)
+    }
     if(!is.null(user) && !is.null(pwd)){
       req <- httr::DELETE(
         url = url,
         add_headers(
           "User-Agent" = GNUtils$getUserAgent(),
-          "Authorization" = paste("Basic", GNUtils$getUserToken(user, pwd))
+          "Authorization" = paste("Basic", GNUtils$getUserToken(user, pwd)),
+          "X-XSRF-TOKEN" = ifelse(!is.null(cookies), as.character(cookies["XSRF-TOKEN"]),"")
         )
       )
     }else{
       req <- httr::DELETE(
         url = url,
         add_headers(
-          "User-Agent" = GNUtils$getUserAgent()
+          "User-Agent" = GNUtils$getUserAgent(),
+          "X-XSRF-TOKEN" = ifelse(!is.null(cookies), as.character(cookies["XSRF-TOKEN"]),"")
         ),
         set_cookies(
-          JSESSIONID = token  
+          cookies  
         )
       )
     }

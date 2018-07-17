@@ -33,7 +33,6 @@ test_that("UPDATE metadata",{
   id <- "my-metadata-identifier"
   md <- GN$getMetadataByUUID(id)
   md$setDataSetURI("new-dataset-uri")
-  
   metaId <- GN$get(md$fileIdentifier, by = "uuid", output = "id")
   updated <- GN$updateMetadata(id = metaId, xml = md$encode())
   expect_equal(updated, metaId)
@@ -41,8 +40,7 @@ test_that("UPDATE metadata",{
 
 test_that("DELETE metadata",{
   id <- "my-metadata-identifier"
-  md <- GN$getMetadataByUUID(id)
-  metaId <- GN$get(md$fileIdentifier, by = "uuid", output = "id")
+  metaId <- GN$get(id, by = "uuid", output = "id")
   deleted <- GN$deleteMetadata(id = metaId)
   expect_equal(deleted, metaId)
 })

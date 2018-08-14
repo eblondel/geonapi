@@ -25,10 +25,10 @@ r:
   - devel
   
 r_github_packages:
-  - hadley/devtools
   - eblondel/geometa
 
 r_packages:
+  - devtools
   - R6
   - openssl
   - httr

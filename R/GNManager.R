@@ -455,7 +455,7 @@ GNManager <- R6Class("GNManager",
       out <- NULL
       data <- NULL
       isTempFile <- FALSE
-      iif(!is.null(xml)){
+      if(!is.null(xml)){
         tempf = tempfile(tmpdir = tempdir())
         file <- paste(tempf,".xml",sep='')
         isTempFile <- TRUE

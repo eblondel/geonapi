@@ -66,8 +66,9 @@ GeoNetwork REST API Manager
  \item{\code{getClassName()}}{
    Retrieves the name of the class instance
  }
- \item{\code{insertMetadata(xml, file, group, category, stylesheet, validate)}}{
-   Inserts a metadata by file or XML object. If successful, returns the Geonetwork
+ \item{\code{insertMetadata(xml, file, geometa, group, category, stylesheet, validate)}}{
+   Inserts a metadata by file, XML object or \pkg{geometa} object of class
+   \code{ISOMetadata} or \code{ISOFeatureCatalogue}. If successful, returns the Geonetwork
    metadata internal identifier (integer).
  }
  \item{\code{setPrivConfiguration(id, config)}}{
@@ -93,8 +94,9 @@ GeoNetwork REST API Manager
  \item{\code{getInfoByUUID(uuid)}}{
    Get a metadata Info by UUID. Returns an XML document object
  }
- \item{\code{updateMetadata(id, xml, file)}}{
-   Updates a metadata
+ \item{\code{updateMetadata(id, xml, file, geometa)}}{
+   Updates a metadata by file, XML object or \pkg{geometa} object of class
+   'ISOMetadata' or 'ISOFeatureCatalogue'.
  }
  \item{\code{deleteMetadata(id)}}{
    Deletes a metadata

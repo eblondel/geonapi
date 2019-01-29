@@ -156,8 +156,9 @@ GNUtils$POST <- function(url, path = NULL, token = NULL, cookies = NULL,
           "User-Agent" = GNUtils$getUserAgent(),
           "Authorization" = paste("Basic", GNUtils$getUserToken(user, pwd)),
           "X-XSRF-TOKEN" = ifelse(!is.null(cookies), as.character(cookies["XSRF-TOKEN"]),""),
-          "Content-type" = contentType
+          "Content-Type" = contentType
         ),
+        encode = "raw",
         body = content
       )
     }else{
@@ -166,11 +167,12 @@ GNUtils$POST <- function(url, path = NULL, token = NULL, cookies = NULL,
         add_headers(
           "User-Agent" = GNUtils$getUserAgent(),
           "X-XSRF-TOKEN" = ifelse(!is.null(cookies), as.character(cookies["XSRF-TOKEN"]),""),
-          "Content-type" = contentType
+          "Content-Type" = contentType
         ),
         set_cookies(
           cookies 
         ),
+        encode = "raw",
         body = content
       )
     }

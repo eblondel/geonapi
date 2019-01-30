@@ -2,7 +2,6 @@ library(testthat)
 library(geonapi)
 
 #test environment
-#gnUrl <- "https://georchestra-mshe.univ-fcomte.fr/geonetwork"
 gnUrl <- "http://localhost:8080/geonetwork"
 gnUsr <- "admin"
 gnPwd <- "admin"

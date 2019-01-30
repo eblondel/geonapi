@@ -3,10 +3,10 @@ library(geonapi)
 
 #test environment
 #gnUrl <- "https://georchestra-mshe.univ-fcomte.fr/geonetwork"
-gnUrl <- "http://collec-za.org/geonetwork"
-gnUsr <- "eblondel"
-gnPwd <- "eblondel007"
-gnVersion <- "3.4"
+gnUrl <- "http://localhost:8080/geonetwork"
+gnUsr <- "admin"
+gnPwd <- "admin"
+gnVersion <- "3.0.5"
 gnLogger <- "DEBUG"
 GN <- try(GNManager$new(gnUrl, gnUsr, gnPwd, gnVersion, gnLogger))
 

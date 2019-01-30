@@ -13,6 +13,6 @@ test_that("GNRESTRequest encoding",{
   expect_is(req, "GNRESTRequest")
   expect_equal(req$rootName, "request")
   expect_equal(length(req$children), 2L)
-  xml <- req$encode()
+  xml <- as(req$encode(), "XMLInternalNode")
   expect_true(all(sapply(xmlChildren(xml), xmlValue) == req$children))
 })

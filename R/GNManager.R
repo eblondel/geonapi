@@ -266,6 +266,37 @@ GNManager <- R6Class("GNManager",
       return(class(self)[1])
     },
     
+    #getGroups
+    #---------------------------------------------------------------------------
+    getGroups = function(){
+      out <- NULL
+      self$INFO("Getting user groups...")
+      req <- GNUtils$GET(
+        url = self$getUrl(),
+        path = "/xml.info",
+        token = private$token, cookies = private$cookies,
+        user = private$user, pwd = private$pwd,
+        query = list(type = "groups"),
+        verbose = self$verbose.debug
+      )
+      if(status_code(req) == 200){
+        self$INFO("Successfully fetched user groups!")
+        xml <- GNUtils$parseResponseXML(req, "UTF-8")
+        xml.groups <- getNodeSet(xml, "//group/group")
+        out <- do.call("rbind", lapply(xml.groups, function(xml.group){
+          out.group <- data.frame(
+            id = xmlGetAttr(xml.group, "id"),
+            name = xmlValue(xmlChildren(xml.group)$name),
+            stringsAsFactors = FALSE
+          )
+          return(out.group)
+        }))
+      }else{
+        self$ERROR("Error while fetching user groups")
+      }
+      return(out)
+    },
+    
     #insertMetadata
     #---------------------------------------------------------------------------
     insertMetadata = function(xml = NULL, file = NULL, geometa = NULL, group,

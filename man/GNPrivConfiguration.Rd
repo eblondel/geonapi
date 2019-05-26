@@ -4,7 +4,6 @@
 \name{GNPrivConfiguration}
 \alias{GNPrivConfiguration}
 \alias{GNPriv}
-\alias{GNPrivConfiguration}
 \title{A GeoNetwork privilege configuration}
 \format{\code{\link{R6Class}} object.}
 \usage{

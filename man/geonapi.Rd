@@ -4,7 +4,6 @@
 \name{geonapi}
 \alias{geonapi}
 \alias{geonapi-package}
-\alias{geonapi-package}
 \title{'GeoNetwork' API R Interface}
 \description{
 Provides an R interface to the 'GeoNetwork' API (<https://geonetwork-opensource.org/#api>)
@@ -15,8 +14,8 @@ Web-Services (Catalogue Service for the Web).
 \tabular{ll}{
    Package: \tab geonapi\cr
    Type: \tab Package\cr
-   Version: \tab 0.3-0\cr
-   Date: \tab 2019-03-21\cr
+   Version: \tab 0.2-1\cr
+   Date: \tab 2019-05-26\cr
    License: \tab MIT\cr
    LazyLoad: \tab yes\cr
  }

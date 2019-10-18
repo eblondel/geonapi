@@ -66,10 +66,12 @@ GeoNetwork REST API Manager
  \item{\code{getClassName()}}{
    Retrieves the name of the class instance
  }
- \item{\code{insertMetadata(xml, file, geometa, group, category, stylesheet, validate)}}{
+ \item{\code{insertMetadata(xml, file, geometa, group, category, stylesheet, validate, geometa_validate, geometa_inspire)}}{
    Inserts a metadata by file, XML object or \pkg{geometa} object of class
    \code{ISOMetadata} or \code{ISOFeatureCatalogue}. If successful, returns the Geonetwork
-   metadata internal identifier (integer).
+   metadata internal identifier (integer). Extra parameters \code{geometa_validate} (TRUE 
+   by default) and \code{geometa_inspire} (FALSE by default) can be used with geometa objects 
+   for perform ISO and INSPIRE validation respectively.
  }
  \item{\code{setPrivConfiguration(id, config)}}{
    Set the privilege configuration for a metadata. 'id' is the metadata integer id.
@@ -94,9 +96,11 @@ GeoNetwork REST API Manager
  \item{\code{getInfoByUUID(uuid)}}{
    Get a metadata Info by UUID. Returns an XML document object
  }
- \item{\code{updateMetadata(id, xml, file, geometa)}}{
+ \item{\code{updateMetadata(id, xml, file, geometa, geometa_validate, geometa_inspire)}}{
    Updates a metadata by file, XML object or \pkg{geometa} object of class
-   'ISOMetadata' or 'ISOFeatureCatalogue'.
+   'ISOMetadata' or 'ISOFeatureCatalogue'. Extra parameters \code{geometa_validate} (TRUE 
+   by default) and \code{geometa_inspire} (FALSE by default) can be used with geometa objects 
+   for perform ISO and INSPIRE validation respectively.
  }
  \item{\code{deleteMetadata(id)}}{
    Deletes a metadata

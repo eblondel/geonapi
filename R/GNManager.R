@@ -58,10 +58,12 @@
 #'  \item{\code{getClassName()}}{
 #'    Retrieves the name of the class instance
 #'  }
-#'  \item{\code{insertMetadata(xml, file, geometa, group, category, stylesheet, validate)}}{
+#'  \item{\code{insertMetadata(xml, file, geometa, group, category, stylesheet, validate, geometa_validate, geometa_inspire)}}{
 #'    Inserts a metadata by file, XML object or \pkg{geometa} object of class
 #'    \code{ISOMetadata} or \code{ISOFeatureCatalogue}. If successful, returns the Geonetwork
-#'    metadata internal identifier (integer).
+#'    metadata internal identifier (integer). Extra parameters \code{geometa_validate} (TRUE 
+#'    by default) and \code{geometa_inspire} (FALSE by default) can be used with geometa objects 
+#'    for perform ISO and INSPIRE validation respectively.
 #'  }
 #'  \item{\code{setPrivConfiguration(id, config)}}{
 #'    Set the privilege configuration for a metadata. 'id' is the metadata integer id.
@@ -86,9 +88,11 @@
 #'  \item{\code{getInfoByUUID(uuid)}}{
 #'    Get a metadata Info by UUID. Returns an XML document object
 #'  }
-#'  \item{\code{updateMetadata(id, xml, file, geometa)}}{
+#'  \item{\code{updateMetadata(id, xml, file, geometa, geometa_validate, geometa_inspire)}}{
 #'    Updates a metadata by file, XML object or \pkg{geometa} object of class
-#'    'ISOMetadata' or 'ISOFeatureCatalogue'.
+#'    'ISOMetadata' or 'ISOFeatureCatalogue'. Extra parameters \code{geometa_validate} (TRUE 
+#'    by default) and \code{geometa_inspire} (FALSE by default) can be used with geometa objects 
+#'    for perform ISO and INSPIRE validation respectively.
 #'  }
 #'  \item{\code{deleteMetadata(id)}}{
 #'    Deletes a metadata
@@ -300,8 +304,8 @@ GNManager <- R6Class("GNManager",
     #insertMetadata
     #---------------------------------------------------------------------------
     insertMetadata = function(xml = NULL, file = NULL, geometa = NULL, group,
-                              category = NULL, stylesheet = NULL,
-                              validate = FALSE){
+                              category = NULL, stylesheet = NULL, validate = FALSE,
+                              geometa_validate = TRUE, geometa_inspire = FALSE){
       self$INFO("Inserting metadata ...")
       out <- NULL
       data <- NULL
@@ -320,7 +324,7 @@ GNManager <- R6Class("GNManager",
         if(!is(geometa, "ISOMetadata") & !is(geometa, "ISOFeatureCatalogue")){
           stop("Object 'geometa' should be of class 'ISOMetadata' or 'ISOFeatureCatalogue")
         }
-        data <- geometa$encode()
+        data <- geometa$encode(validate = geometa_validate, inspire = geometa_inspire)
       }
       
       if(is.null(data)){
@@ -480,7 +484,8 @@ GNManager <- R6Class("GNManager",
     
     #updateMetadata
     #---------------------------------------------------------------------------
-    updateMetadata = function(id, xml = NULL, file = NULL, geometa = NULL){
+    updateMetadata = function(id, xml = NULL, file = NULL, geometa = NULL,
+                              geometa_validate = TRUE, geometa_inspire = FALSE){
       
       self$INFO(sprintf("Updating metadata id = %s ...", id))
       out <- NULL
@@ -500,7 +505,7 @@ GNManager <- R6Class("GNManager",
         if(!is(geometa, "ISOMetadata") & !is(geometa, "ISOFeatureCatalogue")){
           stop("Object 'geometa' should be of class 'ISOMetadata' or 'ISOFeatureCatalogue")
         }
-        data <- geometa$encode()
+        data <- geometa$encode(validate = geometa_validate, inspire = geometa_inspire)
       }
       
       if(is.null(data)){

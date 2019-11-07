@@ -25,6 +25,21 @@ r_check_args: --as-cran
 
 matrix:
   include:
+  - name: "GeoNetwork 3.2.1"
+    os: linux
+    services: docker
+    apt_packages: libxml2-dev
+    before_install:
+    # mainly for installing sf (which requires units/rgeos/rgdal)
+    - sudo add-apt-repository ppa:ubuntugis/ubuntugis-unstable --yes
+    - sudo apt-get --yes --force-yes update -qq
+    - sudo apt-get install --yes libudunits2-dev libproj-dev libgeos-dev libgdal-dev
+    - Rscript -e 'update.packages(ask = FALSE)'
+    - docker run  \
+      -v /tests/resources/config-view-service-override.xml:/etc/geonetwork/config-view-service-override.xml \
+      -p "8080:8080" \
+      geonetwork:3.2.1 \
+      bash -c 'export CATALINA_OPTS="$CATALINA_OPTS -Dgeonetwork.jeeves.configuration.overrides.file=/etc/geonetwork/config-view-service-override.xml";/entrypoint.sh catalina.sh run'
   - name: "GeoNetwork 3.0.5"
     os: linux
     services: docker
@@ -35,7 +50,11 @@ matrix:
     - sudo apt-get --yes --force-yes update -qq
     - sudo apt-get install --yes libudunits2-dev libproj-dev libgeos-dev libgdal-dev
     - Rscript -e 'update.packages(ask = FALSE)'
-    - docker run --name geonetwork -d -p 8080:8080 pobsteta/docker-geonetwork:3.0.5
+    - docker run --name geonetwork -d -p 8080:8080 pobsteta/docker-geonetwork:3.0.5   
+    
+    
+
+    
 
 after_script:
  - ./travis-tool.sh dump_logs

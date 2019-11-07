@@ -5,7 +5,7 @@ library(geonapi)
 gnUrl <- "http://localhost:8080/geonetwork"
 gnUsr <- "admin"
 gnPwd <- "admin"
-gnVersion <- "3.0.5"
+gnVersion <- Sys.getenv("GN_VERSION")
 gnLogger <- "DEBUG"
 GN <- try(GNManager$new(gnUrl, gnUsr, gnPwd, gnVersion, gnLogger))
 

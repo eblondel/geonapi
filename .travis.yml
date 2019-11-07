@@ -35,11 +35,11 @@ matrix:
     - sudo apt-get --yes --force-yes update -qq
     - sudo apt-get install --yes libudunits2-dev libproj-dev libgeos-dev libgdal-dev
     - Rscript -e 'update.packages(ask = FALSE)'
-    - cd $TRAVIS_BUILD_DIR/tests/resources
+    - cd $TRAVIS_BUILD_DIR/geonapi/tests/resources
     - ls
     - cd $TRAVIS_BUILD_DIR
     - docker run 
-      -v $TRAVIS_BUILD_DIR/tests/resources/config-view-service-override.xml:/etc/geonetwork/config-view-service-override.xml 
+      -v $TRAVIS_BUILD_DIR/geonapi/tests/resources/config-view-service-override.xml:/etc/geonetwork/config-view-service-override.xml 
       -p "8080:8080" 
       geonetwork:3.2.2 
       bash -c 'export CATALINA_OPTS="$CATALINA_OPTS -Dgeonetwork.jeeves.configuration.overrides.file=/etc/geonetwork/config-view-service-override.xml";/entrypoint.sh catalina.sh run'

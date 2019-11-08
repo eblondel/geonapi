@@ -68,7 +68,8 @@ GNUtils$GET <- function(url, path = NULL, token = NULL, cookies = NULL,
         add_headers(
           "User-Agent" = GNUtils$getUserAgent(),
           "Authorization" = paste("Basic", GNUtils$getUserToken(user, pwd)),
-          "X-XSRF-TOKEN" = ifelse(!is.null(cookies), as.character(cookies["XSRF-TOKEN"]),"")
+          "X-XSRF-TOKEN" = token,
+          "Set-Cookie" = cookies
         )
       )
     }else{
@@ -77,10 +78,8 @@ GNUtils$GET <- function(url, path = NULL, token = NULL, cookies = NULL,
         query = query,
         add_headers(
           "User-Agent" = GNUtils$getUserAgent(),
-          "X-XSRF-TOKEN" = ifelse(!is.null(cookies), as.character(cookies["XSRF-TOKEN"]),"")
-        ),
-        set_cookies(
-          cookies  
+          "X-XSRF-TOKEN" = token,
+          "Set-Cookie" = cookies
         )
       )
     }
@@ -115,9 +114,10 @@ GNUtils$PUT <- function(url, path = NULL, token = NULL, cookies = NULL,
         url = url,
         add_headers(
           "User-Agent" = GNUtils$getUserAgent(),
+          "Content-type" = contentType,
           "Authorization" = paste("Basic", GNUtils$getUserToken(user, pwd)),
-          "X-XSRF-TOKEN" = ifelse(!is.null(cookies), as.character(cookies["XSRF-TOKEN"]),""),
-          "Content-type" = contentType
+          "X-XSRF-TOKEN" = token,
+          "Set-Cookie" = cookies
         ),    
         body = body
       )
@@ -126,11 +126,9 @@ GNUtils$PUT <- function(url, path = NULL, token = NULL, cookies = NULL,
         url = url,
         add_headers(
           "User-Agent" = GNUtils$getUserAgent(),
-          "X-XSRF-TOKEN" = ifelse(!is.null(cookies), as.character(cookies["XSRF-TOKEN"]),""),
-          "Content-type" = contentType
-        ),
-        set_cookies(
-          cookies 
+          "Content-type" = contentType,
+          "X-XSRF-TOKEN" = token,
+          "Set-Cookie" = cookies
         ),    
         body = body
       )
@@ -154,9 +152,10 @@ GNUtils$POST <- function(url, path = NULL, token = NULL, cookies = NULL,
         url = url,
         add_headers(
           "User-Agent" = GNUtils$getUserAgent(),
+          "Content-type" = contentType,
           "Authorization" = paste("Basic", GNUtils$getUserToken(user, pwd)),
-          "X-XSRF-TOKEN" = ifelse(!is.null(cookies), as.character(cookies["XSRF-TOKEN"]),""),
-          "Content-type" = contentType
+          "X-XSRF-TOKEN" = token,
+          "Set-Cookie" = cookies
         ),
         encode = "raw",
         body = content
@@ -166,11 +165,9 @@ GNUtils$POST <- function(url, path = NULL, token = NULL, cookies = NULL,
         url = url,
         add_headers(
           "User-Agent" = GNUtils$getUserAgent(),
-          "X-XSRF-TOKEN" = ifelse(!is.null(cookies), as.character(cookies["XSRF-TOKEN"]),""),
-          "Content-type" = contentType
-        ),
-        set_cookies(
-          cookies 
+          "Content-type" = contentType,
+          "X-XSRF-TOKEN" = token,
+          "Set-Cookie" = cookies
         ),
         encode = "raw",
         body = content
@@ -194,7 +191,8 @@ GNUtils$DELETE <- function(url, path = NULL, token = NULL, cookies = NULL, user 
         add_headers(
           "User-Agent" = GNUtils$getUserAgent(),
           "Authorization" = paste("Basic", GNUtils$getUserToken(user, pwd)),
-          "X-XSRF-TOKEN" = ifelse(!is.null(cookies), as.character(cookies["XSRF-TOKEN"]),"")
+          "X-XSRF-TOKEN" = token,
+          "Set-Cookie" = cookies
         )
       )
     }else{
@@ -202,7 +200,8 @@ GNUtils$DELETE <- function(url, path = NULL, token = NULL, cookies = NULL, user 
         url = url,
         add_headers(
           "User-Agent" = GNUtils$getUserAgent(),
-          "X-XSRF-TOKEN" = ifelse(!is.null(cookies), as.character(cookies["XSRF-TOKEN"]),"")
+          "X-XSRF-TOKEN" = token,
+          "Set-Cookie" = cookies
         ),
         set_cookies(
           cookies  

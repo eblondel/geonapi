@@ -258,7 +258,7 @@ GNManager <- R6Class("GNManager",
       
       if(!is.null(private$token)){
         req <- GNUtils$POST(
-          url = "http://34.65.110.32:8080/geonetwork/srv/eng", path = "/info?type=me",
+          url = self$getUrl(), path = "/info?type=me",
           user = user, pwd = pwd, token = private$token, cookies = private$cookies, content = NULL, contentType = NULL,
           verbose = TRUE 
         )

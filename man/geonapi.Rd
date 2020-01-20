@@ -14,8 +14,8 @@ Web-Services (Catalogue Service for the Web).
 \tabular{ll}{
    Package: \tab geonapi\cr
    Type: \tab Package\cr
-   Version: \tab 0.3\cr
-   Date: \tab 2019-11-08\cr
+   Version: \tab 0.3-1\cr
+   Date: \tab 2020-01-20\cr
    License: \tab MIT\cr
    LazyLoad: \tab yes\cr
  }

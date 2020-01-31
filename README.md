@@ -13,3 +13,10 @@
 ### Citation
 
 We thank in advance people that use ``geonapi`` for citing it in their work / publication(s). For this, please use the citation provided at this link [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.1345012.svg)](https://doi.org/10.5281/zenodo.1345012)
+
+### Sponsors
+
+Many thanks to the following organizations that have provided fundings for strenghtening the ``geosapi`` package:
+
+<a href="http://www.fao.org/fileadmin/templates/family-farming-decade/images/FAO-IFAD-Logos/FAO-Logo-EN.svg"><img height=200 width=200 src="http://www.fao.org/fileadmin/templates/family-farming-decade/images/FAO-IFAD-Logos/FAO-Logo-EN.svg"></a>
+

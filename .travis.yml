@@ -29,7 +29,9 @@ matrix:
   - name: "GeoNetwork 3.8.2"
     os: linux
     services: docker
-    apt_packages: libxml2-dev
+    apt_packages:
+      - libxml2-dev
+      - libsodium-dev
     env:
     - GN_VERSION=3.8.2
     before_install:
@@ -47,7 +49,9 @@ matrix:
   - name: "GeoNetwork 3.6.0"
     os: linux
     services: docker
-    apt_packages: libxml2-dev
+    apt_packages:
+      - libxml2-dev
+      - libsodium-dev
     env:
     - GN_VERSION=3.6.0
     before_install:
@@ -65,7 +69,9 @@ matrix:
   - name: "GeoNetwork 3.4.4"
     os: linux
     services: docker
-    apt_packages: libxml2-dev
+    apt_packages:
+      - libxml2-dev
+      - libsodium-dev
     env:
     - GN_VERSION=3.4.4
     before_install:
@@ -83,7 +89,9 @@ matrix:
   - name: "GeoNetwork 3.2.2"
     os: linux
     services: docker
-    apt_packages: libxml2-dev
+    apt_packages:
+      - libxml2-dev
+      - libsodium-dev
     env:
     - GN_VERSION=3.2.2
     before_install:
@@ -101,7 +109,9 @@ matrix:
   - name: "GeoNetwork 3.0.5"
     os: linux
     services: docker
-    apt_packages: libxml2-dev
+    apt_packages:
+      - libxml2-dev
+      - libsodium-dev
     env:
     - GN_VERSION=3.0.5
     before_install:
@@ -115,7 +125,9 @@ matrix:
   - name: "GeoNetwork 2.6.4"
     os: linux
     services: docker
-    apt_packages: libxml2-dev
+    apt_packages:
+      - libxml2-dev
+      - libsodium-dev
     env:
     - GN_VERSION=2.6.4
     before_install:

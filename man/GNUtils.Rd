@@ -4,9 +4,8 @@
 \name{GNUtils}
 \alias{GNUtils}
 \title{GeoNetwork REST API Manager Utils}
-\format{\code{\link{R6Class}} object.}
-\usage{
-GNUtils
+\format{
+\code{\link{R6Class}} object.
 }
 \value{
 Object of \code{\link{R6Class}} with static util methods for communication

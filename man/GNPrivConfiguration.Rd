@@ -5,11 +5,10 @@
 \alias{GNPrivConfiguration}
 \alias{GNPriv}
 \title{A GeoNetwork privilege configuration}
-\format{\code{\link{R6Class}} object.}
-\usage{
-GNPriv
+\format{
+\code{\link{R6Class}} object.
 
-GNPrivConfiguration
+\code{\link{R6Class}} object.
 }
 \value{
 Object of \code{\link{R6Class}} for modelling a GeoNetwork Privilege configuration

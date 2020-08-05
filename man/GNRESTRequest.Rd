@@ -4,9 +4,8 @@
 \name{GNRESTRequest}
 \alias{GNRESTRequest}
 \title{GeoNetwork REST API REST Request}
-\format{\code{\link{R6Class}} object.}
-\usage{
-GNRESTRequest
+\format{
+\code{\link{R6Class}} object.
 }
 \value{
 Object of \code{\link{R6Class}} for modelling a GeoNetwork REST request

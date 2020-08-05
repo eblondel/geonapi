@@ -4,9 +4,8 @@
 \name{GNManager}
 \alias{GNManager}
 \title{GeoNetwork REST API Manager}
-\format{\code{\link{R6Class}} object.}
-\usage{
-GNManager
+\format{
+\code{\link{R6Class}} object.
 }
 \value{
 Object of \code{\link{R6Class}} with methods for communication with
@@ -63,8 +62,17 @@ GeoNetwork REST API Manager
    This methods attempts a connection to GeoNetwork REST API. User internally
    during initialization of \code{GNManager}.
  }
+ \item{\code{getCookies()}}{
+   Get user session cookies
+ }
+ \item{\code{getToken()}}{
+   Get user session token
+ }
  \item{\code{getClassName()}}{
    Retrieves the name of the class instance
+ }
+ \item{\code{getGroups()}}{
+   Retrives the list of user groups available in Geonetwork
  }
  \item{\code{insertMetadata(xml, file, geometa, group, category, stylesheet, validate, geometa_validate, geometa_inspire)}}{
    Inserts a metadata by file, XML object or \pkg{geometa} object of class

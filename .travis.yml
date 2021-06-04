@@ -39,7 +39,6 @@ matrix:
     - sudo add-apt-repository ppa:ubuntugis/ubuntugis-unstable --yes
     - sudo apt-get --yes --force-yes update -qq
     - sudo apt-get install --yes libudunits2-dev libproj-dev libgeos-dev libgdal-dev
-    - Rscript -e 'update.packages(ask = FALSE)'
     - docker run 
       -v $TRAVIS_BUILD_DIR/tests/resources/config-view-service-override.xml:/etc/geonetwork/config-view-service-override.xml 
       -d -p "8080:8080" 
@@ -59,7 +58,6 @@ matrix:
     - sudo add-apt-repository ppa:ubuntugis/ubuntugis-unstable --yes
     - sudo apt-get --yes --force-yes update -qq
     - sudo apt-get install --yes libudunits2-dev libproj-dev libgeos-dev libgdal-dev
-    - Rscript -e 'update.packages(ask = FALSE)'
     - docker run 
       -v $TRAVIS_BUILD_DIR/tests/resources/config-view-service-override.xml:/etc/geonetwork/config-view-service-override.xml 
       -d -p "8080:8080" 
@@ -79,7 +77,6 @@ matrix:
     - sudo add-apt-repository ppa:ubuntugis/ubuntugis-unstable --yes
     - sudo apt-get --yes --force-yes update -qq
     - sudo apt-get install --yes libudunits2-dev libproj-dev libgeos-dev libgdal-dev
-    - Rscript -e 'update.packages(ask = FALSE)'
     - docker run 
       -v $TRAVIS_BUILD_DIR/tests/resources/config-view-service-override.xml:/etc/geonetwork/config-view-service-override.xml 
       -d -p "8080:8080" 
@@ -99,7 +96,6 @@ matrix:
     - sudo add-apt-repository ppa:ubuntugis/ubuntugis-unstable --yes
     - sudo apt-get --yes --force-yes update -qq
     - sudo apt-get install --yes libudunits2-dev libproj-dev libgeos-dev libgdal-dev
-    - Rscript -e 'update.packages(ask = FALSE)'
     - docker run 
       -v $TRAVIS_BUILD_DIR/tests/resources/config-view-service-override.xml:/etc/geonetwork/config-view-service-override.xml 
       -d -p "8080:8080" 
@@ -119,7 +115,6 @@ matrix:
     - sudo add-apt-repository ppa:ubuntugis/ubuntugis-unstable --yes
     - sudo apt-get --yes --force-yes update -qq
     - sudo apt-get install --yes libudunits2-dev libproj-dev libgeos-dev libgdal-dev
-    - Rscript -e 'update.packages(ask = FALSE)'
     - docker run 
       -v $TRAVIS_BUILD_DIR/tests/resources/config-view-service-override.xml:/etc/geonetwork/config-view-service-override.xml 
       -d -p "8080:8080" 
@@ -139,7 +134,6 @@ matrix:
     - sudo add-apt-repository ppa:ubuntugis/ubuntugis-unstable --yes
     - sudo apt-get --yes --force-yes update -qq
     - sudo apt-get install --yes libudunits2-dev libproj-dev libgeos-dev libgdal-dev
-    - Rscript -e 'update.packages(ask = FALSE)'
     - docker run 
       -v $TRAVIS_BUILD_DIR/tests/resources/config-view-service-override.xml:/etc/geonetwork/config-view-service-override.xml 
       -d -p "8080:8080" 
@@ -159,7 +153,6 @@ matrix:
     - sudo add-apt-repository ppa:ubuntugis/ubuntugis-unstable --yes
     - sudo apt-get --yes --force-yes update -qq
     - sudo apt-get install --yes libudunits2-dev libproj-dev libgeos-dev libgdal-dev
-    - Rscript -e 'update.packages(ask = FALSE)'
     - docker run --name geonetwork -d -p 8080:8080 pobsteta/docker-geonetwork:3.0.5   
   #GeoNetwork 2.6.4
   - name: "GeoNetwork 2.6.4"
@@ -175,7 +168,6 @@ matrix:
     - sudo add-apt-repository ppa:ubuntugis/ubuntugis-unstable --yes
     - sudo apt-get --yes --force-yes update -qq
     - sudo apt-get install --yes libudunits2-dev libproj-dev libgeos-dev libgdal-dev
-    - Rscript -e 'update.packages(ask = FALSE)'
     - docker run 
       -v $TRAVIS_BUILD_DIR/tests/resources/config-view-service-override-legacy.xml:/etc/geonetwork/config-view-service-override.xml 
       -d -p "8080:8080" 

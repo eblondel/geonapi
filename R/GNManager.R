@@ -120,6 +120,7 @@ GNManager <- R6Class("GNManager",
   
   #TODO provider specific formatter to prevent these fields to be printable
   private = list(
+    keyring_backend = keyring::backend_env$new(),
     keyring_service = NULL,
     user = NULL,
     token = NULL,
@@ -257,7 +258,7 @@ GNManager <- R6Class("GNManager",
       }
       
       private$user <- user
-      keyring::key_set_with_value(private$keyring_service, username = user, password = pwd)
+      private$keyring_backend$set_with_value(private$keyring_service, username = user, password = pwd)
       
       req_cookies <- cookies(req)
       cookies <- as.list(req_cookies$value)
@@ -322,7 +323,7 @@ GNManager <- R6Class("GNManager",
         path = "/xml.info",
         token = private$token, cookies = private$cookies,
         user = private$user, 
-        pwd = keyring::key_get(private$keyring_service, username = private$user),
+        pwd = private$keyring_backend$get(private$keyring_service, username = private$user),
         query = list(type = "groups"),
         verbose = self$verbose.debug
       )
@@ -389,7 +390,7 @@ GNManager <- R6Class("GNManager",
         path = "/xml.metadata.insert",
         token = private$token, cookies = private$cookies,
         user = private$user, 
-        pwd = keyring::key_get(private$keyring_service, username = private$user),
+        pwd = private$keyring_backend$get(private$keyring_service, username = private$user),
         content = gnRequest$encode(),
         contentType = "text/xml",
         verbose = self$verbose.debug
@@ -432,7 +433,7 @@ GNManager <- R6Class("GNManager",
         path = ifelse(self$version$value$major < 3, "/metadata.admin", "md.privileges.update"),
         token = private$token, cookies = private$cookies,
         user = private$user,
-        pwd = keyring::key_get(private$keyring_service, username = private$user),
+        pwd = private$keyring_backend$get(private$keyring_service, username = private$user),
         query = queryParams,
         verbose = self$verbose.debug
       )
@@ -472,7 +473,7 @@ GNManager <- R6Class("GNManager",
         path = "/xml.metadata.get",
         token = private$token, cookies = private$cookies,
         user = private$user,
-        pwd = keyring::key_get(private$keyring_service, username = private$user),
+        pwd = private$keyring_backend$get(private$keyring_service, username = private$user),
         content = gnRequest$encode(),
         contentType = "text/xml",
         verbose = self$verbose.debug
@@ -579,7 +580,7 @@ GNManager <- R6Class("GNManager",
         path = "/metadata.update.finish",
         token = private$token, cookies = private$cookies,
         user = private$user,
-        pwd = keyring::key_get(private$keyring_service, username = private$user),
+        pwd = private$keyring_backend$get(private$keyring_service, username = private$user),
         content = gnRequest$encode(),
         contentType = "text/xml",
         verbose = self$verbose.debug
@@ -607,7 +608,7 @@ GNManager <- R6Class("GNManager",
         path = "/xml.metadata.delete",
         token = private$token, cookies = private$cookies,
         user = private$user,
-        pwd = keyring::key_get(private$keyring_service, username = private$user),
+        pwd = private$keyring_backend$get(private$keyring_service, username = private$user),
         content = gnRequest$encode(),
         contentType = "text/xml",
         verbose = self$verbose.debug
@@ -640,7 +641,7 @@ GNManager <- R6Class("GNManager",
         path = "/xml.metadata.select",
         token = private$token, cookies = private$cookies,
         user = private$user,
-        pwd = keyring::key_get(private$keyring_service, username = private$user),
+        pwd = private$keyring_backend$get(private$keyring_service, username = private$user),
         content = gnSelectRequest$encode(),
         contentType = "text/xml",
         verbose = self$verbose.debug
@@ -652,7 +653,7 @@ GNManager <- R6Class("GNManager",
         path = "/xml.metadata.batch.delete",
         token = private$token, cookies = private$cookies,
         user = private$user,
-        pwd = keyring::key_get(private$keyring_service, username = private$user),
+        pwd = private$keyring_backend$get(private$keyring_service, username = private$user),
         content = gnDeleteRequest$encode(),
         contentType = "text/xml",
         verbose = self$verbose.debug

@@ -9,7 +9,7 @@ require(testthat)
 context("GNManager")
 
 test_that("Connect",{
-  expect_is(GN, "GNManager")
+  expect_is(GN, "GNLegacyAPIManager")
 })
 
 test_that("CREATE metadata",{

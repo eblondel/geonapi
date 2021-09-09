@@ -43,6 +43,6 @@ GNManager$new <- function(url, user = NULL, pwd = NULL, version, logger = NULL){
   if(gn_version$value$major < 4){ #to be refine to some 3.x versions if needed
     return(GNLegacyAPIManager$new(url, user = user, pwd = pwd, version = version, logger = logger))
   }else{
-    #TODO support OpenAPI
+    return(GNOpenAPIManager$new(url, user = user, pwd = pwd, version = version, logger = logger))
   }
 }

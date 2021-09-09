@@ -55,6 +55,10 @@ GNOpenAPIManager
    accepts two possible values: \code{INFO}: to print only geonapi logs,
    \code{DEBUG}: to print geonapi and CURL logs
  }
+ \item{\code{login(user, pwd)}}{
+   This methods attempts a connection to GeoNetwork REST API. User internally
+   during initialization of \code{GNLegacyAPIManager}.
+ }
 }
 }
 

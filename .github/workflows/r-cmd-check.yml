@@ -27,7 +27,7 @@ jobs:
         if: ${{ !startsWith( matrix.config.geonetwork, '4' ) }}
         run: |
           docker run -v $GITHUB_WORKSPACE/tests/resources/config-view-service-override.xml:/etc/geonetwork/config-view-service-override.xml \
-          -p "8080:8080" \
+          -d -p "8080:8080" \
           geonetwork:${{ matrix.config.geonetwork }} \
           bash -c 'export CATALINA_OPTS="$CATALINA_OPTS -Dgeonetwork.jeeves.configuration.overrides.file=/etc/geonetwork/config-view-service-override.xml";/entrypoint.sh catalina.sh run'
       - name: Set up R ${{ matrix.config.r }}

@@ -57,7 +57,7 @@ GNLegacyAPIManager
  }
  \item{\code{login(user, pwd)}}{
    This methods attempts a connection to GeoNetwork REST API. User internally
-   during initialization of \code{GNManager}.
+   during initialization of \code{GNLegacyAPIManager}.
  }
  \item{\code{getGroups()}}{
    Retrives the list of user groups available in Geonetwork

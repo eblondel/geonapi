@@ -9,7 +9,7 @@ gnVersion <- Sys.getenv("GN_VERSION")
 gnLogger <- "DEBUG"
 GN <- try(GNManager$new(gnUrl, gnUsr, gnPwd, gnVersion, gnLogger))
 
-if(is(GN, "GNManager")){
+if(inherits(GN, "GNAbstractManager")){
   cat(sprintf("GeoNetwork test instance started at %s. Running integration tests...\n", gnUrl))
   test_check("geonapi")
 }else{

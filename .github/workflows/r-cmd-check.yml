@@ -15,16 +15,21 @@ jobs:
     strategy:
       matrix:
         config:
+          - {os: ubuntu-20.04,   r: '4.0.5',  geonetwork: '3.12.1', rspm: "https://packagemanager.rstudio.com/cran/__linux__/focal/latest"}
           - {os: ubuntu-20.04,   r: '4.0.5',  geonetwork: '3.10.7', rspm: "https://packagemanager.rstudio.com/cran/__linux__/focal/latest"}
+          - {os: ubuntu-20.04,   r: '4.0.5',  geonetwork: '3.8.3', rspm: "https://packagemanager.rstudio.com/cran/__linux__/focal/latest"}
+          - {os: ubuntu-20.04,   r: '4.0.5',  geonetwork: '3.6.0', rspm: "https://packagemanager.rstudio.com/cran/__linux__/focal/latest"}
+          - {os: ubuntu-20.04,   r: '4.0.5',  geonetwork: '3.4.4', rspm: "https://packagemanager.rstudio.com/cran/__linux__/focal/latest"}
+          - {os: ubuntu-20.04,   r: '4.0.5',  geonetwork: '3.2.2', rspm: "https://packagemanager.rstudio.com/cran/__linux__/focal/latest"}
           
     env:
       GN_VERSION: ${{ matrix.config.geonetwork }}
   
     steps:
       - uses: actions/checkout@v2
-      #Docker GeoNetwork set-up (GN < 4)
-      - name: Set up GeoNetwork ${{ matrix.config.geonetwork }}
-        if: ${{ !startsWith( matrix.config.geonetwork, '4' ) }}
+      #Docker GeoNetwork set-up (3.2 <= GN < 4)
+      - name: Set up GeoNetwork < 4 (${{ matrix.config.geonetwork }})
+        if: ${{ startsWith( matrix.config.geonetwork, '3') && !startsWith( matrix.config.geonetwork, '3.0')  }}
         run: |
           docker run -v $GITHUB_WORKSPACE/tests/resources/config-view-service-override.xml:/etc/geonetwork/config-view-service-override.xml \
           -d -p "8080:8080" \

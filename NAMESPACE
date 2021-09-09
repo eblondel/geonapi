@@ -3,6 +3,7 @@
 export(GNAbstractManager)
 export(GNLegacyAPIManager)
 export(GNManager)
+export(GNOpenAPIManager)
 export(GNPriv)
 export(GNPrivConfiguration)
 export(GNRESTRequest)

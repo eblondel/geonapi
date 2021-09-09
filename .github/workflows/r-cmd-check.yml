@@ -47,7 +47,7 @@ jobs:
       #Docker GeoNetwork set-up (GN = 2.10.x)
       - name: Set up GeoNetwork 2.10.x (${{ matrix.config.geonetwork }})
         if: ${{ startsWith( matrix.config.geonetwork, '2.10')}}
-        run |
+        run: |
           docker run -v $GITHUB_WORKSPACE/tests/resources/config-view-service-override-legacy.xml:/etc/geonetwork/config-view-service-override.xml \
           -d -p "8080:8080" \
           juanluisrp/geonetwork-legacy:${{ matrix.config.geonetwork }} \
@@ -55,7 +55,7 @@ jobs:
       #Docker GeoNetwork set-up (GN = 2.6.x)
       - name: Set up GeoNetwork 2.6.x (${{ matrix.config.geonetwork }})
         if: ${{ startsWith( matrix.config.geonetwork, '2.6')}}
-        run |
+        run: |
           docker run -v $GITHUB_WORKSPACE/tests/resources/config-view-service-override-legacy.xml:/etc/geonetwork/config-view-service-override.xml \
           -d -p "8080:8080" \
           juanluisrp/geonetwork-legacy:${{ matrix.config.geonetwork }} \

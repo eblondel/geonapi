@@ -14,7 +14,8 @@ test_that("Connect",{
 
 test_that("CREATE metadata",{
   mdfile <- system.file("extdata/examples", "metadata.xml", package = "geonapi")
-  created = GN$insertMetadata(file = mdfile, group = "1", category = "datasets")
+  md <- geometa::readISO19139(file = mdfile)
+  created = GN$insertMetadata(geometa = md, group = "1", category = "datasets")
   config <- GNPrivConfiguration$new()
   config$setPrivileges("all", c("view","dynamic","featured"))
   GN$setPrivConfiguration(id = created, config = config)
@@ -34,7 +35,7 @@ test_that("UPDATE metadata",{
   md <- GN$getMetadataByUUID(id)
   md$setDataSetURI("new-dataset-uri")
   metaId <- GN$get(md$fileIdentifier, by = "uuid", output = "id")
-  updated <- GN$updateMetadata(id = metaId, xml = md$encode())
+  updated <- GN$updateMetadata(id = metaId, geometa = md)
   expect_equal(updated, metaId)
 })
 

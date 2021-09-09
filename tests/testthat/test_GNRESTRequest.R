@@ -4,6 +4,7 @@
 # Description: Unit tests for GNRESTRequest.R
 #=======================
 require(geonapi, quietly = TRUE)
+require(XML)
 require(testthat)
 
 context("GNRESTRequest")

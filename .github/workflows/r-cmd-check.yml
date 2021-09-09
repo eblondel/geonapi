@@ -22,7 +22,6 @@ jobs:
           - {os: ubuntu-20.04,   r: '4.0.5',  geonetwork: '3.4.4', rspm: "https://packagemanager.rstudio.com/cran/__linux__/focal/latest"}
           - {os: ubuntu-20.04,   r: '4.0.5',  geonetwork: '3.2.2', rspm: "https://packagemanager.rstudio.com/cran/__linux__/focal/latest"}
           - {os: ubuntu-20.04,   r: '4.0.5',  geonetwork: '3.0.5', rspm: "https://packagemanager.rstudio.com/cran/__linux__/focal/latest"}
-          - {os: ubuntu-20.04,   r: '4.0.5',  geonetwork: '2.10.3', rspm: "https://packagemanager.rstudio.com/cran/__linux__/focal/latest"}
           - {os: ubuntu-20.04,   r: '4.0.5',  geonetwork: '2.6.4', rspm: "https://packagemanager.rstudio.com/cran/__linux__/focal/latest"}
     
     env:
@@ -44,14 +43,6 @@ jobs:
         if: ${{ startsWith( matrix.config.geonetwork, '3.0') }}
         run: |
           docker run --name geonetwork -d -p 8080:8080 pobsteta/docker-geonetwork:3.0.5
-      #Docker GeoNetwork set-up (GN = 2.10.x)
-      - name: Set up GeoNetwork 2.10.x (${{ matrix.config.geonetwork }})
-        if: ${{ startsWith( matrix.config.geonetwork, '2.10')}}
-        run: |
-          docker run -v $GITHUB_WORKSPACE/tests/resources/config-view-service-override-legacy.xml:/etc/geonetwork/config-view-service-override.xml \
-          -d -p "8080:8080" \
-          juanluisrp/geonetwork-legacy:${{ matrix.config.geonetwork }} \
-          bash -c 'export CATALINA_OPTS="$CATALINA_OPTS -Dgeonetwork.jeeves.configuration.overrides.file=/etc/geonetwork/config-view-service-override.xml";/entrypoint.sh catalina.sh run'
       #Docker GeoNetwork set-up (GN = 2.6.x)
       - name: Set up GeoNetwork 2.6.x (${{ matrix.config.geonetwork }})
         if: ${{ startsWith( matrix.config.geonetwork, '2.6')}}

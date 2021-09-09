@@ -26,10 +26,7 @@ jobs:
       - name: Set up GeoNetwork ${{ matrix.config.geonetwork }}
         if: ${{ !startsWith( matrix.config.geonetwork, '4' ) }}
         run: |
-          docker run |
-          -v ./tests/resources/config-view-service-override.xml:/etc/geonetwork/config-view-service-override.xml |
-          -d -p "8080:8080" |
-          geonetwork:${{ matrix.config.geonetwork }}
+          docker run -v ./tests/resources/config-view-service-override.xml:/etc/geonetwork/config-view-service-override.xml -d -p "8080:8080" geonetwork:${{ matrix.config.geonetwork }}
           bash -c 'export CATALINA_OPTS="$CATALINA_OPTS -Dgeonetwork.jeeves.configuration.overrides.file=/etc/geonetwork/config-view-service-override.xml";/entrypoint.sh catalina.sh run'
       #R Set-up
       - name: Set up R ${{ matrix.config.r }}

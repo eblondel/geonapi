@@ -60,7 +60,10 @@ GNLegacyAPIManager
    during initialization of \code{GNLegacyAPIManager}.
  }
  \item{\code{getGroups()}}{
-   Retrives the list of user groups available in Geonetwork
+   Retrieves the list of user groups available in Geonetwork
+ }
+ \item{\code{getCategories()}}{
+   Retrieves the list of categories available in Geonetwork
  }
  \item{\code{insertMetadata(xml, file, geometa, group, category, stylesheet, validate, geometa_validate, geometa_inspire)}}{
    Inserts a metadata by file, XML object or \pkg{geometa} object of class

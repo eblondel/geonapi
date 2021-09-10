@@ -58,7 +58,10 @@
 #'    during initialization of \code{GNLegacyAPIManager}.
 #'  }
 #'  \item{\code{getGroups()}}{
-#'    Retrives the list of user groups available in Geonetwork
+#'    Retrieves the list of user groups available in Geonetwork
+#'  }
+#'  \item{\code{getCategories()}}{
+#'    Retrieves the list of categories available in Geonetwork
 #'  }
 #'  \item{\code{insertMetadata(xml, file, geometa, group, category, stylesheet, validate, geometa_validate, geometa_inspire)}}{
 #'    Inserts a metadata by file, XML object or \pkg{geometa} object of class
@@ -263,6 +266,44 @@ GNLegacyAPIManager <- R6Class("GNLegacyAPIManager",
          self$ERROR("Error while fetching user groups")
        }
        return(out)
+     },
+     
+     #getCategories
+     #---------------------------------------------------------------------------
+     getCategories = function(){
+        out <- NULL
+        self$INFO("Getting categories...")
+        req <- GNUtils$GET(
+           url = self$getUrl(),
+           path = "/xml.info",
+           token = private$getToken(), cookies = private$cookies,
+           user = private$user, 
+           pwd = private$getPwd(),
+           query = list(type = "categories"),
+           verbose = self$verbose.debug
+        )
+        if(status_code(req) == 200){
+           self$INFO("Successfully fetched categories!")
+           xml <- GNUtils$parseResponseXML(req, "UTF-8")
+           xml.categories <- getNodeSet(xml, "//metadatacategory/category")
+           out <- do.call("rbind", lapply(xml.categories, function(xml.category){
+              out.group <- data.frame(
+                 id = xmlGetAttr(xml.category, "id"),
+                 name = xmlValue(xmlChildren(xml.category)$name),
+                 stringsAsFactors = FALSE
+              )
+              xml.label <- xmlChildren(xml.category)$label
+              xml.labels <- xmlChildren(xml.label)
+              labels <- t(as.data.frame(sapply(xml.labels, xmlValue)))
+              colnames(labels) <- paste0("label_", colnames(labels))
+              row.names(labels) <- NULL
+              out.group <- cbind(out.group, labels)
+              return(out.group)
+           }))
+        }else{
+           self$ERROR("Error while fetching categories")
+        }
+        return(out)
      },
      
      #insertMetadata

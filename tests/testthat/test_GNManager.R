@@ -9,7 +9,26 @@ require(testthat)
 context("GNManager")
 
 test_that("Connect",{
-  expect_is(GN, "GNLegacyAPIManager")
+  if(GN$version$value$major == 4){
+    expect_is(GN, "GNOpenAPIManager")
+  }else{
+    expect_is(GN, "GNLegacyAPIManager")
+  }
+})
+
+test_that("GET groups",{
+  groups <- GN$getGroups()
+  expect_is(groups, "data.frame")
+  expect_equal(colnames(groups)[1], "id")
+  expect_equal(colnames(groups)[2], "name")
+})
+
+test_that("GET tags/categories",{
+  categories <- GN$getCategories()
+  expect_is(categories, "data.frame")
+  expect_equal(colnames(categories)[1], "id")
+  expect_equal(colnames(categories)[2], "name")
+  expect_true(all(sapply(colnames(categories)[3:ncol(categories)], function(x){startsWith(x, "label_")})))
 })
 
 test_that("CREATE metadata",{

@@ -60,6 +60,12 @@
 #'  \item{\code{getGroups()}}{
 #'    Retrieves the list of user groups available in Geonetwork
 #'  }
+#'  \item{\code{getTags()}}{
+#'    Retrieves the list of tags (categories) available in Geonetwork
+#'  }
+#'  \item{\code{getCategories()}}{
+#'    Same as \code{getTags()}
+#'  }
 #'  \item{\code{insertMetadata(xml, file, geometa, metadataType, uuidProcessing, 
 #'                             group, category, rejectIfInvalid, publishToAll,
 #'                             transformWith, schema, extra, 
@@ -187,7 +193,44 @@ GNOpenAPIManager <- R6Class("GNOpenAPIManager",
       }
       return(out)
     },
-
+    
+    #getTags
+    #---------------------------------------------------------------------------
+    getTags = function(){
+      out <- NULL
+      self$INFO("Getting tags (categories)...")
+      req <- GNUtils$GET(
+        url = self$getUrl(),
+        path = "/api/tags",
+        token = private$getToken(), cookies = private$cookies,
+        user = private$user, 
+        pwd = private$getPwd(),
+        verbose = self$verbose.debug
+      )
+      if(status_code(req) == 200){
+        self$INFO("Successfully fetched tags (categories)!")
+        json <- content(req, encoding = "UTF-8")
+        out <- do.call("rbind", lapply(json, function(json.tag){
+          out.tag <- data.frame(
+            id = json.tag$id,
+            name = json.tag$name,
+            stringsAsFactors = FALSE
+          )
+          labels <- data.frame(json.tag$label)
+          out.tag <- cbind(out.tag, labels)
+          return(out.tag)
+        }))
+      }else{
+        self$ERROR("Error while fetching tags (categories)")
+      }
+      return(out)
+    },
+    
+    #getCategories
+    #---------------------------------------------------------------------------
+    getCategories = function(){
+      return(self$getTags())
+    },
     
     #insertMetadata
     #---------------------------------------------------------------------------

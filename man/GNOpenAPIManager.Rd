@@ -62,6 +62,12 @@ GNOpenAPIManager
  \item{\code{getGroups()}}{
    Retrieves the list of user groups available in Geonetwork
  }
+ \item{\code{getTags()}}{
+   Retrieves the list of tags (categories) available in Geonetwork
+ }
+ \item{\code{getCategories()}}{
+   Same as \code{getTags()}
+ }
  \item{\code{insertMetadata(xml, file, geometa, metadataType, uuidProcessing, 
                             group, category, rejectIfInvalid, publishToAll,
                             transformWith, schema, extra, 

@@ -59,6 +59,26 @@ GNOpenAPIManager
    This methods attempts a connection to GeoNetwork REST API. User internally
    during initialization of \code{GNLegacyAPIManager}.
  }
+ \item{\code{getGroups()}}{
+   Retrieves the list of user groups available in Geonetwork
+ }
+ \item{\code{insertMetadata(xml, file, geometa, metadataType, uuidProcessing, 
+                            group, category, rejectIfInvalid, publishToAll,
+                            transformWith, schema, extra, 
+                            geometa_validate, geometa_inspire)}}{
+   Inserts a metadata by file, XML object or \pkg{geometa} object of class \code{ISOMetadata} or \code{ISOFeatureCatalogue}. 
+   Extra parameters related to \pkg{geometa} objects: \code{geometa_validate} (TRUE by default) and \code{geometa_inspire} 
+   (FALSE by default) can be used to perform ISO and INSPIRE validation respectively.
+ }
+ \item{\code{updateMetadata(xml, file, geometa, metadataType, 
+                            group, category, rejectIfInvalid, publishToAll,
+                            transformWith, schema, extra, 
+                            geometa_validate, geometa_inspire)}}{
+   Updates a metadata by file, XML object or \pkg{geometa} object of class
+   'ISOMetadata' or 'ISOFeatureCatalogue'. Extra parameters \code{geometa_validate} (TRUE 
+   by default) and \code{geometa_inspire} (FALSE by default) can be used with geometa objects 
+   for perform ISO and INSPIRE validation respectively.
+ }
 }
 }
 

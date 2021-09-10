@@ -57,6 +57,26 @@
 #'    This methods attempts a connection to GeoNetwork REST API. User internally
 #'    during initialization of \code{GNLegacyAPIManager}.
 #'  }
+#'  \item{\code{getGroups()}}{
+#'    Retrieves the list of user groups available in Geonetwork
+#'  }
+#'  \item{\code{insertMetadata(xml, file, geometa, metadataType, uuidProcessing, 
+#'                             group, category, rejectIfInvalid, publishToAll,
+#'                             transformWith, schema, extra, 
+#'                             geometa_validate, geometa_inspire)}}{
+#'    Inserts a metadata by file, XML object or \pkg{geometa} object of class \code{ISOMetadata} or \code{ISOFeatureCatalogue}. 
+#'    Extra parameters related to \pkg{geometa} objects: \code{geometa_validate} (TRUE by default) and \code{geometa_inspire} 
+#'    (FALSE by default) can be used to perform ISO and INSPIRE validation respectively.
+#'  }
+#'  \item{\code{updateMetadata(xml, file, geometa, metadataType, 
+#'                             group, category, rejectIfInvalid, publishToAll,
+#'                             transformWith, schema, extra, 
+#'                             geometa_validate, geometa_inspire)}}{
+#'    Updates a metadata by file, XML object or \pkg{geometa} object of class
+#'    'ISOMetadata' or 'ISOFeatureCatalogue'. Extra parameters \code{geometa_validate} (TRUE 
+#'    by default) and \code{geometa_inspire} (FALSE by default) can be used with geometa objects 
+#'    for perform ISO and INSPIRE validation respectively.
+#'  }
 #' }
 #' 
 #' @author Emmanuel Blondel <emmanuel.blondel1@@gmail.com>
@@ -69,6 +89,10 @@ GNOpenAPIManager <- R6Class("GNOpenAPIManager",
     initialize = function(url, user = NULL, pwd = NULL, version, logger = NULL){
       super$initialize(url, user = user, pwd = pwd, version = version, logger = logger)
       self$basicAuth <- TRUE
+      
+      #baseUrl
+      self$url = sprintf("%s/srv", url)
+      private$keyring_service <- paste0("geonapi@", url)
       
       #try to login
       if(!is.null(user) && !is.null(pwd)){        
@@ -131,6 +155,189 @@ GNOpenAPIManager <- R6Class("GNOpenAPIManager",
         self$INFO("Successfully authenticated to GeoNetwork!\n")
       }
       return(TRUE)
+    },
+    
+    
+    #getGroups
+    #---------------------------------------------------------------------------
+    getGroups = function(){
+      out <- NULL
+      self$INFO("Getting user groups...")
+      req <- GNUtils$GET(
+        url = self$getUrl(),
+        path = "/api/groups",
+        token = private$getToken(), cookies = private$cookies,
+        user = private$user, 
+        pwd = private$getPwd(),
+        verbose = self$verbose.debug
+      )
+      if(status_code(req) == 200){
+        self$INFO("Successfully fetched user groups!")
+        json <- content(req)
+        out <- do.call("rbind", lapply(json, function(group){
+          out.group <- data.frame(
+            id = group$id,
+            name = group$name,
+            stringsAsFactors = FALSE
+          )
+          return(out.group)
+        }))
+      }else{
+        self$ERROR("Error while fetching user groups")
+      }
+      return(out)
+    },
+
+    
+    #insertMetadata
+    #---------------------------------------------------------------------------
+    insertMetadata = function(xml = NULL, file = NULL, geometa = NULL,
+                              metadataType = "METADATA", uuidProcessing = "NOTHING", 
+                              group, category = NULL, rejectIfInvalid = FALSE, publishToAll = TRUE,
+                              transformWith = "_none_", schema = NULL, extra = NULL,
+                              geometa_validate = TRUE, geometa_inspire = FALSE){
+      
+      allowedMetadataTypes <- c("METADATA", "TEMPLATE", "SUB_TEMPLATE", "TEMPLATE_OF_SUB_TEMPLATE")
+      if(!metadataType %in% allowedMetadataTypes){
+        errMsg <- sprintf("Invalid metadataType value '%s'. Value should be among values [%s]", metadataType,
+                          paste0(allowedMetadataTypes, collapse=","))
+        self$ERROR(errMsg)
+        stop(errMsg)
+      }
+      
+      allowedUuidProcessing <- c("GENERATEUUID", "NOTHING", "OVERWRITE")
+      if(!uuidProcessing %in% allowedUuidProcessing){
+        errMsg <- sprintf("Invalid uuidProcessing value '%S'. Value should be among values [%s]", uuidProcessing,
+                          paste0(allowedUuidProcessing, collapse=","))
+      }
+      
+      if(is.null(category)) category <- "_none_"
+      
+      self$INFO("Inserting metadata ...")
+      out <- NULL
+      data <- NULL
+      isTempFile <- FALSE
+      if(!is.null(xml)){
+        tempf = tempfile(tmpdir = tempdir())
+        file <- paste(tempf,".xml",sep='')
+        isTempFile <- TRUE
+        saveXML(xml, file, encoding = "UTF-8")
+      }
+      if(!is.null(geometa)){
+        if(!is(geometa, "ISOMetadata") & !is(geometa, "ISOFeatureCatalogue")){
+          stop("Object 'geometa' should be of class 'ISOMetadata' or 'ISOFeatureCatalogue")
+        }
+        tempf = tempfile(tmpdir = tempdir())
+        file <- paste(tempf,".xml",sep='')
+        isTempFile <- TRUE
+        geometa$save(file = file, validate = geometa_validate, inspire = geometa_inspire)
+      }
+      
+      if(is.null(file)){
+        stop("At least one of 'file', 'xml', or 'geometa' argument is required!")
+      }
+      
+      #request payload
+      reqParams <- list(
+        metadataType = metadataType,
+        uuidProcessing = uuidProcessing,
+        group = group,
+        category = category,
+        rejectIfInvalid = tolower(as.character(rejectIfInvalid)),
+        publishToAll = tolower(as.character(publishToAll)),
+        transformWith = transformWith,
+        schema = schema,
+        extra = extra
+      )
+      reqParams <- reqParams[!sapply(reqParams, is.null)]
+      path = sprintf("/api/records?%s", paste0(sapply(names(reqParams), function(x){paste0(x,"=",reqParams[[x]])}), collapse="&")) 
+      
+      req <- GNUtils$POST(
+        url = self$getUrl(),
+        path = path,
+        token = private$getToken(), cookies = private$cookies,
+        user = private$user, 
+        pwd = private$getPwd(),
+        content = list(
+          file = httr::upload_file(file)
+        ),
+        contentType = "multipart/form-data",
+        encode = "multipart",
+        verbose = self$verbose.debug
+      )
+      if(status_code(req) == 201){
+        self$INFO("Successfully inserted metadata!")
+        response <- content(req)
+        out <- response
+      }else{
+        self$ERROR(sprintf("Error while inserting metadata - %s", message_for_status(status_code(req))))
+        self$ERROR(content(req))
+      }
+      if(isTempFile) unlink(file)
+      return(out)
+    },
+    
+    #setPrivConfiguration
+    #---------------------------------------------------------------------------
+    setPrivConfiguration = function(id, config){
+      #TODO
+    },
+    
+    
+    #get
+    #---------------------------------------------------------------------------
+    get = function(id, by, output){
+      #TODO
+    },
+    
+    #getMetadataByID
+    #---------------------------------------------------------------------------
+    getMetadataByID = function(id){
+      #TODO
+    },
+    
+    #getMetadataByUUID
+    #---------------------------------------------------------------------------
+    getMetadataByUUID = function(uuid){
+      #TODO
+    },
+    
+    #getInfoByID
+    #---------------------------------------------------------------------------
+    getInfoByID = function(id){
+      #TODO
+    },
+    
+    #getInfoByUUID
+    #---------------------------------------------------------------------------
+    getInfoByUUID = function(uuid){
+      #TODO
+    },
+    
+    #updateMetadata
+    #---------------------------------------------------------------------------
+    updateMetadata = function(xml = NULL, file = NULL, geometa = NULL,
+                              metadataType = "METADATA",
+                              group, category = NULL, rejectIfInvalid = FALSE, publishToAll = TRUE,
+                              transformWith = "_none_", schema = NULL, extra = NULL,
+                              geometa_validate = TRUE, geometa_inspire = FALSE){
+      self$insertMetadata(xml = xml, file = file, geometa = geometa,
+                          metadataType = metadataType, uuidProcessing = "OVERWRITE", 
+                          group = group, category = category, rejectIfInvalid = rejectIfInvalid, publishToAll = publishToAll,
+                          transformWith = transformWith, schema = schema, extra = extra,
+                          geometa_validate = geometa_validate, geometa_inspire = geometa_inspire)
+    },
+    
+    #deleteMetadata
+    #---------------------------------------------------------------------------
+    deleteMetadata = function(id){
+      #TODO
+    },
+    
+    #deleteMetadataAll
+    #---------------------------------------------------------------------------
+    deleteMetadataAll = function(){
+      #TODO
     }
 
   )

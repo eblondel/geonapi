@@ -24,7 +24,7 @@
 #'    This method performs a PUT request for a given \code{path} to GeoNetwork REST API,
 #'    to upload a file of name \code{filename} with given \code{contentType}
 #'  }
-#'  \item{\code{POST(url, path, token, content, contentType, verbose)}}{
+#'  \item{\code{POST(url, path, token, content, contentType, encode, verbose)}}{
 #'    This method performs a POST request for a given \code{path} to GeoNetwork REST API,
 #'    to post content of given \code{contentType}
 #'  }
@@ -139,9 +139,11 @@ GNUtils$PUT <- function(url, path = NULL, token = NULL, cookies = NULL,
 
 GNUtils$POST <- function(url, path = NULL, token = NULL, cookies = NULL,
                          user = NULL, pwd = NULL,
-                         content, contentType, verbose = FALSE){
+                         content, contentType, 
+                         encode = "raw",
+                         verbose = FALSE){
   if(verbose){
-    req <- with_verbose(GNUtils$POST(url, path, token, cookies, user, pwd, content, contentType))
+    req <- with_verbose(GNUtils$POST(url, path, token, cookies, user, pwd, content, contentType, encode))
   }else{
     if(!is.null(path)){
       if(!grepl("^/", path)) path = paste0("/", path)
@@ -157,7 +159,7 @@ GNUtils$POST <- function(url, path = NULL, token = NULL, cookies = NULL,
           "X-XSRF-TOKEN" = token,
           "Set-Cookie" = cookies
         ),
-        encode = "raw",
+        encode = encode,
         body = content
       )
     }else{
@@ -169,7 +171,7 @@ GNUtils$POST <- function(url, path = NULL, token = NULL, cookies = NULL,
           "X-XSRF-TOKEN" = token,
           "Set-Cookie" = cookies
         ),
-        encode = "raw",
+        encode = encode,
         body = content
       )
     }

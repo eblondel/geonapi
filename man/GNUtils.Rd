@@ -32,7 +32,7 @@ GeoNetwork REST API Manager Utils
    This method performs a PUT request for a given \code{path} to GeoNetwork REST API,
    to upload a file of name \code{filename} with given \code{contentType}
  }
- \item{\code{POST(url, path, token, content, contentType, verbose)}}{
+ \item{\code{POST(url, path, token, content, contentType, encode, verbose)}}{
    This method performs a POST request for a given \code{path} to GeoNetwork REST API,
    to post content of given \code{contentType}
  }

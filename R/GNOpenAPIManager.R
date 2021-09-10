@@ -217,6 +217,7 @@ GNOpenAPIManager <- R6Class("GNOpenAPIManager",
             stringsAsFactors = FALSE
           )
           labels <- data.frame(json.tag$label)
+          colnames(labels) <- paste0("label_", colnames(labels))
           out.tag <- cbind(out.tag, labels)
           return(out.tag)
         }))

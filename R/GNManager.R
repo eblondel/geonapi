@@ -13,7 +13,7 @@
 #' @description The function \code{GNManager$new} will set-up the right Geonetwork
 #' manager depending on the GeoNetwork version specified by the user. For the time-being,
 #' GeoNetwork with version < 4 will be interfaced with the GeoNetwork legacy API (see detailed 
-#' documentation at \link{GNLegacyAPIManager}), while starting with GeoNetwork 4, the new 
+#' documentation at \link{GNLegacyAPIManager}), while starting with GeoNetwork 3.2, the new 
 #' GeoNetwork OpenAPI will be used.
 #' @return Object of \code{\link{R6Class}} with methods for communication with
 #' the API of a GeoNetwork instance.
@@ -40,9 +40,21 @@ GNManager <- R6Class("GNManager",
 
 GNManager$new <- function(url, user = NULL, pwd = NULL, version, logger = NULL){
   gn_version <- GNVersion$new(version = version)
-  if(gn_version$value$major < 4){ #to be refine to some 3.x versions if needed
-    return(GNLegacyAPIManager$new(url, user = user, pwd = pwd, version = version, logger = logger))
-  }else{
-    return(GNOpenAPIManager$new(url, user = user, pwd = pwd, version = version, logger = logger))
+  useOpenAPI <- FALSE
+  if(gn_version$value$major >= 3){
+    if(gn_version$value$major == 3){
+      if(gn_version$value$minor >= 2) useOpenAPI <- TRUE
+    }else{
+      useOpenAPI <- TRUE
+    } 
   }
+  manager <- NULL
+  if(useOpenAPI){
+    manager <- GNOpenAPIManager$new(url, user = user, pwd = pwd, version = version, logger = logger)
+    manager$INFO("GN version >= 3.2 - Set-up GeoNetwork Open API manager")
+  }else{
+    manager <- GNLegacyAPIManager$new(url, user = user, pwd = pwd, version = version, logger = logger)
+    manager$INFO("GN version < 3.2 - Set-up GeoNetwork Legacy API manager")
+  }
+  return(manager)
 }

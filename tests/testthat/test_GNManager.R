@@ -34,11 +34,17 @@ test_that("GET tags/categories",{
 test_that("CREATE metadata",{
   mdfile <- system.file("extdata/examples", "metadata.xml", package = "geonapi")
   md <- geometa::readISO19139(file = mdfile)
-  created = GN$insertMetadata(geometa = md, group = "1", category = "datasets")
-  config <- GNPrivConfiguration$new()
-  config$setPrivileges("all", c("view","dynamic","featured"))
-  GN$setPrivConfiguration(id = created, config = config)
-  expect_true(!is.null(created))
+  if(GN$getClassName() == "GNLegacyAPIManager"){
+    created = GN$insertMetadata(geometa = md, group = "1", category = ifelse(GN$getClassName() == "GNOpenAPIManager", "1", "datasets"))
+    config <- GNPrivConfiguration$new()
+    config$setPrivileges("all", c("view","dynamic","featured"))
+    GN$setPrivConfiguration(id = created, config = config)
+    expect_true(!is.null(created))
+  }else if(GN$getClassName() == "GNOpenAPIManager"){
+    created = GN$insertMetadata(geometa = md, group = "1", category = "1")
+    expect_equal(created$numberOfRecordsProcessed, 1L)
+  }
+  
 })
 
 test_that("READ metadata",{
@@ -53,14 +59,25 @@ test_that("UPDATE metadata",{
   id <- "my-metadata-identifier"
   md <- GN$getMetadataByUUID(id)
   md$setDataSetURI("new-dataset-uri")
-  metaId <- GN$get(md$fileIdentifier, by = "uuid", output = "id")
-  updated <- GN$updateMetadata(id = metaId, geometa = md)
-  expect_equal(updated, metaId)
+  md$identificationInfo[[1]]$setAbstract("new abstract with additional information")
+  if(GN$getClassName() == "GNLegacyAPIManager"){
+    metaId <- GN$get(md$fileIdentifier, by = "uuid", output = "id")
+    updated <- GN$updateMetadata(id = metaId, geometa = md)
+    expect_equal(updated, metaId)
+  }else if(GN$getClassName() == "GNOpenAPIManager"){
+    updated = GN$updateMetadata(geometa = md, group = "1", category = "1")
+    expect_equal(updated$numberOfRecordsProcessed, 1L)
+  }
 })
 
 test_that("DELETE metadata",{
   id <- "my-metadata-identifier"
-  metaId <- GN$get(id, by = "uuid", output = "id")
-  deleted <- GN$deleteMetadata(id = metaId)
-  expect_equal(deleted, metaId)
+  if(GN$getClassName() == "GNLegacyAPIManager"){
+    metaId <- GN$get(id, by = "uuid", output = "id")
+    deleted <- GN$deleteMetadata(id = metaId)
+    expect_equal(deleted, metaId)
+  }else if(GN$getClassName() == "GNOpenAPIManager"){
+    deleted <- GN$deleteMetadata(id = id)
+    expect_equal(deleted$numberOfRecordsProcessed, 1L)
+  }
 })

@@ -53,9 +53,11 @@ GNUtils$getUserAgent <- function(){
 
 GNUtils$GET <- function(url, path = NULL, token = NULL, cookies = NULL,
                         user = NULL, pwd = NULL,
-                        query = NULL, verbose = FALSE){
+                        query = NULL, 
+                        accept = "application/json", contentType = "application/json", 
+                        verbose = FALSE){
   if(verbose){
-    req <- with_verbose(GNUtils$GET(url, path, token, cookies, user, pwd, query))
+    req <- with_verbose(GNUtils$GET(url, path, token, cookies, user, pwd, query, accept, contentType))
   }else{
     if(!is.null(path)){
       if(!grepl("^/", path)) path = paste0("/", path)
@@ -66,6 +68,8 @@ GNUtils$GET <- function(url, path = NULL, token = NULL, cookies = NULL,
         url = url,
         query = query,
         add_headers(
+          "Accept" = accept,
+          "Content-Type" = contentType,
           "User-Agent" = GNUtils$getUserAgent(),
           "Authorization" = paste("Basic", GNUtils$getUserToken(user, pwd)),
           "X-XSRF-TOKEN" = token,
@@ -77,6 +81,8 @@ GNUtils$GET <- function(url, path = NULL, token = NULL, cookies = NULL,
         url = url,
         query = query,
         add_headers(
+          "Accept" = accept,
+          "Content-Type" = contentType,
           "User-Agent" = GNUtils$getUserAgent(),
           "X-XSRF-TOKEN" = token,
           "Set-Cookie" = cookies

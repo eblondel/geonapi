@@ -74,6 +74,10 @@
 #'    Extra parameters related to \pkg{geometa} objects: \code{geometa_validate} (TRUE by default) and \code{geometa_inspire} 
 #'    (FALSE by default) can be used to perform ISO and INSPIRE validation respectively.
 #'  }
+#'  \item{\code{getMetadataByUUID(uuid)}}{
+#'    Get a metadata by UUID. Returns an object of class \code{ISOMetadata} (ISO 19115)
+#'    or \code{ISOFeatureCatalogue} (ISO 19110) (from \pkg{geometa} package)
+#'  }
 #'  \item{\code{updateMetadata(xml, file, geometa, metadataType, 
 #'                             group, category, rejectIfInvalid, publishToAll,
 #'                             transformWith, schema, extra, 
@@ -82,6 +86,9 @@
 #'    'ISOMetadata' or 'ISOFeatureCatalogue'. Extra parameters \code{geometa_validate} (TRUE 
 #'    by default) and \code{geometa_inspire} (FALSE by default) can be used with geometa objects 
 #'    for perform ISO and INSPIRE validation respectively.
+#'  }
+#'  \item{\code{deleteMetadata(id, withBackup)}}{
+#'    Deletes a metadata
 #'  }
 #' }
 #' 
@@ -257,7 +264,7 @@ GNOpenAPIManager <- R6Class("GNOpenAPIManager",
       
       if(is.null(category)) category <- "_none_"
       
-      self$INFO("Inserting metadata ...")
+      self$INFO("Inserting/updating metadata ...")
       out <- NULL
       data <- NULL
       isTempFile <- FALSE
@@ -321,41 +328,43 @@ GNOpenAPIManager <- R6Class("GNOpenAPIManager",
       return(out)
     },
     
-    #setPrivConfiguration
-    #---------------------------------------------------------------------------
-    setPrivConfiguration = function(id, config){
-      #TODO
-    },
-    
-    
-    #get
-    #---------------------------------------------------------------------------
-    get = function(id, by, output){
-      #TODO
-    },
-    
-    #getMetadataByID
-    #---------------------------------------------------------------------------
-    getMetadataByID = function(id){
-      #TODO
-    },
-    
     #getMetadataByUUID
     #---------------------------------------------------------------------------
-    getMetadataByUUID = function(uuid){
-      #TODO
-    },
+    getMetadataByUUID = function(uuid, 
+                                 addSchemaLocation = TRUE, increasePopularity = TRUE, approved = TRUE){
+      addSchemaLocation <- tolower(as.character(addSchemaLocation))
+      increasePopularity <- tolower(as.character(increasePopularity))
+      approved <- tolower(as.character(approved))
     
-    #getInfoByID
-    #---------------------------------------------------------------------------
-    getInfoByID = function(id){
-      #TODO
-    },
-    
-    #getInfoByUUID
-    #---------------------------------------------------------------------------
-    getInfoByUUID = function(uuid){
-      #TODO
+      self$INFO(sprintf("Fetching metadata for uuid = '%s'", uuid))
+      out <- NULL
+      req <- GNUtils$GET(
+        url = self$getUrl(),
+        path = sprintf("/api/records/%s/formatters/xml?addSchemaLocation=%s&increasePopularity=%s&approved=%s", 
+                       uuid, addSchemaLocation, increasePopularity, approved),
+        token = private$getToken(), cookies = private$cookies,
+        user = private$user,
+        pwd = private$getPwd(),
+        accept = "application/xml", contentType = "application/xml",
+        verbose = self$verbose.debug
+      )
+      if(status_code(req) == 200){
+        self$INFO("Successfully fetched metadata!")
+        xml <- GNUtils$parseResponseXML(req, "UTF-8")
+        
+        #bridge to geometa package once geometa XML decoding supported
+        isoClass <- xmlName(xmlRoot(xml))
+        out <- NULL
+        if(isoClass=="MD_Metadata"){
+          out <- geometa::ISOMetadata$new(xml = xml)
+        }else if(isoClass=="FC_FeatureCatalogue"){
+          out <- geometa::ISOFeatureCatalogue$new(xml = xml)
+        }
+      }else{
+        self$ERROR(sprintf("Error while fetching metadata - %s", message_for_status(status_code(req))))
+        self$ERROR(content(req))
+      }
+      return(out)
     },
     
     #updateMetadata
@@ -374,14 +383,26 @@ GNOpenAPIManager <- R6Class("GNOpenAPIManager",
     
     #deleteMetadata
     #---------------------------------------------------------------------------
-    deleteMetadata = function(id){
-      #TODO
-    },
-    
-    #deleteMetadataAll
-    #---------------------------------------------------------------------------
-    deleteMetadataAll = function(){
-      #TODO
+    deleteMetadata = function(id, withBackup = TRUE){
+      self$INFO(sprintf("Deleting metadata id = %s ...", id))
+      out <- NULL
+      req <- GNUtils$DELETE(
+        url = self$getUrl(),
+        path = sprintf("/api/records?uuids=%s&withBackup=%s", id, tolower(as.character(withBackup))),
+        token = private$getToken(), cookies = private$cookies,
+        user = private$user,
+        pwd = private$getPwd(),
+        verbose = self$verbose.debug
+      )
+      if(status_code(req) == 200){
+        self$INFO("Successfully deleted metadata!")
+        response = content(req)
+        out <- response
+      }else{
+        self$ERROR(sprintf("Error while deleting metadata - %s", message_for_status(status_code(req))))
+        self$ERROR(content(req))
+      }
+      return(out)
     }
 
   )

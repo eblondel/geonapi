@@ -15,7 +15,7 @@ the API of a GeoNetwork instance.
 The function \code{GNManager$new} will set-up the right Geonetwork
 manager depending on the GeoNetwork version specified by the user. For the time-being,
 GeoNetwork with version < 4 will be interfaced with the GeoNetwork legacy API (see detailed 
-documentation at \link{GNLegacyAPIManager}), while starting with GeoNetwork 4, the new 
+documentation at \link{GNLegacyAPIManager}), while starting with GeoNetwork 3.2, the new 
 GeoNetwork OpenAPI will be used.
 }
 \examples{

@@ -33,7 +33,7 @@ jobs:
       - uses: actions/checkout@v2
       #Geonetwork set-up - depending on version
       #Docker GeoNetwork set-up (4.0)
-      - name Set up GeoNetwork 4 (${{ matrix.config.geonetwork }})
+      - name: Set up GeoNetwork 4 (${{ matrix.config.geonetwork }})
         if: ${{ startsWith( matrix.config.geonetwork, '4') }}
         run: |
           docker run -d --name elasticsearch --net elasticnetwork -p 9200:9200 -p 9300:9300 -e "discovery.type=single-node" elasticsearch:7.9.2

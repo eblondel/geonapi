@@ -66,6 +66,18 @@
 #'  \item{\code{getCategories()}}{
 #'    Same as \code{getTags()}
 #'  }
+#'  \item{\code{getMetadataByUUID(uuid)}}{
+#'    Get a metadata by UUID. Returns an object of class \code{ISOMetadata} (ISO 19115)
+#'    or \code{ISOFeatureCatalogue} (ISO 19110) (from \pkg{geometa} package)
+#'  }
+#'  \item{\code{insertRecord(xml, file, geometa, metadataType, uuidProcessing, 
+#'                             group, category, rejectIfInvalid, publishToAll,
+#'                             transformWith, schema, extra, 
+#'                             geometa_validate, geometa_inspire)}}{
+#'    Inserts a record by file, XML object or \pkg{geometa} object of class \code{ISOMetadata} or \code{ISOFeatureCatalogue}. 
+#'    Extra parameters related to \pkg{geometa} objects: \code{geometa_validate} (TRUE by default) and \code{geometa_inspire} 
+#'    (FALSE by default) can be used to perform ISO and INSPIRE validation respectively.
+#'  }
 #'  \item{\code{insertMetadata(xml, file, geometa, metadataType, uuidProcessing, 
 #'                             group, category, rejectIfInvalid, publishToAll,
 #'                             transformWith, schema, extra, 
@@ -73,10 +85,6 @@
 #'    Inserts a metadata by file, XML object or \pkg{geometa} object of class \code{ISOMetadata} or \code{ISOFeatureCatalogue}. 
 #'    Extra parameters related to \pkg{geometa} objects: \code{geometa_validate} (TRUE by default) and \code{geometa_inspire} 
 #'    (FALSE by default) can be used to perform ISO and INSPIRE validation respectively.
-#'  }
-#'  \item{\code{getMetadataByUUID(uuid)}}{
-#'    Get a metadata by UUID. Returns an object of class \code{ISOMetadata} (ISO 19115)
-#'    or \code{ISOFeatureCatalogue} (ISO 19110) (from \pkg{geometa} package)
 #'  }
 #'  \item{\code{updateMetadata(xml, file, geometa, metadataType, 
 #'                             group, category, rejectIfInvalid, publishToAll,
@@ -240,13 +248,53 @@ GNOpenAPIManager <- R6Class("GNOpenAPIManager",
       return(self$getTags())
     },
     
-    #insertMetadata
+    #getMetadataByUUID
     #---------------------------------------------------------------------------
-    insertMetadata = function(xml = NULL, file = NULL, geometa = NULL,
-                              metadataType = "METADATA", uuidProcessing = "NOTHING", 
-                              group, category = NULL, rejectIfInvalid = FALSE, publishToAll = TRUE,
-                              transformWith = "_none_", schema = NULL, extra = NULL,
-                              geometa_validate = TRUE, geometa_inspire = FALSE){
+    getMetadataByUUID = function(uuid, 
+                                 addSchemaLocation = TRUE, increasePopularity = TRUE, approved = TRUE){
+      addSchemaLocation <- tolower(as.character(addSchemaLocation))
+      increasePopularity <- tolower(as.character(increasePopularity))
+      approved <- tolower(as.character(approved))
+    
+      self$INFO(sprintf("Fetching metadata for uuid = '%s'", uuid))
+      out <- NULL
+      req <- GNUtils$GET(
+        url = self$getUrl(),
+        path = sprintf("/api/records/%s/formatters/xml?addSchemaLocation=%s&increasePopularity=%s&approved=%s", 
+                       uuid, addSchemaLocation, increasePopularity, approved),
+        token = private$getToken(), cookies = private$cookies,
+        user = private$user,
+        pwd = private$getPwd(),
+        accept = "application/xml", contentType = "application/xml",
+        verbose = self$verbose.debug
+      )
+      if(status_code(req) == 200){
+        self$INFO("Successfully fetched metadata!")
+        xml <- GNUtils$parseResponseXML(req, "UTF-8")
+        
+        #bridge to geometa package once geometa XML decoding supported
+        isoClass <- xmlName(xmlRoot(xml))
+        out <- NULL
+        if(isoClass=="MD_Metadata"){
+          out <- geometa::ISOMetadata$new(xml = xml)
+        }else if(isoClass=="FC_FeatureCatalogue"){
+          out <- geometa::ISOFeatureCatalogue$new(xml = xml)
+        }
+      }else{
+        self$ERROR(sprintf("Error while fetching metadata - %s", message_for_status(status_code(req))))
+        self$ERROR(content(req))
+      }
+      return(out)
+    },
+    
+    
+    #insertRecord
+    #---------------------------------------------------------------------------
+    insertRecord = function(xml = NULL, file = NULL, geometa = NULL,
+                            metadataType = "METADATA", uuidProcessing = "NOTHING", 
+                            group, category = NULL, rejectIfInvalid = FALSE, publishToAll = TRUE,
+                            transformWith = "_none_", schema = NULL, extra = NULL,
+                            geometa_validate = TRUE, geometa_inspire = FALSE){
       
       allowedMetadataTypes <- c("METADATA", "TEMPLATE", "SUB_TEMPLATE", "TEMPLATE_OF_SUB_TEMPLATE")
       if(!metadataType %in% allowedMetadataTypes){
@@ -264,7 +312,7 @@ GNOpenAPIManager <- R6Class("GNOpenAPIManager",
       
       if(is.null(category)) category <- "_none_"
       
-      self$INFO("Inserting/updating metadata ...")
+      self$INFO("Uploading metadata ...")
       out <- NULL
       data <- NULL
       isTempFile <- FALSE
@@ -317,54 +365,30 @@ GNOpenAPIManager <- R6Class("GNOpenAPIManager",
         verbose = self$verbose.debug
       )
       if(status_code(req) == 201){
-        self$INFO("Successfully inserted metadata!")
+        self$INFO("Successfully uploaded metadata!")
         response <- content(req)
         out <- response
       }else{
-        self$ERROR(sprintf("Error while inserting metadata - %s", message_for_status(status_code(req))))
+        self$ERROR(sprintf("Error while uploading metadata - %s", message_for_status(status_code(req))))
         self$ERROR(content(req))
       }
       if(isTempFile) unlink(file)
       return(out)
     },
     
-    #getMetadataByUUID
+    #insertMetadata
     #---------------------------------------------------------------------------
-    getMetadataByUUID = function(uuid, 
-                                 addSchemaLocation = TRUE, increasePopularity = TRUE, approved = TRUE){
-      addSchemaLocation <- tolower(as.character(addSchemaLocation))
-      increasePopularity <- tolower(as.character(increasePopularity))
-      approved <- tolower(as.character(approved))
-    
-      self$INFO(sprintf("Fetching metadata for uuid = '%s'", uuid))
-      out <- NULL
-      req <- GNUtils$GET(
-        url = self$getUrl(),
-        path = sprintf("/api/records/%s/formatters/xml?addSchemaLocation=%s&increasePopularity=%s&approved=%s", 
-                       uuid, addSchemaLocation, increasePopularity, approved),
-        token = private$getToken(), cookies = private$cookies,
-        user = private$user,
-        pwd = private$getPwd(),
-        accept = "application/xml", contentType = "application/xml",
-        verbose = self$verbose.debug
-      )
-      if(status_code(req) == 200){
-        self$INFO("Successfully fetched metadata!")
-        xml <- GNUtils$parseResponseXML(req, "UTF-8")
-        
-        #bridge to geometa package once geometa XML decoding supported
-        isoClass <- xmlName(xmlRoot(xml))
-        out <- NULL
-        if(isoClass=="MD_Metadata"){
-          out <- geometa::ISOMetadata$new(xml = xml)
-        }else if(isoClass=="FC_FeatureCatalogue"){
-          out <- geometa::ISOFeatureCatalogue$new(xml = xml)
-        }
-      }else{
-        self$ERROR(sprintf("Error while fetching metadata - %s", message_for_status(status_code(req))))
-        self$ERROR(content(req))
-      }
-      return(out)
+    insertMetadata = function(xml = NULL, file = NULL, geometa = NULL,
+                              metadataType = "METADATA", uuidProcessing = "NOTHING", 
+                              group, category = NULL, rejectIfInvalid = FALSE, publishToAll = TRUE,
+                              transformWith = "_none_", schema = NULL, extra = NULL,
+                              geometa_validate = TRUE, geometa_inspire = FALSE){
+      self$INFO("Inserting metadata ...")
+      inserted <- self$insertRecord(xml = xml, file = file, geometa = geometa,
+                        metadataType = metadataType, uuidProcessing = uuidProcessing, 
+                        group = group, category = category, rejectIfInvalid = rejectIfInvalid, publishToAll = publishToAll,
+                        transformWith = transformWith, schema = schema, extra = extra,
+                        geometa_validate = geometa_validate, geometa_inspire = geometa_inspire)
     },
     
     #updateMetadata
@@ -374,7 +398,8 @@ GNOpenAPIManager <- R6Class("GNOpenAPIManager",
                               group, category = NULL, rejectIfInvalid = FALSE, publishToAll = TRUE,
                               transformWith = "_none_", schema = NULL, extra = NULL,
                               geometa_validate = TRUE, geometa_inspire = FALSE){
-      self$insertMetadata(xml = xml, file = file, geometa = geometa,
+      self$INFO("Updating metadata ...")
+      self$insertRecord(xml = xml, file = file, geometa = geometa,
                           metadataType = metadataType, uuidProcessing = "OVERWRITE", 
                           group = group, category = category, rejectIfInvalid = rejectIfInvalid, publishToAll = publishToAll,
                           transformWith = transformWith, schema = schema, extra = extra,

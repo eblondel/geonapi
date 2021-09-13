@@ -68,6 +68,18 @@ GNOpenAPIManager
  \item{\code{getCategories()}}{
    Same as \code{getTags()}
  }
+ \item{\code{getMetadataByUUID(uuid)}}{
+   Get a metadata by UUID. Returns an object of class \code{ISOMetadata} (ISO 19115)
+   or \code{ISOFeatureCatalogue} (ISO 19110) (from \pkg{geometa} package)
+ }
+ \item{\code{insertRecord(xml, file, geometa, metadataType, uuidProcessing, 
+                            group, category, rejectIfInvalid, publishToAll,
+                            transformWith, schema, extra, 
+                            geometa_validate, geometa_inspire)}}{
+   Inserts a record by file, XML object or \pkg{geometa} object of class \code{ISOMetadata} or \code{ISOFeatureCatalogue}. 
+   Extra parameters related to \pkg{geometa} objects: \code{geometa_validate} (TRUE by default) and \code{geometa_inspire} 
+   (FALSE by default) can be used to perform ISO and INSPIRE validation respectively.
+ }
  \item{\code{insertMetadata(xml, file, geometa, metadataType, uuidProcessing, 
                             group, category, rejectIfInvalid, publishToAll,
                             transformWith, schema, extra, 
@@ -75,10 +87,6 @@ GNOpenAPIManager
    Inserts a metadata by file, XML object or \pkg{geometa} object of class \code{ISOMetadata} or \code{ISOFeatureCatalogue}. 
    Extra parameters related to \pkg{geometa} objects: \code{geometa_validate} (TRUE by default) and \code{geometa_inspire} 
    (FALSE by default) can be used to perform ISO and INSPIRE validation respectively.
- }
- \item{\code{getMetadataByUUID(uuid)}}{
-   Get a metadata by UUID. Returns an object of class \code{ISOMetadata} (ISO 19115)
-   or \code{ISOFeatureCatalogue} (ISO 19110) (from \pkg{geometa} package)
  }
  \item{\code{updateMetadata(xml, file, geometa, metadataType, 
                             group, category, rejectIfInvalid, publishToAll,

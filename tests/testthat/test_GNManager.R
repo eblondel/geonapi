@@ -9,7 +9,15 @@ require(testthat)
 context("GNManager")
 
 test_that("Connect",{
-  if(GN$version$value$major == 4){
+  useOpenAPI <- FALSE
+  if(GN$version$value$major >= 3){
+    if(GN$version$value$major == 3){
+      if(GN$version$value$minor >= 2) useOpenAPI <- TRUE
+    }else{
+      useOpenAPI <- TRUE
+    } 
+  }
+  if(useOpenAPI){
     expect_is(GN, "GNOpenAPIManager")
   }else{
     expect_is(GN, "GNLegacyAPIManager")

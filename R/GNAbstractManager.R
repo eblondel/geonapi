@@ -132,6 +132,11 @@ GNAbstractManager <- R6Class("GNAbstractManager",
        self$version <- GNVersion$new(version = version)
        
        #keyring backend
+       if(!keyring_backend %in% names(keyring:::known_backends)){
+          errMsg <- sprintf("Backend '%s' is not a known keyring backend!", keyring_backend)
+          self$ERROR(errMsg)
+          stop(errMsg)
+       }
        private$keyring_backend <- keyring:::known_backends[[keyring_backend]]$new()
        
        #baseUrl

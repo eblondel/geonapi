@@ -17,12 +17,15 @@
 #'
 #'@section Abstract Methods:
 #' \describe{
-#'  \item{\code{new(url, user, pwd, version, logger)}}{
+#'  \item{\code{new(url, user, pwd, version, logger, keyring_backend)}}{
 #'    This method is used to instantiate a \code{GNOpenAPIManager} with the \code{url} of the
-#'    GeoNetwork and credentials to authenticate (\code{user}/\code{pwd}). By default,
-#'    the \code{logger} argument will be set to \code{NULL} (no logger). This argument
-#'    accepts two possible values: \code{INFO}: to print only geonapi logs,
-#'    \code{DEBUG}: to print geonapi and CURL logs
+#'    GeoNetwork and credentials to authenticate (\code{user}/\code{pwd}).
+#'    
+#'    The \code{keyring_backend} can be set to use a different backend for storing 
+#'    the Geonetwork password/token with \pkg{keyring} (Default value is 'env').
+#'    
+#'    The logger can be either NULL, "INFO" (with minimum logs), or "DEBUG" 
+#'    (for complete curl http calls logs)
 #'  }
 #'  \item{\code{logger(type, text)}}{
 #'    Basic logger to report geonapi logs. Used internally
@@ -46,12 +49,16 @@
 #'
 #' @section Methods:
 #' \describe{
-#'  \item{\code{new(url, user, pwd, version, logger)}}{
+#'  \item{\code{new(url, user, pwd, version, logger, keyring_backend)}}{
 #'    This method is used to instantiate a \code{GNOpenAPIManager} with the \code{url} of the
-#'    GeoNetwork and credentials to authenticate (\code{user}/\code{pwd}). By default,
-#'    the \code{logger} argument will be set to \code{NULL} (no logger). This argument
-#'    accepts two possible values: \code{INFO}: to print only geonapi logs,
-#'    \code{DEBUG}: to print geonapi and CURL logs
+#'    GeoNetwork and credentials to authenticate (\code{user}/\code{pwd}).
+#'    
+#'    The \code{keyring_backend} can be set to use a different backend for storing 
+#'    the Geonetwork password/token with \pkg{keyring} (Default value is 'env').
+#'    
+#'    The logger can be either NULL, "INFO" (with minimum logs), or "DEBUG" 
+#'    (for complete curl http calls logs)
+#'    
 #'  }
 #'  \item{\code{login(user, pwd)}}{
 #'    This methods attempts a connection to GeoNetwork REST API. User internally
@@ -107,8 +114,10 @@ GNOpenAPIManager <- R6Class("GNOpenAPIManager",
   
   public = list(
     #manager
-    initialize = function(url, user = NULL, pwd = NULL, version, logger = NULL){
-      super$initialize(url, user = user, pwd = pwd, version = version, logger = logger)
+    initialize = function(url, user = NULL, pwd = NULL, version, logger = NULL,
+                          keyring_backend = 'env'){
+      super$initialize(url, user = user, pwd = pwd, version = version, logger = logger,
+                       keyring_backend = keyring_backend)
       self$basicAuth <- TRUE
       
       #baseUrl

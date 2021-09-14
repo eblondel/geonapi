@@ -35,12 +35,16 @@ GNAbstractManager
 \section{Methods}{
 
 \describe{
- \item{\code{new(url, user, pwd, version, logger)}}{
+ \item{\code{new(url, user, pwd, version, logger, keyring_backend)}}{
    This method is used to instantiate a GNManager with the \code{url} of the
    GeoNetwork and credentials to authenticate (\code{user}/\code{pwd}). By default,
-   the \code{logger} argument will be set to \code{NULL} (no logger). This argument
-   accepts two possible values: \code{INFO}: to print only geonapi logs,
-   \code{DEBUG}: to print geonapi and CURL logs
+   the \code{logger} argument will be set to \code{NULL} (no logger).
+   
+   The \code{keyring_backend} can be set to use a different backend for storing 
+   the Geonetwork password/token with \pkg{keyring} (Default value is 'env').
+   
+   The logger can be either NULL, "INFO" (with minimum logs), or "DEBUG" 
+   (for complete curl http calls logs)
  }
  \item{\code{logger(type, text)}}{
    Basic logger to report geonapi logs. Used internally

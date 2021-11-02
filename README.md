@@ -17,5 +17,5 @@ We thank in advance people that use ``geonapi`` for citing it in their work / pu
 
 Many thanks to the following organizations that have provided fundings for strenghtening the ``geosapi`` package:
 
-<a href="https://www.fao.org"><img height=200 width=200 src="https://www.fao.org/fileadmin/templates/family-farming-decade/images/FAO-IFAD-Logos/FAO-Logo-EN.svg"></a>
+<a href="https://www.fao.org/home/en/"><img height=200 width=200 src="https://www.fao.org/fileadmin/templates/family-farming-decade/images/FAO-IFAD-Logos/FAO-Logo-EN.svg"></a>
 

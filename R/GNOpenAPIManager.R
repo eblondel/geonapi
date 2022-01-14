@@ -121,7 +121,7 @@ GNOpenAPIManager <- R6Class("GNOpenAPIManager",
       self$basicAuth <- TRUE
       
       #baseUrl
-      self$url = sprintf("%s/srv", url)
+      self$url = sprintf("%s/srv/%s", url, self$lang)
       private$keyring_service <- paste0("geonapi@", url)
       
       #try to login

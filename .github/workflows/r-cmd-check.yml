@@ -15,14 +15,14 @@ jobs:
     strategy:
       matrix:
         config:
-          #- {os: ubuntu-20.04,   r: '4.0.5',  geonetwork: '4.0.5', rspm: "https://packagemanager.rstudio.com/cran/__linux__/focal/latest"}
-          #- {os: ubuntu-20.04,   r: '4.0.5',  geonetwork: '3.12.1', rspm: "https://packagemanager.rstudio.com/cran/__linux__/focal/latest"}
-          #- {os: ubuntu-20.04,   r: '4.0.5',  geonetwork: '3.10.7', rspm: "https://packagemanager.rstudio.com/cran/__linux__/focal/latest"}
+          - {os: ubuntu-20.04,   r: '4.0.5',  geonetwork: '4.0.5', rspm: "https://packagemanager.rstudio.com/cran/__linux__/focal/latest"}
+          - {os: ubuntu-20.04,   r: '4.0.5',  geonetwork: '3.12.1', rspm: "https://packagemanager.rstudio.com/cran/__linux__/focal/latest"}
+          - {os: ubuntu-20.04,   r: '4.0.5',  geonetwork: '3.10.7', rspm: "https://packagemanager.rstudio.com/cran/__linux__/focal/latest"}
           - {os: ubuntu-20.04,   r: '4.0.5',  geonetwork: '3.8.3', rspm: "https://packagemanager.rstudio.com/cran/__linux__/focal/latest"}
           - {os: ubuntu-20.04,   r: '4.0.5',  geonetwork: '3.6.0', rspm: "https://packagemanager.rstudio.com/cran/__linux__/focal/latest"}
-          #- {os: ubuntu-20.04,   r: '4.0.5',  geonetwork: '3.4.4', rspm: "https://packagemanager.rstudio.com/cran/__linux__/focal/latest"}
-          #- {os: ubuntu-20.04,   r: '4.0.5',  geonetwork: '3.2.2', rspm: "https://packagemanager.rstudio.com/cran/__linux__/focal/latest"}
-          #- {os: ubuntu-20.04,   r: '4.0.5',  geonetwork: '3.0.5', rspm: "https://packagemanager.rstudio.com/cran/__linux__/focal/latest"}
+          - {os: ubuntu-20.04,   r: '4.0.5',  geonetwork: '3.4.4', rspm: "https://packagemanager.rstudio.com/cran/__linux__/focal/latest"}
+          - {os: ubuntu-20.04,   r: '4.0.5',  geonetwork: '3.2.2', rspm: "https://packagemanager.rstudio.com/cran/__linux__/focal/latest"}
+          - {os: ubuntu-20.04,   r: '4.0.5',  geonetwork: '3.0.5', rspm: "https://packagemanager.rstudio.com/cran/__linux__/focal/latest"}
           #- {os: ubuntu-20.04,   r: '4.0.5',  geonetwork: '2.10.3', rspm: "https://packagemanager.rstudio.com/cran/__linux__/focal/latest"}
           #- {os: ubuntu-20.04,   r: '4.0.5',  geonetwork: '2.6.4', rspm: "https://packagemanager.rstudio.com/cran/__linux__/focal/latest"}
     

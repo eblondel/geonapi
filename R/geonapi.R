@@ -12,8 +12,8 @@
 #'  \tabular{ll}{
 #'    Package: \tab geonapi\cr
 #'    Type: \tab Package\cr
-#'    Version: \tab 0.5-1\cr
-#'    Date: \tab 2022-01-14\cr
+#'    Version: \tab 0.5-2\cr
+#'    Date: \tab 2022-01-24\cr
 #'    License: \tab MIT\cr
 #'    LazyLoad: \tab yes\cr
 #'  }

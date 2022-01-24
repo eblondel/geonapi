@@ -80,27 +80,33 @@
 #'  \item{\code{insertRecord(xml, file, geometa, metadataType, uuidProcessing, 
 #'                             group, category, rejectIfInvalid, publishToAll,
 #'                             transformWith, schema, extra, 
-#'                             geometa_validate, geometa_inspire)}}{
+#'                             geometa_validate, geometa_inspire, geometa_inspireValidator)}}{
 #'    Inserts a record by file, XML object or \pkg{geometa} object of class \code{ISOMetadata} or \code{ISOFeatureCatalogue}. 
 #'    Extra parameters related to \pkg{geometa} objects: \code{geometa_validate} (TRUE by default) and \code{geometa_inspire} 
-#'    (FALSE by default) can be used to perform ISO and INSPIRE validation respectively.
+#'    (FALSE by default) can be used to perform ISO and INSPIRE validation respectively. In that case on object of class 
+#'    \code{geometa::INSPIREMetadataValidator}, with a proper user API key, should be specified as \code{geometa_inspireValidator} 
+#'    argument.
 #'  }
 #'  \item{\code{insertMetadata(xml, file, geometa, metadataType, uuidProcessing, 
 #'                             group, category, rejectIfInvalid, publishToAll,
 #'                             transformWith, schema, extra, 
-#'                             geometa_validate, geometa_inspire)}}{
+#'                             geometa_validate, geometa_inspire, geometa_inspireValidator)}}{
 #'    Inserts a metadata by file, XML object or \pkg{geometa} object of class \code{ISOMetadata} or \code{ISOFeatureCatalogue}. 
 #'    Extra parameters related to \pkg{geometa} objects: \code{geometa_validate} (TRUE by default) and \code{geometa_inspire} 
-#'    (FALSE by default) can be used to perform ISO and INSPIRE validation respectively.
+#'    (FALSE by default) can be used to perform ISO and INSPIRE validation respectively. In that case on object of class 
+#'    \code{geometa::INSPIREMetadataValidator}, with a proper user API key, should be specified as
+#'    \code{geometa_inspireValidator} argument.
 #'  }
 #'  \item{\code{updateMetadata(xml, file, geometa, metadataType, 
 #'                             group, category, rejectIfInvalid, publishToAll,
 #'                             transformWith, schema, extra, 
-#'                             geometa_validate, geometa_inspire)}}{
+#'                             geometa_validate, geometa_inspire, geometa_inspireValidator)}}{
 #'    Updates a metadata by file, XML object or \pkg{geometa} object of class
 #'    'ISOMetadata' or 'ISOFeatureCatalogue'. Extra parameters \code{geometa_validate} (TRUE 
 #'    by default) and \code{geometa_inspire} (FALSE by default) can be used with geometa objects 
-#'    for perform ISO and INSPIRE validation respectively.
+#'    for perform ISO and INSPIRE validation respectively. In that case on object of class 
+#'    \code{geometa::INSPIREMetadataValidator}, with a proper user API key, should be specified as
+#'    \code{geometa_inspireValidator} argument.
 #'  }
 #'  \item{\code{deleteMetadata(id, withBackup)}}{
 #'    Deletes a metadata
@@ -303,7 +309,7 @@ GNOpenAPIManager <- R6Class("GNOpenAPIManager",
                             metadataType = "METADATA", uuidProcessing = "NOTHING", 
                             group, category = NULL, rejectIfInvalid = FALSE, publishToAll = TRUE,
                             transformWith = "_none_", schema = NULL, extra = NULL,
-                            geometa_validate = TRUE, geometa_inspire = FALSE){
+                            geometa_validate = TRUE, geometa_inspire = FALSE, geometa_inspireValidator = NULL){
       
       allowedMetadataTypes <- c("METADATA", "TEMPLATE", "SUB_TEMPLATE", "TEMPLATE_OF_SUB_TEMPLATE")
       if(!metadataType %in% allowedMetadataTypes){
@@ -338,7 +344,8 @@ GNOpenAPIManager <- R6Class("GNOpenAPIManager",
         tempf = tempfile(tmpdir = tempdir())
         file <- paste(tempf,".xml",sep='')
         isTempFile <- TRUE
-        geometa$save(file = file, validate = geometa_validate, inspire = geometa_inspire)
+        geometa$save(file = file, validate = geometa_validate, 
+                     inspire = geometa_inspire, inspireValidator = geometa_inspireValidator)
       }
       
       if(is.null(file)){
@@ -391,13 +398,14 @@ GNOpenAPIManager <- R6Class("GNOpenAPIManager",
                               metadataType = "METADATA", uuidProcessing = "NOTHING", 
                               group, category = NULL, rejectIfInvalid = FALSE, publishToAll = TRUE,
                               transformWith = "_none_", schema = NULL, extra = NULL,
-                              geometa_validate = TRUE, geometa_inspire = FALSE){
+                              geometa_validate = TRUE, geometa_inspire = FALSE, geometa_inspireValidator = NULL){
       self$INFO("Inserting metadata ...")
       inserted <- self$insertRecord(xml = xml, file = file, geometa = geometa,
                         metadataType = metadataType, uuidProcessing = uuidProcessing, 
                         group = group, category = category, rejectIfInvalid = rejectIfInvalid, publishToAll = publishToAll,
                         transformWith = transformWith, schema = schema, extra = extra,
-                        geometa_validate = geometa_validate, geometa_inspire = geometa_inspire)
+                        geometa_validate = geometa_validate, 
+                        geometa_inspire = geometa_inspire, geometa_inspireValidator = geometa_inspireValidator)
     },
     
     #updateMetadata
@@ -406,13 +414,14 @@ GNOpenAPIManager <- R6Class("GNOpenAPIManager",
                               metadataType = "METADATA",
                               group, category = NULL, rejectIfInvalid = FALSE, publishToAll = TRUE,
                               transformWith = "_none_", schema = NULL, extra = NULL,
-                              geometa_validate = TRUE, geometa_inspire = FALSE){
+                              geometa_validate = TRUE, geometa_inspire = FALSE, geometa_inspireValidator = NULL){
       self$INFO("Updating metadata ...")
       self$insertRecord(xml = xml, file = file, geometa = geometa,
                           metadataType = metadataType, uuidProcessing = "OVERWRITE", 
                           group = group, category = category, rejectIfInvalid = rejectIfInvalid, publishToAll = publishToAll,
                           transformWith = transformWith, schema = schema, extra = extra,
-                          geometa_validate = geometa_validate, geometa_inspire = geometa_inspire)
+                          geometa_validate = geometa_validate, 
+                          geometa_inspire = geometa_inspire, geometa_inspireValidator = geometa_inspireValidator)
     },
     
     #deleteMetadata

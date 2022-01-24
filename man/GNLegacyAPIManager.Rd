@@ -71,12 +71,15 @@ GNLegacyAPIManager
  \item{\code{getCategories()}}{
    Retrieves the list of categories available in Geonetwork
  }
- \item{\code{insertMetadata(xml, file, geometa, group, category, stylesheet, validate, geometa_validate, geometa_inspire)}}{
+ \item{\code{insertMetadata(xml, file, geometa, group, category, stylesheet, validate, geometa_validate, 
+                            geometa_inspire, geometa_inspireValidator)}}{
    Inserts a metadata by file, XML object or \pkg{geometa} object of class
    \code{ISOMetadata} or \code{ISOFeatureCatalogue}. If successful, returns the Geonetwork
    metadata internal identifier (integer). Extra parameters \code{geometa_validate} (TRUE 
    by default) and \code{geometa_inspire} (FALSE by default) can be used with geometa objects 
-   for perform ISO and INSPIRE validation respectively.
+   for perform ISO and INSPIRE validation respectively. In that case on object of class 
+   \code{geometa::INSPIREMetadataValidator}, with a proper user API key, should be specified as
+   \code{geometa_inspireValidator} argument. 
  }
  \item{\code{setPrivConfiguration(id, config)}}{
    Set the privilege configuration for a metadata. 'id' is the metadata integer id.
@@ -101,11 +104,14 @@ GNLegacyAPIManager
  \item{\code{getInfoByUUID(uuid)}}{
    Get a metadata Info by UUID. Returns an XML document object
  }
- \item{\code{updateMetadata(id, xml, file, geometa, geometa_validate, geometa_inspire)}}{
+ \item{\code{updateMetadata(id, xml, file, geometa, geometa_validate, 
+                            geometa_inspire, geometa_inspireValidator)}}{
    Updates a metadata by file, XML object or \pkg{geometa} object of class
    'ISOMetadata' or 'ISOFeatureCatalogue'. Extra parameters \code{geometa_validate} (TRUE 
    by default) and \code{geometa_inspire} (FALSE by default) can be used with geometa objects 
-   for perform ISO and INSPIRE validation respectively.
+   for perform ISO and INSPIRE validation respectively. In that case on object of class 
+   \code{geometa::INSPIREMetadataValidator}, with a proper user API key, should be specified as
+   \code{geometa_inspireValidator} argument. 
  }
  \item{\code{deleteMetadata(id)}}{
    Deletes a metadata

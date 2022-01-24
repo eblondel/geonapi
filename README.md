@@ -2,7 +2,7 @@
 ===========
 
 [![Build Status](https://github.com/eblondel/geonapi/actions/workflows/r-cmd-check.yml/badge.svg?branch=master)](https://github.com/eblondel/geonapi/actions/workflows/r-cmd-check.yml)
-[![Github_Status_Badge](https://img.shields.io/badge/Github-0.5--1-blue.svg)](https://github.com/eblondel/geonapi)
+[![Github_Status_Badge](https://img.shields.io/badge/Github-0.5--2-blue.svg)](https://github.com/eblondel/geonapi)
 [![CRAN_Status_Badge](http://www.r-pkg.org/badges/version/geonapi)](https://cran.r-project.org/package=geonapi)
 [![CRAN checks](https://cranchecks.info/badges/worst/geonapi)](https://cran.r-project.org/web/checks/check_results_geonapi.html)
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.1345012.svg)](https://doi.org/10.5281/zenodo.1345012)

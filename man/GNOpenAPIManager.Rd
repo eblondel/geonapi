@@ -82,27 +82,33 @@ GNOpenAPIManager
  \item{\code{insertRecord(xml, file, geometa, metadataType, uuidProcessing, 
                             group, category, rejectIfInvalid, publishToAll,
                             transformWith, schema, extra, 
-                            geometa_validate, geometa_inspire)}}{
+                            geometa_validate, geometa_inspire, geometa_inspireValidator)}}{
    Inserts a record by file, XML object or \pkg{geometa} object of class \code{ISOMetadata} or \code{ISOFeatureCatalogue}. 
    Extra parameters related to \pkg{geometa} objects: \code{geometa_validate} (TRUE by default) and \code{geometa_inspire} 
-   (FALSE by default) can be used to perform ISO and INSPIRE validation respectively.
+   (FALSE by default) can be used to perform ISO and INSPIRE validation respectively. In that case on object of class 
+   \code{geometa::INSPIREMetadataValidator}, with a proper user API key, should be specified as \code{geometa_inspireValidator} 
+   argument.
  }
  \item{\code{insertMetadata(xml, file, geometa, metadataType, uuidProcessing, 
                             group, category, rejectIfInvalid, publishToAll,
                             transformWith, schema, extra, 
-                            geometa_validate, geometa_inspire)}}{
+                            geometa_validate, geometa_inspire, geometa_inspireValidator)}}{
    Inserts a metadata by file, XML object or \pkg{geometa} object of class \code{ISOMetadata} or \code{ISOFeatureCatalogue}. 
    Extra parameters related to \pkg{geometa} objects: \code{geometa_validate} (TRUE by default) and \code{geometa_inspire} 
-   (FALSE by default) can be used to perform ISO and INSPIRE validation respectively.
+   (FALSE by default) can be used to perform ISO and INSPIRE validation respectively. In that case on object of class 
+   \code{geometa::INSPIREMetadataValidator}, with a proper user API key, should be specified as
+   \code{geometa_inspireValidator} argument.
  }
  \item{\code{updateMetadata(xml, file, geometa, metadataType, 
                             group, category, rejectIfInvalid, publishToAll,
                             transformWith, schema, extra, 
-                            geometa_validate, geometa_inspire)}}{
+                            geometa_validate, geometa_inspire, geometa_inspireValidator)}}{
    Updates a metadata by file, XML object or \pkg{geometa} object of class
    'ISOMetadata' or 'ISOFeatureCatalogue'. Extra parameters \code{geometa_validate} (TRUE 
    by default) and \code{geometa_inspire} (FALSE by default) can be used with geometa objects 
-   for perform ISO and INSPIRE validation respectively.
+   for perform ISO and INSPIRE validation respectively. In that case on object of class 
+   \code{geometa::INSPIREMetadataValidator}, with a proper user API key, should be specified as
+   \code{geometa_inspireValidator} argument.
  }
  \item{\code{deleteMetadata(id, withBackup)}}{
    Deletes a metadata

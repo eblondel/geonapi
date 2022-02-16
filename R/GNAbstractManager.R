@@ -140,7 +140,7 @@ GNAbstractManager <- R6Class("GNAbstractManager",
        private$keyring_backend <- keyring:::known_backends[[keyring_backend]]$new()
        
        #baseUrl
-       self$url = sprintf("%s/srv/%s", url, self$lang)
+       self$url = sprintf("%s/srv", url)
        private$keyring_service <- paste0("geonapi@", url)
        
        invisible(self)

@@ -25,27 +25,6 @@ GeoNetwork REST API - GeoNetwork privilege configuration
 
 GeoNetwork REST API - GeoNetwork privilege configuration
 }
-\section{Methods}{
-
-\describe{
- \item{\code{new()}}{
-   This method is used to instantiate a GNPriv object.
- }
-}
-
-
-\describe{
- \item{\code{new()}}{
-   This method is used to instantiate a GNPrivConfiguration object.
- }
- \item{\code{setPrivileges(group, privileges)}}{
-   Sets the operation privileges for a particular group. Allowed group values
-   are "guest","intranet" and "all". Allowed values for operation privileges
-   are "view", "download", "editing", "notify", "dynamic" and "featured".
- }
-}
-}
-
 \examples{
 \dontrun{
  priv <- GNPriv$new(group="all", privileges=c("view","dynamic","featured"))
@@ -65,3 +44,120 @@ Emmanuel Blondel <emmanuel.blondel1@gmail.com>
 \keyword{GeoNetwork}
 \keyword{configuration}
 \keyword{privilege}
+\section{Public fields}{
+\if{html}{\out{<div class="r6-fields">}}
+\describe{
+\item{\code{group}}{group}
+
+\item{\code{privileges}}{privileges}
+}
+\if{html}{\out{</div>}}
+}
+\section{Methods}{
+\subsection{Public methods}{
+\itemize{
+\item \href{#method-new}{\code{GNPriv$new()}}
+\item \href{#method-clone}{\code{GNPriv$clone()}}
+}
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-new"></a>}}
+\if{latex}{\out{\hypertarget{method-new}{}}}
+\subsection{Method \code{new()}}{
+Initializes a \link{GNPriv} object
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{GNPriv$new(group, privileges)}\if{html}{\out{</div>}}
+}
+
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{group}}{group}
+
+\item{\code{privileges}}{privileges}
+}
+\if{html}{\out{</div>}}
+}
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-clone"></a>}}
+\if{latex}{\out{\hypertarget{method-clone}{}}}
+\subsection{Method \code{clone()}}{
+The objects of this class are cloneable with this method.
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{GNPriv$clone(deep = FALSE)}\if{html}{\out{</div>}}
+}
+
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{deep}}{Whether to make a deep clone.}
+}
+\if{html}{\out{</div>}}
+}
+}
+}
+\section{Public fields}{
+\if{html}{\out{<div class="r6-fields">}}
+\describe{
+\item{\code{privileges}}{privileges}
+}
+\if{html}{\out{</div>}}
+}
+\section{Methods}{
+\subsection{Public methods}{
+\itemize{
+\item \href{#method-new}{\code{GNPrivConfiguration$new()}}
+\item \href{#method-setPrivileges}{\code{GNPrivConfiguration$setPrivileges()}}
+\item \href{#method-clone}{\code{GNPrivConfiguration$clone()}}
+}
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-new"></a>}}
+\if{latex}{\out{\hypertarget{method-new}{}}}
+\subsection{Method \code{new()}}{
+Initializes an object of class \link{GNPrivConfiguration}
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{GNPrivConfiguration$new()}\if{html}{\out{</div>}}
+}
+
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-setPrivileges"></a>}}
+\if{latex}{\out{\hypertarget{method-setPrivileges}{}}}
+\subsection{Method \code{setPrivileges()}}{
+Sets the operation privileges for a particular group. Allowed group values
+   are "guest","intranet" and "all". Allowed values for operation privileges
+   are "view", "download", "editing", "notify", "dynamic" and "featured".
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{GNPrivConfiguration$setPrivileges(group, privileges)}\if{html}{\out{</div>}}
+}
+
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{group}}{group}
+
+\item{\code{privileges}}{privileges}
+}
+\if{html}{\out{</div>}}
+}
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-clone"></a>}}
+\if{latex}{\out{\hypertarget{method-clone}{}}}
+\subsection{Method \code{clone()}}{
+The objects of this class are cloneable with this method.
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{GNPrivConfiguration$clone(deep = FALSE)}\if{html}{\out{</div>}}
+}
+
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{deep}}{Whether to make a deep clone.}
+}
+\if{html}{\out{</div>}}
+}
+}
+}

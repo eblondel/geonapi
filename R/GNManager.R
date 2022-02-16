@@ -31,6 +31,13 @@ GNManager <- R6Class("GNManager",
   lock_class = FALSE,
   private = list(),
   public = list(
+    
+    #'@description Initializes a \link{GNManager}
+    #'@param url url
+    #'@param user user
+    #'@param pwd pwd 
+    #'@param version version
+    #'@param logger logger
     initialize = function(url, user = NULL, pwd = NULL, version, logger = NULL){
       #nothing done:
       #GNManager$new becomes static to delegate to appropriate manager

@@ -16,19 +16,18 @@
 #'  priv <- GNPriv$new(group="all", privileges=c("view","dynamic","featured"))
 #' }
 #' 
-#' @section Methods:
-#' \describe{
-#'  \item{\code{new()}}{
-#'    This method is used to instantiate a GNPriv object.
-#'  }
-#' }
-#' 
 #' @author Emmanuel Blondel <emmanuel.blondel1@@gmail.com>
 #'
 GNPriv <- R6Class("GNPriv",
    public = list(
+     #'@field group group
      group = NULL,
+     #'@field privileges privileges
      privileges = list(),
+     
+     #'@description Initializes a \link{GNPriv} object
+     #'@param group group
+     #'@param privileges privileges
      initialize = function(group, privileges){
        allowedGroups <- c("guest", "intranet", "all")
        if(!(group %in% allowedGroups)){

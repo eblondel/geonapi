@@ -9,54 +9,6 @@
 #' @return Object of \code{\link{R6Class}} with methods for communication with
 #' the REST API of a GeoNetwork instance.
 #' @format \code{\link{R6Class}} object.
-#'
-#' @field loggerType the type of logger
-#' @field verbose.info if geosapi logs have to be printed
-#' @field verbose.debug if curl logs have to be printed
-#' @field url the Base url of GeoNetwork
-#' @field version the version of GeoNetwork. Handled as \code{GNVersion} object
-#' @field lang the language for Geonetwork service. Default is \code{eng}
-#' @field user the user name
-#'
-#' @section Methods:
-#' \describe{
-#'  \item{\code{new(url, user, pwd, version, logger, keyring_backend)}}{
-#'    This method is used to instantiate a GNManager with the \code{url} of the
-#'    GeoNetwork and credentials to authenticate (\code{user}/\code{pwd}). By default,
-#'    the \code{logger} argument will be set to \code{NULL} (no logger).
-#'    
-#'    The \code{keyring_backend} can be set to use a different backend for storing 
-#'    the Geonetwork password/token with \pkg{keyring} (Default value is 'env').
-#'    
-#'    The logger can be either NULL, "INFO" (with minimum logs), or "DEBUG" 
-#'    (for complete curl http calls logs)
-#'  }
-#'  \item{\code{logger(type, text)}}{
-#'    Basic logger to report geonapi logs. Used internally
-#'  }
-#'  \item{\code{INFO(text)}}{
-#'    Logger to report information. Used internally
-#'  }
-#'  \item{\code{WARN(text)}}{
-#'    Logger to report warnings. Used internally
-#'  }
-#'  \item{\code{ERROR(text)}}{
-#'    Logger to report errors. Used internally
-#'  }
-#'  \item{\code{getUrl()}}{
-#'    Get the authentication URL
-#'  }
-#'  \item{\code{getLang()}}{
-#'    Get the service lang
-#'  }
-#'  \item{\code{login(user, pwd)}}{
-#'    This methods (here abstract) attempts a connection to GeoNetwork API. Used internally
-#'    by subclass of \code{GNAbstractManager} to login Geonetwork.
-#'  }
-#'  \item{\code{getClassName()}}{
-#'    Retrieves the name of the class instance
-#'  }
-#'}
 #' 
 #' @author Emmanuel Blondel <emmanuel.blondel1@@gmail.com>
 GNAbstractManager <- R6Class("GNAbstractManager",
@@ -90,24 +42,56 @@ GNAbstractManager <- R6Class("GNAbstractManager",
    ),
    
    public = list(
-     #logger
+      #'@field verbose.info If package info log messages have to be printed out
      verbose.info = FALSE,
+     #'@field verbose.debug If curl debug log messages have to be printed out
      verbose.debug = FALSE,
+     #' @field loggerType the type of logger
      loggerType = NULL,
+     #'@description Provides log messages
+     #'@param type type of log ("INFO", "WARN", "ERROR")
+     #'@param text the log message text
      logger = function(type, text){
        if(self$verbose.info){
          cat(sprintf("[geonapi][%s] %s \n", type, text))
        }
      },
+     #'@description Provides INFO log messages
+     #'@param text the log message text
      INFO = function(text){self$logger("INFO", text)},
+     #'@description Provides WARN log messages
+     #'@param text the log message text
      WARN = function(text){self$logger("WARN", text)},
+     #'@description Provides ERROR log messages
+     #'@param text the log message text
      ERROR = function(text){self$logger("ERROR", text)},
      
-     #manager
+     #'@field url the Base url of GeoNetwork
      url = NA,
+     #'@field version the version of GeoNetwork. Handled as \code{GNVersion} object
      version = NULL,
+     #' @field lang the language for Geonetwork service. Default is \code{eng}
      lang = "eng",
+     #'@field basicAuth if basic auth is performed
      basicAuth = FALSE,
+     
+     #'@description This method is used to instantiate a \link{GNAbstractManager} with the \code{url} of the
+     #'    GeoNetwork and credentials to authenticate (\code{user}/\code{pwd}). By default,
+     #'    the \code{logger} argument will be set to \code{NULL} (no logger).
+     #'    
+     #'    The \code{keyring_backend} can be set to use a different backend for storing 
+     #'    the Geonetwork password/token with \pkg{keyring} (Default value is 'env').
+     #'    
+     #'    The logger can be either NULL, "INFO" (with minimum logs), or "DEBUG" 
+     #'    (for complete curl http calls logs)
+     #'    
+     #' @param url url
+     #' @param user user
+     #' @param pwd pwd
+     #' @param version version
+     #' @param logger logger
+     #' @param keyring_backend keyring backend. Default is 'env'
+     #'
      initialize = function(url, user = NULL, pwd = NULL, version, logger = NULL,
                            keyring_backend = 'env'){
        
@@ -146,26 +130,28 @@ GNAbstractManager <- R6Class("GNAbstractManager",
        invisible(self)
      },
      
-     #getUrl
-     #---------------------------------------------------------------------------
+     #'@description Get URL
+     #'@return an object of class \code{character}
      getUrl = function(){
        return(self$url)
      },
      
-     #getLang
-     #---------------------------------------------------------------------------
+     #'@description Get service language
+     #'@return an object of class \code{character}
      getLang = function(){
        return(self$lang)
      },
      
-     #login
-     #---------------------------------------------------------------------------
+     #'@description Log-ins. This methods (here abstract) attempts a connection to GeoNetwork API. Used internally
+     #'  by subclasses of \link{GNAbstractManager} to login Geonetwork.
+     #'@param user user
+     #'@param pwd pwd
      login = function(user, pwd){
         stop("Login method not implemented")
      },
      
-     #getClassName
-     #---------------------------------------------------------------------------    
+     #'@description Get class name
+     #'@return an object of class \code{character}  
      getClassName = function(){
        return(class(self)[1])
      }

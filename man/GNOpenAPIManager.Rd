@@ -13,109 +13,9 @@ the REST API of a GeoNetwork instance using the legacy API.
 }
 \description{
 GNOpenAPIManager
-}
-\section{Abstract Methods}{
 
-\describe{
- \item{\code{new(url, user, pwd, version, logger, keyring_backend)}}{
-   This method is used to instantiate a \code{GNOpenAPIManager} with the \code{url} of the
-   GeoNetwork and credentials to authenticate (\code{user}/\code{pwd}).
-   
-   The \code{keyring_backend} can be set to use a different backend for storing 
-   the Geonetwork password/token with \pkg{keyring} (Default value is 'env').
-   
-   The logger can be either NULL, "INFO" (with minimum logs), or "DEBUG" 
-   (for complete curl http calls logs)
- }
- \item{\code{logger(type, text)}}{
-   Basic logger to report geonapi logs. Used internally
- }
- \item{\code{INFO(text)}}{
-   Logger to report information. Used internally
- }
- \item{\code{WARN(text)}}{
-   Logger to report warnings. Used internally
- }
- \item{\code{ERROR(text)}}{
-   Logger to report errors. Used internally
- }
- \item{\code{getUrl()}}{
-   Get the authentication URL
- }
- \item{\code{getLang()}}{
-   Get the service lang
- }
+GNOpenAPIManager
 }
-}
-
-\section{Methods}{
-
-\describe{
- \item{\code{new(url, user, pwd, version, logger, keyring_backend)}}{
-   This method is used to instantiate a \code{GNOpenAPIManager} with the \code{url} of the
-   GeoNetwork and credentials to authenticate (\code{user}/\code{pwd}).
-   
-   The \code{keyring_backend} can be set to use a different backend for storing 
-   the Geonetwork password/token with \pkg{keyring} (Default value is 'env').
-   
-   The logger can be either NULL, "INFO" (with minimum logs), or "DEBUG" 
-   (for complete curl http calls logs)
-   
- }
- \item{\code{login(user, pwd)}}{
-   This methods attempts a connection to GeoNetwork REST API. User internally
-   during initialization of \code{GNLegacyAPIManager}.
- }
- \item{\code{getGroups()}}{
-   Retrieves the list of user groups available in Geonetwork
- }
- \item{\code{getTags()}}{
-   Retrieves the list of tags (categories) available in Geonetwork
- }
- \item{\code{getCategories()}}{
-   Same as \code{getTags()}
- }
- \item{\code{getMetadataByUUID(uuid)}}{
-   Get a metadata by UUID. Returns an object of class \code{ISOMetadata} (ISO 19115)
-   or \code{ISOFeatureCatalogue} (ISO 19110) (from \pkg{geometa} package)
- }
- \item{\code{insertRecord(xml, file, geometa, metadataType, uuidProcessing, 
-                            group, category, rejectIfInvalid, publishToAll,
-                            transformWith, schema, extra, 
-                            geometa_validate, geometa_inspire, geometa_inspireValidator)}}{
-   Inserts a record by file, XML object or \pkg{geometa} object of class \code{ISOMetadata} or \code{ISOFeatureCatalogue}. 
-   Extra parameters related to \pkg{geometa} objects: \code{geometa_validate} (TRUE by default) and \code{geometa_inspire} 
-   (FALSE by default) can be used to perform ISO and INSPIRE validation respectively. In that case on object of class 
-   \code{geometa::INSPIREMetadataValidator}, with a proper user API key, should be specified as \code{geometa_inspireValidator} 
-   argument.
- }
- \item{\code{insertMetadata(xml, file, geometa, metadataType, uuidProcessing, 
-                            group, category, rejectIfInvalid, publishToAll,
-                            transformWith, schema, extra, 
-                            geometa_validate, geometa_inspire, geometa_inspireValidator)}}{
-   Inserts a metadata by file, XML object or \pkg{geometa} object of class \code{ISOMetadata} or \code{ISOFeatureCatalogue}. 
-   Extra parameters related to \pkg{geometa} objects: \code{geometa_validate} (TRUE by default) and \code{geometa_inspire} 
-   (FALSE by default) can be used to perform ISO and INSPIRE validation respectively. In that case on object of class 
-   \code{geometa::INSPIREMetadataValidator}, with a proper user API key, should be specified as
-   \code{geometa_inspireValidator} argument.
- }
- \item{\code{updateMetadata(xml, file, geometa, metadataType, 
-                            group, category, rejectIfInvalid, publishToAll,
-                            transformWith, schema, extra, 
-                            geometa_validate, geometa_inspire, geometa_inspireValidator)}}{
-   Updates a metadata by file, XML object or \pkg{geometa} object of class
-   'ISOMetadata' or 'ISOFeatureCatalogue'. Extra parameters \code{geometa_validate} (TRUE 
-   by default) and \code{geometa_inspire} (FALSE by default) can be used with geometa objects 
-   for perform ISO and INSPIRE validation respectively. In that case on object of class 
-   \code{geometa::INSPIREMetadataValidator}, with a proper user API key, should be specified as
-   \code{geometa_inspireValidator} argument.
- }
- \item{\code{deleteMetadata(id, withBackup)}}{
-   Deletes a metadata
- }
-}
-}
-
 \examples{
 \dontrun{
    GNOpenAPIManager$new("http://localhost:8080/geonetwork", "admin", "geonetwork", "4.0.5")
@@ -128,3 +28,396 @@ Emmanuel Blondel <emmanuel.blondel1@gmail.com>
 \keyword{api}
 \keyword{geonetwork}
 \keyword{rest}
+\section{Super class}{
+\code{\link[geonapi:GNAbstractManager]{geonapi::GNAbstractManager}} -> \code{GNOpenAPIManager}
+}
+\section{Methods}{
+\subsection{Public methods}{
+\itemize{
+\item \href{#method-new}{\code{GNOpenAPIManager$new()}}
+\item \href{#method-login}{\code{GNOpenAPIManager$login()}}
+\item \href{#method-getGroups}{\code{GNOpenAPIManager$getGroups()}}
+\item \href{#method-getTags}{\code{GNOpenAPIManager$getTags()}}
+\item \href{#method-getCategories}{\code{GNOpenAPIManager$getCategories()}}
+\item \href{#method-getMetadataByUUID}{\code{GNOpenAPIManager$getMetadataByUUID()}}
+\item \href{#method-insertRecord}{\code{GNOpenAPIManager$insertRecord()}}
+\item \href{#method-insertMetadata}{\code{GNOpenAPIManager$insertMetadata()}}
+\item \href{#method-updateMetadata}{\code{GNOpenAPIManager$updateMetadata()}}
+\item \href{#method-deleteMetadata}{\code{GNOpenAPIManager$deleteMetadata()}}
+\item \href{#method-clone}{\code{GNOpenAPIManager$clone()}}
+}
+}
+\if{html}{
+\out{<details ><summary>Inherited methods</summary>}
+\itemize{
+\item \out{<span class="pkg-link" data-pkg="geonapi" data-topic="GNAbstractManager" data-id="ERROR">}\href{../../geonapi/html/GNAbstractManager.html#method-ERROR}{\code{geonapi::GNAbstractManager$ERROR()}}\out{</span>}
+\item \out{<span class="pkg-link" data-pkg="geonapi" data-topic="GNAbstractManager" data-id="getClassName">}\href{../../geonapi/html/GNAbstractManager.html#method-getClassName}{\code{geonapi::GNAbstractManager$getClassName()}}\out{</span>}
+\item \out{<span class="pkg-link" data-pkg="geonapi" data-topic="GNAbstractManager" data-id="getLang">}\href{../../geonapi/html/GNAbstractManager.html#method-getLang}{\code{geonapi::GNAbstractManager$getLang()}}\out{</span>}
+\item \out{<span class="pkg-link" data-pkg="geonapi" data-topic="GNAbstractManager" data-id="getUrl">}\href{../../geonapi/html/GNAbstractManager.html#method-getUrl}{\code{geonapi::GNAbstractManager$getUrl()}}\out{</span>}
+\item \out{<span class="pkg-link" data-pkg="geonapi" data-topic="GNAbstractManager" data-id="INFO">}\href{../../geonapi/html/GNAbstractManager.html#method-INFO}{\code{geonapi::GNAbstractManager$INFO()}}\out{</span>}
+\item \out{<span class="pkg-link" data-pkg="geonapi" data-topic="GNAbstractManager" data-id="logger">}\href{../../geonapi/html/GNAbstractManager.html#method-logger}{\code{geonapi::GNAbstractManager$logger()}}\out{</span>}
+\item \out{<span class="pkg-link" data-pkg="geonapi" data-topic="GNAbstractManager" data-id="WARN">}\href{../../geonapi/html/GNAbstractManager.html#method-WARN}{\code{geonapi::GNAbstractManager$WARN()}}\out{</span>}
+}
+\out{</details>}
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-new"></a>}}
+\if{latex}{\out{\hypertarget{method-new}{}}}
+\subsection{Method \code{new()}}{
+This method is used to instantiate a \code{GNOpenAPIManager} with the \code{url} of the
+   GeoNetwork and credentials to authenticate (\code{user}/\code{pwd}).
+   
+   The \code{keyring_backend} can be set to use a different backend for storing 
+   the Geonetwork password/token with \pkg{keyring} (Default value is 'env').
+   
+   The logger can be either NULL, "INFO" (with minimum logs), or "DEBUG" 
+   (for complete curl http calls logs)
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{GNOpenAPIManager$new(
+  url,
+  user = NULL,
+  pwd = NULL,
+  version,
+  logger = NULL,
+  keyring_backend = "env"
+)}\if{html}{\out{</div>}}
+}
+
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{url}}{url}
+
+\item{\code{user}}{user}
+
+\item{\code{pwd}}{pwd}
+
+\item{\code{version}}{version}
+
+\item{\code{logger}}{logger}
+
+\item{\code{keyring_backend}}{keyring backend}
+}
+\if{html}{\out{</div>}}
+}
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-login"></a>}}
+\if{latex}{\out{\hypertarget{method-login}{}}}
+\subsection{Method \code{login()}}{
+This methods attempts a connection to GeoNetwork REST API. User internally
+   during initialization of \code{GNLegacyAPIManager}.
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{GNOpenAPIManager$login(user, pwd)}\if{html}{\out{</div>}}
+}
+
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{user}}{user}
+
+\item{\code{pwd}}{pwd}
+}
+\if{html}{\out{</div>}}
+}
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-getGroups"></a>}}
+\if{latex}{\out{\hypertarget{method-getGroups}{}}}
+\subsection{Method \code{getGroups()}}{
+Retrieves the list of user groups available in Geonetwork
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{GNOpenAPIManager$getGroups()}\if{html}{\out{</div>}}
+}
+
+\subsection{Returns}{
+an object of class \code{data.frame}
+}
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-getTags"></a>}}
+\if{latex}{\out{\hypertarget{method-getTags}{}}}
+\subsection{Method \code{getTags()}}{
+Retrieves the list of tags (categories) available in Geonetwork
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{GNOpenAPIManager$getTags()}\if{html}{\out{</div>}}
+}
+
+\subsection{Returns}{
+an object of class \code{data.frame}
+}
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-getCategories"></a>}}
+\if{latex}{\out{\hypertarget{method-getCategories}{}}}
+\subsection{Method \code{getCategories()}}{
+Retrieves the list of categories (same as tags) available in Geonetwork
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{GNOpenAPIManager$getCategories()}\if{html}{\out{</div>}}
+}
+
+\subsection{Returns}{
+an object of class \code{data.frame}
+}
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-getMetadataByUUID"></a>}}
+\if{latex}{\out{\hypertarget{method-getMetadataByUUID}{}}}
+\subsection{Method \code{getMetadataByUUID()}}{
+Get a metadata by UUID.
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{GNOpenAPIManager$getMetadataByUUID(
+  uuid,
+  addSchemaLocation = TRUE,
+  increasePopularity = TRUE,
+  approved = TRUE
+)}\if{html}{\out{</div>}}
+}
+
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{uuid}}{uuid}
+
+\item{\code{addSchemaLocation}}{add schema location. Default is \code{TRUE}}
+
+\item{\code{increasePopularity}}{increase popularity. Default is \code{TRUE}}
+
+\item{\code{approved}}{approved}
+}
+\if{html}{\out{</div>}}
+}
+\subsection{Returns}{
+Returns an object of class \code{ISOMetadata} (ISO 19115)
+or \code{ISOFeatureCatalogue} (ISO 19110) (from \pkg{geometa} package)
+}
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-insertRecord"></a>}}
+\if{latex}{\out{\hypertarget{method-insertRecord}{}}}
+\subsection{Method \code{insertRecord()}}{
+Inserts a record by file, XML object or \pkg{geometa} object of class \code{ISOMetadata} or \code{ISOFeatureCatalogue}. 
+   Extra parameters related to \pkg{geometa} objects: \code{geometa_validate} (TRUE by default) and \code{geometa_inspire} 
+   (FALSE by default) can be used to perform ISO and INSPIRE validation respectively. In that case on object of class 
+   \code{geometa::INSPIREMetadataValidator}, with a proper user API key, should be specified as \code{geometa_inspireValidator} 
+   argument.
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{GNOpenAPIManager$insertRecord(
+  xml = NULL,
+  file = NULL,
+  geometa = NULL,
+  metadataType = "METADATA",
+  uuidProcessing = "NOTHING",
+  group,
+  category = NULL,
+  rejectIfInvalid = FALSE,
+  publishToAll = TRUE,
+  transformWith = "_none_",
+  schema = NULL,
+  extra = NULL,
+  geometa_validate = TRUE,
+  geometa_inspire = FALSE,
+  geometa_inspireValidator = NULL
+)}\if{html}{\out{</div>}}
+}
+
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{xml}}{object of class \link{XMLInternalNode-class} from \pkg{XML}}
+
+\item{\code{file}}{file}
+
+\item{\code{geometa}}{geometa object of class \code{ISOMetadata} or \code{ISOFeatureCatalogue}}
+
+\item{\code{metadataType}}{metadata type. By default \code{METADATA}}
+
+\item{\code{uuidProcessing}}{UUID processing. By default \code{NOTHING}. Other possible value: \code{OVERWRITE}}
+
+\item{\code{group}}{group}
+
+\item{\code{category}}{category}
+
+\item{\code{rejectIfInvalid}}{reject if invalid. Default \code{FALSE}}
+
+\item{\code{publishToAll}}{publish to all. Default \code{TRUE}}
+
+\item{\code{transformWith}}{transform with. Default is \code{_none_}}
+
+\item{\code{schema}}{schema}
+
+\item{\code{extra}}{extra}
+
+\item{\code{geometa_validate}}{validate geometa object}
+
+\item{\code{geometa_inspire}}{validate geometa object vs. INSPIRE}
+
+\item{\code{geometa_inspireValidator}}{geometa INSPIRE validator to use}
+}
+\if{html}{\out{</div>}}
+}
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-insertMetadata"></a>}}
+\if{latex}{\out{\hypertarget{method-insertMetadata}{}}}
+\subsection{Method \code{insertMetadata()}}{
+Inserts a metadata by file, XML object or \pkg{geometa} object of class \code{ISOMetadata} or \code{ISOFeatureCatalogue}. 
+   Extra parameters related to \pkg{geometa} objects: \code{geometa_validate} (TRUE by default) and \code{geometa_inspire} 
+   (FALSE by default) can be used to perform ISO and INSPIRE validation respectively. In that case on object of class 
+   \code{geometa::INSPIREMetadataValidator}, with a proper user API key, should be specified as
+   \code{geometa_inspireValidator} argument.
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{GNOpenAPIManager$insertMetadata(
+  xml = NULL,
+  file = NULL,
+  geometa = NULL,
+  metadataType = "METADATA",
+  uuidProcessing = "NOTHING",
+  group,
+  category = NULL,
+  rejectIfInvalid = FALSE,
+  publishToAll = TRUE,
+  transformWith = "_none_",
+  schema = NULL,
+  extra = NULL,
+  geometa_validate = TRUE,
+  geometa_inspire = FALSE,
+  geometa_inspireValidator = NULL
+)}\if{html}{\out{</div>}}
+}
+
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{xml}}{object of class \link{XMLInternalNode-class} from \pkg{XML}}
+
+\item{\code{file}}{file}
+
+\item{\code{geometa}}{geometa object of class \code{ISOMetadata} or \code{ISOFeatureCatalogue}}
+
+\item{\code{metadataType}}{metadata type. By default \code{METADATA}}
+
+\item{\code{uuidProcessing}}{UUID processing. By default \code{NOTHING}. Other possible value: \code{OVERWRITE}}
+
+\item{\code{group}}{group}
+
+\item{\code{category}}{category}
+
+\item{\code{rejectIfInvalid}}{reject if invalid. Default \code{FALSE}}
+
+\item{\code{publishToAll}}{publish to all. Default \code{TRUE}}
+
+\item{\code{transformWith}}{transform with. Default is \code{_none_}}
+
+\item{\code{schema}}{schema}
+
+\item{\code{extra}}{extra}
+
+\item{\code{geometa_validate}}{validate geometa object}
+
+\item{\code{geometa_inspire}}{validate geometa object vs. INSPIRE}
+
+\item{\code{geometa_inspireValidator}}{geometa INSPIRE validator to use}
+}
+\if{html}{\out{</div>}}
+}
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-updateMetadata"></a>}}
+\if{latex}{\out{\hypertarget{method-updateMetadata}{}}}
+\subsection{Method \code{updateMetadata()}}{
+Inserts a metadata by file, XML object or \pkg{geometa} object of class \code{ISOMetadata} or \code{ISOFeatureCatalogue}. 
+   Extra parameters related to \pkg{geometa} objects: \code{geometa_validate} (TRUE by default) and \code{geometa_inspire} 
+   (FALSE by default) can be used to perform ISO and INSPIRE validation respectively. In that case on object of class 
+   \code{geometa::INSPIREMetadataValidator}, with a proper user API key, should be specified as
+   \code{geometa_inspireValidator} argument.
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{GNOpenAPIManager$updateMetadata(
+  xml = NULL,
+  file = NULL,
+  geometa = NULL,
+  metadataType = "METADATA",
+  group,
+  category = NULL,
+  rejectIfInvalid = FALSE,
+  publishToAll = TRUE,
+  transformWith = "_none_",
+  schema = NULL,
+  extra = NULL,
+  geometa_validate = TRUE,
+  geometa_inspire = FALSE,
+  geometa_inspireValidator = NULL
+)}\if{html}{\out{</div>}}
+}
+
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{xml}}{object of class \link{XMLInternalNode-class} from \pkg{XML}}
+
+\item{\code{file}}{file}
+
+\item{\code{geometa}}{geometa object of class \code{ISOMetadata} or \code{ISOFeatureCatalogue}}
+
+\item{\code{metadataType}}{metadata type. By default \code{METADATA}}
+
+\item{\code{group}}{group}
+
+\item{\code{category}}{category}
+
+\item{\code{rejectIfInvalid}}{reject if invalid. Default \code{FALSE}}
+
+\item{\code{publishToAll}}{publish to all. Default \code{TRUE}}
+
+\item{\code{transformWith}}{transform with. Default is \code{_none_}}
+
+\item{\code{schema}}{schema}
+
+\item{\code{extra}}{extra}
+
+\item{\code{geometa_validate}}{validate geometa object}
+
+\item{\code{geometa_inspire}}{validate geometa object vs. INSPIRE}
+
+\item{\code{geometa_inspireValidator}}{geometa INSPIRE validator to use}
+}
+\if{html}{\out{</div>}}
+}
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-deleteMetadata"></a>}}
+\if{latex}{\out{\hypertarget{method-deleteMetadata}{}}}
+\subsection{Method \code{deleteMetadata()}}{
+Deletes a metadata by ID
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{GNOpenAPIManager$deleteMetadata(id, withBackup = TRUE)}\if{html}{\out{</div>}}
+}
+
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{id}}{id}
+
+\item{\code{withBackup}}{proceed with backup. Default is \code{TRUE}}
+}
+\if{html}{\out{</div>}}
+}
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-clone"></a>}}
+\if{latex}{\out{\hypertarget{method-clone}{}}}
+\subsection{Method \code{clone()}}{
+The objects of this class are cloneable with this method.
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{GNOpenAPIManager$clone(deep = FALSE)}\if{html}{\out{</div>}}
+}
+
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{deep}}{Whether to make a deep clone.}
+}
+\if{html}{\out{</div>}}
+}
+}
+}

@@ -12,25 +12,97 @@ Object of \code{\link{R6Class}} for modelling a GeoNetwork REST request
 }
 \description{
 GeoNetwork REST API REST Request
-}
-\section{Abstract Methods}{
 
-\describe{
- \item{\code{new()}}{
-   This method is used to instantiate a GNRESTRequest
- }
- \item{\code{setChild(key,value)}}{
-   Sets a child element
- }
- \item{\code{encode()}}{
-   Encodes a GNRESTRequest R6 object to XML representation
- }
+GeoNetwork REST API REST Request
 }
-}
-
 \author{
 Emmanuel Blondel <emmanuel.blondel1@gmail.com>
 }
 \keyword{api}
 \keyword{geonetwork}
 \keyword{rest}
+\section{Public fields}{
+\if{html}{\out{<div class="r6-fields">}}
+\describe{
+\item{\code{rootName}}{root name}
+
+\item{\code{children}}{children}
+}
+\if{html}{\out{</div>}}
+}
+\section{Methods}{
+\subsection{Public methods}{
+\itemize{
+\item \href{#method-new}{\code{GNRESTRequest$new()}}
+\item \href{#method-setChild}{\code{GNRESTRequest$setChild()}}
+\item \href{#method-encode}{\code{GNRESTRequest$encode()}}
+\item \href{#method-clone}{\code{GNRESTRequest$clone()}}
+}
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-new"></a>}}
+\if{latex}{\out{\hypertarget{method-new}{}}}
+\subsection{Method \code{new()}}{
+Initializes a \link{GNRESTRequest}
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{GNRESTRequest$new(...)}\if{html}{\out{</div>}}
+}
+
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{...}}{any parameter to pass to the request}
+}
+\if{html}{\out{</div>}}
+}
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-setChild"></a>}}
+\if{latex}{\out{\hypertarget{method-setChild}{}}}
+\subsection{Method \code{setChild()}}{
+Set child
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{GNRESTRequest$setChild(key, value)}\if{html}{\out{</div>}}
+}
+
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{key}}{key}
+
+\item{\code{value}}{value}
+}
+\if{html}{\out{</div>}}
+}
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-encode"></a>}}
+\if{latex}{\out{\hypertarget{method-encode}{}}}
+\subsection{Method \code{encode()}}{
+Encodes request as XML
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{GNRESTRequest$encode()}\if{html}{\out{</div>}}
+}
+
+\subsection{Returns}{
+an object of class \code{character} representing the XML
+}
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-clone"></a>}}
+\if{latex}{\out{\hypertarget{method-clone}{}}}
+\subsection{Method \code{clone()}}{
+The objects of this class are cloneable with this method.
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{GNRESTRequest$clone(deep = FALSE)}\if{html}{\out{</div>}}
+}
+
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{deep}}{Whether to make a deep clone.}
+}
+\if{html}{\out{</div>}}
+}
+}
+}

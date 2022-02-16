@@ -16,24 +16,6 @@ This class is an utility wrap the Geonetwork version
 \details{
 GeoNetwork REST API - GeoNetwork Version
 }
-\section{Methods}{
-
-\describe{
- \item{\code{new(version)}}{
-   This method is used to instantiate a GNVersion object.
- }
- \item{\code{lowerThan(version)}}{
-   Compares to a version and returns TRUE if it is lower, FALSE otherwise
- }
- \item{\code{greaterThan(version)}}{
-   Compares to a version and returns TRUE if it is greater, FALSE otherwise
- }
- \item{\code{equalTo(version)}}{
-   Compares to a version and returns TRUE if it is equal, FALSE otherwise
- }
-}
-}
-
 \examples{
 \dontrun{
 version <- GNVersion$new("2.6.4")
@@ -45,3 +27,117 @@ Emmanuel Blondel <emmanuel.blondel1@gmail.com>
 }
 \keyword{GeoNetwork}
 \keyword{version}
+\section{Public fields}{
+\if{html}{\out{<div class="r6-fields">}}
+\describe{
+\item{\code{version}}{version}
+
+\item{\code{value}}{value}
+}
+\if{html}{\out{</div>}}
+}
+\section{Methods}{
+\subsection{Public methods}{
+\itemize{
+\item \href{#method-new}{\code{GNVersion$new()}}
+\item \href{#method-lowerThan}{\code{GNVersion$lowerThan()}}
+\item \href{#method-greaterThan}{\code{GNVersion$greaterThan()}}
+\item \href{#method-equalTo}{\code{GNVersion$equalTo()}}
+\item \href{#method-clone}{\code{GNVersion$clone()}}
+}
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-new"></a>}}
+\if{latex}{\out{\hypertarget{method-new}{}}}
+\subsection{Method \code{new()}}{
+Initializes an object of class \link{GNVersion}
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{GNVersion$new(version)}\if{html}{\out{</div>}}
+}
+
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{version}}{version}
+}
+\if{html}{\out{</div>}}
+}
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-lowerThan"></a>}}
+\if{latex}{\out{\hypertarget{method-lowerThan}{}}}
+\subsection{Method \code{lowerThan()}}{
+Compares to a version and returns TRUE if it is lower, FALSE otherwise
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{GNVersion$lowerThan(version)}\if{html}{\out{</div>}}
+}
+
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{version}}{version}
+}
+\if{html}{\out{</div>}}
+}
+\subsection{Returns}{
+\code{TRUE} if lower, \code{FALSE} otherwise
+}
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-greaterThan"></a>}}
+\if{latex}{\out{\hypertarget{method-greaterThan}{}}}
+\subsection{Method \code{greaterThan()}}{
+Compares to a version and returns TRUE if it is greater, FALSE otherwise
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{GNVersion$greaterThan(version)}\if{html}{\out{</div>}}
+}
+
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{version}}{version}
+}
+\if{html}{\out{</div>}}
+}
+\subsection{Returns}{
+\code{TRUE} if lower, \code{FALSE} otherwise
+}
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-equalTo"></a>}}
+\if{latex}{\out{\hypertarget{method-equalTo}{}}}
+\subsection{Method \code{equalTo()}}{
+Compares to a version and returns TRUE if it is equal, FALSE otherwise
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{GNVersion$equalTo(version)}\if{html}{\out{</div>}}
+}
+
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{version}}{version}
+}
+\if{html}{\out{</div>}}
+}
+\subsection{Returns}{
+\code{TRUE} if lower, \code{FALSE} otherwise
+}
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-clone"></a>}}
+\if{latex}{\out{\hypertarget{method-clone}{}}}
+\subsection{Method \code{clone()}}{
+The objects of this class are cloneable with this method.
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{GNVersion$clone(deep = FALSE)}\if{html}{\out{</div>}}
+}
+
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{deep}}{Whether to make a deep clone.}
+}
+\if{html}{\out{</div>}}
+}
+}
+}

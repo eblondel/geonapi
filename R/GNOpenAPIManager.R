@@ -14,104 +14,6 @@
 #' \dontrun{
 #'    GNOpenAPIManager$new("http://localhost:8080/geonetwork", "admin", "geonetwork", "4.0.5")
 #' }
-#'
-#'@section Abstract Methods:
-#' \describe{
-#'  \item{\code{new(url, user, pwd, version, logger, keyring_backend)}}{
-#'    This method is used to instantiate a \code{GNOpenAPIManager} with the \code{url} of the
-#'    GeoNetwork and credentials to authenticate (\code{user}/\code{pwd}).
-#'    
-#'    The \code{keyring_backend} can be set to use a different backend for storing 
-#'    the Geonetwork password/token with \pkg{keyring} (Default value is 'env').
-#'    
-#'    The logger can be either NULL, "INFO" (with minimum logs), or "DEBUG" 
-#'    (for complete curl http calls logs)
-#'  }
-#'  \item{\code{logger(type, text)}}{
-#'    Basic logger to report geonapi logs. Used internally
-#'  }
-#'  \item{\code{INFO(text)}}{
-#'    Logger to report information. Used internally
-#'  }
-#'  \item{\code{WARN(text)}}{
-#'    Logger to report warnings. Used internally
-#'  }
-#'  \item{\code{ERROR(text)}}{
-#'    Logger to report errors. Used internally
-#'  }
-#'  \item{\code{getUrl()}}{
-#'    Get the authentication URL
-#'  }
-#'  \item{\code{getLang()}}{
-#'    Get the service lang
-#'  }
-#'}
-#'
-#' @section Methods:
-#' \describe{
-#'  \item{\code{new(url, user, pwd, version, logger, keyring_backend)}}{
-#'    This method is used to instantiate a \code{GNOpenAPIManager} with the \code{url} of the
-#'    GeoNetwork and credentials to authenticate (\code{user}/\code{pwd}).
-#'    
-#'    The \code{keyring_backend} can be set to use a different backend for storing 
-#'    the Geonetwork password/token with \pkg{keyring} (Default value is 'env').
-#'    
-#'    The logger can be either NULL, "INFO" (with minimum logs), or "DEBUG" 
-#'    (for complete curl http calls logs)
-#'    
-#'  }
-#'  \item{\code{login(user, pwd)}}{
-#'    This methods attempts a connection to GeoNetwork REST API. User internally
-#'    during initialization of \code{GNLegacyAPIManager}.
-#'  }
-#'  \item{\code{getGroups()}}{
-#'    Retrieves the list of user groups available in Geonetwork
-#'  }
-#'  \item{\code{getTags()}}{
-#'    Retrieves the list of tags (categories) available in Geonetwork
-#'  }
-#'  \item{\code{getCategories()}}{
-#'    Same as \code{getTags()}
-#'  }
-#'  \item{\code{getMetadataByUUID(uuid)}}{
-#'    Get a metadata by UUID. Returns an object of class \code{ISOMetadata} (ISO 19115)
-#'    or \code{ISOFeatureCatalogue} (ISO 19110) (from \pkg{geometa} package)
-#'  }
-#'  \item{\code{insertRecord(xml, file, geometa, metadataType, uuidProcessing, 
-#'                             group, category, rejectIfInvalid, publishToAll,
-#'                             transformWith, schema, extra, 
-#'                             geometa_validate, geometa_inspire, geometa_inspireValidator)}}{
-#'    Inserts a record by file, XML object or \pkg{geometa} object of class \code{ISOMetadata} or \code{ISOFeatureCatalogue}. 
-#'    Extra parameters related to \pkg{geometa} objects: \code{geometa_validate} (TRUE by default) and \code{geometa_inspire} 
-#'    (FALSE by default) can be used to perform ISO and INSPIRE validation respectively. In that case on object of class 
-#'    \code{geometa::INSPIREMetadataValidator}, with a proper user API key, should be specified as \code{geometa_inspireValidator} 
-#'    argument.
-#'  }
-#'  \item{\code{insertMetadata(xml, file, geometa, metadataType, uuidProcessing, 
-#'                             group, category, rejectIfInvalid, publishToAll,
-#'                             transformWith, schema, extra, 
-#'                             geometa_validate, geometa_inspire, geometa_inspireValidator)}}{
-#'    Inserts a metadata by file, XML object or \pkg{geometa} object of class \code{ISOMetadata} or \code{ISOFeatureCatalogue}. 
-#'    Extra parameters related to \pkg{geometa} objects: \code{geometa_validate} (TRUE by default) and \code{geometa_inspire} 
-#'    (FALSE by default) can be used to perform ISO and INSPIRE validation respectively. In that case on object of class 
-#'    \code{geometa::INSPIREMetadataValidator}, with a proper user API key, should be specified as
-#'    \code{geometa_inspireValidator} argument.
-#'  }
-#'  \item{\code{updateMetadata(xml, file, geometa, metadataType, 
-#'                             group, category, rejectIfInvalid, publishToAll,
-#'                             transformWith, schema, extra, 
-#'                             geometa_validate, geometa_inspire, geometa_inspireValidator)}}{
-#'    Updates a metadata by file, XML object or \pkg{geometa} object of class
-#'    'ISOMetadata' or 'ISOFeatureCatalogue'. Extra parameters \code{geometa_validate} (TRUE 
-#'    by default) and \code{geometa_inspire} (FALSE by default) can be used with geometa objects 
-#'    for perform ISO and INSPIRE validation respectively. In that case on object of class 
-#'    \code{geometa::INSPIREMetadataValidator}, with a proper user API key, should be specified as
-#'    \code{geometa_inspireValidator} argument.
-#'  }
-#'  \item{\code{deleteMetadata(id, withBackup)}}{
-#'    Deletes a metadata
-#'  }
-#' }
 #' 
 #' @author Emmanuel Blondel <emmanuel.blondel1@@gmail.com>
 GNOpenAPIManager <- R6Class("GNOpenAPIManager",
@@ -119,7 +21,21 @@ GNOpenAPIManager <- R6Class("GNOpenAPIManager",
   private = list(),
   
   public = list(
-    #manager
+    
+    #'@description This method is used to instantiate a \code{GNOpenAPIManager} with the \code{url} of the
+    #'    GeoNetwork and credentials to authenticate (\code{user}/\code{pwd}).
+    #'    
+    #'    The \code{keyring_backend} can be set to use a different backend for storing 
+    #'    the Geonetwork password/token with \pkg{keyring} (Default value is 'env').
+    #'    
+    #'    The logger can be either NULL, "INFO" (with minimum logs), or "DEBUG" 
+    #'    (for complete curl http calls logs)
+    #'@param url url
+    #'@param user user
+    #'@param pwd pwd
+    #'@param version version
+    #'@param logger logger
+    #'@param keyring_backend keyring backend
     initialize = function(url, user = NULL, pwd = NULL, version, logger = NULL,
                           keyring_backend = 'env'){
       super$initialize(url, user = user, pwd = pwd, version = version, logger = logger,
@@ -139,8 +55,10 @@ GNOpenAPIManager <- R6Class("GNOpenAPIManager",
       }
     },
     
-    #login
-    #---------------------------------------------------------------------------
+    #'@description This methods attempts a connection to GeoNetwork REST API. User internally
+    #'    during initialization of \code{GNLegacyAPIManager}.
+    #'@param user user
+    #'@param pwd pwd   
     login = function(user, pwd){
       
       req <- GNUtils$POST(
@@ -194,8 +112,8 @@ GNOpenAPIManager <- R6Class("GNOpenAPIManager",
     },
     
     
-    #getGroups
-    #---------------------------------------------------------------------------
+    #'@description Retrieves the list of user groups available in Geonetwork
+    #'@return an object of class \code{data.frame}
     getGroups = function(){
       out <- NULL
       self$INFO("Getting user groups...")
@@ -224,8 +142,8 @@ GNOpenAPIManager <- R6Class("GNOpenAPIManager",
       return(out)
     },
     
-    #getTags
-    #---------------------------------------------------------------------------
+    #'@description Retrieves the list of tags (categories) available in Geonetwork
+    #'@return an object of class \code{data.frame}
     getTags = function(){
       out <- NULL
       self$INFO("Getting tags (categories)...")
@@ -257,14 +175,19 @@ GNOpenAPIManager <- R6Class("GNOpenAPIManager",
       return(out)
     },
     
-    #getCategories
-    #---------------------------------------------------------------------------
+    #'@description Retrieves the list of categories (same as tags) available in Geonetwork
+    #'@return an object of class \code{data.frame}
     getCategories = function(){
       return(self$getTags())
     },
     
-    #getMetadataByUUID
-    #---------------------------------------------------------------------------
+    #'@description Get a metadata by UUID.
+    #'@param uuid uuid
+    #'@param addSchemaLocation add schema location. Default is \code{TRUE}
+    #'@param increasePopularity increase popularity. Default is \code{TRUE}
+    #'@param approved approved
+    #'@return Returns an object of class \code{ISOMetadata} (ISO 19115)
+    #' or \code{ISOFeatureCatalogue} (ISO 19110) (from \pkg{geometa} package)
     getMetadataByUUID = function(uuid, 
                                  addSchemaLocation = TRUE, increasePopularity = TRUE, approved = TRUE){
       addSchemaLocation <- tolower(as.character(addSchemaLocation))
@@ -303,8 +226,26 @@ GNOpenAPIManager <- R6Class("GNOpenAPIManager",
     },
     
     
-    #insertRecord
-    #---------------------------------------------------------------------------
+    #'@description Inserts a record by file, XML object or \pkg{geometa} object of class \code{ISOMetadata} or \code{ISOFeatureCatalogue}. 
+    #'    Extra parameters related to \pkg{geometa} objects: \code{geometa_validate} (TRUE by default) and \code{geometa_inspire} 
+    #'    (FALSE by default) can be used to perform ISO and INSPIRE validation respectively. In that case on object of class 
+    #'    \code{geometa::INSPIREMetadataValidator}, with a proper user API key, should be specified as \code{geometa_inspireValidator} 
+    #'    argument.
+    #'@param xml object of class \link{XMLInternalNode-class} from \pkg{XML}
+    #'@param file file
+    #'@param geometa geometa object of class \code{ISOMetadata} or \code{ISOFeatureCatalogue}
+    #'@param metadataType metadata type. By default \code{METADATA}
+    #'@param uuidProcessing UUID processing. By default \code{NOTHING}. Other possible value: \code{OVERWRITE}
+    #'@param group group
+    #'@param category category
+    #'@param rejectIfInvalid reject if invalid. Default \code{FALSE}
+    #'@param publishToAll publish to all. Default \code{TRUE}
+    #'@param transformWith transform with. Default is \code{_none_}
+    #'@param schema schema
+    #'@param extra extra
+    #'@param geometa_validate validate geometa object
+    #'@param geometa_inspire validate geometa object vs. INSPIRE
+    #'@param geometa_inspireValidator geometa INSPIRE validator to use 
     insertRecord = function(xml = NULL, file = NULL, geometa = NULL,
                             metadataType = "METADATA", uuidProcessing = "NOTHING", 
                             group, category = NULL, rejectIfInvalid = FALSE, publishToAll = TRUE,
@@ -392,8 +333,26 @@ GNOpenAPIManager <- R6Class("GNOpenAPIManager",
       return(out)
     },
     
-    #insertMetadata
-    #---------------------------------------------------------------------------
+    #'@description Inserts a metadata by file, XML object or \pkg{geometa} object of class \code{ISOMetadata} or \code{ISOFeatureCatalogue}. 
+    #'    Extra parameters related to \pkg{geometa} objects: \code{geometa_validate} (TRUE by default) and \code{geometa_inspire} 
+    #'    (FALSE by default) can be used to perform ISO and INSPIRE validation respectively. In that case on object of class 
+    #'    \code{geometa::INSPIREMetadataValidator}, with a proper user API key, should be specified as
+    #'    \code{geometa_inspireValidator} argument.
+    #'@param xml object of class \link{XMLInternalNode-class} from \pkg{XML}
+    #'@param file file
+    #'@param geometa geometa object of class \code{ISOMetadata} or \code{ISOFeatureCatalogue}
+    #'@param metadataType metadata type. By default \code{METADATA}
+    #'@param uuidProcessing UUID processing. By default \code{NOTHING}. Other possible value: \code{OVERWRITE}
+    #'@param group group
+    #'@param category category
+    #'@param rejectIfInvalid reject if invalid. Default \code{FALSE}
+    #'@param publishToAll publish to all. Default \code{TRUE}
+    #'@param transformWith transform with. Default is \code{_none_}
+    #'@param schema schema
+    #'@param extra extra
+    #'@param geometa_validate validate geometa object
+    #'@param geometa_inspire validate geometa object vs. INSPIRE
+    #'@param geometa_inspireValidator geometa INSPIRE validator to use 
     insertMetadata = function(xml = NULL, file = NULL, geometa = NULL,
                               metadataType = "METADATA", uuidProcessing = "NOTHING", 
                               group, category = NULL, rejectIfInvalid = FALSE, publishToAll = TRUE,
@@ -408,8 +367,25 @@ GNOpenAPIManager <- R6Class("GNOpenAPIManager",
                         geometa_inspire = geometa_inspire, geometa_inspireValidator = geometa_inspireValidator)
     },
     
-    #updateMetadata
-    #---------------------------------------------------------------------------
+    #'@description Inserts a metadata by file, XML object or \pkg{geometa} object of class \code{ISOMetadata} or \code{ISOFeatureCatalogue}. 
+    #'    Extra parameters related to \pkg{geometa} objects: \code{geometa_validate} (TRUE by default) and \code{geometa_inspire} 
+    #'    (FALSE by default) can be used to perform ISO and INSPIRE validation respectively. In that case on object of class 
+    #'    \code{geometa::INSPIREMetadataValidator}, with a proper user API key, should be specified as
+    #'    \code{geometa_inspireValidator} argument.
+    #'@param xml object of class \link{XMLInternalNode-class} from \pkg{XML}
+    #'@param file file
+    #'@param geometa geometa object of class \code{ISOMetadata} or \code{ISOFeatureCatalogue}
+    #'@param metadataType metadata type. By default \code{METADATA}
+    #'@param group group
+    #'@param category category
+    #'@param rejectIfInvalid reject if invalid. Default \code{FALSE}
+    #'@param publishToAll publish to all. Default \code{TRUE}
+    #'@param transformWith transform with. Default is \code{_none_}
+    #'@param schema schema
+    #'@param extra extra
+    #'@param geometa_validate validate geometa object
+    #'@param geometa_inspire validate geometa object vs. INSPIRE
+    #'@param geometa_inspireValidator geometa INSPIRE validator to use 
     updateMetadata = function(xml = NULL, file = NULL, geometa = NULL,
                               metadataType = "METADATA",
                               group, category = NULL, rejectIfInvalid = FALSE, publishToAll = TRUE,
@@ -424,8 +400,9 @@ GNOpenAPIManager <- R6Class("GNOpenAPIManager",
                           geometa_inspire = geometa_inspire, geometa_inspireValidator = geometa_inspireValidator)
     },
     
-    #deleteMetadata
-    #---------------------------------------------------------------------------
+    #'@description Deletes a metadata by ID
+    #'@param id id
+    #'@param withBackup proceed with backup. Default is \code{TRUE}
     deleteMetadata = function(id, withBackup = TRUE){
       self$INFO(sprintf("Deleting metadata id = %s ...", id))
       out <- NULL

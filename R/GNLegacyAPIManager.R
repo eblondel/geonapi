@@ -14,110 +14,6 @@
 #' \dontrun{
 #'    GNLegacyAPIManager$new("http://localhost:8080/geonetwork", "admin", "geonetwork", "3.0.0")
 #' }
-#'
-#'@section Abstract Methods:
-#' \describe{
-#'  \item{\code{new(url, user, pwd, version, logger, keyring_backend)}}{
-#'    This method is used to instantiate a GNLegacyAPIManager with the \code{url} of the
-#'    GeoNetwork and credentials to authenticate (\code{user}/\code{pwd}).
-#'    
-#'    The \code{keyring_backend} can be set to use a different backend for storing 
-#'    the Geonetwork password/token with \pkg{keyring} (Default value is 'env').
-#'    
-#'    The logger can be either NULL, "INFO" (with minimum logs), or "DEBUG" 
-#'    (for complete curl http calls logs)
-#'  }
-#'  \item{\code{logger(type, text)}}{
-#'    Basic logger to report geonapi logs. Used internally
-#'  }
-#'  \item{\code{INFO(text)}}{
-#'    Logger to report information. Used internally
-#'  }
-#'  \item{\code{WARN(text)}}{
-#'    Logger to report warnings. Used internally
-#'  }
-#'  \item{\code{ERROR(text)}}{
-#'    Logger to report errors. Used internally
-#'  }
-#'  \item{\code{getUrl()}}{
-#'    Get the authentication URL
-#'  }
-#'  \item{\code{getLang()}}{
-#'    Get the service lang
-#'  }
-#'}
-#'
-#' @section Methods:
-#' \describe{
-#'  \item{\code{new(url, user, pwd, version, logger, keyring_backend)}}{
-#'    This method is used to instantiate a GNLegacyAPIManager with the \code{url} of the
-#'    GeoNetwork and credentials to authenticate (\code{user}/\code{pwd}).
-#'    
-#'    The \code{keyring_backend} can be set to use a different backend for storing 
-#'    the Geonetwork password/token with \pkg{keyring} (Default value is 'env').
-#'    
-#'    The logger can be either NULL, "INFO" (with minimum logs), or "DEBUG" 
-#'    (for complete curl http calls logs)
-#'  }
-#'  \item{\code{login(user, pwd)}}{
-#'    This methods attempts a connection to GeoNetwork REST API. User internally
-#'    during initialization of \code{GNLegacyAPIManager}.
-#'  }
-#'  \item{\code{getGroups()}}{
-#'    Retrieves the list of user groups available in Geonetwork
-#'  }
-#'  \item{\code{getCategories()}}{
-#'    Retrieves the list of categories available in Geonetwork
-#'  }
-#'  \item{\code{insertMetadata(xml, file, geometa, group, category, stylesheet, validate, geometa_validate, 
-#'                             geometa_inspire, geometa_inspireValidator)}}{
-#'    Inserts a metadata by file, XML object or \pkg{geometa} object of class
-#'    \code{ISOMetadata} or \code{ISOFeatureCatalogue}. If successful, returns the Geonetwork
-#'    metadata internal identifier (integer). Extra parameters \code{geometa_validate} (TRUE 
-#'    by default) and \code{geometa_inspire} (FALSE by default) can be used with geometa objects 
-#'    for perform ISO and INSPIRE validation respectively. In that case on object of class 
-#'    \code{geometa::INSPIREMetadataValidator}, with a proper user API key, should be specified as
-#'    \code{geometa_inspireValidator} argument. 
-#'  }
-#'  \item{\code{setPrivConfiguration(id, config)}}{
-#'    Set the privilege configuration for a metadata. 'id' is the metadata integer id.
-#'    'config' is an object of class "GNPrivConfiguration".
-#'  }
-#'  \item{\code{get(id, by, output)}}{
-#'    Generic getter for metadata. Possible values for by are 'id', 'uuid'. Used
-#'    internally only. The 'output' argument gives the type of output to return,
-#'    with possible values "id", "metadata", "info".
-#'  }
-#'  \item{\code{getMetadataByID(id)}}{
-#'    Get a metadata by Id. Returns an object of class \code{ISOMetadata} (ISO 19115)
-#'    or \code{ISOFeatureCatalogue} (ISO 19110) (from \pkg{geometa} package)
-#'  }
-#'  \item{\code{getMetadataByUUID(uuid)}}{
-#'    Get a metadata by UUID. Returns an object of class \code{ISOMetadata} (ISO 19115)
-#'    or \code{ISOFeatureCatalogue} (ISO 19110) (from \pkg{geometa} package)
-#'  }
-#'  \item{\code{getInfoByID(id)}}{
-#'    Get a metadata Info by Id. Returns an XML document object
-#'  }
-#'  \item{\code{getInfoByUUID(uuid)}}{
-#'    Get a metadata Info by UUID. Returns an XML document object
-#'  }
-#'  \item{\code{updateMetadata(id, xml, file, geometa, geometa_validate, 
-#'                             geometa_inspire, geometa_inspireValidator)}}{
-#'    Updates a metadata by file, XML object or \pkg{geometa} object of class
-#'    'ISOMetadata' or 'ISOFeatureCatalogue'. Extra parameters \code{geometa_validate} (TRUE 
-#'    by default) and \code{geometa_inspire} (FALSE by default) can be used with geometa objects 
-#'    for perform ISO and INSPIRE validation respectively. In that case on object of class 
-#'    \code{geometa::INSPIREMetadataValidator}, with a proper user API key, should be specified as
-#'    \code{geometa_inspireValidator} argument. 
-#'  }
-#'  \item{\code{deleteMetadata(id)}}{
-#'    Deletes a metadata
-#'  }
-#'  \item{\code{deleteMetadataAll()}}{
-#'    Deletes all metadata for which the authenticated user is owner
-#'  }
-#' }
 #' 
 #' @author Emmanuel Blondel <emmanuel.blondel1@@gmail.com>
 GNLegacyAPIManager <- R6Class("GNLegacyAPIManager",
@@ -157,7 +53,20 @@ GNLegacyAPIManager <- R6Class("GNLegacyAPIManager",
    ),
    
    public = list(
-     #manager
+     #'@description This method is used to instantiate a GNLegacyAPIManager with the \code{url} of the
+     #'    GeoNetwork and credentials to authenticate (\code{user}/\code{pwd}).
+     #'    
+     #'    The \code{keyring_backend} can be set to use a different backend for storing 
+     #'    the Geonetwork password/token with \pkg{keyring} (Default value is 'env').
+     #'    
+     #'    The logger can be either NULL, "INFO" (with minimum logs), or "DEBUG" 
+     #'    (for complete curl http calls logs)
+     #' @param url url
+     #' @param user user
+     #' @param pwd pwd
+     #' @param version version
+     #' @param logger logger
+     #' @param keyring_backend keyring backend. Default is 'env'
      initialize = function(url, user = NULL, pwd = NULL, version, logger = NULL,
                            keyring_backend = 'env'){
        super$initialize(url, user = user, pwd = pwd, version = version, logger = logger,
@@ -182,8 +91,10 @@ GNLegacyAPIManager <- R6Class("GNLegacyAPIManager",
        }
      },
      
-     #login
-     #---------------------------------------------------------------------------
+     #'@description #'    This methods attempts a connection to GeoNetwork REST API. User internally
+     #'    during initialization of \code{GNLegacyAPIManager}.
+     #'@param user user
+     #'@param pwd pwd
      login = function(user, pwd){
        
        req <- NULL
@@ -250,8 +161,8 @@ GNLegacyAPIManager <- R6Class("GNLegacyAPIManager",
        return(TRUE)
      },
      
-     #getGroups
-     #---------------------------------------------------------------------------
+     #'@description Retrieves the list of user groups available in Geonetwork
+     #'@return an object of class \code{data.frame}
      getGroups = function(){
        out <- NULL
        self$INFO("Getting user groups...")
@@ -282,8 +193,8 @@ GNLegacyAPIManager <- R6Class("GNLegacyAPIManager",
        return(out)
      },
      
-     #getCategories
-     #---------------------------------------------------------------------------
+     #'@description Retrieves the list of categories available in Geonetwork
+     #'@return an object of class \code{data.frame}
      getCategories = function(){
         out <- NULL
         self$INFO("Getting categories...")
@@ -320,8 +231,23 @@ GNLegacyAPIManager <- R6Class("GNLegacyAPIManager",
         return(out)
      },
      
-     #insertMetadata
-     #---------------------------------------------------------------------------
+     #'@description Inserts a metadata by file, XML object or \pkg{geometa} object of class
+     #'    \code{ISOMetadata} or \code{ISOFeatureCatalogue}. If successful, returns the Geonetwork
+     #'    metadata internal identifier (integer). Extra parameters \code{geometa_validate} (TRUE 
+     #'    by default) and \code{geometa_inspire} (FALSE by default) can be used with geometa objects 
+     #'    for perform ISO and INSPIRE validation respectively. In that case on object of class 
+     #'    \code{geometa::INSPIREMetadataValidator}, with a proper user API key, should be specified as
+     #'    \code{geometa_inspireValidator} argument. 
+     #' @param xml xml object of class \link{XMLInternalNode-class} from \pkg{XML}
+     #' @param file file
+     #' @param geometa geometa, object of class \code{ISOMetadata} or \code{ISOFeatureCatalogue} from \pkg{geometa}
+     #' @param group group
+     #' @param category category
+     #' @param stylesheet stylesheet
+     #' @param validate validate
+     #' @param geometa_validate validate geometa object
+     #' @param geometa_inspire validate geometa object vs. INSPIRE
+     #' @param geometa_inspireValidator geometa INSPIRE validator to use
      insertMetadata = function(xml = NULL, file = NULL, geometa = NULL, group,
                                category = NULL, stylesheet = NULL, validate = FALSE,
                                geometa_validate = TRUE, geometa_inspire = FALSE, geometa_inspireValidator = NULL){
@@ -382,8 +308,10 @@ GNLegacyAPIManager <- R6Class("GNLegacyAPIManager",
        return(out)
      },
      
-     #setPrivConfiguration
-     #---------------------------------------------------------------------------
+     #'@description Set the privilege configuration for a metadata. 'id' is the metadata integer id.
+     #'    'config' is an object of class "GNPrivConfiguration".
+     #'@param id id
+     #'@param config config
      setPrivConfiguration = function(id, config){
        self$INFO(sprintf("Setting privileges for metadata id = %s", id))
        out <- FALSE
@@ -424,8 +352,12 @@ GNLegacyAPIManager <- R6Class("GNLegacyAPIManager",
      },
      
      
-     #get
-     #---------------------------------------------------------------------------
+     #'@description Generic getter for metadata. Possible values for by are 'id', 'uuid'. Used
+     #'    internally only. The 'output' argument gives the type of output to return,
+     #'    with possible values "id", "metadata", "info".
+     #'@param id id
+     #'@param by by
+     #'@param output output
      get = function(id, by, output){
        allowedByValues <- c("id","uuid")
        if(!(by %in% allowedByValues)){
@@ -484,32 +416,49 @@ GNLegacyAPIManager <- R6Class("GNLegacyAPIManager",
        return(out)
      },
      
-     #getMetadataByID
-     #---------------------------------------------------------------------------
+     #'@description Get a metadata by Id
+     #'@param id id
+     #'@return an object of class \code{ISOMetadata} (ISO 19115) or \code{ISOFeatureCatalogue} 
+     #' (ISO 19110) (from \pkg{geometa} package)
      getMetadataByID = function(id){
        return(self$get(id, by = "id", output = "metadata")) 
      },
      
-     #getMetadataByUUID
-     #---------------------------------------------------------------------------
+     #'@description Get a metadata by UUID
+     #'@param uuid uuid
+     #'@return an object of class \code{ISOMetadata} (ISO 19115) or \code{ISOFeatureCatalogue} 
+     #' (ISO 19110) (from \pkg{geometa} package)
      getMetadataByUUID = function(uuid){
        return(self$get(uuid, by = "uuid", output = "metadata")) 
      },
      
-     #getInfoByID
-     #---------------------------------------------------------------------------
+     #'@description Get a metadata Info by Id.
+     #'@param id id
+     #'@return an XML document object
      getInfoByID = function(id){
        return(self$get(id, by = "id", output = "info")) 
      },
      
-     #getInfoByUUID
-     #---------------------------------------------------------------------------
+     #'@description Get a metadata Info by UUID
+     #'@param uuid uuid
+     #'@return an XML document object
      getInfoByUUID = function(uuid){
        return(self$get(uuid, by = "uuid", output = "info")) 
      },
      
-     #updateMetadata
-     #---------------------------------------------------------------------------
+     #'@description Updates a metadata by file, XML object or \pkg{geometa} object of class
+     #'    'ISOMetadata' or 'ISOFeatureCatalogue'. Extra parameters \code{geometa_validate} (TRUE 
+     #'    by default) and \code{geometa_inspire} (FALSE by default) can be used with geometa objects 
+     #'    for perform ISO and INSPIRE validation respectively. In that case on object of class 
+     #'    \code{geometa::INSPIREMetadataValidator}, with a proper user API key, should be specified as
+     #'    \code{geometa_inspireValidator} argument. 
+     #' @param id metadata id
+     #' @param xml xml object of class \link{XMLInternalNode-class} from \pkg{XML}
+     #' @param file file
+     #' @param geometa geometa, object of class \code{ISOMetadata} or \code{ISOFeatureCatalogue} from \pkg{geometa}
+     #' @param geometa_validate validate geometa object
+     #' @param geometa_inspire validate geometa object vs. INSPIRE
+     #' @param geometa_inspireValidator geometa INSPIRE validator to use
      updateMetadata = function(id, xml = NULL, file = NULL, geometa = NULL,
                                geometa_validate = TRUE, geometa_inspire = FALSE, geometa_inspireValidator = NULL){
        
@@ -574,8 +523,9 @@ GNLegacyAPIManager <- R6Class("GNLegacyAPIManager",
        
      },
      
-     #deleteMetadata
-     #---------------------------------------------------------------------------
+     #'@description Deletes metadata by Id.
+     #'@param id id
+     #'@return the id of the record deleted, \code{NULL} otherwise
      deleteMetadata = function(id){
        self$INFO(sprintf("Deleting metadata id = %s ...", id))
        out <- NULL
@@ -601,8 +551,7 @@ GNLegacyAPIManager <- R6Class("GNLegacyAPIManager",
        return(out)
      },
      
-     #deleteMetadataAll
-     #---------------------------------------------------------------------------
+     #'@description Deletes all metadata
      deleteMetadataAll = function(){
        self$INFO("Deleting all owned metadata...")
        

@@ -16,22 +16,6 @@
 #' version <- GNVersion$new("2.6.4")
 #' }
 #' 
-#' @section Methods:
-#' \describe{
-#'  \item{\code{new(version)}}{
-#'    This method is used to instantiate a GNVersion object.
-#'  }
-#'  \item{\code{lowerThan(version)}}{
-#'    Compares to a version and returns TRUE if it is lower, FALSE otherwise
-#'  }
-#'  \item{\code{greaterThan(version)}}{
-#'    Compares to a version and returns TRUE if it is greater, FALSE otherwise
-#'  }
-#'  \item{\code{equalTo(version)}}{
-#'    Compares to a version and returns TRUE if it is equal, FALSE otherwise
-#'  }
-#' }
-#' 
 #' @author Emmanuel Blondel <emmanuel.blondel1@@gmail.com>
 #'
 GNVersion <- R6Class("GNVersion", 
@@ -52,8 +36,12 @@ GNVersion <- R6Class("GNVersion",
    ),
    
    public = list(
+     #'@field version version
      version = NULL,
+     #'@field value value
      value = NULL,
+     #'@description Initializes an object of class \link{GNVersion}
+     #'@param version version
      initialize = function(version){ 
        value <- private$getVersionValue(version)
        if(is.list(value)){
@@ -62,8 +50,9 @@ GNVersion <- R6Class("GNVersion",
        }
      },
      
-     #lowerThan
-     #---------------------------------------------------------------------------
+     #'@description  Compares to a version and returns TRUE if it is lower, FALSE otherwise
+     #'@param version version
+     #'@return \code{TRUE} if lower, \code{FALSE} otherwise
      lowerThan = function(version){
        lower <- FALSE
        if(is.character(version)){
@@ -81,8 +70,9 @@ GNVersion <- R6Class("GNVersion",
        return(lower)
      },
      
-     #greaterThan
-     #---------------------------------------------------------------------------
+     #'@description  Compares to a version and returns TRUE if it is greater, FALSE otherwise
+     #'@param version version
+     #'@return \code{TRUE} if lower, \code{FALSE} otherwise
      greaterThan = function(version){
        greater <- FALSE
        if(is.character(version)){
@@ -100,8 +90,9 @@ GNVersion <- R6Class("GNVersion",
        return(greater)
      },
      
-     #equalTo
-     #---------------------------------------------------------------------------
+     #'@description  Compares to a version and returns TRUE if it is equal, FALSE otherwise
+     #'@param version version
+     #'@return \code{TRUE} if lower, \code{FALSE} otherwise
      equalTo = function(version){
        equal <- FALSE
        if(is.character(version)){

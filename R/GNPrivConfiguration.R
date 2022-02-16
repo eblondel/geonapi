@@ -17,27 +17,21 @@
 #'  pcfg$setPrivileges("all", c("view","dynamic","featured"))
 #' }
 #' 
-#' @section Methods:
-#' \describe{
-#'  \item{\code{new()}}{
-#'    This method is used to instantiate a GNPrivConfiguration object.
-#'  }
-#'  \item{\code{setPrivileges(group, privileges)}}{
-#'    Sets the operation privileges for a particular group. Allowed group values
-#'    are "guest","intranet" and "all". Allowed values for operation privileges
-#'    are "view", "download", "editing", "notify", "dynamic" and "featured".
-#'  }
-#' }
-#' 
 #' @author Emmanuel Blondel <emmanuel.blondel1@@gmail.com>
 #'
 GNPrivConfiguration <- R6Class("GNPrivConfiguration",
    public = list(
+     #'@field privileges privileges
      privileges = list(),
+     
+     #'@description Initializes an object of class \link{GNPrivConfiguration}
      initialize = function(){},
      
-     #setPrivileges
-     #--------------------------------------------------------------------------
+     #'@description  Sets the operation privileges for a particular group. Allowed group values
+     #'    are "guest","intranet" and "all". Allowed values for operation privileges
+     #'    are "view", "download", "editing", "notify", "dynamic" and "featured".
+     #'@param group group
+     #'@param privileges privileges
      setPrivileges = function(group, privileges){
        priv <- GNPriv$new(group = group, privileges = privileges)
        groupValues <- sapply(self$privileges, function(x){return(x$group)})

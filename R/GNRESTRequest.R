@@ -6,19 +6,6 @@
 #' @keywords geonetwork rest api
 #' @return Object of \code{\link{R6Class}} for modelling a GeoNetwork REST request
 #' @format \code{\link{R6Class}} object.
-#'
-#' @section Abstract Methods:
-#' \describe{
-#'  \item{\code{new()}}{
-#'    This method is used to instantiate a GNRESTRequest
-#'  }
-#'  \item{\code{setChild(key,value)}}{
-#'    Sets a child element
-#'  }
-#'  \item{\code{encode()}}{
-#'    Encodes a GNRESTRequest R6 object to XML representation
-#'  }
-#' }
 #' 
 #' @author Emmanuel Blondel <emmanuel.blondel1@@gmail.com>
 #'
@@ -86,17 +73,26 @@ GNRESTRequest <- R6Class("GNRESTRequest",
     }
   ),
   public = list(
+    #'@field rootName root name
     rootName = NULL,
+    #'@field children children
     children = list(),
+    #'@description Initializes a \link{GNRESTRequest}
+    #'@param ... any parameter to pass to the request
     initialize = function(...){
       self$rootName = "request"
       self$children = list(...)
     },
     
+    #'@description Set child
+    #'@param key key
+    #'@param value value
     setChild = function(key, value){
       self$children[[key]] <- value
     },
     
+    #'@description Encodes request as XML
+    #'@return an object of class \code{character} representing the XML
     encode = function(){
       rootXML <- xmlOutputDOM("request")
       for(childName in names(self$children)){

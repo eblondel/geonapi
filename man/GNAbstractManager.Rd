@@ -13,15 +13,23 @@ the REST API of a GeoNetwork instance.
 }
 \description{
 GNAbstractManager
+
+GNAbstractManager
 }
-\section{Fields}{
-
+\author{
+Emmanuel Blondel <emmanuel.blondel1@gmail.com>
+}
+\keyword{api}
+\keyword{geonetwork}
+\keyword{rest}
+\section{Public fields}{
+\if{html}{\out{<div class="r6-fields">}}
 \describe{
+\item{\code{verbose.info}}{If package info log messages have to be printed out}
+
+\item{\code{verbose.debug}}{If curl debug log messages have to be printed out}
+
 \item{\code{loggerType}}{the type of logger}
-
-\item{\code{verbose.info}}{if geosapi logs have to be printed}
-
-\item{\code{verbose.debug}}{if curl logs have to be printed}
 
 \item{\code{url}}{the Base url of GeoNetwork}
 
@@ -29,14 +37,100 @@ GNAbstractManager
 
 \item{\code{lang}}{the language for Geonetwork service. Default is \code{eng}}
 
-\item{\code{user}}{the user name}
-}}
-
+\item{\code{basicAuth}}{if basic auth is performed}
+}
+\if{html}{\out{</div>}}
+}
 \section{Methods}{
+\subsection{Public methods}{
+\itemize{
+\item \href{#method-logger}{\code{GNAbstractManager$logger()}}
+\item \href{#method-INFO}{\code{GNAbstractManager$INFO()}}
+\item \href{#method-WARN}{\code{GNAbstractManager$WARN()}}
+\item \href{#method-ERROR}{\code{GNAbstractManager$ERROR()}}
+\item \href{#method-new}{\code{GNAbstractManager$new()}}
+\item \href{#method-getUrl}{\code{GNAbstractManager$getUrl()}}
+\item \href{#method-getLang}{\code{GNAbstractManager$getLang()}}
+\item \href{#method-login}{\code{GNAbstractManager$login()}}
+\item \href{#method-getClassName}{\code{GNAbstractManager$getClassName()}}
+\item \href{#method-clone}{\code{GNAbstractManager$clone()}}
+}
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-logger"></a>}}
+\if{latex}{\out{\hypertarget{method-logger}{}}}
+\subsection{Method \code{logger()}}{
+Provides log messages
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{GNAbstractManager$logger(type, text)}\if{html}{\out{</div>}}
+}
 
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
 \describe{
- \item{\code{new(url, user, pwd, version, logger, keyring_backend)}}{
-   This method is used to instantiate a GNManager with the \code{url} of the
+\item{\code{type}}{type of log ("INFO", "WARN", "ERROR")}
+
+\item{\code{text}}{the log message text}
+}
+\if{html}{\out{</div>}}
+}
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-INFO"></a>}}
+\if{latex}{\out{\hypertarget{method-INFO}{}}}
+\subsection{Method \code{INFO()}}{
+Provides INFO log messages
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{GNAbstractManager$INFO(text)}\if{html}{\out{</div>}}
+}
+
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{text}}{the log message text}
+}
+\if{html}{\out{</div>}}
+}
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-WARN"></a>}}
+\if{latex}{\out{\hypertarget{method-WARN}{}}}
+\subsection{Method \code{WARN()}}{
+Provides WARN log messages
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{GNAbstractManager$WARN(text)}\if{html}{\out{</div>}}
+}
+
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{text}}{the log message text}
+}
+\if{html}{\out{</div>}}
+}
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-ERROR"></a>}}
+\if{latex}{\out{\hypertarget{method-ERROR}{}}}
+\subsection{Method \code{ERROR()}}{
+Provides ERROR log messages
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{GNAbstractManager$ERROR(text)}\if{html}{\out{</div>}}
+}
+
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{text}}{the log message text}
+}
+\if{html}{\out{</div>}}
+}
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-new"></a>}}
+\if{latex}{\out{\hypertarget{method-new}{}}}
+\subsection{Method \code{new()}}{
+This method is used to instantiate a \link{GNAbstractManager} with the \code{url} of the
    GeoNetwork and credentials to authenticate (\code{user}/\code{pwd}). By default,
    the \code{logger} argument will be set to \code{NULL} (no logger).
    
@@ -45,38 +139,109 @@ GNAbstractManager
    
    The logger can be either NULL, "INFO" (with minimum logs), or "DEBUG" 
    (for complete curl http calls logs)
- }
- \item{\code{logger(type, text)}}{
-   Basic logger to report geonapi logs. Used internally
- }
- \item{\code{INFO(text)}}{
-   Logger to report information. Used internally
- }
- \item{\code{WARN(text)}}{
-   Logger to report warnings. Used internally
- }
- \item{\code{ERROR(text)}}{
-   Logger to report errors. Used internally
- }
- \item{\code{getUrl()}}{
-   Get the authentication URL
- }
- \item{\code{getLang()}}{
-   Get the service lang
- }
- \item{\code{login(user, pwd)}}{
-   This methods (here abstract) attempts a connection to GeoNetwork API. Used internally
-   by subclass of \code{GNAbstractManager} to login Geonetwork.
- }
- \item{\code{getClassName()}}{
-   Retrieves the name of the class instance
- }
-}
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{GNAbstractManager$new(
+  url,
+  user = NULL,
+  pwd = NULL,
+  version,
+  logger = NULL,
+  keyring_backend = "env"
+)}\if{html}{\out{</div>}}
 }
 
-\author{
-Emmanuel Blondel <emmanuel.blondel1@gmail.com>
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{url}}{url}
+
+\item{\code{user}}{user}
+
+\item{\code{pwd}}{pwd}
+
+\item{\code{version}}{version}
+
+\item{\code{logger}}{logger}
+
+\item{\code{keyring_backend}}{keyring backend. Default is 'env'}
 }
-\keyword{api}
-\keyword{geonetwork}
-\keyword{rest}
+\if{html}{\out{</div>}}
+}
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-getUrl"></a>}}
+\if{latex}{\out{\hypertarget{method-getUrl}{}}}
+\subsection{Method \code{getUrl()}}{
+Get URL
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{GNAbstractManager$getUrl()}\if{html}{\out{</div>}}
+}
+
+\subsection{Returns}{
+an object of class \code{character}
+}
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-getLang"></a>}}
+\if{latex}{\out{\hypertarget{method-getLang}{}}}
+\subsection{Method \code{getLang()}}{
+Get service language
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{GNAbstractManager$getLang()}\if{html}{\out{</div>}}
+}
+
+\subsection{Returns}{
+an object of class \code{character}
+}
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-login"></a>}}
+\if{latex}{\out{\hypertarget{method-login}{}}}
+\subsection{Method \code{login()}}{
+Log-ins. This methods (here abstract) attempts a connection to GeoNetwork API. Used internally
+ by subclasses of \link{GNAbstractManager} to login Geonetwork.
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{GNAbstractManager$login(user, pwd)}\if{html}{\out{</div>}}
+}
+
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{user}}{user}
+
+\item{\code{pwd}}{pwd}
+}
+\if{html}{\out{</div>}}
+}
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-getClassName"></a>}}
+\if{latex}{\out{\hypertarget{method-getClassName}{}}}
+\subsection{Method \code{getClassName()}}{
+Get class name
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{GNAbstractManager$getClassName()}\if{html}{\out{</div>}}
+}
+
+\subsection{Returns}{
+an object of class \code{character}
+}
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-clone"></a>}}
+\if{latex}{\out{\hypertarget{method-clone}{}}}
+\subsection{Method \code{clone()}}{
+The objects of this class are cloneable with this method.
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{GNAbstractManager$clone(deep = FALSE)}\if{html}{\out{</div>}}
+}
+
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{deep}}{Whether to make a deep clone.}
+}
+\if{html}{\out{</div>}}
+}
+}
+}

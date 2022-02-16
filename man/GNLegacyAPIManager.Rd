@@ -13,115 +13,9 @@ the REST API of a GeoNetwork instance using the legacy API.
 }
 \description{
 GNLegacyAPIManager
-}
-\section{Abstract Methods}{
 
-\describe{
- \item{\code{new(url, user, pwd, version, logger, keyring_backend)}}{
-   This method is used to instantiate a GNLegacyAPIManager with the \code{url} of the
-   GeoNetwork and credentials to authenticate (\code{user}/\code{pwd}).
-   
-   The \code{keyring_backend} can be set to use a different backend for storing 
-   the Geonetwork password/token with \pkg{keyring} (Default value is 'env').
-   
-   The logger can be either NULL, "INFO" (with minimum logs), or "DEBUG" 
-   (for complete curl http calls logs)
- }
- \item{\code{logger(type, text)}}{
-   Basic logger to report geonapi logs. Used internally
- }
- \item{\code{INFO(text)}}{
-   Logger to report information. Used internally
- }
- \item{\code{WARN(text)}}{
-   Logger to report warnings. Used internally
- }
- \item{\code{ERROR(text)}}{
-   Logger to report errors. Used internally
- }
- \item{\code{getUrl()}}{
-   Get the authentication URL
- }
- \item{\code{getLang()}}{
-   Get the service lang
- }
+GNLegacyAPIManager
 }
-}
-
-\section{Methods}{
-
-\describe{
- \item{\code{new(url, user, pwd, version, logger, keyring_backend)}}{
-   This method is used to instantiate a GNLegacyAPIManager with the \code{url} of the
-   GeoNetwork and credentials to authenticate (\code{user}/\code{pwd}).
-   
-   The \code{keyring_backend} can be set to use a different backend for storing 
-   the Geonetwork password/token with \pkg{keyring} (Default value is 'env').
-   
-   The logger can be either NULL, "INFO" (with minimum logs), or "DEBUG" 
-   (for complete curl http calls logs)
- }
- \item{\code{login(user, pwd)}}{
-   This methods attempts a connection to GeoNetwork REST API. User internally
-   during initialization of \code{GNLegacyAPIManager}.
- }
- \item{\code{getGroups()}}{
-   Retrieves the list of user groups available in Geonetwork
- }
- \item{\code{getCategories()}}{
-   Retrieves the list of categories available in Geonetwork
- }
- \item{\code{insertMetadata(xml, file, geometa, group, category, stylesheet, validate, geometa_validate, 
-                            geometa_inspire, geometa_inspireValidator)}}{
-   Inserts a metadata by file, XML object or \pkg{geometa} object of class
-   \code{ISOMetadata} or \code{ISOFeatureCatalogue}. If successful, returns the Geonetwork
-   metadata internal identifier (integer). Extra parameters \code{geometa_validate} (TRUE 
-   by default) and \code{geometa_inspire} (FALSE by default) can be used with geometa objects 
-   for perform ISO and INSPIRE validation respectively. In that case on object of class 
-   \code{geometa::INSPIREMetadataValidator}, with a proper user API key, should be specified as
-   \code{geometa_inspireValidator} argument. 
- }
- \item{\code{setPrivConfiguration(id, config)}}{
-   Set the privilege configuration for a metadata. 'id' is the metadata integer id.
-   'config' is an object of class "GNPrivConfiguration".
- }
- \item{\code{get(id, by, output)}}{
-   Generic getter for metadata. Possible values for by are 'id', 'uuid'. Used
-   internally only. The 'output' argument gives the type of output to return,
-   with possible values "id", "metadata", "info".
- }
- \item{\code{getMetadataByID(id)}}{
-   Get a metadata by Id. Returns an object of class \code{ISOMetadata} (ISO 19115)
-   or \code{ISOFeatureCatalogue} (ISO 19110) (from \pkg{geometa} package)
- }
- \item{\code{getMetadataByUUID(uuid)}}{
-   Get a metadata by UUID. Returns an object of class \code{ISOMetadata} (ISO 19115)
-   or \code{ISOFeatureCatalogue} (ISO 19110) (from \pkg{geometa} package)
- }
- \item{\code{getInfoByID(id)}}{
-   Get a metadata Info by Id. Returns an XML document object
- }
- \item{\code{getInfoByUUID(uuid)}}{
-   Get a metadata Info by UUID. Returns an XML document object
- }
- \item{\code{updateMetadata(id, xml, file, geometa, geometa_validate, 
-                            geometa_inspire, geometa_inspireValidator)}}{
-   Updates a metadata by file, XML object or \pkg{geometa} object of class
-   'ISOMetadata' or 'ISOFeatureCatalogue'. Extra parameters \code{geometa_validate} (TRUE 
-   by default) and \code{geometa_inspire} (FALSE by default) can be used with geometa objects 
-   for perform ISO and INSPIRE validation respectively. In that case on object of class 
-   \code{geometa::INSPIREMetadataValidator}, with a proper user API key, should be specified as
-   \code{geometa_inspireValidator} argument. 
- }
- \item{\code{deleteMetadata(id)}}{
-   Deletes a metadata
- }
- \item{\code{deleteMetadataAll()}}{
-   Deletes all metadata for which the authenticated user is owner
- }
-}
-}
-
 \examples{
 \dontrun{
    GNLegacyAPIManager$new("http://localhost:8080/geonetwork", "admin", "geonetwork", "3.0.0")
@@ -134,3 +28,393 @@ Emmanuel Blondel <emmanuel.blondel1@gmail.com>
 \keyword{api}
 \keyword{geonetwork}
 \keyword{rest}
+\section{Super class}{
+\code{\link[geonapi:GNAbstractManager]{geonapi::GNAbstractManager}} -> \code{GNLegacyAPIManager}
+}
+\section{Methods}{
+\subsection{Public methods}{
+\itemize{
+\item \href{#method-new}{\code{GNLegacyAPIManager$new()}}
+\item \href{#method-login}{\code{GNLegacyAPIManager$login()}}
+\item \href{#method-getGroups}{\code{GNLegacyAPIManager$getGroups()}}
+\item \href{#method-getCategories}{\code{GNLegacyAPIManager$getCategories()}}
+\item \href{#method-insertMetadata}{\code{GNLegacyAPIManager$insertMetadata()}}
+\item \href{#method-setPrivConfiguration}{\code{GNLegacyAPIManager$setPrivConfiguration()}}
+\item \href{#method-get}{\code{GNLegacyAPIManager$get()}}
+\item \href{#method-getMetadataByID}{\code{GNLegacyAPIManager$getMetadataByID()}}
+\item \href{#method-getMetadataByUUID}{\code{GNLegacyAPIManager$getMetadataByUUID()}}
+\item \href{#method-getInfoByID}{\code{GNLegacyAPIManager$getInfoByID()}}
+\item \href{#method-getInfoByUUID}{\code{GNLegacyAPIManager$getInfoByUUID()}}
+\item \href{#method-updateMetadata}{\code{GNLegacyAPIManager$updateMetadata()}}
+\item \href{#method-deleteMetadata}{\code{GNLegacyAPIManager$deleteMetadata()}}
+\item \href{#method-deleteMetadataAll}{\code{GNLegacyAPIManager$deleteMetadataAll()}}
+\item \href{#method-clone}{\code{GNLegacyAPIManager$clone()}}
+}
+}
+\if{html}{
+\out{<details ><summary>Inherited methods</summary>}
+\itemize{
+\item \out{<span class="pkg-link" data-pkg="geonapi" data-topic="GNAbstractManager" data-id="ERROR">}\href{../../geonapi/html/GNAbstractManager.html#method-ERROR}{\code{geonapi::GNAbstractManager$ERROR()}}\out{</span>}
+\item \out{<span class="pkg-link" data-pkg="geonapi" data-topic="GNAbstractManager" data-id="getClassName">}\href{../../geonapi/html/GNAbstractManager.html#method-getClassName}{\code{geonapi::GNAbstractManager$getClassName()}}\out{</span>}
+\item \out{<span class="pkg-link" data-pkg="geonapi" data-topic="GNAbstractManager" data-id="getLang">}\href{../../geonapi/html/GNAbstractManager.html#method-getLang}{\code{geonapi::GNAbstractManager$getLang()}}\out{</span>}
+\item \out{<span class="pkg-link" data-pkg="geonapi" data-topic="GNAbstractManager" data-id="getUrl">}\href{../../geonapi/html/GNAbstractManager.html#method-getUrl}{\code{geonapi::GNAbstractManager$getUrl()}}\out{</span>}
+\item \out{<span class="pkg-link" data-pkg="geonapi" data-topic="GNAbstractManager" data-id="INFO">}\href{../../geonapi/html/GNAbstractManager.html#method-INFO}{\code{geonapi::GNAbstractManager$INFO()}}\out{</span>}
+\item \out{<span class="pkg-link" data-pkg="geonapi" data-topic="GNAbstractManager" data-id="logger">}\href{../../geonapi/html/GNAbstractManager.html#method-logger}{\code{geonapi::GNAbstractManager$logger()}}\out{</span>}
+\item \out{<span class="pkg-link" data-pkg="geonapi" data-topic="GNAbstractManager" data-id="WARN">}\href{../../geonapi/html/GNAbstractManager.html#method-WARN}{\code{geonapi::GNAbstractManager$WARN()}}\out{</span>}
+}
+\out{</details>}
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-new"></a>}}
+\if{latex}{\out{\hypertarget{method-new}{}}}
+\subsection{Method \code{new()}}{
+This method is used to instantiate a GNLegacyAPIManager with the \code{url} of the
+   GeoNetwork and credentials to authenticate (\code{user}/\code{pwd}).
+   
+   The \code{keyring_backend} can be set to use a different backend for storing 
+   the Geonetwork password/token with \pkg{keyring} (Default value is 'env').
+   
+   The logger can be either NULL, "INFO" (with minimum logs), or "DEBUG" 
+   (for complete curl http calls logs)
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{GNLegacyAPIManager$new(
+  url,
+  user = NULL,
+  pwd = NULL,
+  version,
+  logger = NULL,
+  keyring_backend = "env"
+)}\if{html}{\out{</div>}}
+}
+
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{url}}{url}
+
+\item{\code{user}}{user}
+
+\item{\code{pwd}}{pwd}
+
+\item{\code{version}}{version}
+
+\item{\code{logger}}{logger}
+
+\item{\code{keyring_backend}}{keyring backend. Default is 'env'}
+}
+\if{html}{\out{</div>}}
+}
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-login"></a>}}
+\if{latex}{\out{\hypertarget{method-login}{}}}
+\subsection{Method \code{login()}}{
+#'    This methods attempts a connection to GeoNetwork REST API. User internally
+   during initialization of \code{GNLegacyAPIManager}.
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{GNLegacyAPIManager$login(user, pwd)}\if{html}{\out{</div>}}
+}
+
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{user}}{user}
+
+\item{\code{pwd}}{pwd}
+}
+\if{html}{\out{</div>}}
+}
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-getGroups"></a>}}
+\if{latex}{\out{\hypertarget{method-getGroups}{}}}
+\subsection{Method \code{getGroups()}}{
+Retrieves the list of user groups available in Geonetwork
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{GNLegacyAPIManager$getGroups()}\if{html}{\out{</div>}}
+}
+
+\subsection{Returns}{
+an object of class \code{data.frame}
+}
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-getCategories"></a>}}
+\if{latex}{\out{\hypertarget{method-getCategories}{}}}
+\subsection{Method \code{getCategories()}}{
+Retrieves the list of categories available in Geonetwork
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{GNLegacyAPIManager$getCategories()}\if{html}{\out{</div>}}
+}
+
+\subsection{Returns}{
+an object of class \code{data.frame}
+}
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-insertMetadata"></a>}}
+\if{latex}{\out{\hypertarget{method-insertMetadata}{}}}
+\subsection{Method \code{insertMetadata()}}{
+Inserts a metadata by file, XML object or \pkg{geometa} object of class
+   \code{ISOMetadata} or \code{ISOFeatureCatalogue}. If successful, returns the Geonetwork
+   metadata internal identifier (integer). Extra parameters \code{geometa_validate} (TRUE 
+   by default) and \code{geometa_inspire} (FALSE by default) can be used with geometa objects 
+   for perform ISO and INSPIRE validation respectively. In that case on object of class 
+   \code{geometa::INSPIREMetadataValidator}, with a proper user API key, should be specified as
+   \code{geometa_inspireValidator} argument.
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{GNLegacyAPIManager$insertMetadata(
+  xml = NULL,
+  file = NULL,
+  geometa = NULL,
+  group,
+  category = NULL,
+  stylesheet = NULL,
+  validate = FALSE,
+  geometa_validate = TRUE,
+  geometa_inspire = FALSE,
+  geometa_inspireValidator = NULL
+)}\if{html}{\out{</div>}}
+}
+
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{xml}}{xml object of class \link{XMLInternalNode-class} from \pkg{XML}}
+
+\item{\code{file}}{file}
+
+\item{\code{geometa}}{geometa, object of class \code{ISOMetadata} or \code{ISOFeatureCatalogue} from \pkg{geometa}}
+
+\item{\code{group}}{group}
+
+\item{\code{category}}{category}
+
+\item{\code{stylesheet}}{stylesheet}
+
+\item{\code{validate}}{validate}
+
+\item{\code{geometa_validate}}{validate geometa object}
+
+\item{\code{geometa_inspire}}{validate geometa object vs. INSPIRE}
+
+\item{\code{geometa_inspireValidator}}{geometa INSPIRE validator to use}
+}
+\if{html}{\out{</div>}}
+}
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-setPrivConfiguration"></a>}}
+\if{latex}{\out{\hypertarget{method-setPrivConfiguration}{}}}
+\subsection{Method \code{setPrivConfiguration()}}{
+Set the privilege configuration for a metadata. 'id' is the metadata integer id.
+   'config' is an object of class "GNPrivConfiguration".
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{GNLegacyAPIManager$setPrivConfiguration(id, config)}\if{html}{\out{</div>}}
+}
+
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{id}}{id}
+
+\item{\code{config}}{config}
+}
+\if{html}{\out{</div>}}
+}
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-get"></a>}}
+\if{latex}{\out{\hypertarget{method-get}{}}}
+\subsection{Method \code{get()}}{
+Generic getter for metadata. Possible values for by are 'id', 'uuid'. Used
+   internally only. The 'output' argument gives the type of output to return,
+   with possible values "id", "metadata", "info".
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{GNLegacyAPIManager$get(id, by, output)}\if{html}{\out{</div>}}
+}
+
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{id}}{id}
+
+\item{\code{by}}{by}
+
+\item{\code{output}}{output}
+}
+\if{html}{\out{</div>}}
+}
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-getMetadataByID"></a>}}
+\if{latex}{\out{\hypertarget{method-getMetadataByID}{}}}
+\subsection{Method \code{getMetadataByID()}}{
+Get a metadata by Id
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{GNLegacyAPIManager$getMetadataByID(id)}\if{html}{\out{</div>}}
+}
+
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{id}}{id}
+}
+\if{html}{\out{</div>}}
+}
+\subsection{Returns}{
+an object of class \code{ISOMetadata} (ISO 19115) or \code{ISOFeatureCatalogue} 
+(ISO 19110) (from \pkg{geometa} package)
+}
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-getMetadataByUUID"></a>}}
+\if{latex}{\out{\hypertarget{method-getMetadataByUUID}{}}}
+\subsection{Method \code{getMetadataByUUID()}}{
+Get a metadata by UUID
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{GNLegacyAPIManager$getMetadataByUUID(uuid)}\if{html}{\out{</div>}}
+}
+
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{uuid}}{uuid}
+}
+\if{html}{\out{</div>}}
+}
+\subsection{Returns}{
+an object of class \code{ISOMetadata} (ISO 19115) or \code{ISOFeatureCatalogue} 
+(ISO 19110) (from \pkg{geometa} package)
+}
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-getInfoByID"></a>}}
+\if{latex}{\out{\hypertarget{method-getInfoByID}{}}}
+\subsection{Method \code{getInfoByID()}}{
+Get a metadata Info by Id.
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{GNLegacyAPIManager$getInfoByID(id)}\if{html}{\out{</div>}}
+}
+
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{id}}{id}
+}
+\if{html}{\out{</div>}}
+}
+\subsection{Returns}{
+an XML document object
+}
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-getInfoByUUID"></a>}}
+\if{latex}{\out{\hypertarget{method-getInfoByUUID}{}}}
+\subsection{Method \code{getInfoByUUID()}}{
+Get a metadata Info by UUID
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{GNLegacyAPIManager$getInfoByUUID(uuid)}\if{html}{\out{</div>}}
+}
+
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{uuid}}{uuid}
+}
+\if{html}{\out{</div>}}
+}
+\subsection{Returns}{
+an XML document object
+}
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-updateMetadata"></a>}}
+\if{latex}{\out{\hypertarget{method-updateMetadata}{}}}
+\subsection{Method \code{updateMetadata()}}{
+Updates a metadata by file, XML object or \pkg{geometa} object of class
+   'ISOMetadata' or 'ISOFeatureCatalogue'. Extra parameters \code{geometa_validate} (TRUE 
+   by default) and \code{geometa_inspire} (FALSE by default) can be used with geometa objects 
+   for perform ISO and INSPIRE validation respectively. In that case on object of class 
+   \code{geometa::INSPIREMetadataValidator}, with a proper user API key, should be specified as
+   \code{geometa_inspireValidator} argument.
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{GNLegacyAPIManager$updateMetadata(
+  id,
+  xml = NULL,
+  file = NULL,
+  geometa = NULL,
+  geometa_validate = TRUE,
+  geometa_inspire = FALSE,
+  geometa_inspireValidator = NULL
+)}\if{html}{\out{</div>}}
+}
+
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{id}}{metadata id}
+
+\item{\code{xml}}{xml object of class \link{XMLInternalNode-class} from \pkg{XML}}
+
+\item{\code{file}}{file}
+
+\item{\code{geometa}}{geometa, object of class \code{ISOMetadata} or \code{ISOFeatureCatalogue} from \pkg{geometa}}
+
+\item{\code{geometa_validate}}{validate geometa object}
+
+\item{\code{geometa_inspire}}{validate geometa object vs. INSPIRE}
+
+\item{\code{geometa_inspireValidator}}{geometa INSPIRE validator to use}
+}
+\if{html}{\out{</div>}}
+}
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-deleteMetadata"></a>}}
+\if{latex}{\out{\hypertarget{method-deleteMetadata}{}}}
+\subsection{Method \code{deleteMetadata()}}{
+Deletes metadata by Id.
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{GNLegacyAPIManager$deleteMetadata(id)}\if{html}{\out{</div>}}
+}
+
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{id}}{id}
+}
+\if{html}{\out{</div>}}
+}
+\subsection{Returns}{
+the id of the record deleted, \code{NULL} otherwise
+}
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-deleteMetadataAll"></a>}}
+\if{latex}{\out{\hypertarget{method-deleteMetadataAll}{}}}
+\subsection{Method \code{deleteMetadataAll()}}{
+Deletes all metadata
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{GNLegacyAPIManager$deleteMetadataAll()}\if{html}{\out{</div>}}
+}
+
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-clone"></a>}}
+\if{latex}{\out{\hypertarget{method-clone}{}}}
+\subsection{Method \code{clone()}}{
+The objects of this class are cloneable with this method.
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{GNLegacyAPIManager$clone(deep = FALSE)}\if{html}{\out{</div>}}
+}
+
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{deep}}{Whether to make a deep clone.}
+}
+\if{html}{\out{</div>}}
+}
+}
+}

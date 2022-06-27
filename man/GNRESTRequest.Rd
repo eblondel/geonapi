@@ -33,15 +33,15 @@ Emmanuel Blondel <emmanuel.blondel1@gmail.com>
 \section{Methods}{
 \subsection{Public methods}{
 \itemize{
-\item \href{#method-new}{\code{GNRESTRequest$new()}}
-\item \href{#method-setChild}{\code{GNRESTRequest$setChild()}}
-\item \href{#method-encode}{\code{GNRESTRequest$encode()}}
-\item \href{#method-clone}{\code{GNRESTRequest$clone()}}
+\item \href{#method-GNRESTRequest-new}{\code{GNRESTRequest$new()}}
+\item \href{#method-GNRESTRequest-setChild}{\code{GNRESTRequest$setChild()}}
+\item \href{#method-GNRESTRequest-encode}{\code{GNRESTRequest$encode()}}
+\item \href{#method-GNRESTRequest-clone}{\code{GNRESTRequest$clone()}}
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-new"></a>}}
-\if{latex}{\out{\hypertarget{method-new}{}}}
+\if{html}{\out{<a id="method-GNRESTRequest-new"></a>}}
+\if{latex}{\out{\hypertarget{method-GNRESTRequest-new}{}}}
 \subsection{Method \code{new()}}{
 Initializes a \link{GNRESTRequest}
 \subsection{Usage}{
@@ -57,8 +57,8 @@ Initializes a \link{GNRESTRequest}
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-setChild"></a>}}
-\if{latex}{\out{\hypertarget{method-setChild}{}}}
+\if{html}{\out{<a id="method-GNRESTRequest-setChild"></a>}}
+\if{latex}{\out{\hypertarget{method-GNRESTRequest-setChild}{}}}
 \subsection{Method \code{setChild()}}{
 Set child
 \subsection{Usage}{
@@ -76,8 +76,8 @@ Set child
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-encode"></a>}}
-\if{latex}{\out{\hypertarget{method-encode}{}}}
+\if{html}{\out{<a id="method-GNRESTRequest-encode"></a>}}
+\if{latex}{\out{\hypertarget{method-GNRESTRequest-encode}{}}}
 \subsection{Method \code{encode()}}{
 Encodes request as XML
 \subsection{Usage}{
@@ -89,8 +89,8 @@ an object of class \code{character} representing the XML
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-clone"></a>}}
-\if{latex}{\out{\hypertarget{method-clone}{}}}
+\if{html}{\out{<a id="method-GNRESTRequest-clone"></a>}}
+\if{latex}{\out{\hypertarget{method-GNRESTRequest-clone}{}}}
 \subsection{Method \code{clone()}}{
 The objects of this class are cloneable with this method.
 \subsection{Usage}{

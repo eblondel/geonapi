@@ -38,8 +38,6 @@ GeoNetwork REST API - GeoNetwork privilege configuration
 }
 \author{
 Emmanuel Blondel <emmanuel.blondel1@gmail.com>
-
-Emmanuel Blondel <emmanuel.blondel1@gmail.com>
 }
 \keyword{GeoNetwork}
 \keyword{configuration}
@@ -56,13 +54,13 @@ Emmanuel Blondel <emmanuel.blondel1@gmail.com>
 \section{Methods}{
 \subsection{Public methods}{
 \itemize{
-\item \href{#method-new}{\code{GNPriv$new()}}
-\item \href{#method-clone}{\code{GNPriv$clone()}}
+\item \href{#method-GNPriv-new}{\code{GNPriv$new()}}
+\item \href{#method-GNPriv-clone}{\code{GNPriv$clone()}}
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-new"></a>}}
-\if{latex}{\out{\hypertarget{method-new}{}}}
+\if{html}{\out{<a id="method-GNPriv-new"></a>}}
+\if{latex}{\out{\hypertarget{method-GNPriv-new}{}}}
 \subsection{Method \code{new()}}{
 Initializes a \link{GNPriv} object
 \subsection{Usage}{
@@ -80,8 +78,8 @@ Initializes a \link{GNPriv} object
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-clone"></a>}}
-\if{latex}{\out{\hypertarget{method-clone}{}}}
+\if{html}{\out{<a id="method-GNPriv-clone"></a>}}
+\if{latex}{\out{\hypertarget{method-GNPriv-clone}{}}}
 \subsection{Method \code{clone()}}{
 The objects of this class are cloneable with this method.
 \subsection{Usage}{
@@ -107,14 +105,14 @@ The objects of this class are cloneable with this method.
 \section{Methods}{
 \subsection{Public methods}{
 \itemize{
-\item \href{#method-new}{\code{GNPrivConfiguration$new()}}
-\item \href{#method-setPrivileges}{\code{GNPrivConfiguration$setPrivileges()}}
-\item \href{#method-clone}{\code{GNPrivConfiguration$clone()}}
+\item \href{#method-GNPrivConfiguration-new}{\code{GNPrivConfiguration$new()}}
+\item \href{#method-GNPrivConfiguration-setPrivileges}{\code{GNPrivConfiguration$setPrivileges()}}
+\item \href{#method-GNPrivConfiguration-clone}{\code{GNPrivConfiguration$clone()}}
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-new"></a>}}
-\if{latex}{\out{\hypertarget{method-new}{}}}
+\if{html}{\out{<a id="method-GNPrivConfiguration-new"></a>}}
+\if{latex}{\out{\hypertarget{method-GNPrivConfiguration-new}{}}}
 \subsection{Method \code{new()}}{
 Initializes an object of class \link{GNPrivConfiguration}
 \subsection{Usage}{
@@ -123,8 +121,8 @@ Initializes an object of class \link{GNPrivConfiguration}
 
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-setPrivileges"></a>}}
-\if{latex}{\out{\hypertarget{method-setPrivileges}{}}}
+\if{html}{\out{<a id="method-GNPrivConfiguration-setPrivileges"></a>}}
+\if{latex}{\out{\hypertarget{method-GNPrivConfiguration-setPrivileges}{}}}
 \subsection{Method \code{setPrivileges()}}{
 Sets the operation privileges for a particular group. Allowed group values
    are "guest","intranet" and "all". Allowed values for operation privileges
@@ -144,8 +142,8 @@ Sets the operation privileges for a particular group. Allowed group values
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-clone"></a>}}
-\if{latex}{\out{\hypertarget{method-clone}{}}}
+\if{html}{\out{<a id="method-GNPrivConfiguration-clone"></a>}}
+\if{latex}{\out{\hypertarget{method-GNPrivConfiguration-clone}{}}}
 \subsection{Method \code{clone()}}{
 The objects of this class are cloneable with this method.
 \subsection{Usage}{

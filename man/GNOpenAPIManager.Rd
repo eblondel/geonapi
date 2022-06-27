@@ -34,35 +34,36 @@ Emmanuel Blondel <emmanuel.blondel1@gmail.com>
 \section{Methods}{
 \subsection{Public methods}{
 \itemize{
-\item \href{#method-new}{\code{GNOpenAPIManager$new()}}
-\item \href{#method-login}{\code{GNOpenAPIManager$login()}}
-\item \href{#method-getGroups}{\code{GNOpenAPIManager$getGroups()}}
-\item \href{#method-getTags}{\code{GNOpenAPIManager$getTags()}}
-\item \href{#method-getCategories}{\code{GNOpenAPIManager$getCategories()}}
-\item \href{#method-getMetadataByUUID}{\code{GNOpenAPIManager$getMetadataByUUID()}}
-\item \href{#method-insertRecord}{\code{GNOpenAPIManager$insertRecord()}}
-\item \href{#method-insertMetadata}{\code{GNOpenAPIManager$insertMetadata()}}
-\item \href{#method-updateMetadata}{\code{GNOpenAPIManager$updateMetadata()}}
-\item \href{#method-deleteMetadata}{\code{GNOpenAPIManager$deleteMetadata()}}
-\item \href{#method-clone}{\code{GNOpenAPIManager$clone()}}
+\item \href{#method-GNOpenAPIManager-new}{\code{GNOpenAPIManager$new()}}
+\item \href{#method-GNOpenAPIManager-login}{\code{GNOpenAPIManager$login()}}
+\item \href{#method-GNOpenAPIManager-getGroups}{\code{GNOpenAPIManager$getGroups()}}
+\item \href{#method-GNOpenAPIManager-getTags}{\code{GNOpenAPIManager$getTags()}}
+\item \href{#method-GNOpenAPIManager-getCategories}{\code{GNOpenAPIManager$getCategories()}}
+\item \href{#method-GNOpenAPIManager-getMetadataByUUID}{\code{GNOpenAPIManager$getMetadataByUUID()}}
+\item \href{#method-GNOpenAPIManager-insertRecord}{\code{GNOpenAPIManager$insertRecord()}}
+\item \href{#method-GNOpenAPIManager-insertMetadata}{\code{GNOpenAPIManager$insertMetadata()}}
+\item \href{#method-GNOpenAPIManager-updateMetadata}{\code{GNOpenAPIManager$updateMetadata()}}
+\item \href{#method-GNOpenAPIManager-deleteMetadata}{\code{GNOpenAPIManager$deleteMetadata()}}
+\item \href{#method-GNOpenAPIManager-uploadAttachment}{\code{GNOpenAPIManager$uploadAttachment()}}
+\item \href{#method-GNOpenAPIManager-clone}{\code{GNOpenAPIManager$clone()}}
 }
 }
-\if{html}{
-\out{<details ><summary>Inherited methods</summary>}
-\itemize{
-\item \out{<span class="pkg-link" data-pkg="geonapi" data-topic="GNAbstractManager" data-id="ERROR">}\href{../../geonapi/html/GNAbstractManager.html#method-ERROR}{\code{geonapi::GNAbstractManager$ERROR()}}\out{</span>}
-\item \out{<span class="pkg-link" data-pkg="geonapi" data-topic="GNAbstractManager" data-id="getClassName">}\href{../../geonapi/html/GNAbstractManager.html#method-getClassName}{\code{geonapi::GNAbstractManager$getClassName()}}\out{</span>}
-\item \out{<span class="pkg-link" data-pkg="geonapi" data-topic="GNAbstractManager" data-id="getLang">}\href{../../geonapi/html/GNAbstractManager.html#method-getLang}{\code{geonapi::GNAbstractManager$getLang()}}\out{</span>}
-\item \out{<span class="pkg-link" data-pkg="geonapi" data-topic="GNAbstractManager" data-id="getUrl">}\href{../../geonapi/html/GNAbstractManager.html#method-getUrl}{\code{geonapi::GNAbstractManager$getUrl()}}\out{</span>}
-\item \out{<span class="pkg-link" data-pkg="geonapi" data-topic="GNAbstractManager" data-id="INFO">}\href{../../geonapi/html/GNAbstractManager.html#method-INFO}{\code{geonapi::GNAbstractManager$INFO()}}\out{</span>}
-\item \out{<span class="pkg-link" data-pkg="geonapi" data-topic="GNAbstractManager" data-id="logger">}\href{../../geonapi/html/GNAbstractManager.html#method-logger}{\code{geonapi::GNAbstractManager$logger()}}\out{</span>}
-\item \out{<span class="pkg-link" data-pkg="geonapi" data-topic="GNAbstractManager" data-id="WARN">}\href{../../geonapi/html/GNAbstractManager.html#method-WARN}{\code{geonapi::GNAbstractManager$WARN()}}\out{</span>}
-}
-\out{</details>}
-}
+\if{html}{\out{
+<details><summary>Inherited methods</summary>
+<ul>
+<li><span class="pkg-link" data-pkg="geonapi" data-topic="GNAbstractManager" data-id="ERROR"><a href='../../geonapi/html/GNAbstractManager.html#method-GNAbstractManager-ERROR'><code>geonapi::GNAbstractManager$ERROR()</code></a></li>
+<li><span class="pkg-link" data-pkg="geonapi" data-topic="GNAbstractManager" data-id="INFO"><a href='../../geonapi/html/GNAbstractManager.html#method-GNAbstractManager-INFO'><code>geonapi::GNAbstractManager$INFO()</code></a></li>
+<li><span class="pkg-link" data-pkg="geonapi" data-topic="GNAbstractManager" data-id="WARN"><a href='../../geonapi/html/GNAbstractManager.html#method-GNAbstractManager-WARN'><code>geonapi::GNAbstractManager$WARN()</code></a></li>
+<li><span class="pkg-link" data-pkg="geonapi" data-topic="GNAbstractManager" data-id="getClassName"><a href='../../geonapi/html/GNAbstractManager.html#method-GNAbstractManager-getClassName'><code>geonapi::GNAbstractManager$getClassName()</code></a></li>
+<li><span class="pkg-link" data-pkg="geonapi" data-topic="GNAbstractManager" data-id="getLang"><a href='../../geonapi/html/GNAbstractManager.html#method-GNAbstractManager-getLang'><code>geonapi::GNAbstractManager$getLang()</code></a></li>
+<li><span class="pkg-link" data-pkg="geonapi" data-topic="GNAbstractManager" data-id="getUrl"><a href='../../geonapi/html/GNAbstractManager.html#method-GNAbstractManager-getUrl'><code>geonapi::GNAbstractManager$getUrl()</code></a></li>
+<li><span class="pkg-link" data-pkg="geonapi" data-topic="GNAbstractManager" data-id="logger"><a href='../../geonapi/html/GNAbstractManager.html#method-GNAbstractManager-logger'><code>geonapi::GNAbstractManager$logger()</code></a></li>
+</ul>
+</details>
+}}
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-new"></a>}}
-\if{latex}{\out{\hypertarget{method-new}{}}}
+\if{html}{\out{<a id="method-GNOpenAPIManager-new"></a>}}
+\if{latex}{\out{\hypertarget{method-GNOpenAPIManager-new}{}}}
 \subsection{Method \code{new()}}{
 This method is used to instantiate a \code{GNOpenAPIManager} with the \code{url} of the
    GeoNetwork and credentials to authenticate (\code{user}/\code{pwd}).
@@ -102,8 +103,8 @@ This method is used to instantiate a \code{GNOpenAPIManager} with the \code{url}
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-login"></a>}}
-\if{latex}{\out{\hypertarget{method-login}{}}}
+\if{html}{\out{<a id="method-GNOpenAPIManager-login"></a>}}
+\if{latex}{\out{\hypertarget{method-GNOpenAPIManager-login}{}}}
 \subsection{Method \code{login()}}{
 This methods attempts a connection to GeoNetwork REST API. User internally
    during initialization of \code{GNLegacyAPIManager}.
@@ -122,8 +123,8 @@ This methods attempts a connection to GeoNetwork REST API. User internally
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-getGroups"></a>}}
-\if{latex}{\out{\hypertarget{method-getGroups}{}}}
+\if{html}{\out{<a id="method-GNOpenAPIManager-getGroups"></a>}}
+\if{latex}{\out{\hypertarget{method-GNOpenAPIManager-getGroups}{}}}
 \subsection{Method \code{getGroups()}}{
 Retrieves the list of user groups available in Geonetwork
 \subsection{Usage}{
@@ -135,8 +136,8 @@ an object of class \code{data.frame}
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-getTags"></a>}}
-\if{latex}{\out{\hypertarget{method-getTags}{}}}
+\if{html}{\out{<a id="method-GNOpenAPIManager-getTags"></a>}}
+\if{latex}{\out{\hypertarget{method-GNOpenAPIManager-getTags}{}}}
 \subsection{Method \code{getTags()}}{
 Retrieves the list of tags (categories) available in Geonetwork
 \subsection{Usage}{
@@ -148,8 +149,8 @@ an object of class \code{data.frame}
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-getCategories"></a>}}
-\if{latex}{\out{\hypertarget{method-getCategories}{}}}
+\if{html}{\out{<a id="method-GNOpenAPIManager-getCategories"></a>}}
+\if{latex}{\out{\hypertarget{method-GNOpenAPIManager-getCategories}{}}}
 \subsection{Method \code{getCategories()}}{
 Retrieves the list of categories (same as tags) available in Geonetwork
 \subsection{Usage}{
@@ -161,8 +162,8 @@ an object of class \code{data.frame}
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-getMetadataByUUID"></a>}}
-\if{latex}{\out{\hypertarget{method-getMetadataByUUID}{}}}
+\if{html}{\out{<a id="method-GNOpenAPIManager-getMetadataByUUID"></a>}}
+\if{latex}{\out{\hypertarget{method-GNOpenAPIManager-getMetadataByUUID}{}}}
 \subsection{Method \code{getMetadataByUUID()}}{
 Get a metadata by UUID.
 \subsection{Usage}{
@@ -193,8 +194,8 @@ or \code{ISOFeatureCatalogue} (ISO 19110) (from \pkg{geometa} package)
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-insertRecord"></a>}}
-\if{latex}{\out{\hypertarget{method-insertRecord}{}}}
+\if{html}{\out{<a id="method-GNOpenAPIManager-insertRecord"></a>}}
+\if{latex}{\out{\hypertarget{method-GNOpenAPIManager-insertRecord}{}}}
 \subsection{Method \code{insertRecord()}}{
 Inserts a record by file, XML object or \pkg{geometa} object of class \code{ISOMetadata} or \code{ISOFeatureCatalogue}. 
    Extra parameters related to \pkg{geometa} objects: \code{geometa_validate} (TRUE by default) and \code{geometa_inspire} 
@@ -258,8 +259,8 @@ Inserts a record by file, XML object or \pkg{geometa} object of class \code{ISOM
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-insertMetadata"></a>}}
-\if{latex}{\out{\hypertarget{method-insertMetadata}{}}}
+\if{html}{\out{<a id="method-GNOpenAPIManager-insertMetadata"></a>}}
+\if{latex}{\out{\hypertarget{method-GNOpenAPIManager-insertMetadata}{}}}
 \subsection{Method \code{insertMetadata()}}{
 Inserts a metadata by file, XML object or \pkg{geometa} object of class \code{ISOMetadata} or \code{ISOFeatureCatalogue}. 
    Extra parameters related to \pkg{geometa} objects: \code{geometa_validate} (TRUE by default) and \code{geometa_inspire} 
@@ -323,8 +324,8 @@ Inserts a metadata by file, XML object or \pkg{geometa} object of class \code{IS
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-updateMetadata"></a>}}
-\if{latex}{\out{\hypertarget{method-updateMetadata}{}}}
+\if{html}{\out{<a id="method-GNOpenAPIManager-updateMetadata"></a>}}
+\if{latex}{\out{\hypertarget{method-GNOpenAPIManager-updateMetadata}{}}}
 \subsection{Method \code{updateMetadata()}}{
 Inserts a metadata by file, XML object or \pkg{geometa} object of class \code{ISOMetadata} or \code{ISOFeatureCatalogue}. 
    Extra parameters related to \pkg{geometa} objects: \code{geometa_validate} (TRUE by default) and \code{geometa_inspire} 
@@ -385,8 +386,8 @@ Inserts a metadata by file, XML object or \pkg{geometa} object of class \code{IS
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-deleteMetadata"></a>}}
-\if{latex}{\out{\hypertarget{method-deleteMetadata}{}}}
+\if{html}{\out{<a id="method-GNOpenAPIManager-deleteMetadata"></a>}}
+\if{latex}{\out{\hypertarget{method-GNOpenAPIManager-deleteMetadata}{}}}
 \subsection{Method \code{deleteMetadata()}}{
 Deletes a metadata by ID
 \subsection{Usage}{
@@ -404,8 +405,39 @@ Deletes a metadata by ID
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-clone"></a>}}
-\if{latex}{\out{\hypertarget{method-clone}{}}}
+\if{html}{\out{<a id="method-GNOpenAPIManager-uploadAttachment"></a>}}
+\if{latex}{\out{\hypertarget{method-GNOpenAPIManager-uploadAttachment}{}}}
+\subsection{Method \code{uploadAttachment()}}{
+Uploads attachment
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{GNOpenAPIManager$uploadAttachment(
+  id,
+  file,
+  visibility = "public",
+  approved = TRUE
+)}\if{html}{\out{</div>}}
+}
+
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{id}}{metadata identifier}
+
+\item{\code{file}}{file to upload}
+
+\item{\code{visibility}}{public or private}
+
+\item{\code{approved}}{object of class \code{logical}}
+}
+\if{html}{\out{</div>}}
+}
+\subsection{Returns}{
+the URL of the uploaded attachment, \code{NULL} otherwise
+}
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-GNOpenAPIManager-clone"></a>}}
+\if{latex}{\out{\hypertarget{method-GNOpenAPIManager-clone}{}}}
 \subsection{Method \code{clone()}}{
 The objects of this class are cloneable with this method.
 \subsection{Usage}{

@@ -44,21 +44,21 @@ Emmanuel Blondel <emmanuel.blondel1@gmail.com>
 \section{Methods}{
 \subsection{Public methods}{
 \itemize{
-\item \href{#method-logger}{\code{GNAbstractManager$logger()}}
-\item \href{#method-INFO}{\code{GNAbstractManager$INFO()}}
-\item \href{#method-WARN}{\code{GNAbstractManager$WARN()}}
-\item \href{#method-ERROR}{\code{GNAbstractManager$ERROR()}}
-\item \href{#method-new}{\code{GNAbstractManager$new()}}
-\item \href{#method-getUrl}{\code{GNAbstractManager$getUrl()}}
-\item \href{#method-getLang}{\code{GNAbstractManager$getLang()}}
-\item \href{#method-login}{\code{GNAbstractManager$login()}}
-\item \href{#method-getClassName}{\code{GNAbstractManager$getClassName()}}
-\item \href{#method-clone}{\code{GNAbstractManager$clone()}}
+\item \href{#method-GNAbstractManager-logger}{\code{GNAbstractManager$logger()}}
+\item \href{#method-GNAbstractManager-INFO}{\code{GNAbstractManager$INFO()}}
+\item \href{#method-GNAbstractManager-WARN}{\code{GNAbstractManager$WARN()}}
+\item \href{#method-GNAbstractManager-ERROR}{\code{GNAbstractManager$ERROR()}}
+\item \href{#method-GNAbstractManager-new}{\code{GNAbstractManager$new()}}
+\item \href{#method-GNAbstractManager-getUrl}{\code{GNAbstractManager$getUrl()}}
+\item \href{#method-GNAbstractManager-getLang}{\code{GNAbstractManager$getLang()}}
+\item \href{#method-GNAbstractManager-login}{\code{GNAbstractManager$login()}}
+\item \href{#method-GNAbstractManager-getClassName}{\code{GNAbstractManager$getClassName()}}
+\item \href{#method-GNAbstractManager-clone}{\code{GNAbstractManager$clone()}}
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-logger"></a>}}
-\if{latex}{\out{\hypertarget{method-logger}{}}}
+\if{html}{\out{<a id="method-GNAbstractManager-logger"></a>}}
+\if{latex}{\out{\hypertarget{method-GNAbstractManager-logger}{}}}
 \subsection{Method \code{logger()}}{
 Provides log messages
 \subsection{Usage}{
@@ -76,8 +76,8 @@ Provides log messages
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-INFO"></a>}}
-\if{latex}{\out{\hypertarget{method-INFO}{}}}
+\if{html}{\out{<a id="method-GNAbstractManager-INFO"></a>}}
+\if{latex}{\out{\hypertarget{method-GNAbstractManager-INFO}{}}}
 \subsection{Method \code{INFO()}}{
 Provides INFO log messages
 \subsection{Usage}{
@@ -93,8 +93,8 @@ Provides INFO log messages
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-WARN"></a>}}
-\if{latex}{\out{\hypertarget{method-WARN}{}}}
+\if{html}{\out{<a id="method-GNAbstractManager-WARN"></a>}}
+\if{latex}{\out{\hypertarget{method-GNAbstractManager-WARN}{}}}
 \subsection{Method \code{WARN()}}{
 Provides WARN log messages
 \subsection{Usage}{
@@ -110,8 +110,8 @@ Provides WARN log messages
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-ERROR"></a>}}
-\if{latex}{\out{\hypertarget{method-ERROR}{}}}
+\if{html}{\out{<a id="method-GNAbstractManager-ERROR"></a>}}
+\if{latex}{\out{\hypertarget{method-GNAbstractManager-ERROR}{}}}
 \subsection{Method \code{ERROR()}}{
 Provides ERROR log messages
 \subsection{Usage}{
@@ -127,8 +127,8 @@ Provides ERROR log messages
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-new"></a>}}
-\if{latex}{\out{\hypertarget{method-new}{}}}
+\if{html}{\out{<a id="method-GNAbstractManager-new"></a>}}
+\if{latex}{\out{\hypertarget{method-GNAbstractManager-new}{}}}
 \subsection{Method \code{new()}}{
 This method is used to instantiate a \link{GNAbstractManager} with the \code{url} of the
    GeoNetwork and credentials to authenticate (\code{user}/\code{pwd}). By default,
@@ -169,8 +169,8 @@ This method is used to instantiate a \link{GNAbstractManager} with the \code{url
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-getUrl"></a>}}
-\if{latex}{\out{\hypertarget{method-getUrl}{}}}
+\if{html}{\out{<a id="method-GNAbstractManager-getUrl"></a>}}
+\if{latex}{\out{\hypertarget{method-GNAbstractManager-getUrl}{}}}
 \subsection{Method \code{getUrl()}}{
 Get URL
 \subsection{Usage}{
@@ -182,8 +182,8 @@ an object of class \code{character}
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-getLang"></a>}}
-\if{latex}{\out{\hypertarget{method-getLang}{}}}
+\if{html}{\out{<a id="method-GNAbstractManager-getLang"></a>}}
+\if{latex}{\out{\hypertarget{method-GNAbstractManager-getLang}{}}}
 \subsection{Method \code{getLang()}}{
 Get service language
 \subsection{Usage}{
@@ -195,8 +195,8 @@ an object of class \code{character}
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-login"></a>}}
-\if{latex}{\out{\hypertarget{method-login}{}}}
+\if{html}{\out{<a id="method-GNAbstractManager-login"></a>}}
+\if{latex}{\out{\hypertarget{method-GNAbstractManager-login}{}}}
 \subsection{Method \code{login()}}{
 Log-ins. This methods (here abstract) attempts a connection to GeoNetwork API. Used internally
  by subclasses of \link{GNAbstractManager} to login Geonetwork.
@@ -215,8 +215,8 @@ Log-ins. This methods (here abstract) attempts a connection to GeoNetwork API. U
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-getClassName"></a>}}
-\if{latex}{\out{\hypertarget{method-getClassName}{}}}
+\if{html}{\out{<a id="method-GNAbstractManager-getClassName"></a>}}
+\if{latex}{\out{\hypertarget{method-GNAbstractManager-getClassName}{}}}
 \subsection{Method \code{getClassName()}}{
 Get class name
 \subsection{Usage}{
@@ -228,8 +228,8 @@ an object of class \code{character}
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-clone"></a>}}
-\if{latex}{\out{\hypertarget{method-clone}{}}}
+\if{html}{\out{<a id="method-GNAbstractManager-clone"></a>}}
+\if{latex}{\out{\hypertarget{method-GNAbstractManager-clone}{}}}
 \subsection{Method \code{clone()}}{
 The objects of this class are cloneable with this method.
 \subsection{Usage}{

@@ -39,16 +39,16 @@ Emmanuel Blondel <emmanuel.blondel1@gmail.com>
 \section{Methods}{
 \subsection{Public methods}{
 \itemize{
-\item \href{#method-new}{\code{GNVersion$new()}}
-\item \href{#method-lowerThan}{\code{GNVersion$lowerThan()}}
-\item \href{#method-greaterThan}{\code{GNVersion$greaterThan()}}
-\item \href{#method-equalTo}{\code{GNVersion$equalTo()}}
-\item \href{#method-clone}{\code{GNVersion$clone()}}
+\item \href{#method-GNVersion-new}{\code{GNVersion$new()}}
+\item \href{#method-GNVersion-lowerThan}{\code{GNVersion$lowerThan()}}
+\item \href{#method-GNVersion-greaterThan}{\code{GNVersion$greaterThan()}}
+\item \href{#method-GNVersion-equalTo}{\code{GNVersion$equalTo()}}
+\item \href{#method-GNVersion-clone}{\code{GNVersion$clone()}}
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-new"></a>}}
-\if{latex}{\out{\hypertarget{method-new}{}}}
+\if{html}{\out{<a id="method-GNVersion-new"></a>}}
+\if{latex}{\out{\hypertarget{method-GNVersion-new}{}}}
 \subsection{Method \code{new()}}{
 Initializes an object of class \link{GNVersion}
 \subsection{Usage}{
@@ -64,8 +64,8 @@ Initializes an object of class \link{GNVersion}
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-lowerThan"></a>}}
-\if{latex}{\out{\hypertarget{method-lowerThan}{}}}
+\if{html}{\out{<a id="method-GNVersion-lowerThan"></a>}}
+\if{latex}{\out{\hypertarget{method-GNVersion-lowerThan}{}}}
 \subsection{Method \code{lowerThan()}}{
 Compares to a version and returns TRUE if it is lower, FALSE otherwise
 \subsection{Usage}{
@@ -84,8 +84,8 @@ Compares to a version and returns TRUE if it is lower, FALSE otherwise
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-greaterThan"></a>}}
-\if{latex}{\out{\hypertarget{method-greaterThan}{}}}
+\if{html}{\out{<a id="method-GNVersion-greaterThan"></a>}}
+\if{latex}{\out{\hypertarget{method-GNVersion-greaterThan}{}}}
 \subsection{Method \code{greaterThan()}}{
 Compares to a version and returns TRUE if it is greater, FALSE otherwise
 \subsection{Usage}{
@@ -104,8 +104,8 @@ Compares to a version and returns TRUE if it is greater, FALSE otherwise
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-equalTo"></a>}}
-\if{latex}{\out{\hypertarget{method-equalTo}{}}}
+\if{html}{\out{<a id="method-GNVersion-equalTo"></a>}}
+\if{latex}{\out{\hypertarget{method-GNVersion-equalTo}{}}}
 \subsection{Method \code{equalTo()}}{
 Compares to a version and returns TRUE if it is equal, FALSE otherwise
 \subsection{Usage}{
@@ -124,8 +124,8 @@ Compares to a version and returns TRUE if it is equal, FALSE otherwise
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-clone"></a>}}
-\if{latex}{\out{\hypertarget{method-clone}{}}}
+\if{html}{\out{<a id="method-GNVersion-clone"></a>}}
+\if{latex}{\out{\hypertarget{method-GNVersion-clone}{}}}
 \subsection{Method \code{clone()}}{
 The objects of this class are cloneable with this method.
 \subsection{Usage}{

@@ -37,27 +37,27 @@ Emmanuel Blondel <emmanuel.blondel1@gmail.com>
 \section{Methods}{
 \subsection{Public methods}{
 \itemize{
-\item \href{#method-new}{\code{GNManager$new()}}
-\item \href{#method-clone}{\code{GNManager$clone()}}
+\item \href{#method-GNManager-new}{\code{GNManager$new()}}
+\item \href{#method-GNManager-clone}{\code{GNManager$clone()}}
 }
 }
-\if{html}{
-\out{<details ><summary>Inherited methods</summary>}
-\itemize{
-\item \out{<span class="pkg-link" data-pkg="geonapi" data-topic="GNAbstractManager" data-id="ERROR">}\href{../../geonapi/html/GNAbstractManager.html#method-ERROR}{\code{geonapi::GNAbstractManager$ERROR()}}\out{</span>}
-\item \out{<span class="pkg-link" data-pkg="geonapi" data-topic="GNAbstractManager" data-id="getClassName">}\href{../../geonapi/html/GNAbstractManager.html#method-getClassName}{\code{geonapi::GNAbstractManager$getClassName()}}\out{</span>}
-\item \out{<span class="pkg-link" data-pkg="geonapi" data-topic="GNAbstractManager" data-id="getLang">}\href{../../geonapi/html/GNAbstractManager.html#method-getLang}{\code{geonapi::GNAbstractManager$getLang()}}\out{</span>}
-\item \out{<span class="pkg-link" data-pkg="geonapi" data-topic="GNAbstractManager" data-id="getUrl">}\href{../../geonapi/html/GNAbstractManager.html#method-getUrl}{\code{geonapi::GNAbstractManager$getUrl()}}\out{</span>}
-\item \out{<span class="pkg-link" data-pkg="geonapi" data-topic="GNAbstractManager" data-id="INFO">}\href{../../geonapi/html/GNAbstractManager.html#method-INFO}{\code{geonapi::GNAbstractManager$INFO()}}\out{</span>}
-\item \out{<span class="pkg-link" data-pkg="geonapi" data-topic="GNAbstractManager" data-id="logger">}\href{../../geonapi/html/GNAbstractManager.html#method-logger}{\code{geonapi::GNAbstractManager$logger()}}\out{</span>}
-\item \out{<span class="pkg-link" data-pkg="geonapi" data-topic="GNAbstractManager" data-id="login">}\href{../../geonapi/html/GNAbstractManager.html#method-login}{\code{geonapi::GNAbstractManager$login()}}\out{</span>}
-\item \out{<span class="pkg-link" data-pkg="geonapi" data-topic="GNAbstractManager" data-id="WARN">}\href{../../geonapi/html/GNAbstractManager.html#method-WARN}{\code{geonapi::GNAbstractManager$WARN()}}\out{</span>}
-}
-\out{</details>}
-}
+\if{html}{\out{
+<details><summary>Inherited methods</summary>
+<ul>
+<li><span class="pkg-link" data-pkg="geonapi" data-topic="GNAbstractManager" data-id="ERROR"><a href='../../geonapi/html/GNAbstractManager.html#method-GNAbstractManager-ERROR'><code>geonapi::GNAbstractManager$ERROR()</code></a></li>
+<li><span class="pkg-link" data-pkg="geonapi" data-topic="GNAbstractManager" data-id="INFO"><a href='../../geonapi/html/GNAbstractManager.html#method-GNAbstractManager-INFO'><code>geonapi::GNAbstractManager$INFO()</code></a></li>
+<li><span class="pkg-link" data-pkg="geonapi" data-topic="GNAbstractManager" data-id="WARN"><a href='../../geonapi/html/GNAbstractManager.html#method-GNAbstractManager-WARN'><code>geonapi::GNAbstractManager$WARN()</code></a></li>
+<li><span class="pkg-link" data-pkg="geonapi" data-topic="GNAbstractManager" data-id="getClassName"><a href='../../geonapi/html/GNAbstractManager.html#method-GNAbstractManager-getClassName'><code>geonapi::GNAbstractManager$getClassName()</code></a></li>
+<li><span class="pkg-link" data-pkg="geonapi" data-topic="GNAbstractManager" data-id="getLang"><a href='../../geonapi/html/GNAbstractManager.html#method-GNAbstractManager-getLang'><code>geonapi::GNAbstractManager$getLang()</code></a></li>
+<li><span class="pkg-link" data-pkg="geonapi" data-topic="GNAbstractManager" data-id="getUrl"><a href='../../geonapi/html/GNAbstractManager.html#method-GNAbstractManager-getUrl'><code>geonapi::GNAbstractManager$getUrl()</code></a></li>
+<li><span class="pkg-link" data-pkg="geonapi" data-topic="GNAbstractManager" data-id="logger"><a href='../../geonapi/html/GNAbstractManager.html#method-GNAbstractManager-logger'><code>geonapi::GNAbstractManager$logger()</code></a></li>
+<li><span class="pkg-link" data-pkg="geonapi" data-topic="GNAbstractManager" data-id="login"><a href='../../geonapi/html/GNAbstractManager.html#method-GNAbstractManager-login'><code>geonapi::GNAbstractManager$login()</code></a></li>
+</ul>
+</details>
+}}
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-new"></a>}}
-\if{latex}{\out{\hypertarget{method-new}{}}}
+\if{html}{\out{<a id="method-GNManager-new"></a>}}
+\if{latex}{\out{\hypertarget{method-GNManager-new}{}}}
 \subsection{Method \code{new()}}{
 Initializes a \link{GNManager}
 \subsection{Usage}{
@@ -81,8 +81,8 @@ Initializes a \link{GNManager}
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-clone"></a>}}
-\if{latex}{\out{\hypertarget{method-clone}{}}}
+\if{html}{\out{<a id="method-GNManager-clone"></a>}}
+\if{latex}{\out{\hypertarget{method-GNManager-clone}{}}}
 \subsection{Method \code{clone()}}{
 The objects of this class are cloneable with this method.
 \subsection{Usage}{

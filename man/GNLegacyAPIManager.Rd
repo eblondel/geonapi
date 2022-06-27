@@ -34,39 +34,39 @@ Emmanuel Blondel <emmanuel.blondel1@gmail.com>
 \section{Methods}{
 \subsection{Public methods}{
 \itemize{
-\item \href{#method-new}{\code{GNLegacyAPIManager$new()}}
-\item \href{#method-login}{\code{GNLegacyAPIManager$login()}}
-\item \href{#method-getGroups}{\code{GNLegacyAPIManager$getGroups()}}
-\item \href{#method-getCategories}{\code{GNLegacyAPIManager$getCategories()}}
-\item \href{#method-insertMetadata}{\code{GNLegacyAPIManager$insertMetadata()}}
-\item \href{#method-setPrivConfiguration}{\code{GNLegacyAPIManager$setPrivConfiguration()}}
-\item \href{#method-get}{\code{GNLegacyAPIManager$get()}}
-\item \href{#method-getMetadataByID}{\code{GNLegacyAPIManager$getMetadataByID()}}
-\item \href{#method-getMetadataByUUID}{\code{GNLegacyAPIManager$getMetadataByUUID()}}
-\item \href{#method-getInfoByID}{\code{GNLegacyAPIManager$getInfoByID()}}
-\item \href{#method-getInfoByUUID}{\code{GNLegacyAPIManager$getInfoByUUID()}}
-\item \href{#method-updateMetadata}{\code{GNLegacyAPIManager$updateMetadata()}}
-\item \href{#method-deleteMetadata}{\code{GNLegacyAPIManager$deleteMetadata()}}
-\item \href{#method-deleteMetadataAll}{\code{GNLegacyAPIManager$deleteMetadataAll()}}
-\item \href{#method-clone}{\code{GNLegacyAPIManager$clone()}}
+\item \href{#method-GNLegacyAPIManager-new}{\code{GNLegacyAPIManager$new()}}
+\item \href{#method-GNLegacyAPIManager-login}{\code{GNLegacyAPIManager$login()}}
+\item \href{#method-GNLegacyAPIManager-getGroups}{\code{GNLegacyAPIManager$getGroups()}}
+\item \href{#method-GNLegacyAPIManager-getCategories}{\code{GNLegacyAPIManager$getCategories()}}
+\item \href{#method-GNLegacyAPIManager-insertMetadata}{\code{GNLegacyAPIManager$insertMetadata()}}
+\item \href{#method-GNLegacyAPIManager-setPrivConfiguration}{\code{GNLegacyAPIManager$setPrivConfiguration()}}
+\item \href{#method-GNLegacyAPIManager-get}{\code{GNLegacyAPIManager$get()}}
+\item \href{#method-GNLegacyAPIManager-getMetadataByID}{\code{GNLegacyAPIManager$getMetadataByID()}}
+\item \href{#method-GNLegacyAPIManager-getMetadataByUUID}{\code{GNLegacyAPIManager$getMetadataByUUID()}}
+\item \href{#method-GNLegacyAPIManager-getInfoByID}{\code{GNLegacyAPIManager$getInfoByID()}}
+\item \href{#method-GNLegacyAPIManager-getInfoByUUID}{\code{GNLegacyAPIManager$getInfoByUUID()}}
+\item \href{#method-GNLegacyAPIManager-updateMetadata}{\code{GNLegacyAPIManager$updateMetadata()}}
+\item \href{#method-GNLegacyAPIManager-deleteMetadata}{\code{GNLegacyAPIManager$deleteMetadata()}}
+\item \href{#method-GNLegacyAPIManager-deleteMetadataAll}{\code{GNLegacyAPIManager$deleteMetadataAll()}}
+\item \href{#method-GNLegacyAPIManager-clone}{\code{GNLegacyAPIManager$clone()}}
 }
 }
-\if{html}{
-\out{<details ><summary>Inherited methods</summary>}
-\itemize{
-\item \out{<span class="pkg-link" data-pkg="geonapi" data-topic="GNAbstractManager" data-id="ERROR">}\href{../../geonapi/html/GNAbstractManager.html#method-ERROR}{\code{geonapi::GNAbstractManager$ERROR()}}\out{</span>}
-\item \out{<span class="pkg-link" data-pkg="geonapi" data-topic="GNAbstractManager" data-id="getClassName">}\href{../../geonapi/html/GNAbstractManager.html#method-getClassName}{\code{geonapi::GNAbstractManager$getClassName()}}\out{</span>}
-\item \out{<span class="pkg-link" data-pkg="geonapi" data-topic="GNAbstractManager" data-id="getLang">}\href{../../geonapi/html/GNAbstractManager.html#method-getLang}{\code{geonapi::GNAbstractManager$getLang()}}\out{</span>}
-\item \out{<span class="pkg-link" data-pkg="geonapi" data-topic="GNAbstractManager" data-id="getUrl">}\href{../../geonapi/html/GNAbstractManager.html#method-getUrl}{\code{geonapi::GNAbstractManager$getUrl()}}\out{</span>}
-\item \out{<span class="pkg-link" data-pkg="geonapi" data-topic="GNAbstractManager" data-id="INFO">}\href{../../geonapi/html/GNAbstractManager.html#method-INFO}{\code{geonapi::GNAbstractManager$INFO()}}\out{</span>}
-\item \out{<span class="pkg-link" data-pkg="geonapi" data-topic="GNAbstractManager" data-id="logger">}\href{../../geonapi/html/GNAbstractManager.html#method-logger}{\code{geonapi::GNAbstractManager$logger()}}\out{</span>}
-\item \out{<span class="pkg-link" data-pkg="geonapi" data-topic="GNAbstractManager" data-id="WARN">}\href{../../geonapi/html/GNAbstractManager.html#method-WARN}{\code{geonapi::GNAbstractManager$WARN()}}\out{</span>}
-}
-\out{</details>}
-}
+\if{html}{\out{
+<details><summary>Inherited methods</summary>
+<ul>
+<li><span class="pkg-link" data-pkg="geonapi" data-topic="GNAbstractManager" data-id="ERROR"><a href='../../geonapi/html/GNAbstractManager.html#method-GNAbstractManager-ERROR'><code>geonapi::GNAbstractManager$ERROR()</code></a></li>
+<li><span class="pkg-link" data-pkg="geonapi" data-topic="GNAbstractManager" data-id="INFO"><a href='../../geonapi/html/GNAbstractManager.html#method-GNAbstractManager-INFO'><code>geonapi::GNAbstractManager$INFO()</code></a></li>
+<li><span class="pkg-link" data-pkg="geonapi" data-topic="GNAbstractManager" data-id="WARN"><a href='../../geonapi/html/GNAbstractManager.html#method-GNAbstractManager-WARN'><code>geonapi::GNAbstractManager$WARN()</code></a></li>
+<li><span class="pkg-link" data-pkg="geonapi" data-topic="GNAbstractManager" data-id="getClassName"><a href='../../geonapi/html/GNAbstractManager.html#method-GNAbstractManager-getClassName'><code>geonapi::GNAbstractManager$getClassName()</code></a></li>
+<li><span class="pkg-link" data-pkg="geonapi" data-topic="GNAbstractManager" data-id="getLang"><a href='../../geonapi/html/GNAbstractManager.html#method-GNAbstractManager-getLang'><code>geonapi::GNAbstractManager$getLang()</code></a></li>
+<li><span class="pkg-link" data-pkg="geonapi" data-topic="GNAbstractManager" data-id="getUrl"><a href='../../geonapi/html/GNAbstractManager.html#method-GNAbstractManager-getUrl'><code>geonapi::GNAbstractManager$getUrl()</code></a></li>
+<li><span class="pkg-link" data-pkg="geonapi" data-topic="GNAbstractManager" data-id="logger"><a href='../../geonapi/html/GNAbstractManager.html#method-GNAbstractManager-logger'><code>geonapi::GNAbstractManager$logger()</code></a></li>
+</ul>
+</details>
+}}
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-new"></a>}}
-\if{latex}{\out{\hypertarget{method-new}{}}}
+\if{html}{\out{<a id="method-GNLegacyAPIManager-new"></a>}}
+\if{latex}{\out{\hypertarget{method-GNLegacyAPIManager-new}{}}}
 \subsection{Method \code{new()}}{
 This method is used to instantiate a GNLegacyAPIManager with the \code{url} of the
    GeoNetwork and credentials to authenticate (\code{user}/\code{pwd}).
@@ -106,8 +106,8 @@ This method is used to instantiate a GNLegacyAPIManager with the \code{url} of t
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-login"></a>}}
-\if{latex}{\out{\hypertarget{method-login}{}}}
+\if{html}{\out{<a id="method-GNLegacyAPIManager-login"></a>}}
+\if{latex}{\out{\hypertarget{method-GNLegacyAPIManager-login}{}}}
 \subsection{Method \code{login()}}{
 #'    This methods attempts a connection to GeoNetwork REST API. User internally
    during initialization of \code{GNLegacyAPIManager}.
@@ -126,8 +126,8 @@ This method is used to instantiate a GNLegacyAPIManager with the \code{url} of t
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-getGroups"></a>}}
-\if{latex}{\out{\hypertarget{method-getGroups}{}}}
+\if{html}{\out{<a id="method-GNLegacyAPIManager-getGroups"></a>}}
+\if{latex}{\out{\hypertarget{method-GNLegacyAPIManager-getGroups}{}}}
 \subsection{Method \code{getGroups()}}{
 Retrieves the list of user groups available in Geonetwork
 \subsection{Usage}{
@@ -139,8 +139,8 @@ an object of class \code{data.frame}
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-getCategories"></a>}}
-\if{latex}{\out{\hypertarget{method-getCategories}{}}}
+\if{html}{\out{<a id="method-GNLegacyAPIManager-getCategories"></a>}}
+\if{latex}{\out{\hypertarget{method-GNLegacyAPIManager-getCategories}{}}}
 \subsection{Method \code{getCategories()}}{
 Retrieves the list of categories available in Geonetwork
 \subsection{Usage}{
@@ -152,8 +152,8 @@ an object of class \code{data.frame}
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-insertMetadata"></a>}}
-\if{latex}{\out{\hypertarget{method-insertMetadata}{}}}
+\if{html}{\out{<a id="method-GNLegacyAPIManager-insertMetadata"></a>}}
+\if{latex}{\out{\hypertarget{method-GNLegacyAPIManager-insertMetadata}{}}}
 \subsection{Method \code{insertMetadata()}}{
 Inserts a metadata by file, XML object or \pkg{geometa} object of class
    \code{ISOMetadata} or \code{ISOFeatureCatalogue}. If successful, returns the Geonetwork
@@ -204,8 +204,8 @@ Inserts a metadata by file, XML object or \pkg{geometa} object of class
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-setPrivConfiguration"></a>}}
-\if{latex}{\out{\hypertarget{method-setPrivConfiguration}{}}}
+\if{html}{\out{<a id="method-GNLegacyAPIManager-setPrivConfiguration"></a>}}
+\if{latex}{\out{\hypertarget{method-GNLegacyAPIManager-setPrivConfiguration}{}}}
 \subsection{Method \code{setPrivConfiguration()}}{
 Set the privilege configuration for a metadata. 'id' is the metadata integer id.
    'config' is an object of class "GNPrivConfiguration".
@@ -224,8 +224,8 @@ Set the privilege configuration for a metadata. 'id' is the metadata integer id.
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-get"></a>}}
-\if{latex}{\out{\hypertarget{method-get}{}}}
+\if{html}{\out{<a id="method-GNLegacyAPIManager-get"></a>}}
+\if{latex}{\out{\hypertarget{method-GNLegacyAPIManager-get}{}}}
 \subsection{Method \code{get()}}{
 Generic getter for metadata. Possible values for by are 'id', 'uuid'. Used
    internally only. The 'output' argument gives the type of output to return,
@@ -247,8 +247,8 @@ Generic getter for metadata. Possible values for by are 'id', 'uuid'. Used
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-getMetadataByID"></a>}}
-\if{latex}{\out{\hypertarget{method-getMetadataByID}{}}}
+\if{html}{\out{<a id="method-GNLegacyAPIManager-getMetadataByID"></a>}}
+\if{latex}{\out{\hypertarget{method-GNLegacyAPIManager-getMetadataByID}{}}}
 \subsection{Method \code{getMetadataByID()}}{
 Get a metadata by Id
 \subsection{Usage}{
@@ -268,8 +268,8 @@ an object of class \code{ISOMetadata} (ISO 19115) or \code{ISOFeatureCatalogue}
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-getMetadataByUUID"></a>}}
-\if{latex}{\out{\hypertarget{method-getMetadataByUUID}{}}}
+\if{html}{\out{<a id="method-GNLegacyAPIManager-getMetadataByUUID"></a>}}
+\if{latex}{\out{\hypertarget{method-GNLegacyAPIManager-getMetadataByUUID}{}}}
 \subsection{Method \code{getMetadataByUUID()}}{
 Get a metadata by UUID
 \subsection{Usage}{
@@ -289,8 +289,8 @@ an object of class \code{ISOMetadata} (ISO 19115) or \code{ISOFeatureCatalogue}
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-getInfoByID"></a>}}
-\if{latex}{\out{\hypertarget{method-getInfoByID}{}}}
+\if{html}{\out{<a id="method-GNLegacyAPIManager-getInfoByID"></a>}}
+\if{latex}{\out{\hypertarget{method-GNLegacyAPIManager-getInfoByID}{}}}
 \subsection{Method \code{getInfoByID()}}{
 Get a metadata Info by Id.
 \subsection{Usage}{
@@ -309,8 +309,8 @@ an XML document object
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-getInfoByUUID"></a>}}
-\if{latex}{\out{\hypertarget{method-getInfoByUUID}{}}}
+\if{html}{\out{<a id="method-GNLegacyAPIManager-getInfoByUUID"></a>}}
+\if{latex}{\out{\hypertarget{method-GNLegacyAPIManager-getInfoByUUID}{}}}
 \subsection{Method \code{getInfoByUUID()}}{
 Get a metadata Info by UUID
 \subsection{Usage}{
@@ -329,8 +329,8 @@ an XML document object
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-updateMetadata"></a>}}
-\if{latex}{\out{\hypertarget{method-updateMetadata}{}}}
+\if{html}{\out{<a id="method-GNLegacyAPIManager-updateMetadata"></a>}}
+\if{latex}{\out{\hypertarget{method-GNLegacyAPIManager-updateMetadata}{}}}
 \subsection{Method \code{updateMetadata()}}{
 Updates a metadata by file, XML object or \pkg{geometa} object of class
    'ISOMetadata' or 'ISOFeatureCatalogue'. Extra parameters \code{geometa_validate} (TRUE 
@@ -371,8 +371,8 @@ Updates a metadata by file, XML object or \pkg{geometa} object of class
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-deleteMetadata"></a>}}
-\if{latex}{\out{\hypertarget{method-deleteMetadata}{}}}
+\if{html}{\out{<a id="method-GNLegacyAPIManager-deleteMetadata"></a>}}
+\if{latex}{\out{\hypertarget{method-GNLegacyAPIManager-deleteMetadata}{}}}
 \subsection{Method \code{deleteMetadata()}}{
 Deletes metadata by Id.
 \subsection{Usage}{
@@ -391,8 +391,8 @@ the id of the record deleted, \code{NULL} otherwise
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-deleteMetadataAll"></a>}}
-\if{latex}{\out{\hypertarget{method-deleteMetadataAll}{}}}
+\if{html}{\out{<a id="method-GNLegacyAPIManager-deleteMetadataAll"></a>}}
+\if{latex}{\out{\hypertarget{method-GNLegacyAPIManager-deleteMetadataAll}{}}}
 \subsection{Method \code{deleteMetadataAll()}}{
 Deletes all metadata
 \subsection{Usage}{
@@ -401,8 +401,8 @@ Deletes all metadata
 
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-clone"></a>}}
-\if{latex}{\out{\hypertarget{method-clone}{}}}
+\if{html}{\out{<a id="method-GNLegacyAPIManager-clone"></a>}}
+\if{latex}{\out{\hypertarget{method-GNLegacyAPIManager-clone}{}}}
 \subsection{Method \code{clone()}}{
 The objects of this class are cloneable with this method.
 \subsection{Usage}{

@@ -18,7 +18,7 @@ GNLegacyAPIManager"><!-- mathjax --><script src="https://cdnjs.cloudflare.com/aj
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">geonapi</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.5-3</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.6</span>
       </span>
     </div>
 
@@ -58,7 +58,9 @@ GNLegacyAPIManager"><!-- mathjax --><script src="https://cdnjs.cloudflare.com/aj
     </div>
     <div id="value">
     <h2>Value</h2>
-    <p>Object of <code>R6Class</code> with methods for communication with
+    
+
+<p>Object of <code>R6Class</code> with methods for communication with
 the REST API of a GeoNetwork instance using the legacy API.</p>
     </div>
     <div id="author">
@@ -75,29 +77,29 @@ the REST API of a GeoNetwork instance using the legacy API.</p>
 <div class="section">
 <h3 id="public-methods">Public methods<a class="anchor" aria-label="anchor" href="#public-methods"></a></h3>
 
-<ul><li><p><a href="#method-new"><code>GNLegacyAPIManager$new()</code></a></p></li>
-<li><p><a href="#method-login"><code>GNLegacyAPIManager$login()</code></a></p></li>
-<li><p><a href="#method-getGroups"><code>GNLegacyAPIManager$getGroups()</code></a></p></li>
-<li><p><a href="#method-getCategories"><code>GNLegacyAPIManager$getCategories()</code></a></p></li>
-<li><p><a href="#method-insertMetadata"><code>GNLegacyAPIManager$insertMetadata()</code></a></p></li>
-<li><p><a href="#method-setPrivConfiguration"><code>GNLegacyAPIManager$setPrivConfiguration()</code></a></p></li>
-<li><p><a href="#method-get"><code>GNLegacyAPIManager$get()</code></a></p></li>
-<li><p><a href="#method-getMetadataByID"><code>GNLegacyAPIManager$getMetadataByID()</code></a></p></li>
-<li><p><a href="#method-getMetadataByUUID"><code>GNLegacyAPIManager$getMetadataByUUID()</code></a></p></li>
-<li><p><a href="#method-getInfoByID"><code>GNLegacyAPIManager$getInfoByID()</code></a></p></li>
-<li><p><a href="#method-getInfoByUUID"><code>GNLegacyAPIManager$getInfoByUUID()</code></a></p></li>
-<li><p><a href="#method-updateMetadata"><code>GNLegacyAPIManager$updateMetadata()</code></a></p></li>
-<li><p><a href="#method-deleteMetadata"><code>GNLegacyAPIManager$deleteMetadata()</code></a></p></li>
-<li><p><a href="#method-deleteMetadataAll"><code>GNLegacyAPIManager$deleteMetadataAll()</code></a></p></li>
-<li><p><a href="#method-clone"><code>GNLegacyAPIManager$clone()</code></a></p></li>
-</ul></div><p><details><summary>Inherited methods</summary><ul><li><p><span class="pkg-link" data-pkg="geonapi" data-topic="GNAbstractManager" data-id="ERROR"><a href="GNAbstractManager.html#method-ERROR"><code>geonapi::GNAbstractManager$ERROR()</code></a></span></p></li>
-<li><p><span class="pkg-link" data-pkg="geonapi" data-topic="GNAbstractManager" data-id="getClassName"><a href="GNAbstractManager.html#method-getClassName"><code>geonapi::GNAbstractManager$getClassName()</code></a></span></p></li>
-<li><p><span class="pkg-link" data-pkg="geonapi" data-topic="GNAbstractManager" data-id="getLang"><a href="GNAbstractManager.html#method-getLang"><code>geonapi::GNAbstractManager$getLang()</code></a></span></p></li>
-<li><p><span class="pkg-link" data-pkg="geonapi" data-topic="GNAbstractManager" data-id="getUrl"><a href="GNAbstractManager.html#method-getUrl"><code>geonapi::GNAbstractManager$getUrl()</code></a></span></p></li>
-<li><p><span class="pkg-link" data-pkg="geonapi" data-topic="GNAbstractManager" data-id="INFO"><a href="GNAbstractManager.html#method-INFO"><code>geonapi::GNAbstractManager$INFO()</code></a></span></p></li>
-<li><p><span class="pkg-link" data-pkg="geonapi" data-topic="GNAbstractManager" data-id="logger"><a href="GNAbstractManager.html#method-logger"><code>geonapi::GNAbstractManager$logger()</code></a></span></p></li>
-<li><p><span class="pkg-link" data-pkg="geonapi" data-topic="GNAbstractManager" data-id="WARN"><a href="GNAbstractManager.html#method-WARN"><code>geonapi::GNAbstractManager$WARN()</code></a></span></p></li>
-</ul></details></p><hr><a id="method-new"></a><div class="section">
+<ul><li><p><a href="#method-GNLegacyAPIManager-new"><code>GNLegacyAPIManager$new()</code></a></p></li>
+<li><p><a href="#method-GNLegacyAPIManager-login"><code>GNLegacyAPIManager$login()</code></a></p></li>
+<li><p><a href="#method-GNLegacyAPIManager-getGroups"><code>GNLegacyAPIManager$getGroups()</code></a></p></li>
+<li><p><a href="#method-GNLegacyAPIManager-getCategories"><code>GNLegacyAPIManager$getCategories()</code></a></p></li>
+<li><p><a href="#method-GNLegacyAPIManager-insertMetadata"><code>GNLegacyAPIManager$insertMetadata()</code></a></p></li>
+<li><p><a href="#method-GNLegacyAPIManager-setPrivConfiguration"><code>GNLegacyAPIManager$setPrivConfiguration()</code></a></p></li>
+<li><p><a href="#method-GNLegacyAPIManager-get"><code>GNLegacyAPIManager$get()</code></a></p></li>
+<li><p><a href="#method-GNLegacyAPIManager-getMetadataByID"><code>GNLegacyAPIManager$getMetadataByID()</code></a></p></li>
+<li><p><a href="#method-GNLegacyAPIManager-getMetadataByUUID"><code>GNLegacyAPIManager$getMetadataByUUID()</code></a></p></li>
+<li><p><a href="#method-GNLegacyAPIManager-getInfoByID"><code>GNLegacyAPIManager$getInfoByID()</code></a></p></li>
+<li><p><a href="#method-GNLegacyAPIManager-getInfoByUUID"><code>GNLegacyAPIManager$getInfoByUUID()</code></a></p></li>
+<li><p><a href="#method-GNLegacyAPIManager-updateMetadata"><code>GNLegacyAPIManager$updateMetadata()</code></a></p></li>
+<li><p><a href="#method-GNLegacyAPIManager-deleteMetadata"><code>GNLegacyAPIManager$deleteMetadata()</code></a></p></li>
+<li><p><a href="#method-GNLegacyAPIManager-deleteMetadataAll"><code>GNLegacyAPIManager$deleteMetadataAll()</code></a></p></li>
+<li><p><a href="#method-GNLegacyAPIManager-clone"><code>GNLegacyAPIManager$clone()</code></a></p></li>
+</ul></div><p><details><summary>Inherited methods</summary><ul><li><span class="pkg-link" data-pkg="geonapi" data-topic="GNAbstractManager" data-id="ERROR"><a href="GNAbstractManager.html#method-ERROR"><code>geonapi::GNAbstractManager$ERROR()</code></a></span></li>
+<li><span class="pkg-link" data-pkg="geonapi" data-topic="GNAbstractManager" data-id="INFO"><a href="GNAbstractManager.html#method-INFO"><code>geonapi::GNAbstractManager$INFO()</code></a></span></li>
+<li><span class="pkg-link" data-pkg="geonapi" data-topic="GNAbstractManager" data-id="WARN"><a href="GNAbstractManager.html#method-WARN"><code>geonapi::GNAbstractManager$WARN()</code></a></span></li>
+<li><span class="pkg-link" data-pkg="geonapi" data-topic="GNAbstractManager" data-id="getClassName"><a href="GNAbstractManager.html#method-getClassName"><code>geonapi::GNAbstractManager$getClassName()</code></a></span></li>
+<li><span class="pkg-link" data-pkg="geonapi" data-topic="GNAbstractManager" data-id="getLang"><a href="GNAbstractManager.html#method-getLang"><code>geonapi::GNAbstractManager$getLang()</code></a></span></li>
+<li><span class="pkg-link" data-pkg="geonapi" data-topic="GNAbstractManager" data-id="getUrl"><a href="GNAbstractManager.html#method-getUrl"><code>geonapi::GNAbstractManager$getUrl()</code></a></span></li>
+<li><span class="pkg-link" data-pkg="geonapi" data-topic="GNAbstractManager" data-id="logger"><a href="GNAbstractManager.html#method-logger"><code>geonapi::GNAbstractManager$logger()</code></a></span></li>
+</ul></details></p><hr><a id="method-GNLegacyAPIManager-new"></a><div class="section">
 <h3 id="method-new-">Method <code>new()</code><a class="anchor" aria-label="anchor" href="#method-new-"></a></h3>
 <p>This method is used to instantiate a GNLegacyAPIManager with the <code>url</code> of the
    GeoNetwork and credentials to authenticate (<code>user</code>/<code>pwd</code>).</p>   
@@ -145,7 +147,7 @@ the REST API of a GeoNetwork instance using the legacy API.</p>
 </dl><p></p></div>
 </div>
 
-</div><p></p><hr><a id="method-login"></a><div class="section">
+</div><p></p><hr><a id="method-GNLegacyAPIManager-login"></a><div class="section">
 <h3 id="method-login-">Method <code>login()</code><a class="anchor" aria-label="anchor" href="#method-login-"></a></h3>
 <p>#'    This methods attempts a connection to GeoNetwork REST API. User internally
    during initialization of <code>GNLegacyAPIManager</code>.</p><div class="section">
@@ -166,7 +168,7 @@ the REST API of a GeoNetwork instance using the legacy API.</p>
 </dl><p></p></div>
 </div>
 
-</div><p></p><hr><a id="method-getGroups"></a><div class="section">
+</div><p></p><hr><a id="method-GNLegacyAPIManager-getGroups"></a><div class="section">
 <h3 id="method-getgroups-">Method <code>getGroups()</code><a class="anchor" aria-label="anchor" href="#method-getgroups-"></a></h3>
 <p>Retrieves the list of user groups available in Geonetwork</p><div class="section">
 <h4 id="usage-2">Usage<a class="anchor" aria-label="anchor" href="#usage-2"></a></h4>
@@ -178,7 +180,7 @@ the REST API of a GeoNetwork instance using the legacy API.</p>
 <p>an object of class <code>data.frame</code></p>
 </div>
 
-</div><p></p><hr><a id="method-getCategories"></a><div class="section">
+</div><p></p><hr><a id="method-GNLegacyAPIManager-getCategories"></a><div class="section">
 <h3 id="method-getcategories-">Method <code>getCategories()</code><a class="anchor" aria-label="anchor" href="#method-getcategories-"></a></h3>
 <p>Retrieves the list of categories available in Geonetwork</p><div class="section">
 <h4 id="usage-3">Usage<a class="anchor" aria-label="anchor" href="#usage-3"></a></h4>
@@ -190,7 +192,7 @@ the REST API of a GeoNetwork instance using the legacy API.</p>
 <p>an object of class <code>data.frame</code></p>
 </div>
 
-</div><p></p><hr><a id="method-insertMetadata"></a><div class="section">
+</div><p></p><hr><a id="method-GNLegacyAPIManager-insertMetadata"></a><div class="section">
 <h3 id="method-insertmetadata-">Method <code>insertMetadata()</code><a class="anchor" aria-label="anchor" href="#method-insertmetadata-"></a></h3>
 <p>Inserts a metadata by file, XML object or <span class="pkg">geometa</span> object of class
    <code>ISOMetadata</code> or <code>ISOFeatureCatalogue</code>. If successful, returns the Geonetwork
@@ -259,7 +261,7 @@ the REST API of a GeoNetwork instance using the legacy API.</p>
 </dl><p></p></div>
 </div>
 
-</div><p></p><hr><a id="method-setPrivConfiguration"></a><div class="section">
+</div><p></p><hr><a id="method-GNLegacyAPIManager-setPrivConfiguration"></a><div class="section">
 <h3 id="method-setprivconfiguration-">Method <code>setPrivConfiguration()</code><a class="anchor" aria-label="anchor" href="#method-setprivconfiguration-"></a></h3>
 <p>Set the privilege configuration for a metadata. 'id' is the metadata integer id.
    'config' is an object of class "GNPrivConfiguration".</p><div class="section">
@@ -280,7 +282,7 @@ the REST API of a GeoNetwork instance using the legacy API.</p>
 </dl><p></p></div>
 </div>
 
-</div><p></p><hr><a id="method-get"></a><div class="section">
+</div><p></p><hr><a id="method-GNLegacyAPIManager-get"></a><div class="section">
 <h3 id="method-get-">Method <code><a href="https://rdrr.io/r/base/get.html" class="external-link">get()</a></code><a class="anchor" aria-label="anchor" href="#method-get-"></a></h3>
 <p>Generic getter for metadata. Possible values for by are 'id', 'uuid'. Used
    internally only. The 'output' argument gives the type of output to return,
@@ -306,7 +308,7 @@ the REST API of a GeoNetwork instance using the legacy API.</p>
 </dl><p></p></div>
 </div>
 
-</div><p></p><hr><a id="method-getMetadataByID"></a><div class="section">
+</div><p></p><hr><a id="method-GNLegacyAPIManager-getMetadataByID"></a><div class="section">
 <h3 id="method-getmetadatabyid-">Method <code>getMetadataByID()</code><a class="anchor" aria-label="anchor" href="#method-getmetadatabyid-"></a></h3>
 <p>Get a metadata by Id</p><div class="section">
 <h4 id="usage-7">Usage<a class="anchor" aria-label="anchor" href="#usage-7"></a></h4>
@@ -327,7 +329,7 @@ the REST API of a GeoNetwork instance using the legacy API.</p>
 (ISO 19110) (from <span class="pkg">geometa</span> package)</p>
 </div>
 
-</div><p></p><hr><a id="method-getMetadataByUUID"></a><div class="section">
+</div><p></p><hr><a id="method-GNLegacyAPIManager-getMetadataByUUID"></a><div class="section">
 <h3 id="method-getmetadatabyuuid-">Method <code>getMetadataByUUID()</code><a class="anchor" aria-label="anchor" href="#method-getmetadatabyuuid-"></a></h3>
 <p>Get a metadata by UUID</p><div class="section">
 <h4 id="usage-8">Usage<a class="anchor" aria-label="anchor" href="#usage-8"></a></h4>
@@ -348,7 +350,7 @@ the REST API of a GeoNetwork instance using the legacy API.</p>
 (ISO 19110) (from <span class="pkg">geometa</span> package)</p>
 </div>
 
-</div><p></p><hr><a id="method-getInfoByID"></a><div class="section">
+</div><p></p><hr><a id="method-GNLegacyAPIManager-getInfoByID"></a><div class="section">
 <h3 id="method-getinfobyid-">Method <code>getInfoByID()</code><a class="anchor" aria-label="anchor" href="#method-getinfobyid-"></a></h3>
 <p>Get a metadata Info by Id.</p><div class="section">
 <h4 id="usage-9">Usage<a class="anchor" aria-label="anchor" href="#usage-9"></a></h4>
@@ -368,7 +370,7 @@ the REST API of a GeoNetwork instance using the legacy API.</p>
 <p>an XML document object</p>
 </div>
 
-</div><p></p><hr><a id="method-getInfoByUUID"></a><div class="section">
+</div><p></p><hr><a id="method-GNLegacyAPIManager-getInfoByUUID"></a><div class="section">
 <h3 id="method-getinfobyuuid-">Method <code>getInfoByUUID()</code><a class="anchor" aria-label="anchor" href="#method-getinfobyuuid-"></a></h3>
 <p>Get a metadata Info by UUID</p><div class="section">
 <h4 id="usage-10">Usage<a class="anchor" aria-label="anchor" href="#usage-10"></a></h4>
@@ -388,7 +390,7 @@ the REST API of a GeoNetwork instance using the legacy API.</p>
 <p>an XML document object</p>
 </div>
 
-</div><p></p><hr><a id="method-updateMetadata"></a><div class="section">
+</div><p></p><hr><a id="method-GNLegacyAPIManager-updateMetadata"></a><div class="section">
 <h3 id="method-updatemetadata-">Method <code>updateMetadata()</code><a class="anchor" aria-label="anchor" href="#method-updatemetadata-"></a></h3>
 <p>Updates a metadata by file, XML object or <span class="pkg">geometa</span> object of class
    'ISOMetadata' or 'ISOFeatureCatalogue'. Extra parameters <code>geometa_validate</code> (TRUE 
@@ -441,7 +443,7 @@ the REST API of a GeoNetwork instance using the legacy API.</p>
 </dl><p></p></div>
 </div>
 
-</div><p></p><hr><a id="method-deleteMetadata"></a><div class="section">
+</div><p></p><hr><a id="method-GNLegacyAPIManager-deleteMetadata"></a><div class="section">
 <h3 id="method-deletemetadata-">Method <code>deleteMetadata()</code><a class="anchor" aria-label="anchor" href="#method-deletemetadata-"></a></h3>
 <p>Deletes metadata by Id.</p><div class="section">
 <h4 id="usage-12">Usage<a class="anchor" aria-label="anchor" href="#usage-12"></a></h4>
@@ -461,7 +463,7 @@ the REST API of a GeoNetwork instance using the legacy API.</p>
 <p>the id of the record deleted, <code>NULL</code> otherwise</p>
 </div>
 
-</div><p></p><hr><a id="method-deleteMetadataAll"></a><div class="section">
+</div><p></p><hr><a id="method-GNLegacyAPIManager-deleteMetadataAll"></a><div class="section">
 <h3 id="method-deletemetadataall-">Method <code>deleteMetadataAll()</code><a class="anchor" aria-label="anchor" href="#method-deletemetadataall-"></a></h3>
 <p>Deletes all metadata</p><div class="section">
 <h4 id="usage-13">Usage<a class="anchor" aria-label="anchor" href="#usage-13"></a></h4>
@@ -469,7 +471,7 @@ the REST API of a GeoNetwork instance using the legacy API.</p>
 </div>
 
 
-</div><p></p><hr><a id="method-clone"></a><div class="section">
+</div><p></p><hr><a id="method-GNLegacyAPIManager-clone"></a><div class="section">
 <h3 id="method-clone-">Method <code>clone()</code><a class="anchor" aria-label="anchor" href="#method-clone-"></a></h3>
 <p>The objects of this class are cloneable with this method.</p><div class="section">
 <h4 id="usage-14">Usage<a class="anchor" aria-label="anchor" href="#usage-14"></a></h4>
@@ -510,7 +512,7 @@ the REST API of a GeoNetwork instance using the legacy API.</p>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.5.</p>
 </div>
 
       </footer></div>

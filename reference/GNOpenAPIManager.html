@@ -18,7 +18,7 @@ GNOpenAPIManager"><!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">geonapi</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.5-3</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.6</span>
       </span>
     </div>
 
@@ -58,7 +58,9 @@ GNOpenAPIManager"><!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax
     </div>
     <div id="value">
     <h2>Value</h2>
-    <p>Object of <code>R6Class</code> with methods for communication with
+    
+
+<p>Object of <code>R6Class</code> with methods for communication with
 the REST API of a GeoNetwork instance using the legacy API.</p>
     </div>
     <div id="author">
@@ -75,25 +77,26 @@ the REST API of a GeoNetwork instance using the legacy API.</p>
 <div class="section">
 <h3 id="public-methods">Public methods<a class="anchor" aria-label="anchor" href="#public-methods"></a></h3>
 
-<ul><li><p><a href="#method-new"><code>GNOpenAPIManager$new()</code></a></p></li>
-<li><p><a href="#method-login"><code>GNOpenAPIManager$login()</code></a></p></li>
-<li><p><a href="#method-getGroups"><code>GNOpenAPIManager$getGroups()</code></a></p></li>
-<li><p><a href="#method-getTags"><code>GNOpenAPIManager$getTags()</code></a></p></li>
-<li><p><a href="#method-getCategories"><code>GNOpenAPIManager$getCategories()</code></a></p></li>
-<li><p><a href="#method-getMetadataByUUID"><code>GNOpenAPIManager$getMetadataByUUID()</code></a></p></li>
-<li><p><a href="#method-insertRecord"><code>GNOpenAPIManager$insertRecord()</code></a></p></li>
-<li><p><a href="#method-insertMetadata"><code>GNOpenAPIManager$insertMetadata()</code></a></p></li>
-<li><p><a href="#method-updateMetadata"><code>GNOpenAPIManager$updateMetadata()</code></a></p></li>
-<li><p><a href="#method-deleteMetadata"><code>GNOpenAPIManager$deleteMetadata()</code></a></p></li>
-<li><p><a href="#method-clone"><code>GNOpenAPIManager$clone()</code></a></p></li>
-</ul></div><p><details><summary>Inherited methods</summary><ul><li><p><span class="pkg-link" data-pkg="geonapi" data-topic="GNAbstractManager" data-id="ERROR"><a href="GNAbstractManager.html#method-ERROR"><code>geonapi::GNAbstractManager$ERROR()</code></a></span></p></li>
-<li><p><span class="pkg-link" data-pkg="geonapi" data-topic="GNAbstractManager" data-id="getClassName"><a href="GNAbstractManager.html#method-getClassName"><code>geonapi::GNAbstractManager$getClassName()</code></a></span></p></li>
-<li><p><span class="pkg-link" data-pkg="geonapi" data-topic="GNAbstractManager" data-id="getLang"><a href="GNAbstractManager.html#method-getLang"><code>geonapi::GNAbstractManager$getLang()</code></a></span></p></li>
-<li><p><span class="pkg-link" data-pkg="geonapi" data-topic="GNAbstractManager" data-id="getUrl"><a href="GNAbstractManager.html#method-getUrl"><code>geonapi::GNAbstractManager$getUrl()</code></a></span></p></li>
-<li><p><span class="pkg-link" data-pkg="geonapi" data-topic="GNAbstractManager" data-id="INFO"><a href="GNAbstractManager.html#method-INFO"><code>geonapi::GNAbstractManager$INFO()</code></a></span></p></li>
-<li><p><span class="pkg-link" data-pkg="geonapi" data-topic="GNAbstractManager" data-id="logger"><a href="GNAbstractManager.html#method-logger"><code>geonapi::GNAbstractManager$logger()</code></a></span></p></li>
-<li><p><span class="pkg-link" data-pkg="geonapi" data-topic="GNAbstractManager" data-id="WARN"><a href="GNAbstractManager.html#method-WARN"><code>geonapi::GNAbstractManager$WARN()</code></a></span></p></li>
-</ul></details></p><hr><a id="method-new"></a><div class="section">
+<ul><li><p><a href="#method-GNOpenAPIManager-new"><code>GNOpenAPIManager$new()</code></a></p></li>
+<li><p><a href="#method-GNOpenAPIManager-login"><code>GNOpenAPIManager$login()</code></a></p></li>
+<li><p><a href="#method-GNOpenAPIManager-getGroups"><code>GNOpenAPIManager$getGroups()</code></a></p></li>
+<li><p><a href="#method-GNOpenAPIManager-getTags"><code>GNOpenAPIManager$getTags()</code></a></p></li>
+<li><p><a href="#method-GNOpenAPIManager-getCategories"><code>GNOpenAPIManager$getCategories()</code></a></p></li>
+<li><p><a href="#method-GNOpenAPIManager-getMetadataByUUID"><code>GNOpenAPIManager$getMetadataByUUID()</code></a></p></li>
+<li><p><a href="#method-GNOpenAPIManager-insertRecord"><code>GNOpenAPIManager$insertRecord()</code></a></p></li>
+<li><p><a href="#method-GNOpenAPIManager-insertMetadata"><code>GNOpenAPIManager$insertMetadata()</code></a></p></li>
+<li><p><a href="#method-GNOpenAPIManager-updateMetadata"><code>GNOpenAPIManager$updateMetadata()</code></a></p></li>
+<li><p><a href="#method-GNOpenAPIManager-deleteMetadata"><code>GNOpenAPIManager$deleteMetadata()</code></a></p></li>
+<li><p><a href="#method-GNOpenAPIManager-uploadAttachment"><code>GNOpenAPIManager$uploadAttachment()</code></a></p></li>
+<li><p><a href="#method-GNOpenAPIManager-clone"><code>GNOpenAPIManager$clone()</code></a></p></li>
+</ul></div><p><details><summary>Inherited methods</summary><ul><li><span class="pkg-link" data-pkg="geonapi" data-topic="GNAbstractManager" data-id="ERROR"><a href="GNAbstractManager.html#method-ERROR"><code>geonapi::GNAbstractManager$ERROR()</code></a></span></li>
+<li><span class="pkg-link" data-pkg="geonapi" data-topic="GNAbstractManager" data-id="INFO"><a href="GNAbstractManager.html#method-INFO"><code>geonapi::GNAbstractManager$INFO()</code></a></span></li>
+<li><span class="pkg-link" data-pkg="geonapi" data-topic="GNAbstractManager" data-id="WARN"><a href="GNAbstractManager.html#method-WARN"><code>geonapi::GNAbstractManager$WARN()</code></a></span></li>
+<li><span class="pkg-link" data-pkg="geonapi" data-topic="GNAbstractManager" data-id="getClassName"><a href="GNAbstractManager.html#method-getClassName"><code>geonapi::GNAbstractManager$getClassName()</code></a></span></li>
+<li><span class="pkg-link" data-pkg="geonapi" data-topic="GNAbstractManager" data-id="getLang"><a href="GNAbstractManager.html#method-getLang"><code>geonapi::GNAbstractManager$getLang()</code></a></span></li>
+<li><span class="pkg-link" data-pkg="geonapi" data-topic="GNAbstractManager" data-id="getUrl"><a href="GNAbstractManager.html#method-getUrl"><code>geonapi::GNAbstractManager$getUrl()</code></a></span></li>
+<li><span class="pkg-link" data-pkg="geonapi" data-topic="GNAbstractManager" data-id="logger"><a href="GNAbstractManager.html#method-logger"><code>geonapi::GNAbstractManager$logger()</code></a></span></li>
+</ul></details></p><hr><a id="method-GNOpenAPIManager-new"></a><div class="section">
 <h3 id="method-new-">Method <code>new()</code><a class="anchor" aria-label="anchor" href="#method-new-"></a></h3>
 <p>This method is used to instantiate a <code>GNOpenAPIManager</code> with the <code>url</code> of the
    GeoNetwork and credentials to authenticate (<code>user</code>/<code>pwd</code>).</p>   
@@ -141,7 +144,7 @@ the REST API of a GeoNetwork instance using the legacy API.</p>
 </dl><p></p></div>
 </div>
 
-</div><p></p><hr><a id="method-login"></a><div class="section">
+</div><p></p><hr><a id="method-GNOpenAPIManager-login"></a><div class="section">
 <h3 id="method-login-">Method <code>login()</code><a class="anchor" aria-label="anchor" href="#method-login-"></a></h3>
 <p>This methods attempts a connection to GeoNetwork REST API. User internally
    during initialization of <code>GNLegacyAPIManager</code>.</p><div class="section">
@@ -162,7 +165,7 @@ the REST API of a GeoNetwork instance using the legacy API.</p>
 </dl><p></p></div>
 </div>
 
-</div><p></p><hr><a id="method-getGroups"></a><div class="section">
+</div><p></p><hr><a id="method-GNOpenAPIManager-getGroups"></a><div class="section">
 <h3 id="method-getgroups-">Method <code>getGroups()</code><a class="anchor" aria-label="anchor" href="#method-getgroups-"></a></h3>
 <p>Retrieves the list of user groups available in Geonetwork</p><div class="section">
 <h4 id="usage-2">Usage<a class="anchor" aria-label="anchor" href="#usage-2"></a></h4>
@@ -174,7 +177,7 @@ the REST API of a GeoNetwork instance using the legacy API.</p>
 <p>an object of class <code>data.frame</code></p>
 </div>
 
-</div><p></p><hr><a id="method-getTags"></a><div class="section">
+</div><p></p><hr><a id="method-GNOpenAPIManager-getTags"></a><div class="section">
 <h3 id="method-gettags-">Method <code>getTags()</code><a class="anchor" aria-label="anchor" href="#method-gettags-"></a></h3>
 <p>Retrieves the list of tags (categories) available in Geonetwork</p><div class="section">
 <h4 id="usage-3">Usage<a class="anchor" aria-label="anchor" href="#usage-3"></a></h4>
@@ -186,7 +189,7 @@ the REST API of a GeoNetwork instance using the legacy API.</p>
 <p>an object of class <code>data.frame</code></p>
 </div>
 
-</div><p></p><hr><a id="method-getCategories"></a><div class="section">
+</div><p></p><hr><a id="method-GNOpenAPIManager-getCategories"></a><div class="section">
 <h3 id="method-getcategories-">Method <code>getCategories()</code><a class="anchor" aria-label="anchor" href="#method-getcategories-"></a></h3>
 <p>Retrieves the list of categories (same as tags) available in Geonetwork</p><div class="section">
 <h4 id="usage-4">Usage<a class="anchor" aria-label="anchor" href="#usage-4"></a></h4>
@@ -198,7 +201,7 @@ the REST API of a GeoNetwork instance using the legacy API.</p>
 <p>an object of class <code>data.frame</code></p>
 </div>
 
-</div><p></p><hr><a id="method-getMetadataByUUID"></a><div class="section">
+</div><p></p><hr><a id="method-GNOpenAPIManager-getMetadataByUUID"></a><div class="section">
 <h3 id="method-getmetadatabyuuid-">Method <code>getMetadataByUUID()</code><a class="anchor" aria-label="anchor" href="#method-getmetadatabyuuid-"></a></h3>
 <p>Get a metadata by UUID.</p><div class="section">
 <h4 id="usage-5">Usage<a class="anchor" aria-label="anchor" href="#usage-5"></a></h4>
@@ -236,7 +239,7 @@ the REST API of a GeoNetwork instance using the legacy API.</p>
 or <code>ISOFeatureCatalogue</code> (ISO 19110) (from <span class="pkg">geometa</span> package)</p>
 </div>
 
-</div><p></p><hr><a id="method-insertRecord"></a><div class="section">
+</div><p></p><hr><a id="method-GNOpenAPIManager-insertRecord"></a><div class="section">
 <h3 id="method-insertrecord-">Method <code>insertRecord()</code><a class="anchor" aria-label="anchor" href="#method-insertrecord-"></a></h3>
 <p>Inserts a record by file, XML object or <span class="pkg">geometa</span> object of class <code>ISOMetadata</code> or <code>ISOFeatureCatalogue</code>. 
    Extra parameters related to <span class="pkg">geometa</span> objects: <code>geometa_validate</code> (TRUE by default) and <code>geometa_inspire</code> 
@@ -328,7 +331,7 @@ or <code>ISOFeatureCatalogue</code> (ISO 19110) (from <span class="pkg">geometa<
 </dl><p></p></div>
 </div>
 
-</div><p></p><hr><a id="method-insertMetadata"></a><div class="section">
+</div><p></p><hr><a id="method-GNOpenAPIManager-insertMetadata"></a><div class="section">
 <h3 id="method-insertmetadata-">Method <code>insertMetadata()</code><a class="anchor" aria-label="anchor" href="#method-insertmetadata-"></a></h3>
 <p>Inserts a metadata by file, XML object or <span class="pkg">geometa</span> object of class <code>ISOMetadata</code> or <code>ISOFeatureCatalogue</code>. 
    Extra parameters related to <span class="pkg">geometa</span> objects: <code>geometa_validate</code> (TRUE by default) and <code>geometa_inspire</code> 
@@ -420,7 +423,7 @@ or <code>ISOFeatureCatalogue</code> (ISO 19110) (from <span class="pkg">geometa<
 </dl><p></p></div>
 </div>
 
-</div><p></p><hr><a id="method-updateMetadata"></a><div class="section">
+</div><p></p><hr><a id="method-GNOpenAPIManager-updateMetadata"></a><div class="section">
 <h3 id="method-updatemetadata-">Method <code>updateMetadata()</code><a class="anchor" aria-label="anchor" href="#method-updatemetadata-"></a></h3>
 <p>Inserts a metadata by file, XML object or <span class="pkg">geometa</span> object of class <code>ISOMetadata</code> or <code>ISOFeatureCatalogue</code>. 
    Extra parameters related to <span class="pkg">geometa</span> objects: <code>geometa_validate</code> (TRUE by default) and <code>geometa_inspire</code> 
@@ -507,7 +510,7 @@ or <code>ISOFeatureCatalogue</code> (ISO 19110) (from <span class="pkg">geometa<
 </dl><p></p></div>
 </div>
 
-</div><p></p><hr><a id="method-deleteMetadata"></a><div class="section">
+</div><p></p><hr><a id="method-GNOpenAPIManager-deleteMetadata"></a><div class="section">
 <h3 id="method-deletemetadata-">Method <code>deleteMetadata()</code><a class="anchor" aria-label="anchor" href="#method-deletemetadata-"></a></h3>
 <p>Deletes a metadata by ID</p><div class="section">
 <h4 id="usage-9">Usage<a class="anchor" aria-label="anchor" href="#usage-9"></a></h4>
@@ -527,15 +530,52 @@ or <code>ISOFeatureCatalogue</code> (ISO 19110) (from <span class="pkg">geometa<
 </dl><p></p></div>
 </div>
 
-</div><p></p><hr><a id="method-clone"></a><div class="section">
-<h3 id="method-clone-">Method <code>clone()</code><a class="anchor" aria-label="anchor" href="#method-clone-"></a></h3>
-<p>The objects of this class are cloneable with this method.</p><div class="section">
+</div><p></p><hr><a id="method-GNOpenAPIManager-uploadAttachment"></a><div class="section">
+<h3 id="method-uploadattachment-">Method <code>uploadAttachment()</code><a class="anchor" aria-label="anchor" href="#method-uploadattachment-"></a></h3>
+<p>Uploads attachment</p><div class="section">
 <h4 id="usage-10">Usage<a class="anchor" aria-label="anchor" href="#usage-10"></a></h4>
-<p></p><div class="r"><div class="sourceCode"><pre><code><span class="va">GNOpenAPIManager</span><span class="op">$</span><span class="fu">clone</span><span class="op">(</span>deep <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></code></pre></div><p></p></div>
+<p></p><div class="r"><div class="sourceCode"><pre><code><span class="va">GNOpenAPIManager</span><span class="op">$</span><span class="fu">uploadAttachment</span><span class="op">(</span>
+  <span class="va">id</span>,
+  <span class="va">file</span>,
+  visibility <span class="op">=</span> <span class="st">"public"</span>,
+  approved <span class="op">=</span> <span class="cn">TRUE</span>
+<span class="op">)</span></code></pre></div><p></p></div>
 </div>
 
 <div class="section">
 <h4 id="arguments-7">Arguments<a class="anchor" aria-label="anchor" href="#arguments-7"></a></h4>
+<p></p><div class="arguments"><dl><dt><code>id</code></dt>
+<dd><p>metadata identifier</p></dd>
+
+
+<dt><code>file</code></dt>
+<dd><p>file to upload</p></dd>
+
+
+<dt><code>visibility</code></dt>
+<dd><p>public or private</p></dd>
+
+
+<dt><code>approved</code></dt>
+<dd><p>object of class <code>logical</code></p></dd>
+
+
+</dl><p></p></div>
+</div>
+<div class="section">
+<h4 id="returns-4">Returns<a class="anchor" aria-label="anchor" href="#returns-4"></a></h4>
+<p>the URL of the uploaded attachment, <code>NULL</code> otherwise</p>
+</div>
+
+</div><p></p><hr><a id="method-GNOpenAPIManager-clone"></a><div class="section">
+<h3 id="method-clone-">Method <code>clone()</code><a class="anchor" aria-label="anchor" href="#method-clone-"></a></h3>
+<p>The objects of this class are cloneable with this method.</p><div class="section">
+<h4 id="usage-11">Usage<a class="anchor" aria-label="anchor" href="#usage-11"></a></h4>
+<p></p><div class="r"><div class="sourceCode"><pre><code><span class="va">GNOpenAPIManager</span><span class="op">$</span><span class="fu">clone</span><span class="op">(</span>deep <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></code></pre></div><p></p></div>
+</div>
+
+<div class="section">
+<h4 id="arguments-8">Arguments<a class="anchor" aria-label="anchor" href="#arguments-8"></a></h4>
 <p></p><div class="arguments"><dl><dt><code>deep</code></dt>
 <dd><p>Whether to make a deep clone.</p></dd>
 
@@ -568,7 +608,7 @@ or <code>ISOFeatureCatalogue</code> (ISO 19110) (from <span class="pkg">geometa<
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.5.</p>
 </div>
 
       </footer></div>

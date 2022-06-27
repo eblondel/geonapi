@@ -21,7 +21,7 @@ GeoNetwork OpenAPI will be used."><!-- mathjax --><script src="https://cdnjs.clo
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">geonapi</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.5-3</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.6</span>
       </span>
     </div>
 
@@ -64,7 +64,9 @@ GeoNetwork OpenAPI will be used.</p>
     </div>
     <div id="value">
     <h2>Value</h2>
-    <p>Object of <code>R6Class</code> with methods for communication with
+    
+
+<p>Object of <code>R6Class</code> with methods for communication with
 the API of a GeoNetwork instance.</p>
     </div>
     <div id="author">
@@ -81,17 +83,17 @@ the API of a GeoNetwork instance.</p>
 <div class="section">
 <h3 id="public-methods">Public methods<a class="anchor" aria-label="anchor" href="#public-methods"></a></h3>
 
-<ul><li><p><a href="#method-new"><code>GNManager$new()</code></a></p></li>
-<li><p><a href="#method-clone"><code>GNManager$clone()</code></a></p></li>
-</ul></div><p><details><summary>Inherited methods</summary><ul><li><p><span class="pkg-link" data-pkg="geonapi" data-topic="GNAbstractManager" data-id="ERROR"><a href="GNAbstractManager.html#method-ERROR"><code>geonapi::GNAbstractManager$ERROR()</code></a></span></p></li>
-<li><p><span class="pkg-link" data-pkg="geonapi" data-topic="GNAbstractManager" data-id="getClassName"><a href="GNAbstractManager.html#method-getClassName"><code>geonapi::GNAbstractManager$getClassName()</code></a></span></p></li>
-<li><p><span class="pkg-link" data-pkg="geonapi" data-topic="GNAbstractManager" data-id="getLang"><a href="GNAbstractManager.html#method-getLang"><code>geonapi::GNAbstractManager$getLang()</code></a></span></p></li>
-<li><p><span class="pkg-link" data-pkg="geonapi" data-topic="GNAbstractManager" data-id="getUrl"><a href="GNAbstractManager.html#method-getUrl"><code>geonapi::GNAbstractManager$getUrl()</code></a></span></p></li>
-<li><p><span class="pkg-link" data-pkg="geonapi" data-topic="GNAbstractManager" data-id="INFO"><a href="GNAbstractManager.html#method-INFO"><code>geonapi::GNAbstractManager$INFO()</code></a></span></p></li>
-<li><p><span class="pkg-link" data-pkg="geonapi" data-topic="GNAbstractManager" data-id="logger"><a href="GNAbstractManager.html#method-logger"><code>geonapi::GNAbstractManager$logger()</code></a></span></p></li>
-<li><p><span class="pkg-link" data-pkg="geonapi" data-topic="GNAbstractManager" data-id="login"><a href="GNAbstractManager.html#method-login"><code>geonapi::GNAbstractManager$login()</code></a></span></p></li>
-<li><p><span class="pkg-link" data-pkg="geonapi" data-topic="GNAbstractManager" data-id="WARN"><a href="GNAbstractManager.html#method-WARN"><code>geonapi::GNAbstractManager$WARN()</code></a></span></p></li>
-</ul></details></p><hr><a id="method-new"></a><div class="section">
+<ul><li><p><a href="#method-GNManager-new"><code>GNManager$new()</code></a></p></li>
+<li><p><a href="#method-GNManager-clone"><code>GNManager$clone()</code></a></p></li>
+</ul></div><p><details><summary>Inherited methods</summary><ul><li><span class="pkg-link" data-pkg="geonapi" data-topic="GNAbstractManager" data-id="ERROR"><a href="GNAbstractManager.html#method-ERROR"><code>geonapi::GNAbstractManager$ERROR()</code></a></span></li>
+<li><span class="pkg-link" data-pkg="geonapi" data-topic="GNAbstractManager" data-id="INFO"><a href="GNAbstractManager.html#method-INFO"><code>geonapi::GNAbstractManager$INFO()</code></a></span></li>
+<li><span class="pkg-link" data-pkg="geonapi" data-topic="GNAbstractManager" data-id="WARN"><a href="GNAbstractManager.html#method-WARN"><code>geonapi::GNAbstractManager$WARN()</code></a></span></li>
+<li><span class="pkg-link" data-pkg="geonapi" data-topic="GNAbstractManager" data-id="getClassName"><a href="GNAbstractManager.html#method-getClassName"><code>geonapi::GNAbstractManager$getClassName()</code></a></span></li>
+<li><span class="pkg-link" data-pkg="geonapi" data-topic="GNAbstractManager" data-id="getLang"><a href="GNAbstractManager.html#method-getLang"><code>geonapi::GNAbstractManager$getLang()</code></a></span></li>
+<li><span class="pkg-link" data-pkg="geonapi" data-topic="GNAbstractManager" data-id="getUrl"><a href="GNAbstractManager.html#method-getUrl"><code>geonapi::GNAbstractManager$getUrl()</code></a></span></li>
+<li><span class="pkg-link" data-pkg="geonapi" data-topic="GNAbstractManager" data-id="logger"><a href="GNAbstractManager.html#method-logger"><code>geonapi::GNAbstractManager$logger()</code></a></span></li>
+<li><span class="pkg-link" data-pkg="geonapi" data-topic="GNAbstractManager" data-id="login"><a href="GNAbstractManager.html#method-login"><code>geonapi::GNAbstractManager$login()</code></a></span></li>
+</ul></details></p><hr><a id="method-GNManager-new"></a><div class="section">
 <h3 id="method-new-">Method <code>new()</code><a class="anchor" aria-label="anchor" href="#method-new-"></a></h3>
 <p>Initializes a GNManager</p><div class="section">
 <h4 id="usage">Usage<a class="anchor" aria-label="anchor" href="#usage"></a></h4>
@@ -123,7 +125,7 @@ the API of a GeoNetwork instance.</p>
 </dl><p></p></div>
 </div>
 
-</div><p></p><hr><a id="method-clone"></a><div class="section">
+</div><p></p><hr><a id="method-GNManager-clone"></a><div class="section">
 <h3 id="method-clone-">Method <code>clone()</code><a class="anchor" aria-label="anchor" href="#method-clone-"></a></h3>
 <p>The objects of this class are cloneable with this method.</p><div class="section">
 <h4 id="usage-1">Usage<a class="anchor" aria-label="anchor" href="#usage-1"></a></h4>
@@ -165,7 +167,7 @@ the API of a GeoNetwork instance.</p>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.5.</p>
 </div>
 
       </footer></div>

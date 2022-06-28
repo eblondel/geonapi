@@ -460,6 +460,36 @@ GNOpenAPIManager <- R6Class("GNOpenAPIManager",
         self$ERROR(content(req))
       }
       return(out)
+    },
+    
+    #'@description Publishes thumbnail based on URL
+    #'@param id metadata identifier
+    #'@param url thumbnail URL
+    #'@param desc thumbnail description
+    #'@return \code{TRUE} if published, \code{FALSE} otherwise
+    publishThumbnail = function(id, url, desc = ""){
+      out <- FALSE
+      self$INFO(sprintf("Publish thumbnail '%s' to record '%s'...", url, id))
+      path = sprintf("/api/records/%s/processes/thumbnail-add?thumbnail_url=%s&thumbnail_desc=%s&process=thumbnail-add&id=%s", 
+                     id, url, desc, id) 
+      req <- GNUtils$POST(
+        url = self$getUrl(),
+        path = path,
+        token = private$getToken(), cookies = private$cookies,
+        user = private$user, 
+        pwd = private$getPwd(),
+        content = NULL, contentType = "application/json",
+        verbose = self$verbose.debug
+      )
+      if(status_code(req) == 204){
+        self$INFO("Successfully published thumbnail!")
+        response <- content(req)
+        out <- response
+      }else{
+        self$ERROR(sprintf("Error while publishing thumbnail - %s", message_for_status(status_code(req))))
+        self$ERROR(content(req))
+      }
+      return(out)
     }
     
   )

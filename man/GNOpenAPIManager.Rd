@@ -45,6 +45,7 @@ Emmanuel Blondel <emmanuel.blondel1@gmail.com>
 \item \href{#method-GNOpenAPIManager-updateMetadata}{\code{GNOpenAPIManager$updateMetadata()}}
 \item \href{#method-GNOpenAPIManager-deleteMetadata}{\code{GNOpenAPIManager$deleteMetadata()}}
 \item \href{#method-GNOpenAPIManager-uploadAttachment}{\code{GNOpenAPIManager$uploadAttachment()}}
+\item \href{#method-GNOpenAPIManager-publishThumbnail}{\code{GNOpenAPIManager$publishThumbnail()}}
 \item \href{#method-GNOpenAPIManager-clone}{\code{GNOpenAPIManager$clone()}}
 }
 }
@@ -432,7 +433,31 @@ Uploads attachment
 \if{html}{\out{</div>}}
 }
 \subsection{Returns}{
-the URL of the uploaded attachment, \code{NULL} otherwise
+a named list of the uploaded attachment, including the url, size, id and type, \code{NULL} otherwise
+}
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-GNOpenAPIManager-publishThumbnail"></a>}}
+\if{latex}{\out{\hypertarget{method-GNOpenAPIManager-publishThumbnail}{}}}
+\subsection{Method \code{publishThumbnail()}}{
+Publishes thumbnail based on URL
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{GNOpenAPIManager$publishThumbnail(id, url, desc = "")}\if{html}{\out{</div>}}
+}
+
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{id}}{metadata identifier}
+
+\item{\code{url}}{thumbnail URL}
+
+\item{\code{desc}}{thumbnail description}
+}
+\if{html}{\out{</div>}}
+}
+\subsection{Returns}{
+response if ok, \code{NULL} otherwise
 }
 }
 \if{html}{\out{<hr>}}

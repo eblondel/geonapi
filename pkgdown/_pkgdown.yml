@@ -1,0 +1,7 @@
+url: "https://eblondel.github.io/geonapi/"
+
+home:
+  title: R Interface to GeoNetwork APIs
+
+template:
+  bootstrap: 5

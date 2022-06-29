@@ -18,4 +18,4 @@ We thank in advance people that use ``geonapi`` for citing it in their work / pu
 Many thanks to the following organizations that have provided fundings for strenghtening the ``geonapi`` package:
 
 <a href="https://www.fao.org/home/en/"><img height=200 width=200 src="https://www.fao.org/fileadmin/templates/family-farming-decade/images/FAO-IFAD-Logos/FAO-Logo-EN.svg"></a>
-
+<a href="https://letg.cnrs.fr"><img height=100 width=50 src="https://letg.cnrs.fr/plugins/letg/images/letg.png"></a>

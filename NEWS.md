@@ -1,3 +1,9 @@
+## [geonapi 0.6-1](https://cran.r-project.org/package=geonapi) | [![CRAN_Status_Badge](https://img.shields.io/badge/CRAN-published-blue.svg)](https://cran.r-project.org/package=geonapi)
+
+**Corrections**
+
+* [#25](https://github.com/eblondel/geonapi/issues/25) Upgrade roxygen2 7.2.1 to fix html issues
+
 ## [geonapi 0.6](https://cran.r-project.org/package=geonapi) | [![CRAN_Status_Badge](https://img.shields.io/badge/CRAN-published-blue.svg)](https://cran.r-project.org/package=geonapi)
 
 **New features**
@@ -5,7 +11,7 @@
 * [#15](https://github.com/eblondel/geonapi/issues/15) Support attachements upload via Open API
 * [#23](https://github.com/eblondel/geonapi/issues/23) Support thumbnail publication via Open API 
 
-## [geonapi 0.5-3](https://cran.r-project.org/package=geonapi) | [![CRAN_Status_Badge](https://img.shields.io/badge/CRAN-published-blue.svg)](https://cran.r-project.org/package=geonapi)
+## [geonapi 0.5-3](https://cran.r-project.org/src/contrib/Archive/geonapi/geonapi_0.5-3.tar.gz) | [![CRAN_Status_Badge](https://img.shields.io/badge/CRAN-published-blue.svg)](https://cran.r-project.org/src/contrib/Archive/geonapi/geonapi_0.5-3.tar.gz)
 
 **Bug fixes**
 

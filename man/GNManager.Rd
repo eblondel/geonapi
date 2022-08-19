@@ -44,14 +44,14 @@ Emmanuel Blondel <emmanuel.blondel1@gmail.com>
 \if{html}{\out{
 <details><summary>Inherited methods</summary>
 <ul>
-<li><span class="pkg-link" data-pkg="geonapi" data-topic="GNAbstractManager" data-id="ERROR"><a href='../../geonapi/html/GNAbstractManager.html#method-GNAbstractManager-ERROR'><code>geonapi::GNAbstractManager$ERROR()</code></a></li>
-<li><span class="pkg-link" data-pkg="geonapi" data-topic="GNAbstractManager" data-id="INFO"><a href='../../geonapi/html/GNAbstractManager.html#method-GNAbstractManager-INFO'><code>geonapi::GNAbstractManager$INFO()</code></a></li>
-<li><span class="pkg-link" data-pkg="geonapi" data-topic="GNAbstractManager" data-id="WARN"><a href='../../geonapi/html/GNAbstractManager.html#method-GNAbstractManager-WARN'><code>geonapi::GNAbstractManager$WARN()</code></a></li>
-<li><span class="pkg-link" data-pkg="geonapi" data-topic="GNAbstractManager" data-id="getClassName"><a href='../../geonapi/html/GNAbstractManager.html#method-GNAbstractManager-getClassName'><code>geonapi::GNAbstractManager$getClassName()</code></a></li>
-<li><span class="pkg-link" data-pkg="geonapi" data-topic="GNAbstractManager" data-id="getLang"><a href='../../geonapi/html/GNAbstractManager.html#method-GNAbstractManager-getLang'><code>geonapi::GNAbstractManager$getLang()</code></a></li>
-<li><span class="pkg-link" data-pkg="geonapi" data-topic="GNAbstractManager" data-id="getUrl"><a href='../../geonapi/html/GNAbstractManager.html#method-GNAbstractManager-getUrl'><code>geonapi::GNAbstractManager$getUrl()</code></a></li>
-<li><span class="pkg-link" data-pkg="geonapi" data-topic="GNAbstractManager" data-id="logger"><a href='../../geonapi/html/GNAbstractManager.html#method-GNAbstractManager-logger'><code>geonapi::GNAbstractManager$logger()</code></a></li>
-<li><span class="pkg-link" data-pkg="geonapi" data-topic="GNAbstractManager" data-id="login"><a href='../../geonapi/html/GNAbstractManager.html#method-GNAbstractManager-login'><code>geonapi::GNAbstractManager$login()</code></a></li>
+<li><span class="pkg-link" data-pkg="geonapi" data-topic="GNAbstractManager" data-id="ERROR"><a href='../../geonapi/html/GNAbstractManager.html#method-GNAbstractManager-ERROR'><code>geonapi::GNAbstractManager$ERROR()</code></a></span></li>
+<li><span class="pkg-link" data-pkg="geonapi" data-topic="GNAbstractManager" data-id="INFO"><a href='../../geonapi/html/GNAbstractManager.html#method-GNAbstractManager-INFO'><code>geonapi::GNAbstractManager$INFO()</code></a></span></li>
+<li><span class="pkg-link" data-pkg="geonapi" data-topic="GNAbstractManager" data-id="WARN"><a href='../../geonapi/html/GNAbstractManager.html#method-GNAbstractManager-WARN'><code>geonapi::GNAbstractManager$WARN()</code></a></span></li>
+<li><span class="pkg-link" data-pkg="geonapi" data-topic="GNAbstractManager" data-id="getClassName"><a href='../../geonapi/html/GNAbstractManager.html#method-GNAbstractManager-getClassName'><code>geonapi::GNAbstractManager$getClassName()</code></a></span></li>
+<li><span class="pkg-link" data-pkg="geonapi" data-topic="GNAbstractManager" data-id="getLang"><a href='../../geonapi/html/GNAbstractManager.html#method-GNAbstractManager-getLang'><code>geonapi::GNAbstractManager$getLang()</code></a></span></li>
+<li><span class="pkg-link" data-pkg="geonapi" data-topic="GNAbstractManager" data-id="getUrl"><a href='../../geonapi/html/GNAbstractManager.html#method-GNAbstractManager-getUrl'><code>geonapi::GNAbstractManager$getUrl()</code></a></span></li>
+<li><span class="pkg-link" data-pkg="geonapi" data-topic="GNAbstractManager" data-id="logger"><a href='../../geonapi/html/GNAbstractManager.html#method-GNAbstractManager-logger'><code>geonapi::GNAbstractManager$logger()</code></a></span></li>
+<li><span class="pkg-link" data-pkg="geonapi" data-topic="GNAbstractManager" data-id="login"><a href='../../geonapi/html/GNAbstractManager.html#method-GNAbstractManager-login'><code>geonapi::GNAbstractManager$login()</code></a></span></li>
 </ul>
 </details>
 }}

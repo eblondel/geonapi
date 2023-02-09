@@ -327,7 +327,6 @@ GNOpenAPIManager <- R6Class("GNOpenAPIManager",
         out <- response
       }else{
         self$ERROR(sprintf("Error while uploading metadata - %s", message_for_status(status_code(req))))
-        self$ERROR(content(req))
       }
       if(isTempFile) unlink(file)
       return(out)

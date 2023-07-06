@@ -46,6 +46,9 @@ Emmanuel Blondel <emmanuel.blondel1@gmail.com>
 \item \href{#method-GNOpenAPIManager-deleteMetadata}{\code{GNOpenAPIManager$deleteMetadata()}}
 \item \href{#method-GNOpenAPIManager-uploadAttachment}{\code{GNOpenAPIManager$uploadAttachment()}}
 \item \href{#method-GNOpenAPIManager-publishThumbnail}{\code{GNOpenAPIManager$publishThumbnail()}}
+\item \href{#method-GNOpenAPIManager-doiCheckPreConditions}{\code{GNOpenAPIManager$doiCheckPreConditions()}}
+\item \href{#method-GNOpenAPIManager-createDOI}{\code{GNOpenAPIManager$createDOI()}}
+\item \href{#method-GNOpenAPIManager-deleteDOI}{\code{GNOpenAPIManager$deleteDOI()}}
 \item \href{#method-GNOpenAPIManager-clone}{\code{GNOpenAPIManager$clone()}}
 }
 }
@@ -458,6 +461,64 @@ Publishes thumbnail based on URL
 }
 \subsection{Returns}{
 \code{TRUE} if published, \code{FALSE} otherwise
+}
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-GNOpenAPIManager-doiCheckPreConditions"></a>}}
+\if{latex}{\out{\hypertarget{method-GNOpenAPIManager-doiCheckPreConditions}{}}}
+\subsection{Method \code{doiCheckPreConditions()}}{
+Checks pre-conditions to publish DOI
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{GNOpenAPIManager$doiCheckPreConditions(id)}\if{html}{\out{</div>}}
+}
+
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{id}}{metadata identifier}
+}
+\if{html}{\out{</div>}}
+}
+\subsection{Returns}{
+\code{TRUE} if DOI pre-conditions are fulfiled, \code{FALSE} otherwise
+}
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-GNOpenAPIManager-createDOI"></a>}}
+\if{latex}{\out{\hypertarget{method-GNOpenAPIManager-createDOI}{}}}
+\subsection{Method \code{createDOI()}}{
+Submit a record to the Datacite metadata store in order to create a DOI.
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{GNOpenAPIManager$createDOI(id)}\if{html}{\out{</div>}}
+}
+
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{id}}{metadata identifier}
+}
+\if{html}{\out{</div>}}
+}
+\subsection{Returns}{
+\code{TRUE} if metadata record has been submitted with DOI created, \code{FALSE} otherwise
+}
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-GNOpenAPIManager-deleteDOI"></a>}}
+\if{latex}{\out{\hypertarget{method-GNOpenAPIManager-deleteDOI}{}}}
+\subsection{Method \code{deleteDOI()}}{
+Remove a DOI (this is not recommended, DOI are supposed to be 
+persistent once created. This is mainly here for testing).
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{GNOpenAPIManager$deleteDOI(id)}\if{html}{\out{</div>}}
+}
+
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{id}}{}
+}
+\if{html}{\out{</div>}}
 }
 }
 \if{html}{\out{<hr>}}

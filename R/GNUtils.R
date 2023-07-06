@@ -103,10 +103,9 @@ GNUtils$PUT <- function(url, path = NULL, token = NULL, cookies = NULL,
   }else{
     body <- NULL
     if(missing(content) | is.null(content)){
-      if(missing(filename) | is.null(filename)){
-        stop("The filename must be provided")
+      if(!(missing(filename) | is.null(filename))){
+        body <- httr::upload_file(filename) 
       }
-      body <- httr::upload_file(filename)
     }else{
       body <- content
     }

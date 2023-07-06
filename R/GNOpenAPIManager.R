@@ -489,6 +489,103 @@ GNOpenAPIManager <- R6Class("GNOpenAPIManager",
         self$ERROR(content(req))
       }
       return(out)
+    },
+    
+    #'@description Checks pre-conditions to publish DOI
+    #'@param id metadata identifier
+    #'@return \code{TRUE} if DOI pre-conditions are fulfiled, \code{FALSE} otherwise
+    doiCheckPreConditions = function(id){
+      out <- FALSE
+      path = sprintf("/api/records/%s/doi/checkPreConditions", id)
+      req <- GNUtils$GET(
+        url = self$getUrl(),
+        path = path,
+        token = private$getToken(), cookies = private$cookies,
+        user = private$user, 
+        pwd = private$getPwd(),
+        contentType = "application/json",
+        verbose = self$verbose.debug
+      )
+      if(status_code(req)==200){
+        self$INFO(sprintf("Metadata record '%s' fulfills DOI pre-conditions", id))
+        out <- TRUE
+      }
+      if(status_code(req)==400){
+        self$ERROR(sprintf("Metadata record '%s' does not fulfill DOI pre-conditions", id))
+        self$ERROR(content(req)$description)
+      }
+      if(status_code(req)==403){
+        self$ERROR(sprintf("You don't have rights to edit metadata record '%s'", id))
+      }
+      if(status_code(req)==404){
+        self$ERROR(sprintf("Metadata record '%s' does not exist", id))
+      }
+      if(status_code(req)==500){
+        self$ERROR("Service unavailable")
+      }
+      return(out)
+    },
+    
+    #'@description Submit a record to the Datacite metadata store in order to create a DOI.
+    #'@param id metadata identifier
+    #'@return \code{TRUE} if metadata record has been submitted with DOI created, \code{FALSE} otherwise 
+    createDOI = function(id){
+      out <- FALSE
+      path = sprintf("/api/records/%s/doi", id)
+      req = GNUtils$PUT(
+        url = self$getUrl(),
+        path = path,
+        token = private$getToken(), cookies = private$cookies,
+        user = private$user, 
+        pwd = private$getPwd(),
+        contentType = NULL,
+        verbose = self$verbose.debug
+      )
+      print(content(req))
+      if(status_code(req)==201){
+        self$INFO(sprintf("DOI successfuly registered on DataCite for metadata record '%s'", id))
+        out <- TRUE
+        attr(out, "report") <- content(req)$description
+      }
+      if(status_code(req)==403){
+        self$ERROR(sprintf("You don't have rights to edit metadata record '%s'", id))
+      }
+      if(status_code(req)==404){
+        self$ERROR(sprintf("Metadata record '%s' does not exist", id))
+      }
+      if(status_code(req)==500){
+        self$ERROR("Service unavailable")
+      }
+      return(out)
+    },
+    
+    #'@description Remove a DOI (this is not recommended, DOI are supposed to be 
+    #'persistent once created. This is mainly here for testing).
+    #'@param id 
+    deleteDOI = function(id){
+      out <- FALSE
+      path = sprintf("/api/records/%s/doi", id)
+      req = GNUtils$DELETE(
+        url = self$getUrl(),
+        path = path,
+        token = private$getToken(), cookies = private$cookies,
+        user = private$user, 
+        pwd = private$getPwd(),
+        verbose = self$verbose.debug
+      )
+      if(status_code(req)==201){
+        self$INFO(sprintf("DOI successfuly unregistered from DataCite for metadata record '%s'", id))
+        out <- TRUE
+      }
+      if(status_code(req)==403){
+        self$ERROR(sprintf("You don't have rights to unregister DOI for metadata record '%s'", id))
+      }
+      if(status_code(req)==404){
+        self$ERROR(sprintf("Metadata record '%s' or DOI does not exist", id))
+      }
+      if(status_code(req)==500){
+        self$ERROR("Service unavailable")
+      }
     }
     
   )

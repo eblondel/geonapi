@@ -12,7 +12,7 @@ GNOpenAPIManager"><!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax
     
     <a class="navbar-brand me-2" href="../index.html">geonapi</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.6-2</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.7</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -90,6 +90,9 @@ the REST API of a GeoNetwork instance using the legacy API.</p>
 <li><p><a href="#method-GNOpenAPIManager-deleteMetadata"><code>GNOpenAPIManager$deleteMetadata()</code></a></p></li>
 <li><p><a href="#method-GNOpenAPIManager-uploadAttachment"><code>GNOpenAPIManager$uploadAttachment()</code></a></p></li>
 <li><p><a href="#method-GNOpenAPIManager-publishThumbnail"><code>GNOpenAPIManager$publishThumbnail()</code></a></p></li>
+<li><p><a href="#method-GNOpenAPIManager-doiCheckPreConditions"><code>GNOpenAPIManager$doiCheckPreConditions()</code></a></p></li>
+<li><p><a href="#method-GNOpenAPIManager-createDOI"><code>GNOpenAPIManager$createDOI()</code></a></p></li>
+<li><p><a href="#method-GNOpenAPIManager-deleteDOI"><code>GNOpenAPIManager$deleteDOI()</code></a></p></li>
 <li><p><a href="#method-GNOpenAPIManager-clone"><code>GNOpenAPIManager$clone()</code></a></p></li>
 </ul></div><p><details><summary>Inherited methods</summary><ul><li><span class="pkg-link" data-pkg="geonapi" data-topic="GNAbstractManager" data-id="ERROR"><a href="GNAbstractManager.html#method-ERROR"><code>geonapi::GNAbstractManager$ERROR()</code></a></span></li>
 <li><span class="pkg-link" data-pkg="geonapi" data-topic="GNAbstractManager" data-id="INFO"><a href="GNAbstractManager.html#method-INFO"><code>geonapi::GNAbstractManager$INFO()</code></a></span></li>
@@ -597,15 +600,72 @@ or <code>ISOFeatureCatalogue</code> (ISO 19110) (from <span class="pkg">geometa<
 <p><code>TRUE</code> if published, <code>FALSE</code> otherwise</p>
 </div>
 
-</div><p></p><hr><a id="method-GNOpenAPIManager-clone"></a><div class="section">
-<h3 id="method-clone-">Method <code>clone()</code><a class="anchor" aria-label="anchor" href="#method-clone-"></a></h3>
-<p>The objects of this class are cloneable with this method.</p><div class="section">
+</div><p></p><hr><a id="method-GNOpenAPIManager-doiCheckPreConditions"></a><div class="section">
+<h3 id="method-doicheckpreconditions-">Method <code>doiCheckPreConditions()</code><a class="anchor" aria-label="anchor" href="#method-doicheckpreconditions-"></a></h3>
+<p>Checks pre-conditions to publish DOI</p><div class="section">
 <h4 id="usage-12">Usage<a class="anchor" aria-label="anchor" href="#usage-12"></a></h4>
-<p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">GNOpenAPIManager</span><span class="op">$</span><span class="fu">clone</span><span class="op">(</span>deep <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></code></pre></div><p></p></div>
+<p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">GNOpenAPIManager</span><span class="op">$</span><span class="fu">doiCheckPreConditions</span><span class="op">(</span><span class="va">id</span><span class="op">)</span></span></code></pre></div><p></p></div>
 </div>
 
 <div class="section">
 <h4 id="arguments-9">Arguments<a class="anchor" aria-label="anchor" href="#arguments-9"></a></h4>
+<p></p><div class="arguments"><dl><dt><code>id</code></dt>
+<dd><p>metadata identifier</p></dd>
+
+
+</dl><p></p></div>
+</div>
+<div class="section">
+<h4 id="returns-6">Returns<a class="anchor" aria-label="anchor" href="#returns-6"></a></h4>
+<p><code>TRUE</code> if DOI pre-conditions are fulfiled, <code>FALSE</code> otherwise</p>
+</div>
+
+</div><p></p><hr><a id="method-GNOpenAPIManager-createDOI"></a><div class="section">
+<h3 id="method-createdoi-">Method <code>createDOI()</code><a class="anchor" aria-label="anchor" href="#method-createdoi-"></a></h3>
+<p>Submit a record to the Datacite metadata store in order to create a DOI.</p><div class="section">
+<h4 id="usage-13">Usage<a class="anchor" aria-label="anchor" href="#usage-13"></a></h4>
+<p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">GNOpenAPIManager</span><span class="op">$</span><span class="fu">createDOI</span><span class="op">(</span><span class="va">id</span><span class="op">)</span></span></code></pre></div><p></p></div>
+</div>
+
+<div class="section">
+<h4 id="arguments-10">Arguments<a class="anchor" aria-label="anchor" href="#arguments-10"></a></h4>
+<p></p><div class="arguments"><dl><dt><code>id</code></dt>
+<dd><p>metadata identifier</p></dd>
+
+
+</dl><p></p></div>
+</div>
+<div class="section">
+<h4 id="returns-7">Returns<a class="anchor" aria-label="anchor" href="#returns-7"></a></h4>
+<p><code>TRUE</code> if metadata record has been submitted with DOI created, <code>FALSE</code> otherwise</p>
+</div>
+
+</div><p></p><hr><a id="method-GNOpenAPIManager-deleteDOI"></a><div class="section">
+<h3 id="method-deletedoi-">Method <code>deleteDOI()</code><a class="anchor" aria-label="anchor" href="#method-deletedoi-"></a></h3>
+<p>Remove a DOI (this is not recommended, DOI are supposed to be 
+persistent once created. This is mainly here for testing).</p><div class="section">
+<h4 id="usage-14">Usage<a class="anchor" aria-label="anchor" href="#usage-14"></a></h4>
+<p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">GNOpenAPIManager</span><span class="op">$</span><span class="fu">deleteDOI</span><span class="op">(</span><span class="va">id</span><span class="op">)</span></span></code></pre></div><p></p></div>
+</div>
+
+<div class="section">
+<h4 id="arguments-11">Arguments<a class="anchor" aria-label="anchor" href="#arguments-11"></a></h4>
+<p></p><div class="arguments"><dl><dt><code>id</code></dt>
+<dd></dd>
+
+
+</dl><p></p></div>
+</div>
+
+</div><p></p><hr><a id="method-GNOpenAPIManager-clone"></a><div class="section">
+<h3 id="method-clone-">Method <code>clone()</code><a class="anchor" aria-label="anchor" href="#method-clone-"></a></h3>
+<p>The objects of this class are cloneable with this method.</p><div class="section">
+<h4 id="usage-15">Usage<a class="anchor" aria-label="anchor" href="#usage-15"></a></h4>
+<p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">GNOpenAPIManager</span><span class="op">$</span><span class="fu">clone</span><span class="op">(</span>deep <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></code></pre></div><p></p></div>
+</div>
+
+<div class="section">
+<h4 id="arguments-12">Arguments<a class="anchor" aria-label="anchor" href="#arguments-12"></a></h4>
 <p></p><div class="arguments"><dl><dt><code>deep</code></dt>
 <dd><p>Whether to make a deep clone.</p></dd>
 

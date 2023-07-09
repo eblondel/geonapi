@@ -1,8 +1,12 @@
-## [geonapi 0.6-2](https://github.com/eblondel/geonapi) | [![CRAN_Status_Badge](https://img.shields.io/badge/CRAN-unavailable-red.svg)](https://github.com/eblondel/geonapi)
+## [geonapi 0.7](https://github.com/eblondel/geonapi) | [![CRAN_Status_Badge](https://img.shields.io/badge/CRAN-unavailable-red.svg)](https://github.com/eblondel/geonapi)
 
 **Enhancements**
 
 * [#26](https://github.com/eblondel/geonapi/issues/26) Improve error handling for metadata upload
+
+**New features**
+
+* [#29](https://github.com/eblondel/geonapi/issues/29) Add DOI management methods (with DataCite)
 
 ## [geonapi 0.6-1](https://cran.r-project.org/package=geonapi) | [![CRAN_Status_Badge](https://img.shields.io/badge/CRAN-published-blue.svg)](https://cran.r-project.org/package=geonapi)
 

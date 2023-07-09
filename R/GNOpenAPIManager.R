@@ -541,11 +541,10 @@ GNOpenAPIManager <- R6Class("GNOpenAPIManager",
         contentType = NULL,
         verbose = self$verbose.debug
       )
-      print(content(req))
       if(status_code(req)==201){
         self$INFO(sprintf("DOI successfuly registered on DataCite for metadata record '%s'", id))
         out <- TRUE
-        attr(out, "report") <- content(req)$description
+        attr(out, "report") <- content(req)
       }
       if(status_code(req)==403){
         self$ERROR(sprintf("You don't have rights to edit metadata record '%s'", id))

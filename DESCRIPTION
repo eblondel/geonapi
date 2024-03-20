@@ -7,7 +7,7 @@ Authors@R: c(person("Emmanuel", "Blondel", role = c("aut", "cre"), email = "emma
 Maintainer: Emmanuel Blondel <emmanuel.blondel1@gmail.com>
 Description: Provides an R interface to the 'GeoNetwork' API (<https://geonetwork-opensource.org/#api>) allowing to upload and publish metadata in a 'GeoNetwork' web-application and expose it to OGC CSW.
 Depends: R (>= 3.1.0), geometa, keyring
-Imports: R6, openssl, httr, XML
+Imports: R6, openssl, httr, XML, plyr
 Suggests: testthat, roxygen2
 License: MIT + file LICENSE
 URL: https://github.com/eblondel/geonapi/wiki, https://geonetwork-opensource.org

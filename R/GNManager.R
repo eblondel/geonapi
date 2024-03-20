@@ -7,6 +7,7 @@
 #' @import XML
 #' @import keyring
 #' @import geometa
+#' @importFrom plyr rbind.fill
 #' 
 #' @export
 #' @keywords geonetwork rest api

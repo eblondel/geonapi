@@ -1,6 +1,11 @@
-## [geonapi 0.7](https://github.com/eblondel/geonapi) | [![CRAN_Status_Badge](https://img.shields.io/badge/CRAN-published-blue.svg)](https://github.com/eblondel/geonapi)
+## [geonapi 0.7-1](https://github.com/eblondel/geonapi) | [![CRAN_Status_Badge](https://img.shields.io/badge/CRAN-published-blue.svg)](https://github.com/eblondel/geonapi)
 
 **Enhancements**
+
+* [#30](https://github.com/eblondel/geonapi/issues/30) Consolidate getTags with rbind.fill instead of rbind
+
+## [geonapi 0.7](https://github.com/eblondel/geonapi) | [![CRAN_Status_Badge](https://img.shields.io/badge/CRAN-published-blue.svg)](https://github.com/eblondel/geonapi)
+
 
 * [#26](https://github.com/eblondel/geonapi/issues/26) Improve error handling for metadata upload
 

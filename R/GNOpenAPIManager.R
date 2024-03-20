@@ -158,6 +158,7 @@ GNOpenAPIManager <- R6Class("GNOpenAPIManager",
       if(status_code(req) == 200){
         self$INFO("Successfully fetched tags (categories)!")
         json <- content(req, encoding = "UTF-8")
+        return(json)
         out <- do.call("rbind", lapply(json, function(json.tag){
           out.tag <- data.frame(
             id = json.tag$id,

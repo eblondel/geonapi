@@ -482,8 +482,7 @@ GNOpenAPIManager <- R6Class("GNOpenAPIManager",
       )
       if(status_code(req) == 204){
         self$INFO("Successfully published thumbnail!")
-        response <- content(req)
-        out <- response
+        out <- TRUE
       }else{
         self$ERROR(sprintf("Error while publishing thumbnail - %s", message_for_status(status_code(req))))
         self$ERROR(content(req))

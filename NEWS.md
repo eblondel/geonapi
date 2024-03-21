@@ -1,3 +1,9 @@
+## [geonapi 0.7-2](https://github.com/eblondel/geonapi) | [![CRAN_Status_Badge](https://img.shields.io/badge/CRAN-published-blue.svg)](https://github.com/eblondel/geonapi)
+
+**Bug fixes**
+
+* [#31](https://github.com/eblondel/geonapi/issues/31) Empty response for thumbnail publication
+
 ## [geonapi 0.7-1](https://github.com/eblondel/geonapi) | [![CRAN_Status_Badge](https://img.shields.io/badge/CRAN-published-blue.svg)](https://github.com/eblondel/geonapi)
 
 **Enhancements**

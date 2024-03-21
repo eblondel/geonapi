@@ -2,7 +2,7 @@ pandoc: 3.1.11
 pkgdown: 2.0.7
 pkgdown_sha: ~
 articles: {}
-last_built: 2024-03-21T00:05Z
+last_built: 2024-03-21T08:52Z
 urls:
   reference: https://eblondel.github.io/geonapi/reference
   article: https://eblondel.github.io/geonapi/articles

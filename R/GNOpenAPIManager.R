@@ -82,9 +82,9 @@ GNOpenAPIManager <- R6Class("GNOpenAPIManager",
       
       keyring_token <- private$getToken()
       if(!is.null(keyring_token)){
-        req <- GNUtils$GET(
+        req <- GNUtils$POST(
           url = paste0(self$getUrl(), "/", self$lang), path = "/info?type=me",
-          user = user, pwd = private$getPwd(), token = keyring_token, cookies = private$cookies,
+          user = user, pwd = private$getPwd(), token = keyring_token, cookies = private$cookies, content = NULL, contentType = NULL,
           verbose = TRUE 
         )
       }

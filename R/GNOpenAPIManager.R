@@ -61,9 +61,9 @@ GNOpenAPIManager <- R6Class("GNOpenAPIManager",
     #'@param pwd pwd   
     login = function(user, pwd){
       
-      req <- GNUtils$GET(
+      req <- GNUtils$POST(
         url = paste0(self$getUrl(), "/", self$lang), path = "/info?type=me",
-        user = user, pwd = pwd,
+        user = user, pwd = pwd, content = NULL, contentType = NULL,
         verbose = TRUE 
       )
       

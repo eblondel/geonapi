@@ -1,16 +1,22 @@
+## [geonapi 0.7-3](https://github.com/eblondel/geonapi) | [![CRAN_Status_Badge](https://img.shields.io/badge/CRAN-published-blue.svg)](https://github.com/eblondel/geonapi)
+
+**Enhancements**
+
+* [#32](https://github.com/eblondel/geonapi/issues/32) Switch from POST to GET in OpenAPI login
+
 ## [geonapi 0.7-2](https://github.com/eblondel/geonapi) | [![CRAN_Status_Badge](https://img.shields.io/badge/CRAN-published-blue.svg)](https://github.com/eblondel/geonapi)
 
 **Bug fixes**
 
 * [#31](https://github.com/eblondel/geonapi/issues/31) Empty response for thumbnail publication
 
-## [geonapi 0.7-1](https://github.com/eblondel/geonapi) | [![CRAN_Status_Badge](https://img.shields.io/badge/CRAN-published-blue.svg)](https://github.com/eblondel/geonapi)
+## [geonapi 0.7-1](https://cran.r-project.org/src/contrib/Archive/geonapi/geonapi_0.7-1.tar.gz) | [![CRAN_Status_Badge](https://img.shields.io/badge/CRAN-published-blue.svg)](https://cran.r-project.org/src/contrib/Archive/geonapi/geonapi_0.7-1.tar.gz)
 
 **Enhancements**
 
 * [#30](https://github.com/eblondel/geonapi/issues/30) Consolidate getTags with rbind.fill instead of rbind
 
-## [geonapi 0.7](https://github.com/eblondel/geonapi) | [![CRAN_Status_Badge](https://img.shields.io/badge/CRAN-published-blue.svg)](https://github.com/eblondel/geonapi)
+## [geonapi 0.7](https://cran.r-project.org/src/contrib/Archive/geonapi/geonapi_0.7.tar.gz) | [![CRAN_Status_Badge](https://img.shields.io/badge/CRAN-published-blue.svg)](https://cran.r-project.org/src/contrib/Archive/geonapi/geonapi_0.7.tar.gz)
 
 
 * [#26](https://github.com/eblondel/geonapi/issues/26) Improve error handling for metadata upload

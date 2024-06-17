@@ -61,9 +61,9 @@ GNOpenAPIManager <- R6Class("GNOpenAPIManager",
     #'@param pwd pwd   
     login = function(user, pwd){
       
-      req <- GNUtils$POST(
+      req <- GNUtils$GET(
         url = paste0(self$getUrl(), "/", self$lang), path = "/info?type=me",
-        user = user, pwd = pwd, content = NULL, contentType = NULL,
+        user = user, pwd = pwd,
         verbose = TRUE 
       )
       
@@ -82,9 +82,9 @@ GNOpenAPIManager <- R6Class("GNOpenAPIManager",
       
       keyring_token <- private$getToken()
       if(!is.null(keyring_token)){
-        req <- GNUtils$POST(
+        req <- GNUtils$GET(
           url = paste0(self$getUrl(), "/", self$lang), path = "/info?type=me",
-          user = user, pwd = private$getPwd(), token = keyring_token, cookies = private$cookies, content = NULL, contentType = NULL,
+          user = user, pwd = private$getPwd(), token = keyring_token, cookies = private$cookies,
           verbose = TRUE 
         )
       }

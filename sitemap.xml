@@ -1,51 +1,19 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url>
-    <loc>https://eblondel.github.io/geonapi/404.html</loc>
-  </url>
-  <url>
-    <loc>https://eblondel.github.io/geonapi/CODE_OF_CONDUCT.html</loc>
-  </url>
-  <url>
-    <loc>https://eblondel.github.io/geonapi/LICENSE-text.html</loc>
-  </url>
-  <url>
-    <loc>https://eblondel.github.io/geonapi/authors.html</loc>
-  </url>
-  <url>
-    <loc>https://eblondel.github.io/geonapi/index.html</loc>
-  </url>
-  <url>
-    <loc>https://eblondel.github.io/geonapi/news/index.html</loc>
-  </url>
-  <url>
-    <loc>https://eblondel.github.io/geonapi/reference/GNAbstractManager.html</loc>
-  </url>
-  <url>
-    <loc>https://eblondel.github.io/geonapi/reference/GNLegacyAPIManager.html</loc>
-  </url>
-  <url>
-    <loc>https://eblondel.github.io/geonapi/reference/GNManager.html</loc>
-  </url>
-  <url>
-    <loc>https://eblondel.github.io/geonapi/reference/GNOpenAPIManager.html</loc>
-  </url>
-  <url>
-    <loc>https://eblondel.github.io/geonapi/reference/GNPrivConfiguration.html</loc>
-  </url>
-  <url>
-    <loc>https://eblondel.github.io/geonapi/reference/GNRESTRequest.html</loc>
-  </url>
-  <url>
-    <loc>https://eblondel.github.io/geonapi/reference/GNUtils.html</loc>
-  </url>
-  <url>
-    <loc>https://eblondel.github.io/geonapi/reference/GNVersion.html</loc>
-  </url>
-  <url>
-    <loc>https://eblondel.github.io/geonapi/reference/geonapi.html</loc>
-  </url>
-  <url>
-    <loc>https://eblondel.github.io/geonapi/reference/index.html</loc>
-  </url>
+<urlset xmlns = 'http://www.sitemaps.org/schemas/sitemap/0.9'>
+<url><loc>https://eblondel.github.io/geonapi/404.html</loc></url>
+<url><loc>https://eblondel.github.io/geonapi/CODE_OF_CONDUCT.html</loc></url>
+<url><loc>https://eblondel.github.io/geonapi/LICENSE-text.html</loc></url>
+<url><loc>https://eblondel.github.io/geonapi/authors.html</loc></url>
+<url><loc>https://eblondel.github.io/geonapi/index.html</loc></url>
+<url><loc>https://eblondel.github.io/geonapi/news/index.html</loc></url>
+<url><loc>https://eblondel.github.io/geonapi/reference/GNAbstractManager.html</loc></url>
+<url><loc>https://eblondel.github.io/geonapi/reference/GNLegacyAPIManager.html</loc></url>
+<url><loc>https://eblondel.github.io/geonapi/reference/GNManager.html</loc></url>
+<url><loc>https://eblondel.github.io/geonapi/reference/GNOpenAPIManager.html</loc></url>
+<url><loc>https://eblondel.github.io/geonapi/reference/GNPrivConfiguration.html</loc></url>
+<url><loc>https://eblondel.github.io/geonapi/reference/GNRESTRequest.html</loc></url>
+<url><loc>https://eblondel.github.io/geonapi/reference/GNUtils.html</loc></url>
+<url><loc>https://eblondel.github.io/geonapi/reference/GNVersion.html</loc></url>
+<url><loc>https://eblondel.github.io/geonapi/reference/geonapi.html</loc></url>
+<url><loc>https://eblondel.github.io/geonapi/reference/index.html</loc></url>
 </urlset>
+

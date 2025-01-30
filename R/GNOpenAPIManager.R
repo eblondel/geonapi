@@ -6,9 +6,9 @@
 #' 
 #' @export
 #' @keywords geonetwork rest api
-#' @return Object of \code{\link{R6Class}} with methods for communication with
+#' @return Object of \code{\link[R6]{R6Class}} with methods for communication with
 #' the REST API of a GeoNetwork instance using the legacy API.
-#' @format \code{\link{R6Class}} object.
+#' @format \code{\link[R6]{R6Class}} object.
 #' 
 #' @examples
 #' \dontrun{
@@ -234,14 +234,14 @@ GNOpenAPIManager <- R6Class("GNOpenAPIManager",
     },
     
     
-    #'@description Inserts a record by file, XML object or \pkg{geometa} object of class \code{ISOMetadata} or \code{ISOFeatureCatalogue}. 
+    #'@description Inserts a record by file, XML object or \pkg{geometa} object of class \link[geometa]{ISOMetadata} or \link[geometa]{ISOFeatureCatalogue}. 
     #'    Extra parameters related to \pkg{geometa} objects: \code{geometa_validate} (TRUE by default) and \code{geometa_inspire} 
     #'    (FALSE by default) can be used to perform ISO and INSPIRE validation respectively. In that case on object of class 
     #'    \code{geometa::INSPIREMetadataValidator}, with a proper user API key, should be specified as \code{geometa_inspireValidator} 
     #'    argument.
-    #'@param xml object of class \link{XMLInternalNode-class} from \pkg{XML}
+    #'@param xml object of class \link[XML]{XMLInternalNode-class}
     #'@param file file
-    #'@param geometa geometa object of class \code{ISOMetadata} or \code{ISOFeatureCatalogue}
+    #'@param geometa geometa object of class \link[geometa]{ISOMetadata} or \link[geometa]{ISOFeatureCatalogue}
     #'@param metadataType metadata type. By default \code{METADATA}
     #'@param uuidProcessing UUID processing. By default \code{NOTHING}. Other possible value: \code{OVERWRITE}
     #'@param group group
@@ -340,14 +340,14 @@ GNOpenAPIManager <- R6Class("GNOpenAPIManager",
       return(out)
     },
     
-    #'@description Inserts a metadata by file, XML object or \pkg{geometa} object of class \code{ISOMetadata} or \code{ISOFeatureCatalogue}. 
+    #'@description Inserts a metadata by file, XML object or \pkg{geometa} object of class \link[geometa]{ISOMetadata} or \link[geometa]{ISOFeatureCatalogue}. 
     #'    Extra parameters related to \pkg{geometa} objects: \code{geometa_validate} (TRUE by default) and \code{geometa_inspire} 
     #'    (FALSE by default) can be used to perform ISO and INSPIRE validation respectively. In that case on object of class 
     #'    \code{geometa::INSPIREMetadataValidator}, with a proper user API key, should be specified as
     #'    \code{geometa_inspireValidator} argument.
-    #'@param xml object of class \link{XMLInternalNode-class} from \pkg{XML}
+    #'@param xml object of class \link[XML]{XMLInternalNode-class}
     #'@param file file
-    #'@param geometa geometa object of class \code{ISOMetadata} or \code{ISOFeatureCatalogue}
+    #'@param geometa geometa object of class \link[geometa]{ISOMetadata} or \link[geometa]{ISOFeatureCatalogue}
     #'@param metadataType metadata type. By default \code{METADATA}
     #'@param uuidProcessing UUID processing. By default \code{NOTHING}. Other possible value: \code{OVERWRITE}
     #'@param group group
@@ -374,14 +374,14 @@ GNOpenAPIManager <- R6Class("GNOpenAPIManager",
                         geometa_inspire = geometa_inspire, geometa_inspireValidator = geometa_inspireValidator)
     },
     
-    #'@description Inserts a metadata by file, XML object or \pkg{geometa} object of class \code{ISOMetadata} or \code{ISOFeatureCatalogue}. 
+    #'@description Inserts a metadata by file, XML object or \pkg{geometa} object of class \link[geometa]{ISOMetadata} or \link[geometa]{ISOFeatureCatalogue}. 
     #'    Extra parameters related to \pkg{geometa} objects: \code{geometa_validate} (TRUE by default) and \code{geometa_inspire} 
     #'    (FALSE by default) can be used to perform ISO and INSPIRE validation respectively. In that case on object of class 
     #'    \code{geometa::INSPIREMetadataValidator}, with a proper user API key, should be specified as
     #'    \code{geometa_inspireValidator} argument.
-    #'@param xml object of class \link{XMLInternalNode-class} from \pkg{XML}
+    #'@param xml object of class \link[XML]{XMLInternalNode-class}
     #'@param file file
-    #'@param geometa geometa object of class \code{ISOMetadata} or \code{ISOFeatureCatalogue}
+    #'@param geometa geometa object of class \link[geometa]{ISOMetadata} or \link[geometa]{ISOFeatureCatalogue}
     #'@param metadataType metadata type. By default \code{METADATA}
     #'@param group group
     #'@param category category

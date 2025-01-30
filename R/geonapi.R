@@ -1,7 +1,6 @@
 #' @name geonapi
 #' @aliases geonapi-package
 #' @aliases geonapi
-#' @docType package
 #' 
 #' @title 'GeoNetwork' API R Interface
 #' @description Provides an R interface to the 'GeoNetwork' API (<https://geonetwork-opensource.org/#api>)
@@ -10,4 +9,4 @@
 #'  
 #'@author Emmanuel Blondel \email{emmanuel.blondel1@@gmail.com}
 #'
-NULL
+"_PACKAGE"

@@ -5,10 +5,10 @@
 \alias{GNOpenAPIManager}
 \title{GNOpenAPIManager}
 \format{
-\code{\link{R6Class}} object.
+\code{\link[R6]{R6Class}} object.
 }
 \value{
-Object of \code{\link{R6Class}} with methods for communication with
+Object of \code{\link[R6]{R6Class}} with methods for communication with
 the REST API of a GeoNetwork instance using the legacy API.
 }
 \description{
@@ -201,7 +201,7 @@ or \code{ISOFeatureCatalogue} (ISO 19110) (from \pkg{geometa} package)
 \if{html}{\out{<a id="method-GNOpenAPIManager-insertRecord"></a>}}
 \if{latex}{\out{\hypertarget{method-GNOpenAPIManager-insertRecord}{}}}
 \subsection{Method \code{insertRecord()}}{
-Inserts a record by file, XML object or \pkg{geometa} object of class \code{ISOMetadata} or \code{ISOFeatureCatalogue}. 
+Inserts a record by file, XML object or \pkg{geometa} object of class \link[geometa]{ISOMetadata} or \link[geometa]{ISOFeatureCatalogue}. 
    Extra parameters related to \pkg{geometa} objects: \code{geometa_validate} (TRUE by default) and \code{geometa_inspire} 
    (FALSE by default) can be used to perform ISO and INSPIRE validation respectively. In that case on object of class 
    \code{geometa::INSPIREMetadataValidator}, with a proper user API key, should be specified as \code{geometa_inspireValidator} 
@@ -229,11 +229,11 @@ Inserts a record by file, XML object or \pkg{geometa} object of class \code{ISOM
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{xml}}{object of class \link{XMLInternalNode-class} from \pkg{XML}}
+\item{\code{xml}}{object of class \link[XML]{XMLInternalNode-class}}
 
 \item{\code{file}}{file}
 
-\item{\code{geometa}}{geometa object of class \code{ISOMetadata} or \code{ISOFeatureCatalogue}}
+\item{\code{geometa}}{geometa object of class \link[geometa]{ISOMetadata} or \link[geometa]{ISOFeatureCatalogue}}
 
 \item{\code{metadataType}}{metadata type. By default \code{METADATA}}
 
@@ -266,7 +266,7 @@ Inserts a record by file, XML object or \pkg{geometa} object of class \code{ISOM
 \if{html}{\out{<a id="method-GNOpenAPIManager-insertMetadata"></a>}}
 \if{latex}{\out{\hypertarget{method-GNOpenAPIManager-insertMetadata}{}}}
 \subsection{Method \code{insertMetadata()}}{
-Inserts a metadata by file, XML object or \pkg{geometa} object of class \code{ISOMetadata} or \code{ISOFeatureCatalogue}. 
+Inserts a metadata by file, XML object or \pkg{geometa} object of class \link[geometa]{ISOMetadata} or \link[geometa]{ISOFeatureCatalogue}. 
    Extra parameters related to \pkg{geometa} objects: \code{geometa_validate} (TRUE by default) and \code{geometa_inspire} 
    (FALSE by default) can be used to perform ISO and INSPIRE validation respectively. In that case on object of class 
    \code{geometa::INSPIREMetadataValidator}, with a proper user API key, should be specified as
@@ -294,11 +294,11 @@ Inserts a metadata by file, XML object or \pkg{geometa} object of class \code{IS
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{xml}}{object of class \link{XMLInternalNode-class} from \pkg{XML}}
+\item{\code{xml}}{object of class \link[XML]{XMLInternalNode-class}}
 
 \item{\code{file}}{file}
 
-\item{\code{geometa}}{geometa object of class \code{ISOMetadata} or \code{ISOFeatureCatalogue}}
+\item{\code{geometa}}{geometa object of class \link[geometa]{ISOMetadata} or \link[geometa]{ISOFeatureCatalogue}}
 
 \item{\code{metadataType}}{metadata type. By default \code{METADATA}}
 
@@ -331,7 +331,7 @@ Inserts a metadata by file, XML object or \pkg{geometa} object of class \code{IS
 \if{html}{\out{<a id="method-GNOpenAPIManager-updateMetadata"></a>}}
 \if{latex}{\out{\hypertarget{method-GNOpenAPIManager-updateMetadata}{}}}
 \subsection{Method \code{updateMetadata()}}{
-Inserts a metadata by file, XML object or \pkg{geometa} object of class \code{ISOMetadata} or \code{ISOFeatureCatalogue}. 
+Inserts a metadata by file, XML object or \pkg{geometa} object of class \link[geometa]{ISOMetadata} or \link[geometa]{ISOFeatureCatalogue}. 
    Extra parameters related to \pkg{geometa} objects: \code{geometa_validate} (TRUE by default) and \code{geometa_inspire} 
    (FALSE by default) can be used to perform ISO and INSPIRE validation respectively. In that case on object of class 
    \code{geometa::INSPIREMetadataValidator}, with a proper user API key, should be specified as
@@ -358,11 +358,11 @@ Inserts a metadata by file, XML object or \pkg{geometa} object of class \code{IS
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{xml}}{object of class \link{XMLInternalNode-class} from \pkg{XML}}
+\item{\code{xml}}{object of class \link[XML]{XMLInternalNode-class}}
 
 \item{\code{file}}{file}
 
-\item{\code{geometa}}{geometa object of class \code{ISOMetadata} or \code{ISOFeatureCatalogue}}
+\item{\code{geometa}}{geometa object of class \link[geometa]{ISOMetadata} or \link[geometa]{ISOFeatureCatalogue}}
 
 \item{\code{metadataType}}{metadata type. By default \code{METADATA}}
 

@@ -5,10 +5,10 @@
 \alias{GNLegacyAPIManager}
 \title{GNLegacyAPIManager}
 \format{
-\code{\link{R6Class}} object.
+\code{\link[R6]{R6Class}} object.
 }
 \value{
-Object of \code{\link{R6Class}} with methods for communication with
+Object of \code{\link[R6]{R6Class}} with methods for communication with
 the REST API of a GeoNetwork instance using the legacy API.
 }
 \description{
@@ -156,7 +156,7 @@ an object of class \code{data.frame}
 \if{latex}{\out{\hypertarget{method-GNLegacyAPIManager-insertMetadata}{}}}
 \subsection{Method \code{insertMetadata()}}{
 Inserts a metadata by file, XML object or \pkg{geometa} object of class
-   \code{ISOMetadata} or \code{ISOFeatureCatalogue}. If successful, returns the Geonetwork
+   \link[geometa]{ISOMetadata} or \link[geometa]{ISOFeatureCatalogue}. If successful, returns the Geonetwork
    metadata internal identifier (integer). Extra parameters \code{geometa_validate} (TRUE 
    by default) and \code{geometa_inspire} (FALSE by default) can be used with geometa objects 
    for perform ISO and INSPIRE validation respectively. In that case on object of class 
@@ -180,11 +180,11 @@ Inserts a metadata by file, XML object or \pkg{geometa} object of class
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{xml}}{xml object of class \link{XMLInternalNode-class} from \pkg{XML}}
+\item{\code{xml}}{xml object of class \link[XML]{XMLInternalNode-class}}
 
 \item{\code{file}}{file}
 
-\item{\code{geometa}}{geometa, object of class \code{ISOMetadata} or \code{ISOFeatureCatalogue} from \pkg{geometa}}
+\item{\code{geometa}}{geometa, object of class \link[geometa]{ISOMetadata} or \link[geometa]{ISOFeatureCatalogue}}
 
 \item{\code{group}}{group}
 
@@ -355,11 +355,11 @@ Updates a metadata by file, XML object or \pkg{geometa} object of class
 \describe{
 \item{\code{id}}{metadata id}
 
-\item{\code{xml}}{xml object of class \link{XMLInternalNode-class} from \pkg{XML}}
+\item{\code{xml}}{xml object of class \link[XML]{XMLInternalNode-class}}
 
 \item{\code{file}}{file}
 
-\item{\code{geometa}}{geometa, object of class \code{ISOMetadata} or \code{ISOFeatureCatalogue} from \pkg{geometa}}
+\item{\code{geometa}}{geometa, object of class \link[geometa]{ISOMetadata} or \link[geometa]{ISOFeatureCatalogue}}
 
 \item{\code{geometa_validate}}{validate geometa object}
 

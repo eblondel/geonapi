@@ -16,9 +16,9 @@
 #' GeoNetwork with version < 4 will be interfaced with the GeoNetwork legacy API (see detailed 
 #' documentation at \link{GNLegacyAPIManager}), while starting with GeoNetwork 3.2, the new 
 #' GeoNetwork OpenAPI will be used.
-#' @return Object of \code{\link{R6Class}} with methods for communication with
+#' @return Object of \code{\link[R6]{R6Class}} with methods for communication with
 #' the API of a GeoNetwork instance.
-#' @format \code{\link{R6Class}} object.
+#' @format \code{\link[R6]{R6Class}} object.
 #' 
 #' @examples
 #' \dontrun{

@@ -10,6 +10,15 @@ Provides an R interface to the 'GeoNetwork' API (<https://geonetwork-opensource.
 allowing to upload and publish metadata in a 'GeoNetwork' web-application and expose it to OGC CSW 
 Web-Services (Catalogue Service for the Web).
 }
+\seealso{
+Useful links:
+\itemize{
+  \item \url{https://github.com/eblondel/geonapi/wiki}
+  \item \url{https://geonetwork-opensource.org}
+  \item Report bugs at \url{https://github.com/eblondel/geonapi/issues}
+}
+
+}
 \author{
 Emmanuel Blondel \email{emmanuel.blondel1@gmail.com}
 }

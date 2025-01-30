@@ -8,8 +8,8 @@
 #' @title A GeoNetwork privilege configuration
 #' @description This class is an utility to configure privileges
 #' @keywords GeoNetwork privilege configuration
-#' @return Object of \code{\link[R6]{R6Class}} for modelling a GeoNetwork Privilege configuration
-#' @format \code{\link[R6]{R6Class}} object.
+#' @return Object of \link[R6]{R6Class} for modelling a GeoNetwork Privilege configuration
+#' @format \link[R6]{R6Class} object.
 #' 
 #' @examples
 #' \dontrun{
@@ -24,7 +24,7 @@ GNPrivConfiguration <- R6Class("GNPrivConfiguration",
      #'@field privileges privileges
      privileges = list(),
      
-     #'@description Initializes an object of class \link{GNPrivConfiguration}
+     #'@description Initializes an object of class \code{GNPrivConfiguration}
      initialize = function(){},
      
      #'@description  Sets the operation privileges for a particular group. Allowed group values

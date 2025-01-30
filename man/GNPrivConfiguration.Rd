@@ -8,12 +8,12 @@
 \format{
 \code{\link{R6Class}} object.
 
-\code{\link[R6]{R6Class}} object.
+\link[R6]{R6Class} object.
 }
 \value{
 Object of \code{\link{R6Class}} for modelling a GeoNetwork Privilege configuration
 
-Object of \code{\link[R6]{R6Class}} for modelling a GeoNetwork Privilege configuration
+Object of \link[R6]{R6Class} for modelling a GeoNetwork Privilege configuration
 }
 \description{
 This class is an utility to configure privileges
@@ -114,7 +114,7 @@ The objects of this class are cloneable with this method.
 \if{html}{\out{<a id="method-GNPrivConfiguration-new"></a>}}
 \if{latex}{\out{\hypertarget{method-GNPrivConfiguration-new}{}}}
 \subsection{Method \code{new()}}{
-Initializes an object of class \link{GNPrivConfiguration}
+Initializes an object of class \code{GNPrivConfiguration}
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{GNPrivConfiguration$new()}\if{html}{\out{</div>}}
 }

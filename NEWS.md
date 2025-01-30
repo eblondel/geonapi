@@ -1,4 +1,4 @@
-## [geonapi 0.8](https://github.com/eblondel/geonapi) | [![CRAN_Status_Badge](https://img.shields.io/badge/CRAN-published-blue.svg)](https://github.com/eblondel/geonapi)
+## [geonapi 0.8](https://github.com/eblondel/geonapi) | [![CRAN_Status_Badge](https://img.shields.io/badge/CRAN-unavailable-red.svg)](https://github.com/eblondel/geonapi)
 
 **Enhancements**
 

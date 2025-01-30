@@ -399,7 +399,7 @@ GNLegacyAPIManager <- R6Class("GNLegacyAPIManager",
          }else if(output == "metadata"){
            #bridge to geometa package once geometa XML decoding supported
            isoClass <- xmlName(xmlRoot(xml))
-           isoStandard <- switch(XML::xmlNamespace(xml),
+           isoStandard <- switch(XML::xmlNamespace(xmlRoot(xml)),
              "http://www.isotc211.org/2005/gmd" = "19139",
              "http://standards.iso.org/iso/19115/-3/mdb/2.0" = "19115-3",
              "http://www.isotc211.org/2005/gfc" = "19139",

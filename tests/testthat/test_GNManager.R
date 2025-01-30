@@ -41,7 +41,7 @@ test_that("GET tags/categories",{
 
 test_that("CREATE metadata",{
   mdfile <- system.file("extdata/examples", "metadata.xml", package = "geonapi")
-  md <- geometa::readISO19139(file = mdfile)
+  md <- geometa::readISO(file = mdfile)
   if(GN$getClassName() == "GNLegacyAPIManager"){
     created = GN$insertMetadata(geometa = md, group = "1", category = ifelse(GN$getClassName() == "GNOpenAPIManager", "1", "datasets"))
     config <- GNPrivConfiguration$new()

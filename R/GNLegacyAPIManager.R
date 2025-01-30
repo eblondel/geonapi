@@ -262,7 +262,7 @@ GNLegacyAPIManager <- R6Class("GNLegacyAPIManager",
          saveXML(xml, file, encoding = "UTF-8")
        }
        if(!is.null(file)){
-         data <- geometa::readISO19139(file = file, raw = TRUE)
+         data <- geometa::readISO(file = file, raw = TRUE)
          if(isTempFile) unlink(file)
        }
        if(!is.null(geometa)){
@@ -399,6 +399,14 @@ GNLegacyAPIManager <- R6Class("GNLegacyAPIManager",
          }else if(output == "metadata"){
            #bridge to geometa package once geometa XML decoding supported
            isoClass <- xmlName(xmlRoot(xml))
+           isoStandard <- switch(XML::xmlNamespace(xml),
+             "http://www.isotc211.org/2005/gmd" = "19139",
+             "http://standards.iso.org/iso/19115/-3/mdb/2.0" = "19115-3",
+             "http://www.isotc211.org/2005/gfc" = "19139",
+             "http://standards.iso.org/iso/19110/gfc/1.1" = "19115-3",
+             "19139"
+           )
+           geometa::setMetadataStandard(isoStandard)
            out <- NULL
            if(isoClass=="MD_Metadata"){
              out <- geometa::ISOMetadata$new(xml = xml)
@@ -473,7 +481,7 @@ GNLegacyAPIManager <- R6Class("GNLegacyAPIManager",
          saveXML(xml, file, encoding = "UTF-8")
        }
        if(!is.null(file)){
-         data <- geometa::readISO19139(file = file, raw = TRUE)
+         data <- geometa::readISO(file = file, raw = TRUE)
          if(isTempFile) unlink(file)
        }
        if(!is.null(geometa)){

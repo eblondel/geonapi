@@ -212,6 +212,14 @@ GNOpenAPIManager <- R6Class("GNOpenAPIManager",
         
         #bridge to geometa package once geometa XML decoding supported
         isoClass <- xmlName(xmlRoot(xml))
+        isoStandard <- switch(XML::xmlNamespace(xmlRoot(xml)),
+                              "http://www.isotc211.org/2005/gmd" = "19139",
+                              "http://standards.iso.org/iso/19115/-3/mdb/2.0" = "19115-3",
+                              "http://www.isotc211.org/2005/gfc" = "19139",
+                              "http://standards.iso.org/iso/19110/gfc/1.1" = "19115-3",
+                              "19139"
+        )
+        geometa::setMetadataStandard(isoStandard)
         out <- NULL
         if(isoClass=="MD_Metadata"){
           out <- geometa::ISOMetadata$new(xml = xml)

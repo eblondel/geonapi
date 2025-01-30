@@ -2,7 +2,6 @@
 
 **Enhancements**
 
-* [#32](https://github.com/eblondel/geonapi/issues/32) Switch from POST to GET in OpenAPI login
 * [#33](https://github.com/eblondel/geonapi/issues/33) Support ISO 19115-3 standard metadata (with [geometa](https://github.com/eblondel/geometa) version 0.9)
 
 ## [geonapi 0.7-2](https://github.com/eblondel/geonapi) | [![CRAN_Status_Badge](https://img.shields.io/badge/CRAN-published-blue.svg)](https://github.com/eblondel/geonapi)

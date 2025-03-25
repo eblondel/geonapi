@@ -9,7 +9,7 @@ GNOpenAPIManager"></head><body>
 
     <a class="navbar-brand me-2" href="../index.html">geonapi</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.8</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.8-1</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -31,7 +31,7 @@ GNOpenAPIManager"></head><body>
   <main id="main" class="col-md-9"><div class="page-header">
 
       <h1>GNOpenAPIManager</h1>
-      <small class="dont-index">Source: <a href="https://github.com/eblondel/geonapi/blob/v0.8/R/GNOpenAPIManager.R" class="external-link"><code>R/GNOpenAPIManager.R</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/eblondel/geonapi/blob/master/R/GNOpenAPIManager.R" class="external-link"><code>R/GNOpenAPIManager.R</code></a></small>
       <div class="d-none name"><code>GNOpenAPIManager.Rd</code></div>
     </div>
 
@@ -69,6 +69,7 @@ the REST API of a GeoNetwork instance using the legacy API.</p>
 <li><p><a href="#method-GNOpenAPIManager-getGroups"><code>GNOpenAPIManager$getGroups()</code></a></p></li>
 <li><p><a href="#method-GNOpenAPIManager-getTags"><code>GNOpenAPIManager$getTags()</code></a></p></li>
 <li><p><a href="#method-GNOpenAPIManager-getCategories"><code>GNOpenAPIManager$getCategories()</code></a></p></li>
+<li><p><a href="#method-GNOpenAPIManager-downloadMetadataByUUID"><code>GNOpenAPIManager$downloadMetadataByUUID()</code></a></p></li>
 <li><p><a href="#method-GNOpenAPIManager-getMetadataByUUID"><code>GNOpenAPIManager$getMetadataByUUID()</code></a></p></li>
 <li><p><a href="#method-GNOpenAPIManager-insertRecord"><code>GNOpenAPIManager$insertRecord()</code></a></p></li>
 <li><p><a href="#method-GNOpenAPIManager-insertMetadata"><code>GNOpenAPIManager$insertMetadata()</code></a></p></li>
@@ -192,10 +193,48 @@ the REST API of a GeoNetwork instance using the legacy API.</p>
 <p>an object of class <code>data.frame</code></p>
 </div>
 
+</div><p></p><hr><a id="method-GNOpenAPIManager-downloadMetadataByUUID"></a><div class="section">
+<h3 id="method-downloadmetadatabyuuid-">Method <code>downloadMetadataByUUID()</code><a class="anchor" aria-label="anchor" href="#method-downloadmetadatabyuuid-"></a></h3>
+<p>Download a metadata by UUID.</p><div class="section">
+<h4 id="usage-5">Usage<a class="anchor" aria-label="anchor" href="#usage-5"></a></h4>
+<p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">GNOpenAPIManager</span><span class="op">$</span><span class="fu">downloadMetadataByUUID</span><span class="op">(</span></span>
+<span>  <span class="va">uuid</span>,</span>
+<span>  addSchemaLocation <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>  increasePopularity <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>  approved <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>  <span class="va">filename</span></span>
+<span><span class="op">)</span></span></code></pre></div><p></p></div>
+</div>
+
+<div class="section">
+<h4 id="arguments-2">Arguments<a class="anchor" aria-label="anchor" href="#arguments-2"></a></h4>
+<p></p><div class="arguments"><dl><dt><code>uuid</code></dt>
+<dd><p>uuid</p></dd>
+
+
+<dt><code>addSchemaLocation</code></dt>
+<dd><p>add schema location. Default is <code>TRUE</code></p></dd>
+
+
+<dt><code>increasePopularity</code></dt>
+<dd><p>increase popularity. Default is <code>TRUE</code></p></dd>
+
+
+<dt><code>approved</code></dt>
+<dd><p>approved</p></dd>
+
+
+<dt><code>filename</code></dt>
+<dd><p>output filename</p></dd>
+
+
+</dl><p></p></div>
+</div>
+
 </div><p></p><hr><a id="method-GNOpenAPIManager-getMetadataByUUID"></a><div class="section">
 <h3 id="method-getmetadatabyuuid-">Method <code>getMetadataByUUID()</code><a class="anchor" aria-label="anchor" href="#method-getmetadatabyuuid-"></a></h3>
 <p>Get a metadata by UUID.</p><div class="section">
-<h4 id="usage-5">Usage<a class="anchor" aria-label="anchor" href="#usage-5"></a></h4>
+<h4 id="usage-6">Usage<a class="anchor" aria-label="anchor" href="#usage-6"></a></h4>
 <p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">GNOpenAPIManager</span><span class="op">$</span><span class="fu">getMetadataByUUID</span><span class="op">(</span></span>
 <span>  <span class="va">uuid</span>,</span>
 <span>  addSchemaLocation <span class="op">=</span> <span class="cn">TRUE</span>,</span>
@@ -205,7 +244,7 @@ the REST API of a GeoNetwork instance using the legacy API.</p>
 </div>
 
 <div class="section">
-<h4 id="arguments-2">Arguments<a class="anchor" aria-label="anchor" href="#arguments-2"></a></h4>
+<h4 id="arguments-3">Arguments<a class="anchor" aria-label="anchor" href="#arguments-3"></a></h4>
 <p></p><div class="arguments"><dl><dt><code>uuid</code></dt>
 <dd><p>uuid</p></dd>
 
@@ -237,100 +276,8 @@ or <code>ISOFeatureCatalogue</code> (ISO 19110) (from <span class="pkg">geometa<
    (FALSE by default) can be used to perform ISO and INSPIRE validation respectively. In that case on object of class
    <code><a href="https://rdrr.io/pkg/geometa/man/INSPIREMetadataValidator.html" class="external-link">geometa::INSPIREMetadataValidator</a></code>, with a proper user API key, should be specified as <code>geometa_inspireValidator</code>
    argument.</p><div class="section">
-<h4 id="usage-6">Usage<a class="anchor" aria-label="anchor" href="#usage-6"></a></h4>
-<p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">GNOpenAPIManager</span><span class="op">$</span><span class="fu">insertRecord</span><span class="op">(</span></span>
-<span>  xml <span class="op">=</span> <span class="cn">NULL</span>,</span>
-<span>  file <span class="op">=</span> <span class="cn">NULL</span>,</span>
-<span>  geometa <span class="op">=</span> <span class="cn">NULL</span>,</span>
-<span>  metadataType <span class="op">=</span> <span class="st">"METADATA"</span>,</span>
-<span>  uuidProcessing <span class="op">=</span> <span class="st">"NOTHING"</span>,</span>
-<span>  <span class="va">group</span>,</span>
-<span>  category <span class="op">=</span> <span class="cn">NULL</span>,</span>
-<span>  rejectIfInvalid <span class="op">=</span> <span class="cn">FALSE</span>,</span>
-<span>  publishToAll <span class="op">=</span> <span class="cn">TRUE</span>,</span>
-<span>  transformWith <span class="op">=</span> <span class="st">"_none_"</span>,</span>
-<span>  schema <span class="op">=</span> <span class="cn">NULL</span>,</span>
-<span>  extra <span class="op">=</span> <span class="cn">NULL</span>,</span>
-<span>  geometa_validate <span class="op">=</span> <span class="cn">TRUE</span>,</span>
-<span>  geometa_inspire <span class="op">=</span> <span class="cn">FALSE</span>,</span>
-<span>  geometa_inspireValidator <span class="op">=</span> <span class="cn">NULL</span></span>
-<span><span class="op">)</span></span></code></pre></div><p></p></div>
-</div>
-
-<div class="section">
-<h4 id="arguments-3">Arguments<a class="anchor" aria-label="anchor" href="#arguments-3"></a></h4>
-<p></p><div class="arguments"><dl><dt><code>xml</code></dt>
-<dd><p>object of class <a href="https://rdrr.io/pkg/XML/man/XMLNode-class.html" class="external-link">XMLInternalNode-class</a></p></dd>
-
-
-<dt><code>file</code></dt>
-<dd><p>file</p></dd>
-
-
-<dt><code>geometa</code></dt>
-<dd><p>geometa object of class <a href="https://rdrr.io/pkg/geometa/man/ISOMetadata.html" class="external-link">ISOMetadata</a> or <a href="https://rdrr.io/pkg/geometa/man/ISOFeatureCatalogue.html" class="external-link">ISOFeatureCatalogue</a></p></dd>
-
-
-<dt><code>metadataType</code></dt>
-<dd><p>metadata type. By default <code>METADATA</code></p></dd>
-
-
-<dt><code>uuidProcessing</code></dt>
-<dd><p>UUID processing. By default <code>NOTHING</code>. Other possible value: <code>OVERWRITE</code></p></dd>
-
-
-<dt><code>group</code></dt>
-<dd><p>group</p></dd>
-
-
-<dt><code>category</code></dt>
-<dd><p>category</p></dd>
-
-
-<dt><code>rejectIfInvalid</code></dt>
-<dd><p>reject if invalid. Default <code>FALSE</code></p></dd>
-
-
-<dt><code>publishToAll</code></dt>
-<dd><p>publish to all. Default <code>TRUE</code></p></dd>
-
-
-<dt><code>transformWith</code></dt>
-<dd><p>transform with. Default is <code>_none_</code></p></dd>
-
-
-<dt><code>schema</code></dt>
-<dd><p>schema</p></dd>
-
-
-<dt><code>extra</code></dt>
-<dd><p>extra</p></dd>
-
-
-<dt><code>geometa_validate</code></dt>
-<dd><p>validate geometa object</p></dd>
-
-
-<dt><code>geometa_inspire</code></dt>
-<dd><p>validate geometa object vs. INSPIRE</p></dd>
-
-
-<dt><code>geometa_inspireValidator</code></dt>
-<dd><p>geometa INSPIRE validator to use</p></dd>
-
-
-</dl><p></p></div>
-</div>
-
-</div><p></p><hr><a id="method-GNOpenAPIManager-insertMetadata"></a><div class="section">
-<h3 id="method-insertmetadata-">Method <code>insertMetadata()</code><a class="anchor" aria-label="anchor" href="#method-insertmetadata-"></a></h3>
-<p>Inserts a metadata by file, XML object or <span class="pkg">geometa</span> object of class <a href="https://rdrr.io/pkg/geometa/man/ISOMetadata.html" class="external-link">ISOMetadata</a> or <a href="https://rdrr.io/pkg/geometa/man/ISOFeatureCatalogue.html" class="external-link">ISOFeatureCatalogue</a>.
-   Extra parameters related to <span class="pkg">geometa</span> objects: <code>geometa_validate</code> (TRUE by default) and <code>geometa_inspire</code>
-   (FALSE by default) can be used to perform ISO and INSPIRE validation respectively. In that case on object of class
-   <code><a href="https://rdrr.io/pkg/geometa/man/INSPIREMetadataValidator.html" class="external-link">geometa::INSPIREMetadataValidator</a></code>, with a proper user API key, should be specified as
-   <code>geometa_inspireValidator</code> argument.</p><div class="section">
 <h4 id="usage-7">Usage<a class="anchor" aria-label="anchor" href="#usage-7"></a></h4>
-<p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">GNOpenAPIManager</span><span class="op">$</span><span class="fu">insertMetadata</span><span class="op">(</span></span>
+<p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">GNOpenAPIManager</span><span class="op">$</span><span class="fu">insertRecord</span><span class="op">(</span></span>
 <span>  xml <span class="op">=</span> <span class="cn">NULL</span>,</span>
 <span>  file <span class="op">=</span> <span class="cn">NULL</span>,</span>
 <span>  geometa <span class="op">=</span> <span class="cn">NULL</span>,</span>
@@ -414,6 +361,98 @@ or <code>ISOFeatureCatalogue</code> (ISO 19110) (from <span class="pkg">geometa<
 </dl><p></p></div>
 </div>
 
+</div><p></p><hr><a id="method-GNOpenAPIManager-insertMetadata"></a><div class="section">
+<h3 id="method-insertmetadata-">Method <code>insertMetadata()</code><a class="anchor" aria-label="anchor" href="#method-insertmetadata-"></a></h3>
+<p>Inserts a metadata by file, XML object or <span class="pkg">geometa</span> object of class <a href="https://rdrr.io/pkg/geometa/man/ISOMetadata.html" class="external-link">ISOMetadata</a> or <a href="https://rdrr.io/pkg/geometa/man/ISOFeatureCatalogue.html" class="external-link">ISOFeatureCatalogue</a>.
+   Extra parameters related to <span class="pkg">geometa</span> objects: <code>geometa_validate</code> (TRUE by default) and <code>geometa_inspire</code>
+   (FALSE by default) can be used to perform ISO and INSPIRE validation respectively. In that case on object of class
+   <code><a href="https://rdrr.io/pkg/geometa/man/INSPIREMetadataValidator.html" class="external-link">geometa::INSPIREMetadataValidator</a></code>, with a proper user API key, should be specified as
+   <code>geometa_inspireValidator</code> argument.</p><div class="section">
+<h4 id="usage-8">Usage<a class="anchor" aria-label="anchor" href="#usage-8"></a></h4>
+<p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">GNOpenAPIManager</span><span class="op">$</span><span class="fu">insertMetadata</span><span class="op">(</span></span>
+<span>  xml <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  file <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  geometa <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  metadataType <span class="op">=</span> <span class="st">"METADATA"</span>,</span>
+<span>  uuidProcessing <span class="op">=</span> <span class="st">"NOTHING"</span>,</span>
+<span>  <span class="va">group</span>,</span>
+<span>  category <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  rejectIfInvalid <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>  publishToAll <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>  transformWith <span class="op">=</span> <span class="st">"_none_"</span>,</span>
+<span>  schema <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  extra <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  geometa_validate <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>  geometa_inspire <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>  geometa_inspireValidator <span class="op">=</span> <span class="cn">NULL</span></span>
+<span><span class="op">)</span></span></code></pre></div><p></p></div>
+</div>
+
+<div class="section">
+<h4 id="arguments-5">Arguments<a class="anchor" aria-label="anchor" href="#arguments-5"></a></h4>
+<p></p><div class="arguments"><dl><dt><code>xml</code></dt>
+<dd><p>object of class <a href="https://rdrr.io/pkg/XML/man/XMLNode-class.html" class="external-link">XMLInternalNode-class</a></p></dd>
+
+
+<dt><code>file</code></dt>
+<dd><p>file</p></dd>
+
+
+<dt><code>geometa</code></dt>
+<dd><p>geometa object of class <a href="https://rdrr.io/pkg/geometa/man/ISOMetadata.html" class="external-link">ISOMetadata</a> or <a href="https://rdrr.io/pkg/geometa/man/ISOFeatureCatalogue.html" class="external-link">ISOFeatureCatalogue</a></p></dd>
+
+
+<dt><code>metadataType</code></dt>
+<dd><p>metadata type. By default <code>METADATA</code></p></dd>
+
+
+<dt><code>uuidProcessing</code></dt>
+<dd><p>UUID processing. By default <code>NOTHING</code>. Other possible value: <code>OVERWRITE</code></p></dd>
+
+
+<dt><code>group</code></dt>
+<dd><p>group</p></dd>
+
+
+<dt><code>category</code></dt>
+<dd><p>category</p></dd>
+
+
+<dt><code>rejectIfInvalid</code></dt>
+<dd><p>reject if invalid. Default <code>FALSE</code></p></dd>
+
+
+<dt><code>publishToAll</code></dt>
+<dd><p>publish to all. Default <code>TRUE</code></p></dd>
+
+
+<dt><code>transformWith</code></dt>
+<dd><p>transform with. Default is <code>_none_</code></p></dd>
+
+
+<dt><code>schema</code></dt>
+<dd><p>schema</p></dd>
+
+
+<dt><code>extra</code></dt>
+<dd><p>extra</p></dd>
+
+
+<dt><code>geometa_validate</code></dt>
+<dd><p>validate geometa object</p></dd>
+
+
+<dt><code>geometa_inspire</code></dt>
+<dd><p>validate geometa object vs. INSPIRE</p></dd>
+
+
+<dt><code>geometa_inspireValidator</code></dt>
+<dd><p>geometa INSPIRE validator to use</p></dd>
+
+
+</dl><p></p></div>
+</div>
+
 </div><p></p><hr><a id="method-GNOpenAPIManager-updateMetadata"></a><div class="section">
 <h3 id="method-updatemetadata-">Method <code>updateMetadata()</code><a class="anchor" aria-label="anchor" href="#method-updatemetadata-"></a></h3>
 <p>Inserts a metadata by file, XML object or <span class="pkg">geometa</span> object of class <a href="https://rdrr.io/pkg/geometa/man/ISOMetadata.html" class="external-link">ISOMetadata</a> or <a href="https://rdrr.io/pkg/geometa/man/ISOFeatureCatalogue.html" class="external-link">ISOFeatureCatalogue</a>.
@@ -421,7 +460,7 @@ or <code>ISOFeatureCatalogue</code> (ISO 19110) (from <span class="pkg">geometa<
    (FALSE by default) can be used to perform ISO and INSPIRE validation respectively. In that case on object of class
    <code><a href="https://rdrr.io/pkg/geometa/man/INSPIREMetadataValidator.html" class="external-link">geometa::INSPIREMetadataValidator</a></code>, with a proper user API key, should be specified as
    <code>geometa_inspireValidator</code> argument.</p><div class="section">
-<h4 id="usage-8">Usage<a class="anchor" aria-label="anchor" href="#usage-8"></a></h4>
+<h4 id="usage-9">Usage<a class="anchor" aria-label="anchor" href="#usage-9"></a></h4>
 <p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">GNOpenAPIManager</span><span class="op">$</span><span class="fu">updateMetadata</span><span class="op">(</span></span>
 <span>  xml <span class="op">=</span> <span class="cn">NULL</span>,</span>
 <span>  file <span class="op">=</span> <span class="cn">NULL</span>,</span>
@@ -441,7 +480,7 @@ or <code>ISOFeatureCatalogue</code> (ISO 19110) (from <span class="pkg">geometa<
 </div>
 
 <div class="section">
-<h4 id="arguments-5">Arguments<a class="anchor" aria-label="anchor" href="#arguments-5"></a></h4>
+<h4 id="arguments-6">Arguments<a class="anchor" aria-label="anchor" href="#arguments-6"></a></h4>
 <p></p><div class="arguments"><dl><dt><code>xml</code></dt>
 <dd><p>object of class <a href="https://rdrr.io/pkg/XML/man/XMLNode-class.html" class="external-link">XMLInternalNode-class</a></p></dd>
 
@@ -504,12 +543,12 @@ or <code>ISOFeatureCatalogue</code> (ISO 19110) (from <span class="pkg">geometa<
 </div><p></p><hr><a id="method-GNOpenAPIManager-deleteMetadata"></a><div class="section">
 <h3 id="method-deletemetadata-">Method <code>deleteMetadata()</code><a class="anchor" aria-label="anchor" href="#method-deletemetadata-"></a></h3>
 <p>Deletes a metadata by ID</p><div class="section">
-<h4 id="usage-9">Usage<a class="anchor" aria-label="anchor" href="#usage-9"></a></h4>
+<h4 id="usage-10">Usage<a class="anchor" aria-label="anchor" href="#usage-10"></a></h4>
 <p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">GNOpenAPIManager</span><span class="op">$</span><span class="fu">deleteMetadata</span><span class="op">(</span><span class="va">id</span>, withBackup <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div><p></p></div>
 </div>
 
 <div class="section">
-<h4 id="arguments-6">Arguments<a class="anchor" aria-label="anchor" href="#arguments-6"></a></h4>
+<h4 id="arguments-7">Arguments<a class="anchor" aria-label="anchor" href="#arguments-7"></a></h4>
 <p></p><div class="arguments"><dl><dt><code>id</code></dt>
 <dd><p>id</p></dd>
 
@@ -524,7 +563,7 @@ or <code>ISOFeatureCatalogue</code> (ISO 19110) (from <span class="pkg">geometa<
 </div><p></p><hr><a id="method-GNOpenAPIManager-uploadAttachment"></a><div class="section">
 <h3 id="method-uploadattachment-">Method <code>uploadAttachment()</code><a class="anchor" aria-label="anchor" href="#method-uploadattachment-"></a></h3>
 <p>Uploads attachment</p><div class="section">
-<h4 id="usage-10">Usage<a class="anchor" aria-label="anchor" href="#usage-10"></a></h4>
+<h4 id="usage-11">Usage<a class="anchor" aria-label="anchor" href="#usage-11"></a></h4>
 <p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">GNOpenAPIManager</span><span class="op">$</span><span class="fu">uploadAttachment</span><span class="op">(</span></span>
 <span>  <span class="va">id</span>,</span>
 <span>  <span class="va">file</span>,</span>
@@ -534,7 +573,7 @@ or <code>ISOFeatureCatalogue</code> (ISO 19110) (from <span class="pkg">geometa<
 </div>
 
 <div class="section">
-<h4 id="arguments-7">Arguments<a class="anchor" aria-label="anchor" href="#arguments-7"></a></h4>
+<h4 id="arguments-8">Arguments<a class="anchor" aria-label="anchor" href="#arguments-8"></a></h4>
 <p></p><div class="arguments"><dl><dt><code>id</code></dt>
 <dd><p>metadata identifier</p></dd>
 
@@ -561,12 +600,12 @@ or <code>ISOFeatureCatalogue</code> (ISO 19110) (from <span class="pkg">geometa<
 </div><p></p><hr><a id="method-GNOpenAPIManager-publishThumbnail"></a><div class="section">
 <h3 id="method-publishthumbnail-">Method <code>publishThumbnail()</code><a class="anchor" aria-label="anchor" href="#method-publishthumbnail-"></a></h3>
 <p>Publishes thumbnail based on URL</p><div class="section">
-<h4 id="usage-11">Usage<a class="anchor" aria-label="anchor" href="#usage-11"></a></h4>
+<h4 id="usage-12">Usage<a class="anchor" aria-label="anchor" href="#usage-12"></a></h4>
 <p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">GNOpenAPIManager</span><span class="op">$</span><span class="fu">publishThumbnail</span><span class="op">(</span><span class="va">id</span>, <span class="va">url</span>, desc <span class="op">=</span> <span class="st">""</span><span class="op">)</span></span></code></pre></div><p></p></div>
 </div>
 
 <div class="section">
-<h4 id="arguments-8">Arguments<a class="anchor" aria-label="anchor" href="#arguments-8"></a></h4>
+<h4 id="arguments-9">Arguments<a class="anchor" aria-label="anchor" href="#arguments-9"></a></h4>
 <p></p><div class="arguments"><dl><dt><code>id</code></dt>
 <dd><p>metadata identifier</p></dd>
 
@@ -589,12 +628,12 @@ or <code>ISOFeatureCatalogue</code> (ISO 19110) (from <span class="pkg">geometa<
 </div><p></p><hr><a id="method-GNOpenAPIManager-doiCheckPreConditions"></a><div class="section">
 <h3 id="method-doicheckpreconditions-">Method <code>doiCheckPreConditions()</code><a class="anchor" aria-label="anchor" href="#method-doicheckpreconditions-"></a></h3>
 <p>Checks pre-conditions to publish DOI</p><div class="section">
-<h4 id="usage-12">Usage<a class="anchor" aria-label="anchor" href="#usage-12"></a></h4>
+<h4 id="usage-13">Usage<a class="anchor" aria-label="anchor" href="#usage-13"></a></h4>
 <p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">GNOpenAPIManager</span><span class="op">$</span><span class="fu">doiCheckPreConditions</span><span class="op">(</span><span class="va">id</span><span class="op">)</span></span></code></pre></div><p></p></div>
 </div>
 
 <div class="section">
-<h4 id="arguments-9">Arguments<a class="anchor" aria-label="anchor" href="#arguments-9"></a></h4>
+<h4 id="arguments-10">Arguments<a class="anchor" aria-label="anchor" href="#arguments-10"></a></h4>
 <p></p><div class="arguments"><dl><dt><code>id</code></dt>
 <dd><p>metadata identifier</p></dd>
 
@@ -609,12 +648,12 @@ or <code>ISOFeatureCatalogue</code> (ISO 19110) (from <span class="pkg">geometa<
 </div><p></p><hr><a id="method-GNOpenAPIManager-createDOI"></a><div class="section">
 <h3 id="method-createdoi-">Method <code>createDOI()</code><a class="anchor" aria-label="anchor" href="#method-createdoi-"></a></h3>
 <p>Submit a record to the Datacite metadata store in order to create a DOI.</p><div class="section">
-<h4 id="usage-13">Usage<a class="anchor" aria-label="anchor" href="#usage-13"></a></h4>
+<h4 id="usage-14">Usage<a class="anchor" aria-label="anchor" href="#usage-14"></a></h4>
 <p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">GNOpenAPIManager</span><span class="op">$</span><span class="fu">createDOI</span><span class="op">(</span><span class="va">id</span><span class="op">)</span></span></code></pre></div><p></p></div>
 </div>
 
 <div class="section">
-<h4 id="arguments-10">Arguments<a class="anchor" aria-label="anchor" href="#arguments-10"></a></h4>
+<h4 id="arguments-11">Arguments<a class="anchor" aria-label="anchor" href="#arguments-11"></a></h4>
 <p></p><div class="arguments"><dl><dt><code>id</code></dt>
 <dd><p>metadata identifier</p></dd>
 
@@ -630,12 +669,12 @@ or <code>ISOFeatureCatalogue</code> (ISO 19110) (from <span class="pkg">geometa<
 <h3 id="method-deletedoi-">Method <code>deleteDOI()</code><a class="anchor" aria-label="anchor" href="#method-deletedoi-"></a></h3>
 <p>Remove a DOI (this is not recommended, DOI are supposed to be
 persistent once created. This is mainly here for testing).</p><div class="section">
-<h4 id="usage-14">Usage<a class="anchor" aria-label="anchor" href="#usage-14"></a></h4>
+<h4 id="usage-15">Usage<a class="anchor" aria-label="anchor" href="#usage-15"></a></h4>
 <p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">GNOpenAPIManager</span><span class="op">$</span><span class="fu">deleteDOI</span><span class="op">(</span><span class="va">id</span><span class="op">)</span></span></code></pre></div><p></p></div>
 </div>
 
 <div class="section">
-<h4 id="arguments-11">Arguments<a class="anchor" aria-label="anchor" href="#arguments-11"></a></h4>
+<h4 id="arguments-12">Arguments<a class="anchor" aria-label="anchor" href="#arguments-12"></a></h4>
 <p></p><div class="arguments"><dl><dt><code>id</code></dt>
 <dd></dd>
 
@@ -646,12 +685,12 @@ persistent once created. This is mainly here for testing).</p><div class="sectio
 </div><p></p><hr><a id="method-GNOpenAPIManager-clone"></a><div class="section">
 <h3 id="method-clone-">Method <code>clone()</code><a class="anchor" aria-label="anchor" href="#method-clone-"></a></h3>
 <p>The objects of this class are cloneable with this method.</p><div class="section">
-<h4 id="usage-15">Usage<a class="anchor" aria-label="anchor" href="#usage-15"></a></h4>
+<h4 id="usage-16">Usage<a class="anchor" aria-label="anchor" href="#usage-16"></a></h4>
 <p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">GNOpenAPIManager</span><span class="op">$</span><span class="fu">clone</span><span class="op">(</span>deep <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></code></pre></div><p></p></div>
 </div>
 
 <div class="section">
-<h4 id="arguments-12">Arguments<a class="anchor" aria-label="anchor" href="#arguments-12"></a></h4>
+<h4 id="arguments-13">Arguments<a class="anchor" aria-label="anchor" href="#arguments-13"></a></h4>
 <p></p><div class="arguments"><dl><dt><code>deep</code></dt>
 <dd><p>Whether to make a deep clone.</p></dd>
 

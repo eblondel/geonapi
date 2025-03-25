@@ -39,6 +39,7 @@ Emmanuel Blondel <emmanuel.blondel1@gmail.com>
 \item \href{#method-GNOpenAPIManager-getGroups}{\code{GNOpenAPIManager$getGroups()}}
 \item \href{#method-GNOpenAPIManager-getTags}{\code{GNOpenAPIManager$getTags()}}
 \item \href{#method-GNOpenAPIManager-getCategories}{\code{GNOpenAPIManager$getCategories()}}
+\item \href{#method-GNOpenAPIManager-downloadMetadataByUUID}{\code{GNOpenAPIManager$downloadMetadataByUUID()}}
 \item \href{#method-GNOpenAPIManager-getMetadataByUUID}{\code{GNOpenAPIManager$getMetadataByUUID()}}
 \item \href{#method-GNOpenAPIManager-insertRecord}{\code{GNOpenAPIManager$insertRecord()}}
 \item \href{#method-GNOpenAPIManager-insertMetadata}{\code{GNOpenAPIManager$insertMetadata()}}
@@ -163,6 +164,37 @@ Retrieves the list of categories (same as tags) available in Geonetwork
 
 \subsection{Returns}{
 an object of class \code{data.frame}
+}
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-GNOpenAPIManager-downloadMetadataByUUID"></a>}}
+\if{latex}{\out{\hypertarget{method-GNOpenAPIManager-downloadMetadataByUUID}{}}}
+\subsection{Method \code{downloadMetadataByUUID()}}{
+Download a metadata by UUID.
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{GNOpenAPIManager$downloadMetadataByUUID(
+  uuid,
+  addSchemaLocation = TRUE,
+  increasePopularity = TRUE,
+  approved = TRUE,
+  filename
+)}\if{html}{\out{</div>}}
+}
+
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{uuid}}{uuid}
+
+\item{\code{addSchemaLocation}}{add schema location. Default is \code{TRUE}}
+
+\item{\code{increasePopularity}}{increase popularity. Default is \code{TRUE}}
+
+\item{\code{approved}}{approved}
+
+\item{\code{filename}}{output filename}
+}
+\if{html}{\out{</div>}}
 }
 }
 \if{html}{\out{<hr>}}

@@ -1,4 +1,11 @@
-## [geonapi 0.8](https://github.com/eblondel/geonapi) | [![CRAN_Status_Badge](https://img.shields.io/badge/CRAN-unavailable-red.svg)](https://github.com/eblondel/geonapi)
+## [geonapi 0.8-1](https://github.com/eblondel/geonapi) |
+[![CRAN_Status_Badge](https://img.shields.io/badge/CRAN-unavailable-red.svg)](https://github.com/eblondel/geonapi)
+
+**New features**
+
+* [#35](https://github.com/eblondel/geonapi/issues/35) Add method to simply download a metadata by Id
+
+## [geonapi 0.8](https://github.com/eblondel/geonapi) | [![CRAN_Status_Badge](https://img.shields.io/badge/CRAN-published-blue.svg)](https://github.com/eblondel/geonapi)
 
 **Enhancements**
 

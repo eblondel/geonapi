@@ -181,6 +181,41 @@ GNOpenAPIManager <- R6Class("GNOpenAPIManager",
       return(self$getTags())
     },
     
+    #'@description Download a metadata by UUID.
+    #'@param uuid uuid
+    #'@param addSchemaLocation add schema location. Default is \code{TRUE}
+    #'@param increasePopularity increase popularity. Default is \code{TRUE}
+    #'@param approved approved
+    #'@param filename output filename
+    downloadMetadataByUUID = function(uuid, 
+                                 addSchemaLocation = TRUE, increasePopularity = TRUE, approved = TRUE,
+                                 filename){
+      addSchemaLocation <- tolower(as.character(addSchemaLocation))
+      increasePopularity <- tolower(as.character(increasePopularity))
+      approved <- tolower(as.character(approved))
+      
+      self$INFO(sprintf("Fetching metadata for uuid = '%s'", uuid))
+      out <- NULL
+      req <- GNUtils$GET(
+        url = self$getUrl(),
+        path = sprintf("/api/records/%s/formatters/xml?addSchemaLocation=%s&increasePopularity=%s&approved=%s", 
+                       uuid, addSchemaLocation, increasePopularity, approved),
+        token = private$getToken(), cookies = private$cookies,
+        user = private$user,
+        pwd = private$getPwd(),
+        accept = "application/xml", contentType = "application/xml",
+        verbose = self$verbose.debug
+      )
+      if(status_code(req) == 200){
+        self$INFO("Successfully fetched metadata!")
+        xml <- GNUtils$parseResponseXML(req, "UTF-8")
+        XML::saveXML(xml, file = filename)
+      }else{
+        self$ERROR(sprintf("Error while fetching metadata - %s", message_for_status(status_code(req))))
+        self$ERROR(content(req))
+      }
+    },
+    
     #'@description Get a metadata by UUID.
     #'@param uuid uuid
     #'@param addSchemaLocation add schema location. Default is \code{TRUE}

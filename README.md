@@ -20,3 +20,4 @@ Many thanks to the following organizations that have provided fundings for stren
 <a href="https://www.fao.org/home/en/"><img height=200 width=200 src="https://www.fao.org/fileadmin/templates/family-farming-decade/images/FAO-IFAD-Logos/FAO-Logo-EN.svg"></a>
 <a href="https://letg.cnrs.fr"><img height=100 width=50 src="https://letg.cnrs.fr/wp-content/uploads/2023/05/logo_letg.png"></a>
 <a href="https://www.inrae.fr"><img height=100 width=100 src="https://www.inrae.fr/themes/custom/inrae_socle/logo.svg"></a>
+

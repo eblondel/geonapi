@@ -15,16 +15,16 @@ jobs:
     strategy:
       matrix:
         config:
-          - {os: ubuntu-22.04,   r: '4.5.0',  geonetwork: '4.4.7', rspm: "https://packagemanager.rstudio.com/cran/__linux__/focal/latest"}
-          - {os: ubuntu-22.04,   r: '4.5.0',  geonetwork: '4.2.12', rspm: "https://packagemanager.rstudio.com/cran/__linux__/focal/latest"}
-          - {os: ubuntu-22.04,   r: '4.5.0',  geonetwork: '4.0.6', rspm: "https://packagemanager.rstudio.com/cran/__linux__/focal/latest"}
-          - {os: ubuntu-22.04,   r: '4.5.0',  geonetwork: '3.12.1', rspm: "https://packagemanager.rstudio.com/cran/__linux__/focal/latest"}
-          - {os: ubuntu-22.04,   r: '4.5.0',  geonetwork: '3.10.7', rspm: "https://packagemanager.rstudio.com/cran/__linux__/focal/latest"}
-          - {os: ubuntu-22.04,   r: '4.5.0',  geonetwork: '3.8.3', rspm: "https://packagemanager.rstudio.com/cran/__linux__/focal/latest"}
-          - {os: ubuntu-22.04,   r: '4.5.0',  geonetwork: '3.6.0', rspm: "https://packagemanager.rstudio.com/cran/__linux__/focal/latest"}
-          - {os: ubuntu-22.04,   r: '4.5.0',  geonetwork: '3.4.4', rspm: "https://packagemanager.rstudio.com/cran/__linux__/focal/latest"}
-          - {os: ubuntu-22.04,   r: '4.5.0',  geonetwork: '3.2.2', rspm: "https://packagemanager.rstudio.com/cran/__linux__/focal/latest"}
-          - {os: ubuntu-22.04,   r: '4.5.0',  geonetwork: '3.0.5', rspm: "https://packagemanager.rstudio.com/cran/__linux__/focal/latest"}
+          - {os: ubuntu-latest,   r: 'release',  geonetwork: '4.4.7', rspm: "https://packagemanager.rstudio.com/cran/__linux__/focal/latest"}
+          - {os: ubuntu-latest,   r: 'release',  geonetwork: '4.2.12', rspm: "https://packagemanager.rstudio.com/cran/__linux__/focal/latest"}
+          - {os: ubuntu-latest,   r: 'release',  geonetwork: '4.0.6', rspm: "https://packagemanager.rstudio.com/cran/__linux__/focal/latest"}
+          - {os: ubuntu-latest,   r: 'release',  geonetwork: '3.12.1', rspm: "https://packagemanager.rstudio.com/cran/__linux__/focal/latest"}
+          - {os: ubuntu-latest,   r: 'release',  geonetwork: '3.10.7', rspm: "https://packagemanager.rstudio.com/cran/__linux__/focal/latest"}
+          - {os: ubuntu-latest,   r: 'release',  geonetwork: '3.8.3', rspm: "https://packagemanager.rstudio.com/cran/__linux__/focal/latest"}
+          - {os: ubuntu-latest,   r: 'release',  geonetwork: '3.6.0', rspm: "https://packagemanager.rstudio.com/cran/__linux__/focal/latest"}
+          - {os: ubuntu-latest,   r: 'release',  geonetwork: '3.4.4', rspm: "https://packagemanager.rstudio.com/cran/__linux__/focal/latest"}
+          - {os: ubuntu-latest,   r: 'release',  geonetwork: '3.2.2', rspm: "https://packagemanager.rstudio.com/cran/__linux__/focal/latest"}
+          - {os: ubuntu-latest,   r: 'release',  geonetwork: '3.0.5', rspm: "https://packagemanager.rstudio.com/cran/__linux__/focal/latest"}
           #- {os: ubuntu-20.04,   r: '4.0.5',  geonetwork: '2.10.3', rspm: "https://packagemanager.rstudio.com/cran/__linux__/focal/latest"}
           #- {os: ubuntu-20.04,   r: '4.0.5',  geonetwork: '2.6.4', rspm: "https://packagemanager.rstudio.com/cran/__linux__/focal/latest"}
     
@@ -32,7 +32,7 @@ jobs:
       GN_VERSION: ${{ matrix.config.geonetwork }}
   
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
       #Geonetwork set-up - depending on version
       #Docker GeoNetwork set-up (4.0)
       - name: Set up GeoNetwork 4 (${{ matrix.config.geonetwork }})
@@ -72,14 +72,14 @@ jobs:
       #    bash -c 'export CATALINA_OPTS="$CATALINA_OPTS -Dgeonetwork.jeeves.configuration.overrides.file=/etc/geonetwork/config-view-service-override.xml";/entrypoint.sh catalina.sh run'
       #Setup R
       - name: Set up R ${{ matrix.config.r }}
-        uses: r-lib/actions/setup-r@v1
+        uses: r-lib/actions/setup-r@v2
         with:
           r-version: ${{ matrix.config.r }}
       #Install dependencies
       - name: Install dependencies
-        uses: r-lib/actions/setup-r-dependencies@v1
+        uses: r-lib/actions/setup-r-dependencies@v2
       #Check R Package
       - name: Check R package
-        uses: r-lib/actions/check-r-package@check-r-package
+        uses: r-lib/actions/check-r-package@v2
         with:
           artifact-name: geonapi_r-${{ matrix.config.r }}_geonetwork-${{matrix.config.geonetwork}}_${{ matrix.config.os }}-results

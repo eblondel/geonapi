@@ -15,15 +15,16 @@ jobs:
     strategy:
       matrix:
         config:
-          - {os: ubuntu-20.04,   r: '4.0.5',  geonetwork: '4.2.11', rspm: "https://packagemanager.rstudio.com/cran/__linux__/focal/latest"}
-          - {os: ubuntu-20.04,   r: '4.0.5',  geonetwork: '4.0.6', rspm: "https://packagemanager.rstudio.com/cran/__linux__/focal/latest"}
-          - {os: ubuntu-20.04,   r: '4.0.5',  geonetwork: '3.12.1', rspm: "https://packagemanager.rstudio.com/cran/__linux__/focal/latest"}
-          - {os: ubuntu-20.04,   r: '4.0.5',  geonetwork: '3.10.7', rspm: "https://packagemanager.rstudio.com/cran/__linux__/focal/latest"}
-          - {os: ubuntu-20.04,   r: '4.0.5',  geonetwork: '3.8.3', rspm: "https://packagemanager.rstudio.com/cran/__linux__/focal/latest"}
-          - {os: ubuntu-20.04,   r: '4.0.5',  geonetwork: '3.6.0', rspm: "https://packagemanager.rstudio.com/cran/__linux__/focal/latest"}
-          - {os: ubuntu-20.04,   r: '4.0.5',  geonetwork: '3.4.4', rspm: "https://packagemanager.rstudio.com/cran/__linux__/focal/latest"}
-          - {os: ubuntu-20.04,   r: '4.0.5',  geonetwork: '3.2.2', rspm: "https://packagemanager.rstudio.com/cran/__linux__/focal/latest"}
-          - {os: ubuntu-20.04,   r: '4.0.5',  geonetwork: '3.0.5', rspm: "https://packagemanager.rstudio.com/cran/__linux__/focal/latest"}
+          - {os: ubuntu-22.04,   r: '4.5.0',  geonetwork: '4.4.7', rspm: "https://packagemanager.rstudio.com/cran/__linux__/focal/latest"}
+          - {os: ubuntu-22.04,   r: '4.5.0',  geonetwork: '4.2.12', rspm: "https://packagemanager.rstudio.com/cran/__linux__/focal/latest"}
+          - {os: ubuntu-22.04,   r: '4.5.0',  geonetwork: '4.0.6', rspm: "https://packagemanager.rstudio.com/cran/__linux__/focal/latest"}
+          - {os: ubuntu-22.04,   r: '4.5.0',  geonetwork: '3.12.1', rspm: "https://packagemanager.rstudio.com/cran/__linux__/focal/latest"}
+          - {os: ubuntu-22.04,   r: '4.5.0',  geonetwork: '3.10.7', rspm: "https://packagemanager.rstudio.com/cran/__linux__/focal/latest"}
+          - {os: ubuntu-22.04,   r: '4.5.0',  geonetwork: '3.8.3', rspm: "https://packagemanager.rstudio.com/cran/__linux__/focal/latest"}
+          - {os: ubuntu-22.04,   r: '4.5.0',  geonetwork: '3.6.0', rspm: "https://packagemanager.rstudio.com/cran/__linux__/focal/latest"}
+          - {os: ubuntu-22.04,   r: '4.5.0',  geonetwork: '3.4.4', rspm: "https://packagemanager.rstudio.com/cran/__linux__/focal/latest"}
+          - {os: ubuntu-22.04,   r: '4.5.0',  geonetwork: '3.2.2', rspm: "https://packagemanager.rstudio.com/cran/__linux__/focal/latest"}
+          - {os: ubuntu-22.04,   r: '4.5.0',  geonetwork: '3.0.5', rspm: "https://packagemanager.rstudio.com/cran/__linux__/focal/latest"}
           #- {os: ubuntu-20.04,   r: '4.0.5',  geonetwork: '2.10.3', rspm: "https://packagemanager.rstudio.com/cran/__linux__/focal/latest"}
           #- {os: ubuntu-20.04,   r: '4.0.5',  geonetwork: '2.6.4', rspm: "https://packagemanager.rstudio.com/cran/__linux__/focal/latest"}
     

@@ -450,7 +450,7 @@ GNOpenAPIManager <- R6Class("GNOpenAPIManager",
       out <- NULL
       req <- GNUtils$DELETE(
         url = self$getUrl(),
-        path = sprintf("/api/records?uuids=%s&withBackup=%s", id, tolower(as.character(withBackup))),
+        path = sprintf("/api/records/%s?withBackup=%s", id, tolower(as.character(withBackup))),
         token = private$getToken(), cookies = private$cookies,
         user = private$user,
         pwd = private$getPwd(),

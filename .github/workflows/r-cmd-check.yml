@@ -78,6 +78,9 @@ jobs:
       #Install dependencies
       - name: Install dependencies
         uses: r-lib/actions/setup-r-dependencies@v2
+        with:
+          extra-packages: any::rcmdcheck, any::XML
+          needs: check
       #Check R Package
       - name: Check R package
         uses: r-lib/actions/check-r-package@v2

@@ -39,7 +39,7 @@ jobs:
         if: ${{ startsWith( matrix.config.geonetwork, '4') }}
         run: |
           docker network create elasticnetwork
-          docker run -d --name elasticsearch --net elasticnetwork --add-host host.docker.internal:host-gateway -p 9200:9200 -p 9300:9300 -e "discovery.type=single-node" elasticsearch:${{ matrix.config.es }}
+          docker run -d --name elasticsearch --net elasticnetwork --add-host host.docker.internal:host-gateway -e xpack.security.enabled=false -e xpack.security.enrollment.enabled=false -p 9200:9200 -p 9300:9300 -e "discovery.type=single-node" elasticsearch:${{ matrix.config.es }}
           docker run --add-host host.docker.internal:host-gateway -e ES_HOST=host.docker.internal --net elasticnetwork --name geonetwork -d -p 8080:8080 geonetwork:${{ matrix.config.geonetwork }}
       #Docker GeoNetwork set-up (3.2 <= GN < 4)
       - name: Set up GeoNetwork < 4 (${{ matrix.config.geonetwork }})

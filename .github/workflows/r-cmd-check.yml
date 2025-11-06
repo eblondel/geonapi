@@ -15,7 +15,7 @@ jobs:
     strategy:
       matrix:
         config:
-          - {os: ubuntu-latest,   r: 'release',  geonetwork: '4.4.7', es: '8.14.3', rspm: "https://packagemanager.rstudio.com/cran/__linux__/focal/latest"}
+          - {os: ubuntu-latest,   r: 'release',  geonetwork: '4.4.9', es: '8.14.3', rspm: "https://packagemanager.rstudio.com/cran/__linux__/focal/latest"}
           - {os: ubuntu-latest,   r: 'release',  geonetwork: '4.2.12', es: '7.9.2', rspm: "https://packagemanager.rstudio.com/cran/__linux__/focal/latest"}
           - {os: ubuntu-latest,   r: 'release',  geonetwork: '4.0.6', es: '7.9.2', rspm: "https://packagemanager.rstudio.com/cran/__linux__/focal/latest"}
           - {os: ubuntu-latest,   r: 'release',  geonetwork: '3.12.1', es: '7.9.2', rspm: "https://packagemanager.rstudio.com/cran/__linux__/focal/latest"}

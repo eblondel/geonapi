@@ -235,9 +235,7 @@ GNLegacyAPIManager <- R6Class("GNLegacyAPIManager",
      #'    \link[geometa]{ISOMetadata} or \link[geometa]{ISOFeatureCatalogue}. If successful, returns the Geonetwork
      #'    metadata internal identifier (integer). Extra parameters \code{geometa_validate} (TRUE 
      #'    by default) and \code{geometa_inspire} (FALSE by default) can be used with geometa objects 
-     #'    for perform ISO and INSPIRE validation respectively. In that case on object of class 
-     #'    \code{geometa::INSPIREMetadataValidator}, with a proper user API key, should be specified as
-     #'    \code{geometa_inspireValidator} argument. 
+     #'    for perform ISO and INSPIRE validation respectively.
      #' @param xml xml object of class \link[XML]{XMLInternalNode-class}
      #' @param file file
      #' @param geometa geometa, object of class \link[geometa]{ISOMetadata} or \link[geometa]{ISOFeatureCatalogue}
@@ -247,7 +245,11 @@ GNLegacyAPIManager <- R6Class("GNLegacyAPIManager",
      #' @param validate validate
      #' @param geometa_validate validate geometa object
      #' @param geometa_inspire validate geometa object vs. INSPIRE
-     #' @param geometa_inspireValidator geometa INSPIRE validator to use
+     #' @param geometa_inspireValidator geometa INSPIRE validator to use. Deprecated, see below note
+     #' 
+     #'@note From 2025-05-02, the INSPIRE metadata validation does not require anymore an API Key. Therefore, it is not
+     #'required to specify an \code{geometa_inspireValidator}. To send your metadata to INSPIRE, just set \code{geometa_inspire} 
+     #'to \code{TRUE}.
      insertMetadata = function(xml = NULL, file = NULL, geometa = NULL, group,
                                category = NULL, stylesheet = NULL, validate = FALSE,
                                geometa_validate = TRUE, geometa_inspire = FALSE, geometa_inspireValidator = NULL){
@@ -457,16 +459,18 @@ GNLegacyAPIManager <- R6Class("GNLegacyAPIManager",
      #'@description Updates a metadata by file, XML object or \pkg{geometa} object of class
      #'    'ISOMetadata' or 'ISOFeatureCatalogue'. Extra parameters \code{geometa_validate} (TRUE 
      #'    by default) and \code{geometa_inspire} (FALSE by default) can be used with geometa objects 
-     #'    for perform ISO and INSPIRE validation respectively. In that case on object of class 
-     #'    \code{geometa::INSPIREMetadataValidator}, with a proper user API key, should be specified as
-     #'    \code{geometa_inspireValidator} argument. 
+     #'    for perform ISO and INSPIRE validation respectively.
      #' @param id metadata id
      #' @param xml xml object of class \link[XML]{XMLInternalNode-class}
      #' @param file file
      #' @param geometa geometa, object of class \link[geometa]{ISOMetadata} or \link[geometa]{ISOFeatureCatalogue}
      #' @param geometa_validate validate geometa object
      #' @param geometa_inspire validate geometa object vs. INSPIRE
-     #' @param geometa_inspireValidator geometa INSPIRE validator to use
+     #' @param geometa_inspireValidator geometa INSPIRE validator to use. Deprecated, see below note.
+     #' 
+     #'@note From 2025-05-02, the INSPIRE metadata validation does not require anymore an API Key. Therefore, it is not
+     #'required to specify an \code{geometa_inspireValidator}. To send your metadata to INSPIRE, just set \code{geometa_inspire} 
+     #'to \code{TRUE}.
      updateMetadata = function(id, xml = NULL, file = NULL, geometa = NULL,
                                geometa_validate = TRUE, geometa_inspire = FALSE, geometa_inspireValidator = NULL){
        

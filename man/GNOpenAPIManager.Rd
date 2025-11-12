@@ -16,6 +16,19 @@ GNOpenAPIManager
 
 GNOpenAPIManager
 }
+\note{
+From 2025-05-02, the INSPIRE metadata validation does not require anymore an API Key. Therefore, it is not
+required to specify an \code{geometa_inspireValidator}. To send your metadata to INSPIRE, just set \code{geometa_inspire} 
+to \code{TRUE}.
+
+From 2025-05-02, the INSPIRE metadata validation does not require anymore an API Key. Therefore, it is not
+required to specify an \code{geometa_inspireValidator}. To send your metadata to INSPIRE, just set \code{geometa_inspire} 
+to \code{TRUE}.
+
+From 2025-05-02, the INSPIRE metadata validation does not require anymore an API Key. Therefore, it is not
+required to specify an \code{geometa_inspireValidator}. To send your metadata to INSPIRE, just set \code{geometa_inspire} 
+to \code{TRUE}.
+}
 \examples{
 \dontrun{
    GNOpenAPIManager$new("http://localhost:8080/geonetwork", "admin", "geonetwork", "4.0.5")
@@ -235,8 +248,7 @@ or \code{ISOFeatureCatalogue} (ISO 19110) (from \pkg{geometa} package)
 \subsection{Method \code{insertRecord()}}{
 Inserts a record by file, XML object or \pkg{geometa} object of class \link[geometa]{ISOMetadata} or \link[geometa]{ISOFeatureCatalogue}. 
    Extra parameters related to \pkg{geometa} objects: \code{geometa_validate} (TRUE by default) and \code{geometa_inspire} 
-   (FALSE by default) can be used to perform ISO and INSPIRE validation respectively. In that case on object of class 
-   \code{geometa::INSPIREMetadataValidator}, with a proper user API key, should be specified as \code{geometa_inspireValidator} 
+   (FALSE by default) can be used to perform ISO and INSPIRE validation respectively.
    argument.
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{GNOpenAPIManager$insertRecord(
@@ -289,7 +301,7 @@ Inserts a record by file, XML object or \pkg{geometa} object of class \link[geom
 
 \item{\code{geometa_inspire}}{validate geometa object vs. INSPIRE}
 
-\item{\code{geometa_inspireValidator}}{geometa INSPIRE validator to use}
+\item{\code{geometa_inspireValidator}}{geometa INSPIRE validator to use. Deprecated, see below note.}
 }
 \if{html}{\out{</div>}}
 }
@@ -300,9 +312,7 @@ Inserts a record by file, XML object or \pkg{geometa} object of class \link[geom
 \subsection{Method \code{insertMetadata()}}{
 Inserts a metadata by file, XML object or \pkg{geometa} object of class \link[geometa]{ISOMetadata} or \link[geometa]{ISOFeatureCatalogue}. 
    Extra parameters related to \pkg{geometa} objects: \code{geometa_validate} (TRUE by default) and \code{geometa_inspire} 
-   (FALSE by default) can be used to perform ISO and INSPIRE validation respectively. In that case on object of class 
-   \code{geometa::INSPIREMetadataValidator}, with a proper user API key, should be specified as
-   \code{geometa_inspireValidator} argument.
+   (FALSE by default) can be used to perform ISO and INSPIRE validation respectively.
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{GNOpenAPIManager$insertMetadata(
   xml = NULL,
@@ -354,7 +364,7 @@ Inserts a metadata by file, XML object or \pkg{geometa} object of class \link[ge
 
 \item{\code{geometa_inspire}}{validate geometa object vs. INSPIRE}
 
-\item{\code{geometa_inspireValidator}}{geometa INSPIRE validator to use}
+\item{\code{geometa_inspireValidator}}{geometa INSPIRE validator to use. Deprecated, see below note.}
 }
 \if{html}{\out{</div>}}
 }
@@ -365,9 +375,7 @@ Inserts a metadata by file, XML object or \pkg{geometa} object of class \link[ge
 \subsection{Method \code{updateMetadata()}}{
 Inserts a metadata by file, XML object or \pkg{geometa} object of class \link[geometa]{ISOMetadata} or \link[geometa]{ISOFeatureCatalogue}. 
    Extra parameters related to \pkg{geometa} objects: \code{geometa_validate} (TRUE by default) and \code{geometa_inspire} 
-   (FALSE by default) can be used to perform ISO and INSPIRE validation respectively. In that case on object of class 
-   \code{geometa::INSPIREMetadataValidator}, with a proper user API key, should be specified as
-   \code{geometa_inspireValidator} argument.
+   (FALSE by default) can be used to perform ISO and INSPIRE validation respectively.
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{GNOpenAPIManager$updateMetadata(
   xml = NULL,
@@ -416,7 +424,7 @@ Inserts a metadata by file, XML object or \pkg{geometa} object of class \link[ge
 
 \item{\code{geometa_inspire}}{validate geometa object vs. INSPIRE}
 
-\item{\code{geometa_inspireValidator}}{geometa INSPIRE validator to use}
+\item{\code{geometa_inspireValidator}}{geometa INSPIRE validator to use. Deprecated, see below note.}
 }
 \if{html}{\out{</div>}}
 }

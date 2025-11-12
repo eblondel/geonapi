@@ -16,6 +16,15 @@ GNLegacyAPIManager
 
 GNLegacyAPIManager
 }
+\note{
+From 2025-05-02, the INSPIRE metadata validation does not require anymore an API Key. Therefore, it is not
+required to specify an \code{geometa_inspireValidator}. To send your metadata to INSPIRE, just set \code{geometa_inspire} 
+to \code{TRUE}.
+
+From 2025-05-02, the INSPIRE metadata validation does not require anymore an API Key. Therefore, it is not
+required to specify an \code{geometa_inspireValidator}. To send your metadata to INSPIRE, just set \code{geometa_inspire} 
+to \code{TRUE}.
+}
 \examples{
 \dontrun{
    GNLegacyAPIManager$new("http://localhost:8080/geonetwork", "admin", "geonetwork", "3.0.0")
@@ -159,9 +168,7 @@ Inserts a metadata by file, XML object or \pkg{geometa} object of class
    \link[geometa]{ISOMetadata} or \link[geometa]{ISOFeatureCatalogue}. If successful, returns the Geonetwork
    metadata internal identifier (integer). Extra parameters \code{geometa_validate} (TRUE 
    by default) and \code{geometa_inspire} (FALSE by default) can be used with geometa objects 
-   for perform ISO and INSPIRE validation respectively. In that case on object of class 
-   \code{geometa::INSPIREMetadataValidator}, with a proper user API key, should be specified as
-   \code{geometa_inspireValidator} argument.
+   for perform ISO and INSPIRE validation respectively.
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{GNLegacyAPIManager$insertMetadata(
   xml = NULL,
@@ -198,7 +205,7 @@ Inserts a metadata by file, XML object or \pkg{geometa} object of class
 
 \item{\code{geometa_inspire}}{validate geometa object vs. INSPIRE}
 
-\item{\code{geometa_inspireValidator}}{geometa INSPIRE validator to use}
+\item{\code{geometa_inspireValidator}}{geometa INSPIRE validator to use. Deprecated, see below note}
 }
 \if{html}{\out{</div>}}
 }
@@ -335,9 +342,7 @@ an XML document object
 Updates a metadata by file, XML object or \pkg{geometa} object of class
    'ISOMetadata' or 'ISOFeatureCatalogue'. Extra parameters \code{geometa_validate} (TRUE 
    by default) and \code{geometa_inspire} (FALSE by default) can be used with geometa objects 
-   for perform ISO and INSPIRE validation respectively. In that case on object of class 
-   \code{geometa::INSPIREMetadataValidator}, with a proper user API key, should be specified as
-   \code{geometa_inspireValidator} argument.
+   for perform ISO and INSPIRE validation respectively.
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{GNLegacyAPIManager$updateMetadata(
   id,
@@ -365,7 +370,7 @@ Updates a metadata by file, XML object or \pkg{geometa} object of class
 
 \item{\code{geometa_inspire}}{validate geometa object vs. INSPIRE}
 
-\item{\code{geometa_inspireValidator}}{geometa INSPIRE validator to use}
+\item{\code{geometa_inspireValidator}}{geometa INSPIRE validator to use. Deprecated, see below note.}
 }
 \if{html}{\out{</div>}}
 }

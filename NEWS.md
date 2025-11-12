@@ -1,6 +1,10 @@
 ## [geonapi 0.8-1](https://github.com/eblondel/geonapi) |
 [![CRAN_Status_Badge](https://img.shields.io/badge/CRAN-unavailable-red.svg)](https://github.com/eblondel/geonapi)
 
+**Enhancements**
+
+- [#38](https://github.com/eblondel/geonapi/issues/38) INSPIRE metadata validator does not need API key anymore
+
 **New features**
 
 * [#35](https://github.com/eblondel/geonapi/issues/35) Add method to simply download a metadata by Id

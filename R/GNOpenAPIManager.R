@@ -474,6 +474,81 @@ GNOpenAPIManager <- R6Class("GNOpenAPIManager",
       return(out)
     },
     
+    #' Set privilege configuration using Geonetwork OpenAPI
+    #'
+    #' @param id character; metadata Id
+    #' @param config object of class \link{GNPrivConfiguration} (same structure as legacy)
+    #' @return logical TRUE on success, FALSE otherwise
+    setPrivConfiguration = function(id, config){
+      self$INFO(sprintf("Setting privileges (OpenAPI) for metadata id = %s", id))
+      if(!is(config, "GNPrivConfiguration")){
+        stop("The 'config' value should be an object of class 'GNPrivConfiguration'")
+      }
+      
+      # 1) Fetch list of operations from server so we can provide a full operations map
+      reqOps <- GNUtils$GET(
+        url = self$getUrl(),
+        path = "/api/operations",
+        token = private$getToken(), cookies = private$cookies,
+        user = private$user,
+        pwd = private$getPwd(),
+        verbose = self$verbose.debug
+      )
+      
+      if(status_code(reqOps) != 200){
+        self$ERROR("Failed to fetch operations list")
+        self$ERROR(content(reqOps))
+        return(FALSE)
+      }
+      opsJson <- jsonlite::fromJSON(content(reqOps, as = "text", encoding = "UTF-8"))
+      print(dput(opsJson))
+      # opsJson is expected to be a list of objects with element 'name'
+      opIDs <- as.list(opsJson$id)
+      opNames <- as.list(opsJson$name)
+      
+      # 2) Build the privileges payload
+      # config$privileges is expected to be a list of grants where each grant has:
+      #  - group (group id, integer or string)
+      #  - privileges (character vector of operation names to grant)
+      privilegesList <- lapply(config$privileges, function(grant){
+        # For each known operation name, set TRUE if it's in grant$privileges, else FALSE
+        operationsMap <- setNames(
+          lapply(opIDs, function(op) { op %in% grant$privileges }),
+          opNames
+        )
+        # Ensure group is numeric / as in Geonetwork (could be -1, 0, 1 or custom ids)
+        list(
+          group = grant$group,
+          operations = operationsMap
+        )
+      })
+      
+      payload <- list(clear = TRUE, privileges = privilegesList)
+      payload_json <- jsonlite::toJSON(payload, auto_unbox = TRUE, pretty = FALSE)
+      
+      # 3) PUT payload to /srv/api/records/{id}/sharing
+      sharingPath <- paste0("/api/records/", id, "/sharing")
+      req <- GNUtils$PUT(
+        url = self$getUrl(),
+        path = sharingPath,
+        token = private$getToken(), cookies = private$cookies,
+        user = private$user,
+        pwd = private$getPwd(),
+        content = payload_json,
+        contentType = "application/json",
+        verbose = self$verbose.debug
+      )
+      
+      if(status_code(req) %in% c(200, 204)){
+        self$INFO(sprintf("Successfully set privileges for metadata ID = %s!", id))
+        return(TRUE)
+      }else{
+        self$ERROR(sprintf("Error while setting privileges (OpenAPI) - %s", message_for_status(status_code(req))))
+        self$ERROR(content(req))
+        return(FALSE)
+      }
+    },
+    
     #'@description Uploads attachment
     #'@param id metadata identifier
     #'@param file file to upload

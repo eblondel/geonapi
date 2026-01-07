@@ -58,6 +58,7 @@ Emmanuel Blondel <emmanuel.blondel1@gmail.com>
 \item \href{#method-GNOpenAPIManager-insertMetadata}{\code{GNOpenAPIManager$insertMetadata()}}
 \item \href{#method-GNOpenAPIManager-updateMetadata}{\code{GNOpenAPIManager$updateMetadata()}}
 \item \href{#method-GNOpenAPIManager-deleteMetadata}{\code{GNOpenAPIManager$deleteMetadata()}}
+\item \href{#method-GNOpenAPIManager-setPrivConfiguration}{\code{GNOpenAPIManager$setPrivConfiguration()}}
 \item \href{#method-GNOpenAPIManager-uploadAttachment}{\code{GNOpenAPIManager$uploadAttachment()}}
 \item \href{#method-GNOpenAPIManager-publishThumbnail}{\code{GNOpenAPIManager$publishThumbnail()}}
 \item \href{#method-GNOpenAPIManager-doiCheckPreConditions}{\code{GNOpenAPIManager$doiCheckPreConditions()}}
@@ -443,9 +444,31 @@ Deletes a metadata by ID
 \describe{
 \item{\code{id}}{id}
 
-\item{\code{withBackup}}{proceed with backup. Default is \code{TRUE}}
+\item{\code{withBackup}}{proceed with backup. Default is \code{TRUE}
+Set privilege configuration using Geonetwork OpenAPI}
 }
 \if{html}{\out{</div>}}
+}
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-GNOpenAPIManager-setPrivConfiguration"></a>}}
+\if{latex}{\out{\hypertarget{method-GNOpenAPIManager-setPrivConfiguration}{}}}
+\subsection{Method \code{setPrivConfiguration()}}{
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{GNOpenAPIManager$setPrivConfiguration(id, config)}\if{html}{\out{</div>}}
+}
+
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{id}}{character; metadata Id}
+
+\item{\code{config}}{object of class \link{GNPrivConfiguration} (same structure as legacy)}
+}
+\if{html}{\out{</div>}}
+}
+\subsection{Returns}{
+logical TRUE on success, FALSE otherwise
 }
 }
 \if{html}{\out{<hr>}}

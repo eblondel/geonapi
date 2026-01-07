@@ -29,12 +29,7 @@ GNPriv <- R6Class("GNPriv",
      #'@param group group
      #'@param privileges privileges
      initialize = function(group, privileges){
-       allowedGroups <- c("guest", "intranet", "all")
-       if(!(group %in% allowedGroups)){
-         stop(sprintf("Unsupported group '%s' value. Possible values are [%s]",
-                      group, paste0(allowedGroups, collapse=",")))
-       }
-       groupCode <- switch(group, "guest" = -1, "intranet" = 0, "all" = 1)
+       groupCode <- switch(group, "guest" = -1, "intranet" = 0, "all" = 1, group)
        allowedPrivileges <- c("view", "download", "editing", "notify", "dynamic", "featured")
        if(!all(privileges %in% allowedPrivileges)){
          stop(sprintf("One or more privilege(s) not matching possibles [%s]",

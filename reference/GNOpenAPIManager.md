@@ -66,6 +66,8 @@ Emmanuel Blondel \<emmanuel.blondel1@gmail.com\>
 
 - [`GNOpenAPIManager$deleteMetadata()`](#method-GNOpenAPIManager-deleteMetadata)
 
+- [`GNOpenAPIManager$setPrivConfiguration()`](#method-GNOpenAPIManager-setPrivConfiguration)
+
 - [`GNOpenAPIManager$uploadAttachment()`](#method-GNOpenAPIManager-uploadAttachment)
 
 - [`GNOpenAPIManager$publishThumbnail()`](#method-GNOpenAPIManager-publishThumbnail)
@@ -580,7 +582,32 @@ Deletes a metadata by ID
 
 - `withBackup`:
 
-  proceed with backup. Default is `TRUE`
+  proceed with backup. Default is `TRUE` Set privilege configuration
+  using Geonetwork OpenAPI
+
+------------------------------------------------------------------------
+
+### Method `setPrivConfiguration()`
+
+#### Usage
+
+    GNOpenAPIManager$setPrivConfiguration(id, config)
+
+#### Arguments
+
+- `id`:
+
+  character; metadata Id
+
+- `config`:
+
+  object of class
+  [GNPrivConfiguration](https://eblondel.github.io/geonapi/reference/GNPrivConfiguration.md)
+  (same structure as legacy)
+
+#### Returns
+
+logical TRUE on success, FALSE otherwise
 
 ------------------------------------------------------------------------
 

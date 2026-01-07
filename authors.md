@@ -10,13 +10,13 @@
 Source:
 [`DESCRIPTION`](https://github.com/eblondel/geonapi/blob/master/DESCRIPTION)
 
-Blondel E (2025). *geonapi: 'GeoNetwork' API R Interface*. R package
+Blondel E (2026). *geonapi: 'GeoNetwork' API R Interface*. R package
 version 0.8-1, <https://github.com/eblondel/geonapi/wiki>.
 
     @Manual{,
       title = {geonapi: 'GeoNetwork' API R Interface},
       author = {Emmanuel Blondel},
-      year = {2025},
+      year = {2026},
       note = {R package version 0.8-1},
       url = {https://github.com/eblondel/geonapi/wiki},
     }

@@ -87,6 +87,7 @@ to <code>TRUE</code>.</p>
 <li><p><a href="#method-GNOpenAPIManager-insertMetadata"><code>GNOpenAPIManager$insertMetadata()</code></a></p></li>
 <li><p><a href="#method-GNOpenAPIManager-updateMetadata"><code>GNOpenAPIManager$updateMetadata()</code></a></p></li>
 <li><p><a href="#method-GNOpenAPIManager-deleteMetadata"><code>GNOpenAPIManager$deleteMetadata()</code></a></p></li>
+<li><p><a href="#method-GNOpenAPIManager-setPrivConfiguration"><code>GNOpenAPIManager$setPrivConfiguration()</code></a></p></li>
 <li><p><a href="#method-GNOpenAPIManager-uploadAttachment"><code>GNOpenAPIManager$uploadAttachment()</code></a></p></li>
 <li><p><a href="#method-GNOpenAPIManager-publishThumbnail"><code>GNOpenAPIManager$publishThumbnail()</code></a></p></li>
 <li><p><a href="#method-GNOpenAPIManager-doiCheckPreConditions"><code>GNOpenAPIManager$doiCheckPreConditions()</code></a></p></li>
@@ -561,16 +562,42 @@ or <code>ISOFeatureCatalogue</code> (ISO 19110) (from <span class="pkg">geometa<
 
 
 <dt><code>withBackup</code></dt>
-<dd><p>proceed with backup. Default is <code>TRUE</code></p></dd>
+<dd><p>proceed with backup. Default is <code>TRUE</code>
+Set privilege configuration using Geonetwork OpenAPI</p></dd>
 
 
 </dl><p></p></div>
 </div>
 
+</div><p></p><hr><a id="method-GNOpenAPIManager-setPrivConfiguration"></a><div class="section">
+<h3 id="method-setprivconfiguration-">Method <code>setPrivConfiguration()</code><a class="anchor" aria-label="anchor" href="#method-setprivconfiguration-"></a></h3>
+
+<div class="section">
+<h4 id="usage-11">Usage<a class="anchor" aria-label="anchor" href="#usage-11"></a></h4>
+<p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">GNOpenAPIManager</span><span class="op">$</span><span class="fu">setPrivConfiguration</span><span class="op">(</span><span class="va">id</span>, <span class="va">config</span><span class="op">)</span></span></code></pre></div><p></p></div>
+</div>
+
+<div class="section">
+<h4 id="arguments-8">Arguments<a class="anchor" aria-label="anchor" href="#arguments-8"></a></h4>
+<p></p><div class="arguments"><dl><dt><code>id</code></dt>
+<dd><p>character; metadata Id</p></dd>
+
+
+<dt><code>config</code></dt>
+<dd><p>object of class <a href="GNPrivConfiguration.html">GNPrivConfiguration</a> (same structure as legacy)</p></dd>
+
+
+</dl><p></p></div>
+</div>
+<div class="section">
+<h4 id="returns-4">Returns<a class="anchor" aria-label="anchor" href="#returns-4"></a></h4>
+<p>logical TRUE on success, FALSE otherwise</p>
+</div>
+
 </div><p></p><hr><a id="method-GNOpenAPIManager-uploadAttachment"></a><div class="section">
 <h3 id="method-uploadattachment-">Method <code>uploadAttachment()</code><a class="anchor" aria-label="anchor" href="#method-uploadattachment-"></a></h3>
 <p>Uploads attachment</p><div class="section">
-<h4 id="usage-11">Usage<a class="anchor" aria-label="anchor" href="#usage-11"></a></h4>
+<h4 id="usage-12">Usage<a class="anchor" aria-label="anchor" href="#usage-12"></a></h4>
 <p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">GNOpenAPIManager</span><span class="op">$</span><span class="fu">uploadAttachment</span><span class="op">(</span></span>
 <span>  <span class="va">id</span>,</span>
 <span>  <span class="va">file</span>,</span>
@@ -580,7 +607,7 @@ or <code>ISOFeatureCatalogue</code> (ISO 19110) (from <span class="pkg">geometa<
 </div>
 
 <div class="section">
-<h4 id="arguments-8">Arguments<a class="anchor" aria-label="anchor" href="#arguments-8"></a></h4>
+<h4 id="arguments-9">Arguments<a class="anchor" aria-label="anchor" href="#arguments-9"></a></h4>
 <p></p><div class="arguments"><dl><dt><code>id</code></dt>
 <dd><p>metadata identifier</p></dd>
 
@@ -600,19 +627,19 @@ or <code>ISOFeatureCatalogue</code> (ISO 19110) (from <span class="pkg">geometa<
 </dl><p></p></div>
 </div>
 <div class="section">
-<h4 id="returns-4">Returns<a class="anchor" aria-label="anchor" href="#returns-4"></a></h4>
+<h4 id="returns-5">Returns<a class="anchor" aria-label="anchor" href="#returns-5"></a></h4>
 <p>a named list of the uploaded attachment, including the url, size, id and type, <code>NULL</code> otherwise</p>
 </div>
 
 </div><p></p><hr><a id="method-GNOpenAPIManager-publishThumbnail"></a><div class="section">
 <h3 id="method-publishthumbnail-">Method <code>publishThumbnail()</code><a class="anchor" aria-label="anchor" href="#method-publishthumbnail-"></a></h3>
 <p>Publishes thumbnail based on URL</p><div class="section">
-<h4 id="usage-12">Usage<a class="anchor" aria-label="anchor" href="#usage-12"></a></h4>
+<h4 id="usage-13">Usage<a class="anchor" aria-label="anchor" href="#usage-13"></a></h4>
 <p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">GNOpenAPIManager</span><span class="op">$</span><span class="fu">publishThumbnail</span><span class="op">(</span><span class="va">id</span>, <span class="va">url</span>, desc <span class="op">=</span> <span class="st">""</span><span class="op">)</span></span></code></pre></div><p></p></div>
 </div>
 
 <div class="section">
-<h4 id="arguments-9">Arguments<a class="anchor" aria-label="anchor" href="#arguments-9"></a></h4>
+<h4 id="arguments-10">Arguments<a class="anchor" aria-label="anchor" href="#arguments-10"></a></h4>
 <p></p><div class="arguments"><dl><dt><code>id</code></dt>
 <dd><p>metadata identifier</p></dd>
 
@@ -628,35 +655,15 @@ or <code>ISOFeatureCatalogue</code> (ISO 19110) (from <span class="pkg">geometa<
 </dl><p></p></div>
 </div>
 <div class="section">
-<h4 id="returns-5">Returns<a class="anchor" aria-label="anchor" href="#returns-5"></a></h4>
+<h4 id="returns-6">Returns<a class="anchor" aria-label="anchor" href="#returns-6"></a></h4>
 <p><code>TRUE</code> if published, <code>FALSE</code> otherwise</p>
 </div>
 
 </div><p></p><hr><a id="method-GNOpenAPIManager-doiCheckPreConditions"></a><div class="section">
 <h3 id="method-doicheckpreconditions-">Method <code>doiCheckPreConditions()</code><a class="anchor" aria-label="anchor" href="#method-doicheckpreconditions-"></a></h3>
 <p>Checks pre-conditions to publish DOI</p><div class="section">
-<h4 id="usage-13">Usage<a class="anchor" aria-label="anchor" href="#usage-13"></a></h4>
-<p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">GNOpenAPIManager</span><span class="op">$</span><span class="fu">doiCheckPreConditions</span><span class="op">(</span><span class="va">id</span><span class="op">)</span></span></code></pre></div><p></p></div>
-</div>
-
-<div class="section">
-<h4 id="arguments-10">Arguments<a class="anchor" aria-label="anchor" href="#arguments-10"></a></h4>
-<p></p><div class="arguments"><dl><dt><code>id</code></dt>
-<dd><p>metadata identifier</p></dd>
-
-
-</dl><p></p></div>
-</div>
-<div class="section">
-<h4 id="returns-6">Returns<a class="anchor" aria-label="anchor" href="#returns-6"></a></h4>
-<p><code>TRUE</code> if DOI pre-conditions are fulfiled, <code>FALSE</code> otherwise</p>
-</div>
-
-</div><p></p><hr><a id="method-GNOpenAPIManager-createDOI"></a><div class="section">
-<h3 id="method-createdoi-">Method <code>createDOI()</code><a class="anchor" aria-label="anchor" href="#method-createdoi-"></a></h3>
-<p>Submit a record to the Datacite metadata store in order to create a DOI.</p><div class="section">
 <h4 id="usage-14">Usage<a class="anchor" aria-label="anchor" href="#usage-14"></a></h4>
-<p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">GNOpenAPIManager</span><span class="op">$</span><span class="fu">createDOI</span><span class="op">(</span><span class="va">id</span><span class="op">)</span></span></code></pre></div><p></p></div>
+<p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">GNOpenAPIManager</span><span class="op">$</span><span class="fu">doiCheckPreConditions</span><span class="op">(</span><span class="va">id</span><span class="op">)</span></span></code></pre></div><p></p></div>
 </div>
 
 <div class="section">
@@ -669,6 +676,26 @@ or <code>ISOFeatureCatalogue</code> (ISO 19110) (from <span class="pkg">geometa<
 </div>
 <div class="section">
 <h4 id="returns-7">Returns<a class="anchor" aria-label="anchor" href="#returns-7"></a></h4>
+<p><code>TRUE</code> if DOI pre-conditions are fulfiled, <code>FALSE</code> otherwise</p>
+</div>
+
+</div><p></p><hr><a id="method-GNOpenAPIManager-createDOI"></a><div class="section">
+<h3 id="method-createdoi-">Method <code>createDOI()</code><a class="anchor" aria-label="anchor" href="#method-createdoi-"></a></h3>
+<p>Submit a record to the Datacite metadata store in order to create a DOI.</p><div class="section">
+<h4 id="usage-15">Usage<a class="anchor" aria-label="anchor" href="#usage-15"></a></h4>
+<p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">GNOpenAPIManager</span><span class="op">$</span><span class="fu">createDOI</span><span class="op">(</span><span class="va">id</span><span class="op">)</span></span></code></pre></div><p></p></div>
+</div>
+
+<div class="section">
+<h4 id="arguments-12">Arguments<a class="anchor" aria-label="anchor" href="#arguments-12"></a></h4>
+<p></p><div class="arguments"><dl><dt><code>id</code></dt>
+<dd><p>metadata identifier</p></dd>
+
+
+</dl><p></p></div>
+</div>
+<div class="section">
+<h4 id="returns-8">Returns<a class="anchor" aria-label="anchor" href="#returns-8"></a></h4>
 <p><code>TRUE</code> if metadata record has been submitted with DOI created, <code>FALSE</code> otherwise</p>
 </div>
 
@@ -676,12 +703,12 @@ or <code>ISOFeatureCatalogue</code> (ISO 19110) (from <span class="pkg">geometa<
 <h3 id="method-deletedoi-">Method <code>deleteDOI()</code><a class="anchor" aria-label="anchor" href="#method-deletedoi-"></a></h3>
 <p>Remove a DOI (this is not recommended, DOI are supposed to be
 persistent once created. This is mainly here for testing).</p><div class="section">
-<h4 id="usage-15">Usage<a class="anchor" aria-label="anchor" href="#usage-15"></a></h4>
+<h4 id="usage-16">Usage<a class="anchor" aria-label="anchor" href="#usage-16"></a></h4>
 <p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">GNOpenAPIManager</span><span class="op">$</span><span class="fu">deleteDOI</span><span class="op">(</span><span class="va">id</span><span class="op">)</span></span></code></pre></div><p></p></div>
 </div>
 
 <div class="section">
-<h4 id="arguments-12">Arguments<a class="anchor" aria-label="anchor" href="#arguments-12"></a></h4>
+<h4 id="arguments-13">Arguments<a class="anchor" aria-label="anchor" href="#arguments-13"></a></h4>
 <p></p><div class="arguments"><dl><dt><code>id</code></dt>
 <dd></dd>
 
@@ -692,12 +719,12 @@ persistent once created. This is mainly here for testing).</p><div class="sectio
 </div><p></p><hr><a id="method-GNOpenAPIManager-clone"></a><div class="section">
 <h3 id="method-clone-">Method <code>clone()</code><a class="anchor" aria-label="anchor" href="#method-clone-"></a></h3>
 <p>The objects of this class are cloneable with this method.</p><div class="section">
-<h4 id="usage-16">Usage<a class="anchor" aria-label="anchor" href="#usage-16"></a></h4>
+<h4 id="usage-17">Usage<a class="anchor" aria-label="anchor" href="#usage-17"></a></h4>
 <p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">GNOpenAPIManager</span><span class="op">$</span><span class="fu">clone</span><span class="op">(</span>deep <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></code></pre></div><p></p></div>
 </div>
 
 <div class="section">
-<h4 id="arguments-13">Arguments<a class="anchor" aria-label="anchor" href="#arguments-13"></a></h4>
+<h4 id="arguments-14">Arguments<a class="anchor" aria-label="anchor" href="#arguments-14"></a></h4>
 <p></p><div class="arguments"><dl><dt><code>deep</code></dt>
 <dd><p>Whether to make a deep clone.</p></dd>
 

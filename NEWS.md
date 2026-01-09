@@ -1,9 +1,10 @@
 ## [geonapi 0.8-1](https://github.com/eblondel/geonapi) |
-[![CRAN_Status_Badge](https://img.shields.io/badge/CRAN-unavailable-red.svg)](https://github.com/eblondel/geonapi)
+[![CRAN_Status_Badge](https://img.shields.io/badge/CRAN-published-blue.svg)](https://github.com/eblondel/geonapi)
 
 **Enhancements**
 
 - [#38](https://github.com/eblondel/geonapi/issues/38) INSPIRE metadata validator does not need API key anymore
+- [#39](https://github.com/eblondel/geonapi/issues/39) Support metadata privileges configuration for new API
 
 **New features**
 

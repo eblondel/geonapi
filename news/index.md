@@ -1,8 +1,8 @@
 # Changelog
 
-## [geonapi 0.8-1](https://github.com/eblondel/geonapi) \|
+## [geonapi 0.8-1](https://github.com/eblondel/geonapi) \| [![CRAN_Status_Badge](https://img.shields.io/badge/CRAN-published-blue.svg)](https://github.com/eblondel/geonapi)
 
-[![CRAN_Status_Badge](https://img.shields.io/badge/CRAN-published-blue.svg)](https://github.com/eblondel/geonapi)
+CRAN release: 2026-01-10
 
 **Enhancements**
 
@@ -16,7 +16,7 @@
 - [\#35](https://github.com/eblondel/geonapi/issues/35) Add method to
   simply download a metadata by Id
 
-## [geonapi 0.8](https://github.com/eblondel/geonapi) \| [![CRAN_Status_Badge](https://img.shields.io/badge/CRAN-published-blue.svg)](https://github.com/eblondel/geonapi)
+## [geonapi 0.8](https://cran.r-project.org/src/contrib/Archive/geonapi/geonapi_0.8.tar.gz) \| [![CRAN_Status_Badge](https://img.shields.io/badge/CRAN-published-blue.svg)](https://cran.r-project.org/src/contrib/Archive/geonapi/geonapi_0.8.tar.gz)
 
 CRAN release: 2025-01-31
 

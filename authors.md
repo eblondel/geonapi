@@ -8,15 +8,15 @@
 ## Citation
 
 Source:
-[`DESCRIPTION`](https://github.com/eblondel/geonapi/blob/v0.8-1/DESCRIPTION)
+[`DESCRIPTION`](https://github.com/eblondel/geonapi/blob/master/DESCRIPTION)
 
 Blondel E (2026). *geonapi: 'GeoNetwork' API R Interface*. R package
-version 0.8-1, <https://github.com/eblondel/geonapi/wiki>.
+version 0.8-2, <https://github.com/eblondel/geonapi/wiki>.
 
     @Manual{,
       title = {geonapi: 'GeoNetwork' API R Interface},
       author = {Emmanuel Blondel},
       year = {2026},
-      note = {R package version 0.8-1},
+      note = {R package version 0.8-2},
       url = {https://github.com/eblondel/geonapi/wiki},
     }

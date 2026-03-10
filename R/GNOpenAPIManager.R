@@ -501,7 +501,7 @@ GNOpenAPIManager <- R6Class("GNOpenAPIManager",
         return(FALSE)
       }
       opsJson <- jsonlite::fromJSON(content(reqOps, as = "text", encoding = "UTF-8"))
-      print(dput(opsJson))
+      
       # opsJson is expected to be a list of objects with element 'name'
       opIDs <- as.list(opsJson$id)
       opNames <- as.list(opsJson$name)
@@ -544,7 +544,6 @@ GNOpenAPIManager <- R6Class("GNOpenAPIManager",
         return(TRUE)
       }else{
         self$ERROR(sprintf("Error while setting privileges (OpenAPI) - %s", message_for_status(status_code(req))))
-        self$ERROR(content(req))
         return(FALSE)
       }
     },
